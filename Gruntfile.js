@@ -1,4 +1,4 @@
-/*global module */
+/*global module, require */
 module.exports = function( grunt ) {
 
 	// var pkg = grunt.file.readJSON( 'package.json' );
@@ -20,14 +20,19 @@ module.exports = function( grunt ) {
 			}
 		},
 
+		// code qa
+		eslint: {
+			app: { src: 'assets/dv1.js' }
+		},
+
 		// watch
 		watch: {
 			options: {
 				spawn: false
 			},
-			httpd: {
-				files: '*.html',
-				tasks: [ '' ]
+			lint: {
+				files: 'assets/dv1.js',
+				tasks: [ 'eslint:app' ]
 			}
 		}
 	});
@@ -35,11 +40,12 @@ module.exports = function( grunt ) {
 
 	// plugins
 	grunt.loadNpmTasks( 'grunt-contrib-connect' );
+	grunt.loadNpmTasks( 'grunt-eslint' );
 	grunt.loadNpmTasks( 'grunt-contrib-watch' );
 
 
 	// helpers
-	// grunt.registerTask( 'test', [ '' ]);
+	grunt.registerTask( 'test', [ 'eslint' ]);
 	// grunt.registerTask( 'build', [ '' ]);
-	grunt.registerTask( 'default', [ 'connect:devserver', 'watch' ]);
+	grunt.registerTask( 'default', [ 'test', 'connect:devserver', 'watch' ]);
 };
