@@ -1,0 +1,16 @@
+{
+  "name": "dv1-form",
+  "version": "0.0.1-alpha.1",
+  "description": "Apply for a domestic violence protection order in Queensland, Australia",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ben Boyle <benjamins.boyle@gmail.com> (http://ultimate.benboyle.id.au)",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-connect": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1"
+  }
+}
