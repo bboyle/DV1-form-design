@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-AU" lang="en-AU">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Apply for a protection order | Your rights, crime and the law | Queensland Government</title>
+
+<!--#set var="franchise" value="law"-->
+<!--#set var="title" value="Apply for a protection order"-->
+<!--#include virtual="/assets/includes/global/head-assets-styles.html"-->
+<!-- PUT CUSTOM STYLES HERE -->
+<link rel="stylesheet" href="/assets/wireframe.css">
+<link rel="stylesheet" href="/assets/dv1.css">
+
+<!--#include virtual="/assets/includes/global/head-assets-scripts.html"-->
+<!-- PUT CUSTOM SCRIPTS THAT CANNOT BE DEFERRED HERE (see footer) -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script src="/assets/dv1.js"></script>
+
+
+	<meta name="description" content="Step-by-step guide to apply for protection from domestic violence.">
+	<meta name="keywords" content="protection, abuse, family violence, restraining order, protection order, violence intervention order, apprehended violence order">
+
+	<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/">
+	<link rel="schema.AGLSTERMS" href="http://www.agls.gov.au/agls/terms/">
+
+	<meta name="DCTERMS.creator" scheme="AGLSTERMS.GOLD" content="c=AU; o=The State of Queensland; ou=Department of Justice and Attorney-General; ou=Justice Services">
+	<meta name="DCTERMS.publisher" scheme="AGLSTERMS.AglsAgent" content="corporateName=The State of Queensland; jurisdiction=Queensland">
+	<meta name="DCTERMS.created" content="2016-01-18">
+	<meta name="DCTERMS.modified" content="2016-01-18">
+	<meta name="DCTERMS.title" content="Apply for a protection order | Your rights, crime and the law">
+	<meta name="DCTERMS.description" content="Step-by-step guide to apply for protection from domestic violence.">
+	<meta name="DCTERMS.subject" scheme="AGLSTERMS.APAIS" content="Domestic Violence">
+	<meta name="AGLSTERMS.function" scheme="AGLSTERMS.AGIFT" content="JUSTICE ADMINISTRATION - Human rights obligations">
+<!--#include virtual="/assets/includes/global/head-meta-identifier.html"-->
+	<meta name="DCTERMS.type" scheme="DCTERMS.DCMIType" content="Text">
+	<meta name="AGLSTERMS.documentType" scheme="AGLSTERMS.agls-document" content="form">
+	<meta name="DCTERMS.audience" scheme="AGLSTERMS.agls-audience" content="women; Aboriginal and Torres Strait Islanders; seniors; migrants; men; Queensland">
+	<meta name="DCTERMS.jurisdiction" scheme="AGLSTERMS.AglsJuri" content="Queensland">
+</head>
+
+<body ng-app="dv1">
+
+<article ng-controller="InterviewController as interview">
+
+	<h1>Apply for a protection order</h1>
+
+
+	<div class="preamble status info">
+		<h2>Before you begin</h2>
+		<ul>
+			<li>We will ask questions about your situation — what happened and when — what protection you need. This online interview can take an hour or more to complete.</li>
+			<li>At the end, you will have the necessary forms to take to court. Protection orders may take up to 4 weeks. We will ask if you need a <dfn>temporary protection order</dfn> to protect you while waiting for the court to hear your case.</li>
+			<li>You can apply yourself. You can also ask a friend or lawyer to apply on your behalf. In some situations, the police may apply for you.</li>
+		</ul>
+	</div>
+
+	<form>
+	<div class="status warn">
+		<h2>Is your web browsing safe?</h2>
+		<p>Someone may be able to tell you visited this web page.</p>
+		<ol class="questions">
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Could someone spy on web pages you visit?</span>
+						<abbr title="(required)" class="required">*</abbr>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" name="could-someone-spy-on-web-pages-you-visit" value="Yes" required id="could-someone-spy-on-web-pages-you-visit-yes-i-do-not-feel-safe">
+							<label for="could-someone-spy-on-web-pages-you-visit-yes-i-do-not-feel-safe">Yes — I do not feel safe</label>
+						</li>
+						<li>
+							<input type="radio" name="could-someone-spy-on-web-pages-you-visit" value="No" required id="could-someone-spy-on-web-pages-you-visit-no-i-am-confident-this-is-private">
+							<label for="could-someone-spy-on-web-pages-you-visit-no-i-am-confident-this-is-private">No — I am confident this is private</label>
+						</li>
+						<li>
+							<input type="radio" name="could-someone-spy-on-web-pages-you-visit" value="I don't know" required id="could-someone-spy-on-web-pages-you-visit-i-don-t-know">
+							<label for="could-someone-spy-on-web-pages-you-visit-i-don-t-know">I don't know</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li>
+				<p>
+					<small class="hint relevance">(If you chose ‘Yes’ above)</small>
+				</p>
+				<div class="status info">
+					<h2>Protect yourself online</h2>
+					<ol>
+						<li>Learn about <a href="#">safe browsing habits</a></li>
+						<li>Leave this web page and <a href="#">clear your browser history</a></li>
+					</ol>
+				</div>
+			</li>
+		</ol>
+	</div>
+	</form>
+
+	<form class="form" ng-submit="interview.completePreamble()">
+		<ol class="questions">
+
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Are you in immediate danger?</span>
+						<abbr title="(required)" class="required">*</abbr>
+						<small class="hint">If someone could hurt you while you are answering this form you should call the police. Police can provide immediate assistance and apply for a protection order for you.</small>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" name="interview-safe" ng-model="interview.safeToProceed" ng-value="false" required id="interview-safe-false">
+							<label for="interview-safe-false">Yes — call 000 and ask for police</label>
+						</li>
+						<li>
+							<input type="radio" name="interview-safe" ng-model="interview.safeToProceed" ng-value="maybe" required id="interview-safe-dunno">
+							<label for="interview-safe-dunno">I don't know — contact DVConnect</label>
+						</li>
+						<li>
+							<input type="radio" name="interview-safe" ng-model="interview.safeToProceed" ng-value="true" required id="interview-safe-true">
+							<label for="interview-safe-true">It is safe for me to fill out this form (it could take an hour or longer)</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+
+			<li ng-show="interview.safeToProceed === true">
+				<fieldset>
+					<legend>
+						<span class="label">What is your name?</span>
+					</legend>
+					<ol class="questions compact">
+						<li>
+							<label for="applicant-name-given">
+								<span class="label">Given name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input ng-model="interview.applicant.name.given" size="15" required type="text" id="applicant-name-given">
+						</li>
+						<li>
+							<label for="applicant-name-family">
+								<span class="label">Family name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input ng-model="interview.applicant.name.family" size="15" required type="text" id="applicant-name-family">
+						</li>
+					</ol>
+				</fieldset>
+			</li>
+
+			<li>
+				<ul class="actions">
+					<li><strong><button>Continue</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+
+	<form class="form" ng-hide="interview.page != 2">
+		<ol class="questions">
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">{{interview.applicant.name.given}}, do you need protection?</span>
+						<abbr title="(required)" class="required">*</abbr>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" name="applicant-is-aggrieved" ng-model="interview.applicantIsAggrieved" ng-value="true" required id="applicant-is-aggrieved" ng-change="interview.checkApplicant()">
+							<label for="applicant-is-aggrieved">Yes</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-is-aggrieved" ng-model="interview.applicantIsAggrieved" ng-value="false" required id="applicant-is-not-aggrieved" ng-change="interview.checkApplicant()">
+							<label for="applicant-is-not-aggrieved">No, I am applying for someone else</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li ng-show="interview.applicantIsAggrieved === false">
+				<fieldset>
+					<legend>
+						<span class="label">Tell us the name of the person who needs protection</span>
+					</legend>
+					<ol class="questions compact">
+						<li>
+							<label for="aggrieved-name-given">
+								<span class="label">Given name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input size="15" required type="text" ng-model="interview.aggrieved.name.given" id="aggrieved-name-given">
+						</li>
+						<li>
+							<label for="aggrieved-name-family">
+								<span class="label">Family name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input size="15" required type="text" ng-model="interview.aggrieved.name.family" id="aggrieved-name-family">
+						</li>
+					</ol>
+				</fieldset>
+			</li>
+
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><input type="submit" value="Apply now"></strong></li>
+					<li><a href="#">Cancel</a></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+
+</article>
+
+<article ng-controller="DV1FormController as dv1">
+	<nav>
+		<button type="button" ng-class="{active: dv1.view.gazette}"   ng-click="dv1.showGazettedForm()">Gazetted form</button>
+		<button type="button" ng-class="{active: ! dv1.view.gazette}" ng-click="dv1.showNames()">Real names</button>
+	</nav>
+
+	<header>
+		<h1>FORM FV1</h1>
+		<p><cite>Domestic and Family Violence Protection Act 2012 (s.32)</cite></p>
+
+		<h1>Application for a Protection Order</h1>
+		<p>Please note: A copy of this application will be given to the
+			<var ng-if="dv1.view.gazette" class="respondent">respondent</var>
+			<var ng-if="! dv1.view.gazette" class="respondent">{{ dv1.respondent.name.given }}</var>
+		</p>
+	</header>
+
+	<section>
+		<h2>1. <var class="aggrieved">{{ dv1.aggrieved.name.given }}</var>'s details</h2>
+	</section>
+
+	<section>
+		<h2>2. <var class="respondent">{{ dv1.respondent.name.given }}</var>'s details</h2>
+	</section>
+
+	<section ng-hide="dv1.aggrievedIsApplicant">
+		<h2 ng-if="dv1.view.gazette">3. <var class="applicant">Applicant's</var> details</h2>
+		<h2 ng-if="! dv1.view.gazette">3. <var class="applicant">Your</var> details</h2>
+
+		<h3 ng-if="dv1.view.gazette">PART A – A person being authorised by the <var class="aggrieved">{{ dv1.aggrieved.name.given }}</var></h3>
+		<h3 ng-if="! dv1.view.gazette">PART A – I am authorised by <var class="aggrieved">{{ dv1.aggrieved.name.given }}</var></h3>
+
+		<h3 ng-if="dv1.view.gazette">PART B – A person acting under another Act for the <var class="aggrieved">{{ dv1.aggrieved.name.given }}</var></h3>
+		<h3 ng-if="! dv1.view.gazette">PART B – I am acting under another Act for <var class="aggrieved">{{ dv1.aggrieved.name.given }}</var></h3>
+
+		<h3>PART C – A Police Officer</h3>
+
+		<h3 ng-if="dv1.view.gazette">PART D – A party to a child protection proceeding</h3>
+		<h3 ng-if="! dv1.view.gazette">PART D – I am party to a child protection proceeding</h3>
+	</section>
+
+	<section ng-show="dv1.aggrievedIsApplicant">
+		<h2 ng-if="dv1.view.gazette">3. <var class="applicant">Applicant's</var> details</h2>
+		<h2 ng-if="! dv1.view.gazette">3. <var class="applicant">Your</var> details</h2>
+
+		<p>Your details have been entered in Section 1. You do not need to repeat them here.</p>
+	</section>
+
+
+</article>
+
+
+
+
+<div id="scripts">
+<script type="text/javascript" src="https://static.qgov.net.au/assets/v2/script/loader.js"></script>
+<script type="text/javascript" src="https://static.qgov.net.au/assets/v2/script/init.js"></script>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+body {
+	display: flex;
+	flex-flow: row;
+}
+body > article {
+	width: 50%;
+	padding: 0 1em 2em;
+	box-sizing: border-box;
+	height: 100vh;
+	overflow-y: auto;
+}
+
+var {
+	font-weight: bold;
+}
+.respondent {
+	color: red;
+}
+.aggrieved {
+	color: green;
+}
+.applicant {
+	color: blue;
+}
+
+
+button.active {
+	font-weight: bold;
+}
