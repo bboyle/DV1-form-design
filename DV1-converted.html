@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DV1 - Application for a Protection Order</title>
+    <link rel="stylesheet" href="https://static.qgov.net.au/assets/v2/style/qgov.css">
+    <style>
+    form th { font-weight: normal; font-size: inherit; }
+    form td { white-space: nowrap; }
+    </style>
+</head>
+<body>
+<div class="article"><div class="box-sizing"><div class="border">
+
+    <h1>Application for a Protection Order</h1>
+    <form action="./content-form.html" method="post" class="form">
+        <ol class="questions">
+
+    <!-- AGGRIEVED -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Aggrieved's details</span>
+                    </legend>
+                    <ol class="questions">
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Name</span>
+                                </legend>
+                                <ol class="questions compact">
+                                    <li>
+                                        <label for="aggrieved-name-given">
+                                            <span class="label">Given name/s</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="aggrieved-name-given" size="15" required="required" type="text" id="aggrieved-name-given" />
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-name-family">
+                                            <span class="label">Family name</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="aggrieved-name-family" size="15" required="required" type="text" id="aggrieved-name-family" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="aggrieved-date-of-birth">
+                                <span class="label">Date of birth</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <input type="date" name="aggrieved-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="aggrieved-date-of-birth" />
+                        </li>
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Address</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li>
+                                        <label for="aggrieved-address-street1">
+                                            <span class="label">Address line 1</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="aggrieved-address-street1" size="20" value="" required="required" id="aggrieved-address-street1" />
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-address-street2">
+                                            <span class="label">Address line 2</span>
+                                        </label>
+                                        <input type="text" name="aggrieved-address-street2" size="20" value="" id="aggrieved-address-street2" />
+                                    </li>
+                                    <li class="group">
+                                        <ol class="questions compact">
+                                            <li>
+                                                <label for="aggrieved-address-town">
+                                                    <span class="label">Town, city or suburb</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="aggrieved-address-town" size="20" value="" required="required" id="aggrieved-address-town" />
+                                            </li>
+                                            <li>
+                                                <label for="aggrieved-address-state">
+                                                    <span class="label">State</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="aggrieved-address-state" size="5" value="QLD" required="required" id="aggrieved-address-state" />
+                                            </li>
+                                            <li>
+                                                <label for="aggrieved-address-postcode">
+                                                    <span class="label">Postcode</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="aggrieved-address-postcode" size="5" value="" required="required" id="aggrieved-address-postcode" />
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-address-country">
+                                            <span class="label">Country</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="aggrieved-address-country" size="20" value="Australia" required="required" id="aggrieved-address-country" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="aggrieved-gender">
+                                <span class="label">Gender</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <select name="aggrieved-gender" id="aggrieved-gender">
+                                <option>—please select—</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="aggrieved-home-number">
+                                <span class="label">Home number</span>
+                            </label>
+                            <input type="tel" name="aggrieved-home-number" size="20" id="aggrieved-home-number" />
+                        </li>
+                        <li>
+                            <label for="aggrieved-mobile-number">
+                                <span class="label">Mobile number</span>
+                            </label>
+                            <input type="tel" name="aggrieved-mobile-number" size="20" id="aggrieved-mobile-number" />
+                        </li>
+                        <li>
+                            <label for="aggrieved-work-phone">
+                                <span class="label">Work Phone</span>
+                            </label>
+                            <input type="tel" name="aggrieved-work-phone" size="20" id="aggrieved-work-phone" />
+                        </li>
+                        <li>
+                            <label for="aggrieved-email">
+                                <span class="label">Email</span>
+                            </label>
+                            <input type="email" name="aggrieved-email" size="40" id="aggrieved-email" />
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Does the aggrieved require an interpreter?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="does-the-aggrieved-require-an-interpreter" value="No" required="required" id="does-the-aggrieved-require-an-interpreter-no" />
+                                        <label for="does-the-aggrieved-require-an-interpreter-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="does-the-aggrieved-require-an-interpreter" value="Yes" required="required" id="does-the-aggrieved-require-an-interpreter-yes" />
+                                        <label for="does-the-aggrieved-require-an-interpreter-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="aggrieved-language-dialect">
+                                <span class="label">Language/Dialect</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                            </label>
+                            <input type="text" name="aggrieved-language-dialect" size="20" required="required" id="aggrieved-language-dialect" />
+                        </li>
+                        <li>
+                            <fieldset id="name1">
+                                <legend>
+                                    <span class="label">Does the aggrieved identify as</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices">
+                                    <li>
+                                        <input type="checkbox" name="does-the-aggrieved-identify-as" value="Aboriginal" id="does-the-aggrieved-identify-as-aboriginal" required="required" />
+                                        <label for="does-the-aggrieved-identify-as-aboriginal">Aboriginal</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="does-the-aggrieved-identify-as" value="Torres Strait Islander" id="does-the-aggrieved-identify-as-torres-strait-islander" required="required" />
+                                        <label for="does-the-aggrieved-identify-as-torres-strait-islander">Torres Strait Islander</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="does-the-aggrieved-identify-as" value="Aboriginal and Torres Strait Islander" id="does-the-aggrieved-identify-as-aboriginal-and-torres-strait-islander" required="required" />
+                                        <label for="does-the-aggrieved-identify-as-aboriginal-and-torres-strait-islander">Aboriginal and Torres Strait Islander</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Does the aggrieved have a disability, illness or impairment where support and/or special arrangements are required?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="does-the-aggrieved-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required" value="No" required="required" id="does-the-aggrieved-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required-no" />
+                                        <label for="does-the-aggrieved-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="does-the-aggrieved-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required" value="Yes" required="required" id="does-the-aggrieved-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required-yes" />
+                                        <label for="does-the-aggrieved-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Is the aggrieved under 18 years of age?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="is-the-aggrieved-under-18-years-of-age" value="No" required="required" id="is-the-aggrieved-under-18-years-of-age-no" />
+                                        <label for="is-the-aggrieved-under-18-years-of-age-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="is-the-aggrieved-under-18-years-of-age" value="Yes" required="required" id="is-the-aggrieved-under-18-years-of-age-yes" />
+                                        <label for="is-the-aggrieved-under-18-years-of-age-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Aggrieved's parent's details</span>
+                                    <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Parent's name</span>
+                                                <small class="hint"></small>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="aggrieved-parent-name-given">
+                                                        <span class="label">Given name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-parent-name-given" size="15" required="required" type="text" id="aggrieved-parent-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-parent-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-parent-name-family" size="15" required="required" type="text" id="aggrieved-parent-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Parent's address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="aggrieved-parent-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-parent-address-street1" size="20" value="" required="required" id="aggrieved-parent-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-parent-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-parent-address-street2" size="20" value="" id="aggrieved-parent-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="aggrieved-parent-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-parent-address-town" size="20" value="" required="required" id="aggrieved-parent-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-parent-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-parent-address-state" size="5" value="QLD" required="required" id="aggrieved-parent-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-parent-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-parent-address-postcode" size="5" value="" required="required" id="aggrieved-parent-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-parent-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-parent-address-country" size="20" value="Australia" required="required" id="aggrieved-parent-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- RESPONDENT -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Respondent's details</span>
+                    </legend>
+                    <ol class="questions">
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Name</span>
+                                </legend>
+                                <ol class="questions compact">
+                                    <li>
+                                        <label for="respondent-given-name-s">
+                                            <span class="label">Given name/s</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="respondent-given-name-s" size="15" required="required" type="text" id="respondent-given-name-s" />
+                                    </li>
+                                    <li>
+                                        <label for="respondent-family-name1">
+                                            <span class="label">Family name</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="respondent-family-name1" size="15" required="required" type="text" id="respondent-family-name1" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="respondent-date-of-birth">
+                                <span class="label">Date of birth</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <input type="date" name="respondent-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="respondent-date-of-birth" />
+                        </li>
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Address</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li>
+                                        <label for="respondent-streetaddress1">
+                                            <span class="label">Address line 1</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="respondent-streetaddress1" size="20" value="" required="required" id="respondent-streetaddress1" />
+                                    </li>
+                                    <li>
+                                        <label for="respondent-streetaddress2">
+                                            <span class="label">Address line 2</span>
+                                        </label>
+                                        <input type="text" name="respondent-streetaddress2" size="20" value="" id="respondent-streetaddress2" />
+                                    </li>
+                                    <li class="group">
+                                        <ol class="questions compact">
+                                            <li>
+                                                <label for="respondent-town">
+                                                    <span class="label">Town, city or suburb</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="respondent-town" size="20" value="" required="required" id="respondent-town" />
+                                            </li>
+                                            <li>
+                                                <label for="respondent-state">
+                                                    <span class="label">State</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="respondent-state" size="5" value="QLD" required="required" id="respondent-state" />
+                                            </li>
+                                            <li>
+                                                <label for="respondent-postcode">
+                                                    <span class="label">Postcode</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="respondent-postcode" size="5" value="" required="required" id="respondent-postcode" />
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <label for="respondent-country">
+                                            <span class="label">Country</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="respondent-country" size="20" value="Australia" required="required" id="respondent-country" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="respondent-gender">
+                                <span class="label">Gender</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <select name="respondent-gender" id="respondent-gender">
+                                <option>—please select—</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+                        </li>
+                        <li>
+                            <label for="respondent-home-number">
+                                <span class="label">Home number</span>
+                            </label>
+                            <input type="tel" name="respondent-home-number" size="20" id="respondent-home-number" />
+                        </li>
+                        <li>
+                            <label for="respondent-mobile-number">
+                                <span class="label">Mobile number</span>
+                            </label>
+                            <input type="tel" name="respondent-mobile-number" size="20" id="respondent-mobile-number" />
+                        </li>
+                        <li>
+                            <label for="respondent-work-phone">
+                                <span class="label">Work Phone</span>
+                            </label>
+                            <input type="tel" name="respondent-work-phone" size="20" id="respondent-work-phone" />
+                        </li>
+                        <li>
+                            <label for="respondent-email">
+                                <span class="label">Email</span>
+                            </label>
+                            <input type="email" name="respondent-email" size="40" id="respondent-email" />
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Does the respondent require an interpreter?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="does-the-respondent-require-an-interpreter" value="No" required="required" id="does-the-respondent-require-an-interpreter-no" />
+                                        <label for="does-the-respondent-require-an-interpreter-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="does-the-respondent-require-an-interpreter" value="Yes" required="required" id="does-the-respondent-require-an-interpreter-yes" />
+                                        <label for="does-the-respondent-require-an-interpreter-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="respondent-language-dialect">
+                                <span class="label">Language/Dialect</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                            </label>
+                            <input type="text" name="respondent-language-dialect" size="20" required="required" id="respondent-language-dialect" />
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Does the respondent identify as</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices">
+                                    <li>
+                                        <input type="checkbox" name="does-the-respondent-identify-as" value="Aboriginal" id="does-the-respondent-identify-as-aboriginal" required="required" />
+                                        <label for="does-the-respondent-identify-as-aboriginal">Aboriginal</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="does-the-respondent-identify-as" value="Torres Strait Islander" id="does-the-respondent-identify-as-torres-strait-islander" required="required" />
+                                        <label for="does-the-respondent-identify-as-torres-strait-islander">Torres Strait Islander</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" name="does-the-respondent-identify-as" value="Aboriginal and Torres Strait Islander" id="does-the-respondent-identify-as-aboriginal-and-torres-strait-islander" required="required" />
+                                        <label for="does-the-respondent-identify-as-aboriginal-and-torres-strait-islander">Aboriginal and Torres Strait Islander</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Does the respondent have a disability, illness or impairment where support and/or special arrangements are required?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="does-the-respondent-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required" value="No" required="required" id="does-the-respondent-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required-no" />
+                                        <label for="does-the-respondent-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="does-the-respondent-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required" value="Yes" required="required" id="does-the-respondent-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required-yes" />
+                                        <label for="does-the-respondent-have-a-disability-illness-or-impairment-where-support-and-or-special-arrangements-are-required-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+
+                        <li>
+                            <label for="current-place-of-employment">
+                                <span class="label">Current place of employment</span>
+                            </label>
+                            <input id="current-place-of-employment" name="current-place-of-employment" />
+                        </li>
+                        <li>
+                            <label for="vehicle-model">
+                                <span class="label">Vehicle Model</span>
+                            </label>
+                            <input id="vehicle-model" name="vehicle-model" />
+                        </li>
+                        <li>
+                            <label for="vehicle-registration">
+                                <span class="label">Vehicle Registration</span>
+                            </label>
+                            <input id="vehicle-registration" name="vehicle-registration" />
+                        </li>
+
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Is the respondent under 18 years of age?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="is-the-respondent-under-18-years-of-age" value="No" required="required" id="is-the-respondent-under-18-years-of-age-no" />
+                                        <label for="is-the-respondent-under-18-years-of-age-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="is-the-respondent-under-18-years-of-age" value="Yes" required="required" id="is-the-respondent-under-18-years-of-age-yes" />
+                                        <label for="is-the-respondent-under-18-years-of-age-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Respondent's parent's details</span>
+                                    <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Parent's name</span>
+                                                <small class="hint"></small>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="respondent-parent-name-given">
+                                                        <span class="label">Given name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="respondent-parent-name-given" size="15" required="required" type="text" id="respondent-parent-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="respondent-parent-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="respondent-parent-name-family" size="15" required="required" type="text" id="respondent-parent-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Parent's address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="respondent-parent-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="respondent-parent-address-street1" size="20" value="" required="required" id="respondent-parent-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="respondent-parent-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="respondent-parent-address-street2" size="20" value="" id="respondent-parent-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="respondent-parent-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="respondent-parent-address-town" size="20" value="" required="required" id="respondent-parent-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="respondent-parent-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="respondent-parent-address-state" size="5" value="QLD" required="required" id="respondent-parent-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="respondent-parent-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="respondent-parent-address-postcode" size="5" value="" required="required" id="respondent-parent-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="respondent-parent-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="respondent-parent-address-country" size="20" value="Australia" required="required" id="respondent-parent-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- APPLICANT -->
+            <li>
+                <fieldset>
+                    <legend>
+                        <span class="label">Are you the aggreived?</span>
+                    </legend>
+                    <ul class="choices compact">
+                        <li>
+                            <input type="radio" name="are-you-the-aggreived" value="Yes" required="required" id="are-you-the-aggreived-yes" />
+                            <label for="are-you-the-aggreived-yes">Yes</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="are-you-the-aggreived" value="No" required="required" id="are-you-the-aggreived-no" />
+                            <label for="are-you-the-aggreived-no">No</label>
+                        </li>
+                    </ul>
+                </fieldset>
+            </li>
+            <li>
+                <fieldset>
+                    <legend>
+                        <span class="label">I am applying as …</span>
+                        <abbr title="(required)" class="required">*</abbr>
+                        <small class="hint">This section only applies if a person other than the aggrieved is making the application.</small>
+                        <small class="hint relevance">(If you chose ‘No’ above)</small>
+                    </legend>
+                    <ul class="choices">
+                        <li>
+                            <input type="radio" name="who-are-you" value="authorised by the Aggrieved" required="required" id="who-are-you-a-person-being-authorised-by-the-aggrieved" />
+                            <label for="who-are-you-a-person-being-authorised-by-the-aggrieved">A person being authorised by the Aggrieved</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="who-are-you" value="acting under another Act for the Aggrieved" required="required" id="who-are-you-a-person-acting-under-another-act-for-the-aggrieved" />
+                            <label for="who-are-you-a-person-acting-under-another-act-for-the-aggrieved">A person acting under another Act for the Aggrieved</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="who-are-you" value="A Police Officer" required="required" id="who-are-you-a-police-officer" />
+                            <label for="who-are-you-a-police-officer">A Police Officer</label>
+                        </li>
+                        <li>
+                            <input type="radio" name="who-are-you" value="party to a child protection proceeding" required="required" id="who-are-you-a-party-to-a-child-protection-proceeding" />
+                            <label for="who-are-you-a-party-to-a-child-protection-proceeding">A party to a child protection proceeding</label>
+                        </li>
+                    </ul>
+                </fieldset>
+            </li>
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Applicant's details</span>
+                        <small class="hint relevance">(If you chose ‘authorised by the Aggrieved’ above)</small>
+                    </legend>
+                    <ol class="questions">
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Name</span>
+                                </legend>
+                                <ol class="questions compact">
+                                    <li>
+                                        <label for="applicant-authorised-name-given">
+                                            <span class="label">Given name/s</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="applicant-authorised-name-given" size="15" required="required" type="text" id="applicant-authorised-name-given" />
+                                    </li>
+                                    <li>
+                                        <label for="applicant-authorised-name-family">
+                                            <span class="label">Family name</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="applicant-authorised-name-family" size="15" required="required" type="text" id="applicant-authorised-name-family" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Address</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li>
+                                        <label for="applicant-authorised-address-street1">
+                                            <span class="label">Address line 1</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="applicant-authorised-address-street1" size="20" value="" required="required" id="applicant-authorised-address-street1" />
+                                    </li>
+                                    <li>
+                                        <label for="applicant-authorised-address-street2">
+                                            <span class="label">Address line 2</span>
+                                        </label>
+                                        <input type="text" name="applicant-authorised-address-street2" size="20" value="" id="applicant-authorised-address-street2" />
+                                    </li>
+                                    <li class="group">
+                                        <ol class="questions compact">
+                                            <li>
+                                                <label for="applicant-authorised-address-town">
+                                                    <span class="label">Town, city or suburb</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-authorised-address-town" size="20" value="" required="required" id="applicant-authorised-address-town" />
+                                            </li>
+                                            <li>
+                                                <label for="applicant-authorised-address-state">
+                                                    <span class="label">State</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-authorised-address-state" size="5" value="QLD" required="required" id="applicant-authorised-address-state" />
+                                            </li>
+                                            <li>
+                                                <label for="applicant-authorised-address-postcode">
+                                                    <span class="label">Postcode</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-authorised-address-postcode" size="5" value="" required="required" id="applicant-authorised-address-postcode" />
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <label for="applicant-authorised-address-country">
+                                            <span class="label">Country</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="applicant-authorised-address-country" size="20" value="Australia" required="required" id="applicant-authorised-address-country" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="applicant-authorised-gender">
+                                <span class="label">Gender</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <select name="applicant-authorised-gender" id="applicant-authorised-gender">
+                                <option>—please select—</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Is the authorisation of the aggrieved in writing?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="is-the-authorisation-of-the-aggrieved-in-writing" value="No" required="required" id="is-the-authorisation-of-the-aggrieved-in-writing-no" />
+                                        <label for="is-the-authorisation-of-the-aggrieved-in-writing-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="is-the-authorisation-of-the-aggrieved-in-writing" value="Yes" required="required" id="is-the-authorisation-of-the-aggrieved-in-writing-yes" />
+                                        <label for="is-the-authorisation-of-the-aggrieved-in-writing-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="application-authorisation-received">
+                                <span class="label">How is authorisation communicated from the aggrieved?</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                <small class="hint relevance">(If you chose ‘No’ above)</small>
+                            </label>
+                            <textarea name="application-authorisation-received" rows="2" cols="40" required="required" id="application-authorisation-received"></textarea>
+                        </li>
+
+                    </ol>
+                </fieldset>
+            </li>
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Applicant's details</span>
+                        <small class="hint relevance">(If you chose ‘acting under another Act for the Aggrieved’ above)</small>
+                    </legend>
+                    <ol class="questions">
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Name</span>
+                                </legend>
+                                <ol class="questions compact">
+                                    <li>
+                                        <label for="applicant-acting-name-given">
+                                            <span class="label">Given name/s</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="applicant-acting-name-given" size="15" required="required" type="text" id="applicant-acting-name-given" />
+                                    </li>
+                                    <li>
+                                        <label for="applicant-acting-name-family">
+                                            <span class="label">Family name</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="applicant-acting-name-family" size="15" required="required" type="text" id="applicant-acting-name-family" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Address</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li>
+                                        <label for="applicant-acting-address-street1">
+                                            <span class="label">Address line 1</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="applicant-acting-address-street1" size="20" value="" required="required" id="applicant-acting-address-street1" />
+                                    </li>
+                                    <li>
+                                        <label for="applicant-acting-address-street2">
+                                            <span class="label">Address line 2</span>
+                                        </label>
+                                        <input type="text" name="applicant-acting-address-street2" size="20" value="" id="applicant-acting-address-street2" />
+                                    </li>
+                                    <li class="group">
+                                        <ol class="questions compact">
+                                            <li>
+                                                <label for="applicant-acting-address-town">
+                                                    <span class="label">Town, city or suburb</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-acting-address-town" size="20" value="" required="required" id="applicant-acting-address-town" />
+                                            </li>
+                                            <li>
+                                                <label for="applicant-acting-address-state">
+                                                    <span class="label">State</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-acting-address-state" size="5" value="QLD" required="required" id="applicant-acting-address-state" />
+                                            </li>
+                                            <li>
+                                                <label for="applicant-acting-address-postcode">
+                                                    <span class="label">Postcode</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-acting-address-postcode" size="5" value="" required="required" id="applicant-acting-address-postcode" />
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <label for="applicant-acting-address-country">
+                                            <span class="label">Country</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="applicant-acting-address-country" size="20" value="Australia" required="required" id="applicant-acting-address-country" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="applicant-acting-gender">
+                                <span class="label">Gender</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <select name="applicant-acting-gender" id="applicant-acting-gender">
+                                <option>—please select—</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Who is the application being made by?</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </legend>
+                            <ul class="choices">
+                                <li>
+                                    <input type="radio" name="who-is-the-application-being-made-by" value="A guardian" required="required" id="who-is-the-application-being-made-by-a-guardian" />
+                                    <label for="who-is-the-application-being-made-by-a-guardian">A guardian</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="who-is-the-application-being-made-by" value="Adult Guardian" required="required" id="who-is-the-application-being-made-by-adult-guardian" />
+                                    <label for="who-is-the-application-being-made-by-adult-guardian">Adult Guardian</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="who-is-the-application-being-made-by" value="Enduring power of attorney" required="required" id="who-is-the-application-being-made-by-enduring-power-of-attorney" />
+                                    <label for="who-is-the-application-being-made-by-enduring-power-of-attorney">Enduring power of attorney</label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="who-is-the-application-being-made-by" value="Other" required="required" id="who-is-the-application-being-made-by-other" />
+                                    <label for="who-is-the-application-being-made-by-other">Other</label>
+                                </li>
+                            </ul>
+                        </fieldset>
+                        </li>
+                        <li>
+                            <label for="who-is-the-application-being-made-by-other-specified">
+                                <span class="label">Please specify</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                <small class="hint relevance">(If you chose ‘Other’ above)</small>
+                            </label>
+                            <input type="text" name="who-is-the-application-being-made-by-other-specified" size="30" required="required" id="who-is-the-application-being-made-by-other-specified" />
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Applicant's details</span>
+                        <small class="hint relevance">(If you chose ‘party to a child protection proceeding’ above)</small>
+                    </legend>
+                    <ol class="questions">
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Name</span>
+                                </legend>
+                                <ol class="questions compact">
+                                    <li>
+                                        <label for="applicant-party-name-given">
+                                            <span class="label">Given name/s</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="applicant-party-name-given" size="15" required="required" type="text" id="applicant-party-name-given" />
+                                    </li>
+                                    <li>
+                                        <label for="applicant-party-name-family">
+                                            <span class="label">Family name</span>
+                                            <abbr class="required" title="(required)">*</abbr>
+                                        </label>
+                                        <input name="applicant-party-name-family" size="15" required="required" type="text" id="applicant-party-name-family" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li class="atomic group">
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Address</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li>
+                                        <label for="applicant-party-address-street1">
+                                            <span class="label">Address line 1</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="applicant-party-address-street1" size="20" value="" required="required" id="applicant-party-address-street1" />
+                                    </li>
+                                    <li>
+                                        <label for="applicant-party-address-street2">
+                                            <span class="label">Address line 2</span>
+                                        </label>
+                                        <input type="text" name="applicant-party-address-street2" size="20" value="" id="applicant-party-address-street2" />
+                                    </li>
+                                    <li class="group">
+                                        <ol class="questions compact">
+                                            <li>
+                                                <label for="applicant-party-address-town">
+                                                    <span class="label">Town, city or suburb</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-party-address-town" size="20" value="" required="required" id="applicant-party-address-town" />
+                                            </li>
+                                            <li>
+                                                <label for="applicant-party-address-state">
+                                                    <span class="label">State</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-party-address-state" size="5" value="QLD" required="required" id="applicant-party-address-state" />
+                                            </li>
+                                            <li>
+                                                <label for="applicant-party-address-postcode">
+                                                    <span class="label">Postcode</span>
+                                                    <abbr title="(required)" class="required">*</abbr>
+                                                </label>
+                                                <input type="text" name="applicant-party-address-postcode" size="5" value="" required="required" id="applicant-party-address-postcode" />
+                                            </li>
+                                        </ol>
+                                    </li>
+                                    <li>
+                                        <label for="applicant-party-address-country">
+                                            <span class="label">Country</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="text" name="applicant-party-address-country" size="20" value="Australia" required="required" id="applicant-party-address-country" />
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="applicant-party-gender">
+                                <span class="label">Gender</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <select name="applicant-party-gender" id="applicant-party-gender">
+                                <option>—please select—</option>
+                                <option>Female</option>
+                                <option>Male</option>
+                            </select>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">What type of party to a child protection proceeding are you?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices">
+                                    <li>
+                                        <input type="radio" name="what-type-of-party-to-a-child-protection-proceeding-are-you" value="A child for whom an order is sought in a child protection proceeding" required="required" id="what-type-of-party-to-a-child-protection-proceeding-are-you-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
+                                        <label for="what-type-of-party-to-a-child-protection-proceeding-are-you-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">A child for whom an order is sought in a child protection proceeding</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="what-type-of-party-to-a-child-protection-proceeding-are-you" value="A separate legal representative for a child for whom an order is sought in a child protection proceeding" required="required" id="what-type-of-party-to-a-child-protection-proceeding-are-you-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
+                                        <label for="what-type-of-party-to-a-child-protection-proceeding-are-you-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">A separate legal representative for a child for whom an order is sought in a child protection proceeding</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="what-type-of-party-to-a-child-protection-proceeding-are-you" value="An applicant or respondent in a child protection proceeding" required="required" id="what-type-of-party-to-a-child-protection-proceeding-are-you-an-applicant-or-respondent-in-a-child-protection-proceeding" />
+                                        <label for="what-type-of-party-to-a-child-protection-proceeding-are-you-an-applicant-or-respondent-in-a-child-protection-proceeding">An applicant or respondent in a child protection proceeding</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- TEMPORARY PROTECTION ORDER -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Temporary Protection Order</span>
+                    </legend>
+                    <ol class="questions">
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Do you wish the court to make a temporary protection order?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                    <small class="hint">If you request a temporary protection order before the respondent has been served with a copy of the application, you will have to show the court that there are reasons why it is necessary or desirable for you or a named person to be protected by a temporary protection order before the respondent is served with a copy of the application.</small>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="do-you-wish-the-court-to-make-a-temporary-protection-order" value="No" id="do-you-wish-the-court-to-make-a-temporary-protection-order-no" required="required" />
+                                        <label for="do-you-wish-the-court-to-make-a-temporary-protection-order-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="do-you-wish-the-court-to-make-a-temporary-protection-order" value="Yes" id="do-you-wish-the-court-to-make-a-temporary-protection-order-yes" required="required" />
+                                        <label for="do-you-wish-the-court-to-make-a-temporary-protection-order-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="please-state-reasons-below">
+                                <span class="label">Please state reasons below</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                    <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                            </label>
+                            <textarea name="please-state-reasons-below" rows="10" cols="40" required="required" id="please-state-reasons-below"></textarea>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- RELATIONSHIP BETWEEN AGGRIEVED AND RESPONDENT -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Relationships between the aggrieved and the respondent</span>
+                    </legend>
+                    <ol class="questions">
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">What is the relationship of the aggrieved to the respondent?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices">
+                                    <li>
+                                        <input type="radio" name="what-is-the-relationship-of-the-aggrieved-to-the-respondent" value="Intimate Personal Relationship" required="required" id="what-is-the-relationship-of-the-aggrieved-to-the-respondent-intimate-personal-relationship" />
+                                        <label for="what-is-the-relationship-of-the-aggrieved-to-the-respondent-intimate-personal-relationship">Intimate Personal Relationship</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="what-is-the-relationship-of-the-aggrieved-to-the-respondent" value="Family Relationship" required="required" id="what-is-the-relationship-of-the-aggrieved-to-the-respondent-family-relationship" />
+                                        <label for="what-is-the-relationship-of-the-aggrieved-to-the-respondent-family-relationship">Family Relationship</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="what-is-the-relationship-of-the-aggrieved-to-the-respondent" value="Informal Care Relationship" required="required" id="what-is-the-relationship-of-the-aggrieved-to-the-respondent-informal-care-relationship" />
+                                        <label for="what-is-the-relationship-of-the-aggrieved-to-the-respondent-informal-care-relationship">Informal Care Relationship</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Intimate Personal Relationship</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                    <small class="hint relevance">(If you chose ‘Intimate Personal Relationship’ above)</small>
+                                </legend>
+                                <ul class="choices">
+                                    <li>
+                                        <input type="radio" name="intimate-personal-relationship" value="Married" required="required" id="intimate-personal-relationship-married" />
+                                        <label for="intimate-personal-relationship-married">Married</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="intimate-personal-relationship" value="Former Spouse" required="required" id="intimate-personal-relationship-former-spouse" />
+                                        <label for="intimate-personal-relationship-former-spouse">Former Spouse</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="intimate-personal-relationship" value="De Facto" required="required" id="intimate-personal-relationship-de-facto" />
+                                        <label for="intimate-personal-relationship-de-facto">De Facto</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="intimate-personal-relationship" value="Registered Relationship" required="required" id="intimate-personal-relationship-registered-relationship" />
+                                        <label for="intimate-personal-relationship-registered-relationship">Registered Relationship</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="intimate-personal-relationship" value="Parent/Former Parent of a Child" required="required" id="intimate-personal-relationship-parent-former-parent-of-a-child" />
+                                        <label for="intimate-personal-relationship-parent-former-parent-of-a-child">Parent/Former Parent of a Child</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="intimate-personal-relationship" value="Engaged" required="required" id="intimate-personal-relationship-engaged" />
+                                        <label for="intimate-personal-relationship-engaged">Engaged</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="intimate-personal-relationship" value="Were Engaged" required="required" id="intimate-personal-relationship-were-engaged" />
+                                        <label for="intimate-personal-relationship-were-engaged">Were Engaged</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="intimate-personal-relationship" value="Couple" required="required" id="intimate-personal-relationship-couple" />
+                                        <label for="intimate-personal-relationship-couple">Couple</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="state-the-nature-of-the-relationship">
+                                <span class="label">State the nature of the relationship</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                <small class="hint relevance">(If you chose ‘Couple’ above)</small>
+                                <small class="hint">Include the level of dependency on each other whether financial or otherwise; length of time of the relationship; frequency of contact and degree of intimacy, if any.</small>
+                            </label>
+                            <textarea name="state-the-nature-of-the-relationship" rows="2" cols="40" required="required" id="state-the-nature-of-the-relationship"></textarea>
+                        </li>
+                        <li>
+                            <label for="relation-to-respondent">
+                                <span class="label">Relation to respondent</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                <small class="hint relevance">(If you chose ‘Family Relationship’ above)</small>
+                                <small class="hint">For example parent, sibling, aunt, cousin, stepchild, to a person is regarded as a relative</small>
+                            </label>
+                            <input type="text" name="relation-to-respondent" size="20" required="required" id="relation-to-respondent" />
+                        </li>
+                        <li>
+                            <label for="nature-of-relationship">
+                                <span class="label">Nature of relationship</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                <small class="hint relevance">(If you chose ‘Informal Care Relationship’ above)</small>
+                            </label>
+                            <input type="text" name="nature-of-relationship" size="30" required="required" id="nature-of-relationship" />
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- GROUNDS FOR PROTECTION ORDER -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Grounds for a protection order</span>
+                    </legend>
+                    <ol class="questions">
+                        <li>
+                            <label for="state-grounds-as-to-why-a-protection">
+                                <span class="label">State grounds as to why a protection order is necessary or desirable to protect the aggrieved.</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                <small class="hint">It must be shown that domestic violence has occurred. Include specific example of behaviour by the respondent. Attach extra pages if necessary.</small>
+                            </label>
+                            <textarea name="state-grounds-as-to-why-a-protection" rows="20" cols="40" required="required" id="state-grounds-as-to-why-a-protection"></textarea>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- CHILDREN -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Children of the aggrieved or children who usually live with the aggrieved</span>
+                    </legend>
+                    <ol class="questions">
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Child 1's details</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Name</span>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="aggrieved-child1-name-given">
+                                                        <span class="label">Given name/s</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-child1-name-given" size="15" required="required" type="text" id="aggrieved-child1-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child1-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-child1-name-family" size="15" required="required" type="text" id="aggrieved-child1-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-child1-date-of-birth">
+                                            <span class="label">Date of birth</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="date" name="aggrieved-child1-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="aggrieved-child1-date-of-birth" />
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="aggrieved-child1-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child1-address-street1" size="20" value="" required="required" id="aggrieved-child1-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child1-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child1-address-street2" size="20" value="" id="aggrieved-child1-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="aggrieved-child1-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child1-address-town" size="20" value="" required="required" id="aggrieved-child1-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-child1-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child1-address-state" size="5" value="QLD" required="required" id="aggrieved-child1-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-child1-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child1-address-postcode" size="5" value="" required="required" id="aggrieved-child1-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child1-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child1-address-country" size="20" value="Australia" required="required" id="aggrieved-child1-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-child1-gender">
+                                            <span class="label">Gender</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <select name="aggrieved-child1-gender" id="aggrieved-child1-gender">
+                                            <option>—please select—</option>
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Do you wish this child to be named on the order?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="do-you-wish-child1-to-be-named-on-the-order" value="No" required="required" id="do-you-wish-child1-to-be-named-on-the-order-no" />
+                                                    <label for="do-you-wish-child1-to-be-named-on-the-order-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="do-you-wish-child1-to-be-named-on-the-order" value="Yes" required="required" id="do-you-wish-child1-to-be-named-on-the-order-yes" />
+                                                    <label for="do-you-wish-child1-to-be-named-on-the-order-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Child 2's details</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Name</span>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="aggrieved-child2-name-given">
+                                                        <span class="label">Given name/s</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-child2-name-given" size="15" required="required" type="text" id="aggrieved-child2-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child2-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-child2-name-family" size="15" required="required" type="text" id="aggrieved-child2-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-child2-date-of-birth">
+                                            <span class="label">Date of birth</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="date" name="aggrieved-child2-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="aggrieved-child2-date-of-birth" />
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="aggrieved-child2-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child2-address-street1" size="20" value="" required="required" id="aggrieved-child2-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child2-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child2-address-street2" size="20" value="" id="aggrieved-child2-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="aggrieved-child2-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child2-address-town" size="20" value="" required="required" id="aggrieved-child2-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-child2-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child2-address-state" size="5" value="QLD" required="required" id="aggrieved-child2-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-child2-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child2-address-postcode" size="5" value="" required="required" id="aggrieved-child2-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child2-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child2-address-country" size="20" value="Australia" required="required" id="aggrieved-child2-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-child2-gender">
+                                            <span class="label">Gender</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <select name="aggrieved-child2-gender" id="aggrieved-child2-gender">
+                                            <option>—please select—</option>
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Do you wish this child to be named on the order?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="do-you-wish-child2-to-be-named-on-the-order" value="No" required="required" id="do-you-wish-child2-to-be-named-on-the-order-no" />
+                                                    <label for="do-you-wish-child2-to-be-named-on-the-order-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="do-you-wish-child2-to-be-named-on-the-order" value="Yes" required="required" id="do-you-wish-child2-to-be-named-on-the-order-yes" />
+                                                    <label for="do-you-wish-child2-to-be-named-on-the-order-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Child 3's details</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Name</span>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="aggrieved-child3-name-given">
+                                                        <span class="label">Given name/s</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-child3-name-given" size="15" required="required" type="text" id="aggrieved-child3-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child3-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-child3-name-family" size="15" required="required" type="text" id="aggrieved-child3-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-child3-date-of-birth">
+                                            <span class="label">Date of birth</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="date" name="aggrieved-child3-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="aggrieved-child3-date-of-birth" />
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="aggrieved-child3-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child3-address-street1" size="20" value="" required="required" id="aggrieved-child3-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child3-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child3-address-street2" size="20" value="" id="aggrieved-child3-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="aggrieved-child3-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child3-address-town" size="20" value="" required="required" id="aggrieved-child3-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-child3-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child3-address-state" size="5" value="QLD" required="required" id="aggrieved-child3-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-child3-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-child3-address-postcode" size="5" value="" required="required" id="aggrieved-child3-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-child3-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-child3-address-country" size="20" value="Australia" required="required" id="aggrieved-child3-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-child3-gender">
+                                            <span class="label">Gender</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <select name="aggrieved-child3-gender" id="aggrieved-child3-gender">
+                                            <option>—please select—</option>
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </li>
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Do you wish this child to be named on the order?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="do-you-wish-child3-to-be-named-on-the-order" value="No" required="required" id="do-you-wish-child3-to-be-named-on-the-order-no" />
+                                                    <label for="do-you-wish-child3-to-be-named-on-the-order-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="do-you-wish-child3-to-be-named-on-the-order" value="Yes" required="required" id="do-you-wish-child3-to-be-named-on-the-order-yes" />
+                                                    <label for="do-you-wish-child3-to-be-named-on-the-order-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="state-grounds-as-to-why-the-child-children">
+                                <span class="label">State grounds as to why the child/children are to be named on the order</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <textarea name="state-grounds-as-to-why-the-child-children" rows="10" cols="40" required="required" id="state-grounds-as-to-why-the-child-children"></textarea>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- RELATIVES/ASSOCIATES OF AGGRIEVED -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Relatives or associates you would like to be named on the order</span>
+                    </legend>
+                    <ol class="questions">
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Relative 1's details</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Name</span>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="aggrieved-relative1-name-given">
+                                                        <span class="label">Given name/s</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-relative1-name-given" size="15" required="required" type="text" id="aggrieved-relative1-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative1-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-relative1-name-family" size="15" required="required" type="text" id="aggrieved-relative1-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-relative1-date-of-birth">
+                                            <span class="label">Date of birth</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="date" name="aggrieved-relative1-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="aggrieved-relative1-date-of-birth" />
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="aggrieved-relative1-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative1-address-street1" size="20" value="" required="required" id="aggrieved-relative1-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative1-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative1-address-street2" size="20" value="" id="aggrieved-relative1-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="aggrieved-relative1-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative1-address-town" size="20" value="" required="required" id="aggrieved-relative1-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-relative1-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative1-address-state" size="5" value="QLD" required="required" id="aggrieved-relative1-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-relative1-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative1-address-postcode" size="5" value="" required="required" id="aggrieved-relative1-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative1-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative1-address-country" size="20" value="Australia" required="required" id="aggrieved-relative1-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-relative1-gender">
+                                            <span class="label">Gender</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <select name="aggrieved-relative1-gender" id="aggrieved-relative1-gender">
+                                            <option>—please select—</option>
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Relative 2's details</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Name</span>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="aggrieved-relative2-name-given">
+                                                        <span class="label">Given name/s</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-relative2-name-given" size="15" required="required" type="text" id="aggrieved-relative2-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative2-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-relative2-name-family" size="15" required="required" type="text" id="aggrieved-relative2-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-relative2-date-of-birth">
+                                            <span class="label">Date of birth</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="date" name="aggrieved-relative2-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="aggrieved-relative2-date-of-birth" />
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="aggrieved-relative2-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative2-address-street1" size="20" value="" required="required" id="aggrieved-relative2-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative2-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative2-address-street2" size="20" value="" id="aggrieved-relative2-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="aggrieved-relative2-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative2-address-town" size="20" value="" required="required" id="aggrieved-relative2-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-relative2-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative2-address-state" size="5" value="QLD" required="required" id="aggrieved-relative2-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-relative2-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative2-address-postcode" size="5" value="" required="required" id="aggrieved-relative2-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative2-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative2-address-country" size="20" value="Australia" required="required" id="aggrieved-relative2-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-relative2-gender">
+                                            <span class="label">Gender</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <select name="aggrieved-relative2-gender" id="aggrieved-relative2-gender">
+                                            <option>—please select—</option>
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Relative 3's details</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Name</span>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="aggrieved-relative3-name-given">
+                                                        <span class="label">Given name/s</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-relative3-name-given" size="15" required="required" type="text" id="aggrieved-relative3-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative3-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-relative3-name-family" size="15" required="required" type="text" id="aggrieved-relative3-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-relative3-date-of-birth">
+                                            <span class="label">Date of birth</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="date" name="aggrieved-relative3-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="aggrieved-relative3-date-of-birth" />
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="aggrieved-relative3-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative3-address-street1" size="20" value="" required="required" id="aggrieved-relative3-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative3-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative3-address-street2" size="20" value="" id="aggrieved-relative3-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="aggrieved-relative3-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative3-address-town" size="20" value="" required="required" id="aggrieved-relative3-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-relative3-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative3-address-state" size="5" value="QLD" required="required" id="aggrieved-relative3-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-relative3-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative3-address-postcode" size="5" value="" required="required" id="aggrieved-relative3-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative3-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative3-address-country" size="20" value="Australia" required="required" id="aggrieved-relative3-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-relative3-gender">
+                                            <span class="label">Gender</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <select name="aggrieved-relative3-gender" id="aggrieved-relative3-gender">
+                                            <option>—please select—</option>
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Relative 4's details</span>
+                                </legend>
+                                <ol class="questions">
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Name</span>
+                                            </legend>
+                                            <ol class="questions compact">
+                                                <li>
+                                                    <label for="aggrieved-relative4-name-given">
+                                                        <span class="label">Given name/s</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-relative4-name-given" size="15" required="required" type="text" id="aggrieved-relative4-name-given" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative4-name-family">
+                                                        <span class="label">Family name</span>
+                                                        <abbr class="required" title="(required)">*</abbr>
+                                                    </label>
+                                                    <input name="aggrieved-relative4-name-family" size="15" required="required" type="text" id="aggrieved-relative4-name-family" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-relative4-date-of-birth">
+                                            <span class="label">Date of birth</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <input type="date" name="aggrieved-relative4-date-of-birth" size="20" required="required" placeholder="d/mm/year" id="aggrieved-relative4-date-of-birth" />
+                                    </li>
+                                    <li class="atomic group">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">Address</span>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <label for="aggrieved-relative4-address-street1">
+                                                        <span class="label">Address line 1</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative4-address-street1" size="20" value="" required="required" id="aggrieved-relative4-address-street1" />
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative4-address-street2">
+                                                        <span class="label">Address line 2</span>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative4-address-street2" size="20" value="" id="aggrieved-relative4-address-street2" />
+                                                </li>
+                                                <li class="group">
+                                                    <ol class="questions compact">
+                                                        <li>
+                                                            <label for="aggrieved-relative4-address-town">
+                                                                <span class="label">Town, city or suburb</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative4-address-town" size="20" value="" required="required" id="aggrieved-relative4-address-town" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-relative4-address-state">
+                                                                <span class="label">State</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative4-address-state" size="5" value="QLD" required="required" id="aggrieved-relative4-address-state" />
+                                                        </li>
+                                                        <li>
+                                                            <label for="aggrieved-relative4-address-postcode">
+                                                                <span class="label">Postcode</span>
+                                                                <abbr title="(required)" class="required">*</abbr>
+                                                            </label>
+                                                            <input type="text" name="aggrieved-relative4-address-postcode" size="5" value="" required="required" id="aggrieved-relative4-address-postcode" />
+                                                        </li>
+                                                    </ol>
+                                                </li>
+                                                <li>
+                                                    <label for="aggrieved-relative4-address-country">
+                                                        <span class="label">Country</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <input type="text" name="aggrieved-relative4-address-country" size="20" value="Australia" required="required" id="aggrieved-relative4-address-country" />
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="aggrieved-relative4-gender">
+                                            <span class="label">Gender</span>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <select name="aggrieved-relative4-gender" id="aggrieved-relative4-gender">
+                                            <option>—please select—</option>
+                                            <option>Female</option>
+                                            <option>Male</option>
+                                        </select>
+                                    </li>
+                                </ol>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="state-grounds-as-to-why-it-is">
+                                <span class="label">State grounds as to why it is necessary or desirable to protect the relative/associate</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <textarea name="state-grounds-as-to-why-it-is" rows="10" cols="40" required="required" id="state-grounds-as-to-why-it-is"></textarea>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- WEAPONS -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Weapons</span>
+                    </legend>
+                    <ol class="questions">
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Does the respondent have access to any weapons?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="does-the-respondent-have-access-to-any-weapons-no1" value="No" required="required" id="does-the-respondent-have-access-to-any-weapons-no1-no" />
+                                        <label for="does-the-respondent-have-access-to-any-weapons-no1-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="does-the-respondent-have-access-to-any-weapons-no1" value="Yes" required="required" id="does-the-respondent-have-access-to-any-weapons-no1-yes" />
+                                        <label for="does-the-respondent-have-access-to-any-weapons-no1-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="state-the-number-type-of-weapon-s-and">
+                                <span class="label">State the number, type of weapon/s and all possible locations of the weapon</span>
+                                <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <textarea name="state-the-number-type-of-weapon-s-and" rows="2" cols="40" required="required" id="state-the-number-type-of-weapon-s-and"></textarea>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Did the respondent use, or threaten to use, a weapon or another thing used as a weapon, during any incident of domestic violence?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="did-the-respondent-use-or-threaten-to-use-a-weapon-or-another-thing-used-as-a-weapon-during-any-incident-of-domestic-violence" value="No" required="required" id="did-the-respondent-use-or-threaten-to-use-a-weapon-or-another-thing-used-as-a-weapon-during-any-incident-of-domestic-violence-no" />
+                                        <label for="did-the-respondent-use-or-threaten-to-use-a-weapon-or-another-thing-used-as-a-weapon-during-any-incident-of-domestic-violence-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="did-the-respondent-use-or-threaten-to-use-a-weapon-or-another-thing-used-as-a-weapon-during-any-incident-of-domestic-violence" value="Yes" required="required" id="did-the-respondent-use-or-threaten-to-use-a-weapon-or-another-thing-used-as-a-weapon-during-any-incident-of-domestic-violence-yes" />
+                                        <label for="did-the-respondent-use-or-threaten-to-use-a-weapon-or-another-thing-used-as-a-weapon-during-any-incident-of-domestic-violence-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="provide-details">
+                                <span class="label">Provide details</span>
+                                <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <textarea name="provide-details" rows="2" cols="40" required="required" id="provide-details"></textarea>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Has the respondent been issued with a weapons or firearms licence?</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="has-the-respondent-been-issued-with-a-weapons-or-firearms-licence" value="No" required="required" id="has-the-respondent-been-issued-with-a-weapons-or-firearms-licence-no" />
+                                        <label for="has-the-respondent-been-issued-with-a-weapons-or-firearms-licence-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="has-the-respondent-been-issued-with-a-weapons-or-firearms-licence" value="Yes" required="required" id="has-the-respondent-been-issued-with-a-weapons-or-firearms-licence-yes" />
+                                        <label for="has-the-respondent-been-issued-with-a-weapons-or-firearms-licence-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <label for="if-the-respondent-has-access-to-any">
+                                <span class="label">If the respondent has access to any weapons at their place of residence, please provide details</span>
+                                <abbr title="(required)" class="required">*</abbr>
+                            </label>
+                            <textarea name="if-the-respondent-has-access-to-any" rows="2" cols="40" required="required" id="if-the-respondent-has-access-to-any"></textarea>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- DETAILS OF OTHER ORDERS -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Details of any other orders</span>
+                    </legend>
+                    <ol class="questions">
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Has a court made any other order or are there other court proceedings that involve the aggrieved and the respondent?</span>
+                                    <small class="hint">Please attach copies</small>
+                                </legend>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Childrens Court orders</th>
+                                            <td><label><input type="checkbox" name="orders" value="Childrens Court orders - Current"> Current</label></td>
+                                            <td><label><input type="checkbox" name="orders" value="Childrens Court orders - Not Current"> Not Current</label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Queensland Domestic Violence Order</th>
+                                            <td><label><input type="checkbox" name="orders" value="Queensland Domestic Violence Order - Current"> Current</label></td>
+                                            <td><label><input type="checkbox" name="orders" value="Queensland Domestic Violence Order - Not Current"> Not Current</label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Police Protection Notice</th>
+                                            <td><label><input type="checkbox" name="orders" value="Police Protection Notice - Current"> Current</label></td>
+                                            <td><label><input type="checkbox" name="orders" value="Police Protection Notice - Not Current"> Not Current</label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Voluntary Intervention Order</th>
+                                            <td><label><input type="checkbox" name="orders" value="Voluntary Intervention Order - Current"> Current</label></td>
+                                            <td><label><input type="checkbox" name="orders" value="Voluntary Intervention Order - Not Current"> Not Current</label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Interstate Domestic Violence Order (including New Zealand)</th>
+                                            <td><label><input type="checkbox" name="orders" value="Interstate Domestic Violence Order (including New Zealand) - Current"> Current</label></td>
+                                            <td><label><input type="checkbox" name="orders" value="Interstate Domestic Violence Order (including New Zealand) - Not Current"> Not Current</label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Family Court Orders</th>
+                                            <td><label><input type="checkbox" name="orders" value="Family Court Orders - Current"> Current</label></td>
+                                            <td><label><input type="checkbox" name="orders" value="Family Court Orders - Not Current"> Not Current</label></td>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <label for="orders-other">
+                                                    <span class="label">Other relevant court order</span>
+                                                </label>
+                                                <input type="text" id="orders-other">
+                                            </th>
+                                            <td><label><input type="checkbox" name="orders" value="Other relevant court order - Current"> Current</label></td>
+                                            <td><label><input type="checkbox" name="orders" value="Other relevant court order - Not Current"> Not Current</label></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </fieldset>
+                        </li>
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Is there a current Protection Order application that has not been decided by the court?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="is-there-a-current-protection-order-application-that-has-not-been-decided-by-the-court" value="No" required="required" id="is-there-a-current-protection-order-application-that-has-not-been-decided-by-the-court-no" />
+                                        <label for="is-there-a-current-protection-order-application-that-has-not-been-decided-by-the-court-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="is-there-a-current-protection-order-application-that-has-not-been-decided-by-the-court" value="Yes" required="required" id="is-there-a-current-protection-order-application-that-has-not-been-decided-by-the-court-yes" />
+                                        <label for="is-there-a-current-protection-order-application-that-has-not-been-decided-by-the-court-yes">Yes</label>
+                                        <small class="hint">(Attach a copy of the application)</small>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+    <!-- CONDITIONS SOUGHT -->
+            <li class="section">
+                <fieldset>
+                    <legend>
+                        <span class="h2">Conditions sought in the order</span>
+                    </legend>
+                    <div class="instructions">
+                        <p>A court making a domestic violence order must impose a condition that the respondent —<br>
+                        <samp>Be of good behaviour towards the aggrieved and not commit domestic violence against the aggrieved.</samp></p>
+                        <p>If the order includes a named person who is an adult —<br>
+                        <samp>Be of good behaviour towards the named person and not commit associated domestic violence against the named person.</samp></p>
+                        <p>If the order includes a named person who is a child —<br>
+                        <samp>Be of good behaviour towards the child and not commit associated domestic violence against the child and not expose the child to domestic violence.</samp></p>
+                        <p>A court may also impose any other condition that the court considers necessary in the circumstances and desirable in the interests of the aggrieved, any named person or the respondent.</p>
+                    </div>
+                    <ol class="questions">
+                        <li>
+                            <fieldset>
+                                <legend>
+                                    <span class="label">Do you want the court to consider any other conditions for inclusion in the protection order?</span>
+                                    <abbr title="(required)" class="required">*</abbr>
+                                </legend>
+                                <ul class="choices compact">
+                                    <li>
+                                        <input type="radio" name="do-you-want-the-court-to-consider-any-other-conditions-for-inclusion-in-the-protection-order" value="No" required="required" id="do-you-want-the-court-to-consider-any-other-conditions-for-inclusion-in-the-protection-order-no" />
+                                        <label for="do-you-want-the-court-to-consider-any-other-conditions-for-inclusion-in-the-protection-order-no">No</label>
+                                    </li>
+                                    <li>
+                                        <input type="radio" name="do-you-want-the-court-to-consider-any-other-conditions-for-inclusion-in-the-protection-order" value="Yes" required="required" id="do-you-want-the-court-to-consider-any-other-conditions-for-inclusion-in-the-protection-order-yes" />
+                                        <label for="do-you-want-the-court-to-consider-any-other-conditions-for-inclusion-in-the-protection-order-yes">Yes</label>
+                                    </li>
+                                </ul>
+                            </fieldset>
+                        </li>
+
+                        <li class="section">
+                            <fieldset>
+                                <legend>
+                                    <span class="h3">Other conditions sought for inclusion in the protection order</span>
+                                    <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                </legend>
+                                <ol class="questions">
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">A) Do you want the respondent to leave specified premises?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="do-you-want-the-respondent-to-leave-specified-premises" value="No" required="required" id="do-you-want-the-respondent-to-leave-specified-premises-no" />
+                                                    <label for="do-you-want-the-respondent-to-leave-specified-premises-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="do-you-want-the-respondent-to-leave-specified-premises" value="Yes" required="required" id="do-you-want-the-respondent-to-leave-specified-premises-yes" />
+                                                    <label for="do-you-want-the-respondent-to-leave-specified-premises-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="state-address-of-premises-and-provide-reasons">
+                                            <span class="label">State address of premises and provide reasons</span>
+                                            <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <textarea name="state-address-of-premises-and-provide-reasons" rows="3" cols="40" required="required" id="state-address-of-premises-and-provide-reasons"></textarea>
+                                    </li>
+
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">B) Do you want to prohibit the respondent from remaining at; entering or attempting to enter or approaching premises?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="prohibit-respondent-entering-premises" value="No" required="required" id="prohibit-respondent-entering-premises-no" />
+                                                    <label for="prohibit-respondent-entering-premises-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="prohibit-respondent-entering-premises" value="Yes" required="required" id="prohibit-respondent-entering-premises-yes" />
+                                                    <label for="prohibit-respondent-entering-premises-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li class="section">
+                                        <fieldset>
+                                            <legend>
+                                                <span class="h3">Prohibit the respondent from remaining at; entering or attempting to enter or approaching premises</span>
+                                                <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                            </legend>
+                                            <ol class="questions">
+                                                <li>
+                                                    <fieldset>
+                                                        <legend>
+                                                            <span class="label">The premises to which the respondent is not to come or approach are:</span>
+                                                        </legend>
+                                                        <ul class="choices">
+                                                            <li>
+                                                                <input type="checkbox" name="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are" value="The aggrieved's place of residence" id="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are-the-aggrieved-s-place-of-residence" />
+                                                                <label for="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are-the-aggrieved-s-place-of-residence">The aggrieved's place of residence</label>
+                                                            </li>
+                                                            <li>
+                                                                <input type="checkbox" name="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are" value="The aggrieved's place of employment" id="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are-the-aggrieved-s-place-of-employment" />
+                                                                <label for="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are-the-aggrieved-s-place-of-employment">The aggrieved's place of employment</label>
+                                                            </li>
+                                                            <li>
+                                                                <input type="checkbox" name="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are" value="The place the aggrieved is currently staying" id="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are-the-place-the-aggrieved-is-currently-staying" />
+                                                                <label for="the-premises-to-which-the-respondent-is-not-to-come-or-approach-are-the-place-the-aggrieved-is-currently-staying">The place the aggrieved is currently staying</label>
+                                                            </li>
+                                                        </ul>
+                                                    </fieldset>
+                                                </li>
+                                                <li>
+                                                    <label for="places-where-the-aggrieved-frequents">
+                                                        <span class="label">Places where the aggrieved frequents</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <textarea name="places-where-the-aggrieved-frequents" rows="2" cols="40" required="required" id="places-where-the-aggrieved-frequents"></textarea>
+                                                </li>
+                                                <li class="select">
+                                                    <ul class="choices">
+                                                        <li>
+                                                            <input type="checkbox" name="a-single-checkbox1" value="Associates/relatives place of residence (if there is a named person at Question 8)" id="a-single-checkbox1-associates-relatives-place-of-residence-if-there-is-a-named-person-at-question-8" />
+                                                            <label for="a-single-checkbox1-associates-relatives-place-of-residence-if-there-is-a-named-person-at-question-8">Associates/relatives place of residence (if there is a named person at Question 8)</label>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <label for="conditions-b-give-reasons">
+                                                        <span class="label">Give reasons</span>
+                                                        <abbr title="(required)" class="required">*</abbr>
+                                                    </label>
+                                                    <textarea name="conditions-b-give-reasons" rows="3" cols="40" required="required" id="conditions-b-give-reasons"></textarea>
+                                                </li>
+                                            </ol>
+                                        </fieldset>
+                                    </li>
+
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">C) Do you want to prohibit the respondent approaching the aggrieved?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="do-you-want-to-prohibit-the-respondent-approaching-the-aggrieved" value="No" required="required" id="do-you-want-to-prohibit-the-respondent-approaching-the-aggrieved-no" />
+                                                    <label for="do-you-want-to-prohibit-the-respondent-approaching-the-aggrieved-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="do-you-want-to-prohibit-the-respondent-approaching-the-aggrieved" value="Yes" required="required" id="do-you-want-to-prohibit-the-respondent-approaching-the-aggrieved-yes" />
+                                                    <label for="do-you-want-to-prohibit-the-respondent-approaching-the-aggrieved-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <ul class="choices">
+                                            <li>
+                                                <input type="checkbox" name="a-single-checkbox1" value="Does this include any associates or relatives? (if there is a named person at Question 8)" id="a-single-checkbox1-does-this-include-any-associates-or-relatives-if-there-is-a-named-person-at-question-8" />
+                                                <label for="a-single-checkbox1-does-this-include-any-associates-or-relatives-if-there-is-a-named-person-at-question-8">Does this include any associates or relatives? (if there is a named person at Question 8)</label>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <label for="conditions-c-give-reasons">
+                                            <span class="label">Give reasons</span>
+                                            <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <textarea name="conditions-c-give-reasons" rows="3" cols="40" required="required" id="conditions-c-give-reasons"></textarea>
+                                    </li>
+
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">D) Do you want to prohibit the respondent from contacting the aggrieved or asking someone else to contact the aggrieved?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="do-you-want-to-prohibit-the-respondent-from-contacting-the-aggrieved-or-asking-someone-else-to-contact-the-aggrieved" value="No" required="required" id="do-you-want-to-prohibit-the-respondent-from-contacting-the-aggrieved-or-asking-someone-else-to-contact-the-aggrieved-no" />
+                                                    <label for="do-you-want-to-prohibit-the-respondent-from-contacting-the-aggrieved-or-asking-someone-else-to-contact-the-aggrieved-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="do-you-want-to-prohibit-the-respondent-from-contacting-the-aggrieved-or-asking-someone-else-to-contact-the-aggrieved" value="Yes" required="required" id="do-you-want-to-prohibit-the-respondent-from-contacting-the-aggrieved-or-asking-someone-else-to-contact-the-aggrieved-yes" />
+                                                    <label for="do-you-want-to-prohibit-the-respondent-from-contacting-the-aggrieved-or-asking-someone-else-to-contact-the-aggrieved-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="conditions-d-give-reasons">
+                                            <span class="label">Give reasons</span>
+                                            <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <textarea name="conditions-d-give-reasons" rows="3" cols="40" required="required" id="conditions-d-give-reasons"></textarea>
+                                    </li>
+
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">E) Do you want to prohibit the respondent's presence at or in a place associated with any child</span>
+                                                <small class="hint">Example: school, day care, etc.</small>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="do-you-want-to-prohibit-the-respondent-s-presence-at-or-in-a-place-associated-with-any-child" value="No" required="required" id="do-you-want-to-prohibit-the-respondent-s-presence-at-or-in-a-place-associated-with-any-child-no" />
+                                                    <label for="do-you-want-to-prohibit-the-respondent-s-presence-at-or-in-a-place-associated-with-any-child-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="do-you-want-to-prohibit-the-respondent-s-presence-at-or-in-a-place-associated-with-any-child" value="Yes" required="required" id="do-you-want-to-prohibit-the-respondent-s-presence-at-or-in-a-place-associated-with-any-child-yes" />
+                                                    <label for="do-you-want-to-prohibit-the-respondent-s-presence-at-or-in-a-place-associated-with-any-child-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="conditions-e-give-reasons">
+                                            <span class="label">Give reasons</span>
+                                            <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <textarea name="conditions-e-give-reasons" rows="2" cols="40" required="required" id="conditions-e-give-reasons"></textarea>
+                                    </li>
+
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">F) If the respondent does not know the aggrieved's whereabouts, do you want to prohibit the respondent from trying to locate them or asking someone else to locate them?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="if-the-respondent-does-not-know-the-aggrieved-s-whereabouts-do-you-want-to-prohibit-the-respondent-from-trying-to-locate-them-or-asking-someone-else-to-locate-them" value="No" required="required" id="if-the-respondent-does-not-know-the-aggrieved-s-whereabouts-do-you-want-to-prohibit-the-respondent-from-trying-to-locate-them-or-asking-someone-else-to-locate-them-no" />
+                                                    <label for="if-the-respondent-does-not-know-the-aggrieved-s-whereabouts-do-you-want-to-prohibit-the-respondent-from-trying-to-locate-them-or-asking-someone-else-to-locate-them-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="if-the-respondent-does-not-know-the-aggrieved-s-whereabouts-do-you-want-to-prohibit-the-respondent-from-trying-to-locate-them-or-asking-someone-else-to-locate-them" value="Yes" required="required" id="if-the-respondent-does-not-know-the-aggrieved-s-whereabouts-do-you-want-to-prohibit-the-respondent-from-trying-to-locate-them-or-asking-someone-else-to-locate-them-yes" />
+                                                    <label for="if-the-respondent-does-not-know-the-aggrieved-s-whereabouts-do-you-want-to-prohibit-the-respondent-from-trying-to-locate-them-or-asking-someone-else-to-locate-them-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="conditions-f-give-reasons">
+                                            <span class="label">Give reasons</span>
+                                            <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <textarea name="conditions-f-give-reasons" rows="2" cols="40" required="required" id="conditions-f-give-reasons"></textarea>
+                                    </li>
+
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">G) Does the aggrieved wish to recover essential property?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="does-the-aggrieved-wish-to-recover-essential-property" value="No" required="required" id="does-the-aggrieved-wish-to-recover-essential-property-no" />
+                                                    <label for="does-the-aggrieved-wish-to-recover-essential-property-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="does-the-aggrieved-wish-to-recover-essential-property" value="Yes" required="required" id="does-the-aggrieved-wish-to-recover-essential-property-yes" />
+                                                    <label for="does-the-aggrieved-wish-to-recover-essential-property-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                       <label for="describe-the-property-and-state-address-where">
+                                        <span class="label">Describe the property and state address where this property can be located.</span>
+                                        <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                        <abbr title="(required)" class="required">*</abbr>
+                                       </label>
+                                       <textarea name="describe-the-property-and-state-address-where" rows="3" cols="40" required="required" id="describe-the-property-and-state-address-where"></textarea>
+                                    </li>
+
+                                    <li>
+                                        <fieldset>
+                                            <legend>
+                                                <span class="label">H) Do you want the court to consider prohibiting any other conduct or behaviour on the part of the respondent?</span>
+                                                <abbr title="(required)" class="required">*</abbr>
+                                            </legend>
+                                            <ul class="choices compact">
+                                                <li>
+                                                    <input type="radio" name="do-you-want-the-court-to-consider-prohibiting-any-other-conduct-or-behaviour-on-the-part-of-the-respondent" value="No" required="required" id="do-you-want-the-court-to-consider-prohibiting-any-other-conduct-or-behaviour-on-the-part-of-the-respondent-no" />
+                                                    <label for="do-you-want-the-court-to-consider-prohibiting-any-other-conduct-or-behaviour-on-the-part-of-the-respondent-no">No</label>
+                                                </li>
+                                                <li>
+                                                    <input type="radio" name="do-you-want-the-court-to-consider-prohibiting-any-other-conduct-or-behaviour-on-the-part-of-the-respondent" value="Yes" required="required" id="do-you-want-the-court-to-consider-prohibiting-any-other-conduct-or-behaviour-on-the-part-of-the-respondent-yes" />
+                                                    <label for="do-you-want-the-court-to-consider-prohibiting-any-other-conduct-or-behaviour-on-the-part-of-the-respondent-yes">Yes</label>
+                                                </li>
+                                            </ul>
+                                        </fieldset>
+                                    </li>
+                                    <li>
+                                        <label for="specify-that-conduct-or-behaviour-complain-of">
+                                            <span class="label">Specify that conduct or behaviour complain of and give reasons</span>
+                                            <small class="hint relevance">(If you chose ‘Yes’ above)</small>
+                                            <abbr title="(required)" class="required">*</abbr>
+                                        </label>
+                                        <textarea name="specify-that-conduct-or-behaviour-complain-of" rows="2" cols="40" required="required" id="specify-that-conduct-or-behaviour-complain-of"></textarea>
+                                    </li>
+
+                                </ol>
+                            </fieldset>
+                        </li>
+                    </ol>
+                </fieldset>
+            </li>
+
+        </ol>
+    </form>
+
+
+</div></div></div>
+</body>
+</html>
