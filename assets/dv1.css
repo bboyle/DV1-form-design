@@ -1,6 +1,46 @@
+/* BETA WARNING */
+header.beta-warning {
+	position: fixed;
+	top: 0;
+	width: calc(100vw - 2rem);
+	background: #F7D418;
+	color: #000;
+	padding: .3rem;
+	margin: 1rem;
+	display: none;
+	box-sizing: border-box;
+}
+header.beta-warning strong {
+	text-transform: uppercase;
+}
+header.beta-warning a {
+	color: #000;
+}
+header.beta-warning button {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	background: transparent;
+	color: #000;
+	border: none;
+	font-size: .5rem;
+}
+
+body.beta {
+	margin-top: 5rem;
+}
+body.beta header.beta-warning {
+	display: block;
+}
+
+
+
+
+/* basic layout */
 body {
 	display: flex;
 	flex-flow: row;
+	overflow: hidden;
 }
 body > article {
 	width: 50%;

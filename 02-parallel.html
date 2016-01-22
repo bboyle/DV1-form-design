@@ -4,6 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Apply for a protection order | Your rights, crime and the law | Queensland Government</title>
 
+
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="viewport" content="width=device-width" />
 
@@ -22,6 +23,7 @@
 <!-- PUT CUSTOM STYLES HERE -->
 <link rel="stylesheet" href="assets/wireframe.css">
 <link rel="stylesheet" href="assets/dv1.css">
+<link rel="stylesheet" href="http://bboyle.github.io/quick-exit/dist/quick-exit.min.css" />
 
 <!-- Grab Google CDN's jQuery. Fall back to local copy if necessary -->
 <!--[if gt IE 8]><!-->
@@ -70,7 +72,22 @@
 	<meta name="DCTERMS.jurisdiction" scheme="AGLSTERMS.AglsJuri" content="Queensland">
 </head>
 
-<body ng-app="dv1">
+<body ng-app="dv1" ng-init="beta = true;" ng-class="{ beta: beta }">
+
+
+<a id="quick-exit" target="_top" href="http://www.google.com/" accesskey="q">Quick exit ➟</a>
+<script src="http://bboyle.github.io/quick-exit/dist/quick-exit.min.js"></script>
+
+
+	<header class="beta-warning">
+		<strong>Under construction</strong>.
+		If you require assistance with domestic violence in Queensland please visit <a href="http://www.qld.gov.au/community/getting-support-health-social-issue/domestic-family-violence/">http://www.qld.gov.au/community/getting-support-health-social-issue/domestic-family-violence/</a>
+
+		<button type="button" ng-click="beta = false"><span>╳</span></button>
+	</header>
+
+
+
 
 <article ng-controller="InterviewController as interview">
 
@@ -81,7 +98,7 @@
 		<h2>Before you begin</h2>
 		<ul>
 			<li>We will ask questions about your situation — what happened and when — what protection you need. This online interview can take an hour or more to complete.</li>
-			<li>At the end, you will have the necessary forms to take to court. Protection orders may take up to 4 weeks. We will ask if you need a <dfn>temporary protection order</dfn> to protect you while waiting for the court to hear your case.</li>
+			<li>At the end, you will have the necessary forms to take to court. Protection orders may take 4 weeks or longer. We will ask if you need a <dfn>temporary protection order</dfn> to protect you while waiting for the court to hear your case.</li>
 			<li>You can apply yourself. You can also ask a friend or lawyer to apply on your behalf. In some situations, the police may apply for you.</li>
 		</ul>
 	</div>
@@ -99,23 +116,23 @@
 					</legend>
 					<ul class="choices">
 						<li>
-							<input type="radio" name="could-someone-spy-on-web-pages-you-visit" value="Yes" required id="could-someone-spy-on-web-pages-you-visit-yes-i-do-not-feel-safe">
-							<label for="could-someone-spy-on-web-pages-you-visit-yes-i-do-not-feel-safe">Yes — I do not feel safe</label>
+							<input type="radio" ng-model="interview.couldBeSpiedOn" value="Yes" required id="could-someone-spy-on-web-pages-you-visit-yes">
+							<label for="could-someone-spy-on-web-pages-you-visit-yes">Yes — I do not feel safe</label>
 						</li>
 						<li>
-							<input type="radio" name="could-someone-spy-on-web-pages-you-visit" value="No" required id="could-someone-spy-on-web-pages-you-visit-no-i-am-confident-this-is-private">
-							<label for="could-someone-spy-on-web-pages-you-visit-no-i-am-confident-this-is-private">No — I am confident this is private</label>
+							<input type="radio" ng-model="interview.couldBeSpiedOn" value="No" required id="could-someone-spy-on-web-pages-you-visit-no">
+							<label for="could-someone-spy-on-web-pages-you-visit-no">No — I am confident this is private</label>
 						</li>
 						<li>
-							<input type="radio" name="could-someone-spy-on-web-pages-you-visit" value="I don't know" required id="could-someone-spy-on-web-pages-you-visit-i-don-t-know">
-							<label for="could-someone-spy-on-web-pages-you-visit-i-don-t-know">I don't know</label>
+							<input type="radio" ng-model="interview.couldBeSpiedOn" value="Not sure" required id="could-someone-spy-on-web-pages-you-visit-not-sure">
+							<label for="could-someone-spy-on-web-pages-you-visit-not-sure">Not sure</label>
 						</li>
 					</ul>
 				</fieldset>
 			</li>
-			<li>
+			<li ng-show="interview.couldBeSpiedOn === 'Yes'">
 				<p>
-					<small class="hint relevance">(If you chose ‘Yes’ above)</small>
+					<small class="hint">(If you chose ‘Yes’ above)</small>
 				</p>
 				<div class="status info">
 					<h2>Protect yourself online</h2>
@@ -125,11 +142,41 @@
 					</ol>
 				</div>
 			</li>
+			<li ng-show="interview.couldBeSpiedOn === 'Not sure'">
+				<p>
+					<small class="hint">(If you chose ‘Not sure’ above)</small>
+				</p>
+				<div class="status info">
+					<h2>Different ways to apply for protection</h2>
+					<ul>
+						<li>contact Queensland Police</li>
+						<li>contact DVConnect</li>
+						<li>from a computer at a public library</li>
+						<li>from a computer or tablet at a friend of family home</li>
+						<li>in person, at a Queensland Magistrates Court</li>
+						<li>from a safe smartphone (e.g. <a href="http://wesnet.org.au/home2/projects/telstra-safe-connections-project/">Safe Connections</a></li>
+					</ul>
+
+					<h3>Continue applying</h3>
+					<ul>
+						<li>switch to a <a href="#">private browsing session</a></li>
+						<li>clear your browser history</li>
+						<li>take note of the <em>Quick Exit</em> button on the side of the screen. Use this if you need to quickly exit the site.</li>
+					</ul>
+
+					<h3>Save and continue later</h3>
+					<ul>
+						<li>Would you like to setup save and continue later?</li>
+						<li>We can email your application to a trusted email address: your own, a friend, family or a service provider</li>
+						<li>We can save your responses on this computer which you can access again using a safe word</li>
+					</ul>
+				</div>
+			</li>
 		</ol>
 	</div>
 	</form>
 
-	<form class="form" ng-submit="interview.completePreamble()">
+	<form class="form" ng-submit="interview.completePreamble()" ng-show="interview.couldBeSpiedOn === 'No'">
 		<ol class="questions">
 
 			<li>
@@ -141,23 +188,23 @@
 					</legend>
 					<ul class="choices">
 						<li>
-							<input type="radio" name="interview-safe" ng-model="interview.safeToProceed" ng-value="false" required id="interview-safe-false">
-							<label for="interview-safe-false">Yes — call 000 and ask for police</label>
+							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="yes" required id="applicant-danger-yes">
+							<label for="applicant-danger-yes">Yes — call 000 and ask for police</label>
 						</li>
 						<li>
-							<input type="radio" name="interview-safe" ng-model="interview.safeToProceed" ng-value="maybe" required id="interview-safe-dunno">
-							<label for="interview-safe-dunno">I don't know — contact DVConnect</label>
+							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="maybe" required id="applicant-danger-dunno">
+							<label for="applicant-danger-dunno">I don't know — contact DVConnect</label>
 						</li>
 						<li>
-							<input type="radio" name="interview-safe" ng-model="interview.safeToProceed" ng-value="true" required id="interview-safe-true">
-							<label for="interview-safe-true">It is safe for me to fill out this form (it could take an hour or longer)</label>
+							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="no" required id="applicant-danger-no">
+							<label for="applicant-danger-no">It is safe for me to fill out this form (it could take an hour or longer)</label>
 						</li>
 					</ul>
 				</fieldset>
 			</li>
 
 
-			<li ng-show="interview.safeToProceed === true">
+			<li ng-show="interview.applicantInDanger === 'no'">
 				<fieldset>
 					<legend>
 						<span class="label">What is your name?</span>
