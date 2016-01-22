@@ -1,7 +1,7 @@
 {
   "name": "dv1-form",
   "version": "0.0.1-alpha.1",
-  "description": "Apply for a domestic violence protection order in Queensland, Australia",
+  "description": "Design exploration for DV1 form (Apply for a domestic violence protection order in Queensland, Australia)",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
