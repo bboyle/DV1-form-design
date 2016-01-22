@@ -43,7 +43,7 @@ angular.module( 'dv1', [] )
 		application.saveApplicant( vm.applicant );
 	};
 	vm.saveRespondent = function() {
-		application.saveRespondent( vm.Respondent );
+		application.saveRespondent( vm.respondent );
 	};
 
 

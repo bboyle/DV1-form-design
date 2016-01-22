@@ -27,7 +27,8 @@ header.beta-warning button {
 }
 
 body.beta {
-	margin-top: 5rem;
+	margin: 5rem 0;
+
 }
 body.beta header.beta-warning {
 	display: block;
@@ -41,10 +42,11 @@ body {
 	display: flex;
 	flex-flow: row;
 	overflow: hidden;
+	margin: 0;
 }
 body > article {
 	width: 50%;
-	padding: 0 1em 2em;
+	padding: 0 1em 10em;
 	box-sizing: border-box;
 	height: 100vh;
 	overflow-y: auto;

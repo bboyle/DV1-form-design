@@ -111,26 +111,26 @@
 			<li>
 				<fieldset>
 					<legend>
-						<span class="label">Could someone spy on web pages you visit?</span>
+						<span class="label">Is it safe for you to fill out this form?</span>
 						<abbr title="(required)" class="required">*</abbr>
 					</legend>
 					<ul class="choices">
 						<li>
-							<input type="radio" ng-model="interview.couldBeSpiedOn" value="Yes" required id="could-someone-spy-on-web-pages-you-visit-yes">
-							<label for="could-someone-spy-on-web-pages-you-visit-yes">Yes — I do not feel safe</label>
+							<input type="radio" ng-model="interview.safe" value="No" required id="interview-is-safe-no">
+							<label for="interview-is-safe-no">No — someone could spy on my web browser</label>
 						</li>
 						<li>
-							<input type="radio" ng-model="interview.couldBeSpiedOn" value="No" required id="could-someone-spy-on-web-pages-you-visit-no">
-							<label for="could-someone-spy-on-web-pages-you-visit-no">No — I am confident this is private</label>
+							<input type="radio" ng-model="interview.safe" value="Not sure" required id="interview-is-safe-not-sure">
+							<label for="interview-is-safe-not-sure">Not sure</label>
 						</li>
 						<li>
-							<input type="radio" ng-model="interview.couldBeSpiedOn" value="Not sure" required id="could-someone-spy-on-web-pages-you-visit-not-sure">
-							<label for="could-someone-spy-on-web-pages-you-visit-not-sure">Not sure</label>
+							<input type="radio" ng-model="interview.safe" value="Yes" required id="interview-is-safe-yes">
+							<label for="interview-is-safe-yes">Yes — this computer is completely safe</label>
 						</li>
 					</ul>
 				</fieldset>
 			</li>
-			<li ng-show="interview.couldBeSpiedOn === 'Yes'">
+			<li ng-show="interview.safe === 'No'">
 				<p>
 					<small class="hint">(If you chose ‘Yes’ above)</small>
 				</p>
@@ -142,7 +142,7 @@
 					</ol>
 				</div>
 			</li>
-			<li ng-show="interview.couldBeSpiedOn === 'Not sure'">
+			<li ng-show="interview.safe === 'Not sure'">
 				<p>
 					<small class="hint">(If you chose ‘Not sure’ above)</small>
 				</p>
@@ -176,7 +176,7 @@
 	</div>
 	</form>
 
-	<form class="form" ng-submit="interview.completePreamble()" ng-show="interview.couldBeSpiedOn === 'No'">
+	<form class="form" ng-submit="interview.completePreamble()" ng-show="interview.safe === 'Yes'">
 		<ol class="questions">
 
 			<li>
@@ -281,9 +281,55 @@
 				</fieldset>
 			</li>
 
+			<li ng-show="interview.aggrieved.name.given" ng-if="! interview.applicantIsAggrieved">
+				<div class="status info">
+					<h2>You are the applicant</h2>
+					<p>You are applying for a protection order on behalf of someone else.</p>
+				</div>
+			</li>
+			<li ng-show="interview.aggrieved.name.given">
+				<div class="status info">
+					<h2>{{ interview.applicantIsAggrieved ? 'You are' : interview.aggrieved.name.given + ' is' }} the “aggrieved”</h2>
+					<p>The <dfn>aggrieved</dfn> is the person who needs protection.</p>
+					<p ng-if="interview.applicantIsAggrieved">You are also the <dfn>applicant</dfn>—you are applying for protection for yourself.</p>
+				</div>
+			</li>
+
+			<li ng-show="interview.aggrieved.name.given">
+				<fieldset>
+					<legend>
+						<span ng-if="interview.applicantIsAggrieved" class="label">Who do you need protection from?</span>
+						<span ng-if="! interview.applicantIsAggrieved" class="label">Who does {{ interview.aggrieved.name.given }} need protection from?</span>
+					</legend>
+					<ol class="questions compact">
+						<li>
+							<label for="respondent-name-given">
+								<span class="label">Given name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input size="15" required type="text" ng-model="interview.respondent.name.given" ng-change="interview.saveRespondent()" id="respondent-name-given">
+						</li>
+						<li>
+							<label for="respondent-name-family">
+								<span class="label">Family name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input size="15" required type="text" ng-model="interview.respondent.name.family" ng-change="interview.saveRespondent()" id="respondent-name-family">
+						</li>
+					</ol>
+				</fieldset>
+			</li>
+
+			<li ng-show="interview.respondent.name.given">
+				<div class="status info">
+					<h2>{{ interview.respondent.name.given }} is the “respondent”</h2>
+					<p>The <dfn>respondent</dfn> is the person {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.given + ' wants' }} to be protected from.</p>
+				</div>
+			</li>
+
 			<li class="footer">
 				<ul class="actions">
-					<li><strong><input type="submit" value="Apply now"></strong></li>
+					<li><strong><input type="submit" value="Primary action"></strong></li>
 					<li><a href="#">Cancel</a></li>
 				</ul>
 			</li>
