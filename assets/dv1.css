@@ -69,3 +69,24 @@ var {
 button.active {
 	font-weight: bold;
 }
+
+
+/* process nav */
+nav ol button {
+	border: none;
+	background: transparent;
+}
+nav ol button:hover,
+nav ol button:focus {
+	color: rebeccapurple;
+	text-decoration: underline;
+}
+nav ol button[disabled] {
+	text-decoration: line-through;
+	cursor: default;
+	color: #777;
+}
+nav ol button[disabled]:hover,
+nav ol button[disabled]:focus {
+	color: #777;
+}

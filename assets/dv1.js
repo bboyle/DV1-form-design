@@ -47,8 +47,8 @@ angular.module( 'dv1', [] )
 		CONDITIONS: 5,
 		GROUNDS: 6
 	};
+	vm.pageUnlocked = 0;
 
-	vm.page = 1; // preamble
 	let backupAggrieved = {};
 
 	vm.saveAggrieved = function() {
@@ -84,6 +84,7 @@ angular.module( 'dv1', [] )
 	// page navigation
 	vm.goto = function( dest ) {
 		vm.page = dest;
+		vm.pageUnlocked = Math.max( vm.pageUnlocked, dest );
 	};
 
 	// move through interview
@@ -91,6 +92,10 @@ angular.module( 'dv1', [] )
 		vm.saveApplicant();
 		vm.page++;
 	};
+
+
+	// init
+	vm.goto( 1 );
 
 	return vm;
 })

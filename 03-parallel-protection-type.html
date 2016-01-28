@@ -90,8 +90,19 @@
 
 
 <article ng-controller="InterviewController as interview">
+	<nav>
+		<ol>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto(interview.PAGE.PREAMBLE)">Preamble</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto(interview.PAGE.APPLICANT)">Applicant details</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto(interview.PAGE.AGGRIEVED)">Aggrieved details</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto(interview.PAGE.RESPONDENT)">Respondent details</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto(interview.PAGE.CONDITIONS)">Conditions</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto(interview.PAGE.GROUNDS)">Grounds</button></li>
+		</ol>
+	</nav>
 
 	<h1>Apply for a protection order</h1>
+
 
 
 	<section ng-show="interview.page === interview.PAGE.PREAMBLE">
