@@ -21,8 +21,12 @@ angular.module( 'dv1', [] )
 		data.respondent = respondentData;
 	};
 
+	this.saveTemporaryProtection = function( tpoData ) {
+		data.temporaryProtection = tpoData;
+	};
+
 	this.getData = function() {
-		return angular.copy( data );
+		return data;
 	};
 
 	return this;
@@ -32,7 +36,18 @@ angular.module( 'dv1', [] )
 
 // controller for interview
 .controller( 'InterviewController', function( application ) {
+
 	let vm = this;
+
+	vm.PAGE = {
+		PREAMBLE: 1,
+		APPLICANT: 2,
+		AGGRIEVED: 3,
+		RESPONDENT: 4,
+		CONDITIONS: 5,
+		GROUNDS: 6
+	};
+
 	vm.page = 1; // preamble
 	let backupAggrieved = {};
 
@@ -60,10 +75,21 @@ angular.module( 'dv1', [] )
 	};
 
 
+	// temporary protection orders
+	vm.updateTemporaryProtection = function() {
+		application.saveTemporaryProtection( vm.temporaryProtection );
+	};
+
+
+	// page navigation
+	vm.goto = function( dest ) {
+		vm.page = dest;
+	};
+
 	// move through interview
 	vm.completePreamble = function() {
 		vm.saveApplicant();
-		vm.page = 2;
+		vm.page++;
 	};
 
 	return vm;
@@ -76,17 +102,20 @@ angular.module( 'dv1', [] )
 	let gazetteData = {
 		aggrieved: {
 			name: {
-				given: 'Aggrieved'
+				given: 'Aggrieved',
+				the: 'the Aggrieved'
 			}
 		},
 		applicant: {
 			name: {
-				given: 'Applicant'
+				given: 'Applicant',
+				the: 'the Applicant'
 			}
 		},
 		respondent: {
 			name: {
-				given: 'Respondent'
+				given: 'Respondent',
+				the: 'the Respondent'
 			}
 		}
 	};
@@ -123,6 +152,11 @@ angular.module( 'dv1', [] )
 
 		angular.merge( vm, dummyNames );
 		angular.merge( vm, application.getData() );
+
+		// pronouns and stuff
+		// vm.applicant.name.the = vm.applicant.name.given;
+		vm.aggrieved.name.the = vm.aggrieved.name.given;
+		vm.respondent.name.the = vm.respondent.name.given;
 
 		vm.view.gazette = false;
 	};
