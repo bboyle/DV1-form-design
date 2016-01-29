@@ -13,6 +13,9 @@ angular.module( 'dv1', [] )
 	this.saveAggrieved = function( aggrievedData, isApplicant ) {
 		data.aggrieved = aggrievedData;
 		data.aggrievedIsApplicant = isApplicant === true;
+		if ( isApplicant ) {
+			this.saveApplicant( aggrievedData );
+		}
 	};
 	this.saveApplicant = function( applicantData ) {
 		data.applicant = applicantData;
@@ -55,7 +58,11 @@ angular.module( 'dv1', [] )
 		application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
 	};
 	vm.saveApplicant = function() {
-		application.saveApplicant( vm.applicant );
+		if ( vm.applicantIsAggrieved ) {
+			application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
+		} else {
+			application.saveApplicant( vm.applicant );
+		}
 	};
 	vm.saveRespondent = function() {
 		application.saveRespondent( vm.respondent );
@@ -90,9 +97,8 @@ angular.module( 'dv1', [] )
 	// move through interview
 	vm.completePreamble = function() {
 		vm.saveApplicant();
-		vm.page++;
+		vm.goto( vm.page + 1 );
 	};
-
 
 	// init
 	vm.goto( 1 );

@@ -92,12 +92,12 @@
 <article ng-controller="InterviewController as interview">
 	<nav>
 		<ol>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto(interview.PAGE.PREAMBLE)">Preamble</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto(interview.PAGE.APPLICANT)">Applicant details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto(interview.PAGE.AGGRIEVED)">Aggrieved details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto(interview.PAGE.RESPONDENT)">Respondent details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto(interview.PAGE.CONDITIONS)">Conditions</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto(interview.PAGE.GROUNDS)">Grounds</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Preamble</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto( interview.PAGE.APPLICANT )">Applicant details</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Aggrieved details</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Respondent details</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto( interview.PAGE.CONDITIONS )">Conditions</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto( interview.PAGE.GROUNDS )">Grounds</button></li>
 		</ol>
 	</nav>
 
@@ -220,48 +220,12 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.APPLICANT" ng-submit="interview.goto(interview.PAGE.AGGRIEVED)">
+	<form class="form" ng-show="interview.page === interview.PAGE.APPLICANT" ng-submit="interview.goto( interview.PAGE.AGGRIEVED )">
 		<ol class="questions">
 			<li>
 				<fieldset>
 					<legend>
-						<span class="label">What is your name?</span>
-					</legend>
-					<ol class="questions compact">
-						<li>
-							<label for="applicant-name-given">
-								<span class="label">Given name</span>
-								<abbr class="required" title="(required)">*</abbr>
-							</label>
-							<input ng-model="interview.applicant.name.given" size="15" required type="text" id="applicant-name-given">
-						</li>
-						<li>
-							<label for="applicant-name-family">
-								<span class="label">Family name</span>
-								<abbr class="required" title="(required)">*</abbr>
-							</label>
-							<input ng-model="interview.applicant.name.family" size="15" required type="text" id="applicant-name-family">
-						</li>
-					</ol>
-				</fieldset>
-			</li>
-
-			<li class="footer">
-				<ul class="actions">
-					<li><strong><button type="submit">Continue</button></strong></li>
-				</ul>
-			</li>
-		</ol>
-	</form>
-
-
-
-	<form class="form" ng-show="interview.page === interview.PAGE.AGGRIEVED" ng-submit="interview.goto(interview.PAGE.RESPONDENT)">
-		<ol class="questions">
-			<li>
-				<fieldset>
-					<legend>
-						<span class="label">{{interview.applicant.name.given}}, do you need protection?</span>
+						<span class="label">Do you need protection?</span>
 						<abbr title="(required)" class="required">*</abbr>
 					</legend>
 					<ul class="choices">
@@ -292,22 +256,30 @@
 			<li ng-show="interview.applicantIsAggrieved === false">
 				<fieldset>
 					<legend>
-						<span class="label">Tell us the name of the person who needs protection</span>
+						<span class="label">What is your name?</span>
 					</legend>
 					<ol class="questions compact">
 						<li>
-							<label for="aggrieved-name-given">
+							<label for="applicant-name-given">
 								<span class="label">Given name</span>
-								<abbr class="required" title="(required)">*</abbr>
 							</label>
-							<input size="15" required type="text" ng-model="interview.aggrieved.name.given" id="aggrieved-name-given">
+							<input type="text" size="15"
+							       id="applicant-name-given"
+							       ng-model="interview.applicant.name.given"
+							       ng-required="! interview.applicantIsAggrieved"
+							       ng-change="interview.saveApplicant()"
+							>
 						</li>
 						<li>
-							<label for="aggrieved-name-family">
+							<label for="applicant-name-family">
 								<span class="label">Family name</span>
-								<abbr class="required" title="(required)">*</abbr>
 							</label>
-							<input size="15" required type="text" ng-model="interview.aggrieved.name.family" id="aggrieved-name-family">
+							<input type="text" size="15"
+							       id="applicant-name-family"
+							       ng-model="interview.applicant.name.family"
+							       ng-required="! interview.applicantIsAggrieved"
+							       ng-change="interview.saveApplicant()"
+							>
 						</li>
 					</ol>
 				</fieldset>
@@ -323,7 +295,54 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.RESPONDENT" ng-submit="interview.goto(interview.PAGE.CONDITIONS)">
+	<form class="form" ng-show="interview.page === interview.PAGE.AGGRIEVED" ng-submit="interview.goto( interview.PAGE.RESPONDENT )">
+		<ol class="questions">
+			<li>
+				<fieldset>
+					<legend>
+						<span ng-if="interview.applicantIsAggrieved" class="label">What is your name?</span>
+						<span ng-if="! interview.applicantIsAggrieved" class="label">Tell us the name of the person who needs protection</span>
+					</legend>
+					<ol class="questions compact">
+						<li>
+							<label for="aggrieved-name-given">
+								<span class="label">Given name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input type="text" size="15"
+							       id="aggrieved-name-given"
+							       required
+							       ng-model="interview.aggrieved.name.given"
+							       ng-change="interview.saveAggrieved()"
+							>
+						</li>
+						<li>
+							<label for="aggrieved-name-family">
+								<span class="label">Family name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input type="text" size="15"
+							       id="aggrieved-name-family"
+							       required
+							       ng-model="interview.aggrieved.name.family"
+							       ng-change="interview.saveAggrieved()"
+							>
+						</li>
+					</ol>
+				</fieldset>
+			</li>
+
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="submit">Continue</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+
+
+
+	<form class="form" ng-show="interview.page === interview.PAGE.RESPONDENT" ng-submit="interview.goto( interview.PAGE.CONDITIONS )">
 		<ol class="questions">
 			<li ng-show="interview.aggrieved.name.given">
 				<fieldset>
@@ -337,14 +356,24 @@
 								<span class="label">Given name</span>
 								<abbr class="required" title="(required)">*</abbr>
 							</label>
-							<input size="15" required type="text" ng-model="interview.respondent.name.given" ng-change="interview.saveRespondent()" id="respondent-name-given">
+							<input type="text" size="15"
+							       id="respondent-name-given"
+							       required
+							       ng-model="interview.respondent.name.given"
+							       ng-change="interview.saveRespondent()"
+							>
 						</li>
 						<li>
 							<label for="respondent-name-family">
 								<span class="label">Family name</span>
 								<abbr class="required" title="(required)">*</abbr>
 							</label>
-							<input size="15" required type="text" ng-model="interview.respondent.name.family" ng-change="interview.saveRespondent()" id="respondent-name-family">
+							<input type="text" size="15"
+							       id="respondent-name-family"
+							       required
+							       ng-model="interview.respondent.name.family"
+							       ng-change="interview.saveRespondent()"
+							>
 						</li>
 					</ol>
 				</fieldset>
@@ -369,14 +398,6 @@
 				<li>{{ interview.respondent.name.given }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} needs protection from).</li>
 			</ul>
 			<p ng-if="! interview.applicantIsAggrieved">You are the <dfn>applicant</dfn> (the person applying for a protection order)</p>
-		</div>
-
-		<div class="status info">
-			<h2>Protection Order</h2>
-			<p>A court making a domestic violence order must impose a condition that {{ interview.respondent.name.given }} —<br>
-			<samp>Be of good behaviour towards {{ interview.aggrieved.name.given }} and not commit domestic violence against {{ interview.aggrieved.name.given }}.</samp></p>
-
-			<p>You can add children, relatives, friends and other associates that require the same protection.</p>
 		</div>
 
 		<ol class="questions">
@@ -455,6 +476,180 @@
 				</fieldset>
 			</li>
 
+			<!-- TODO nicer UX for naming the applicant as an associate (opt-in) -->
+			<li ng-if="! interview.applicantIsAggrieved">
+				<fieldset>
+					<legend>
+						<span class="label">{{ interview.applicant.name.given }}, do you need protection from {{ interview.respondent.name.given }} too?</span>
+						<small class="hint">{{ interview.respondent.name.given }} will know you applied for this protection order.</small>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio"
+							       name="interview-protect-applicant"
+							       id="interview-protect-applicant-true"
+							       ng-model="interview.aggrieved.applicant"
+							       ng-value="true"
+							       required>
+							<label for="interview-protect-applicant-true">Yes</label>
+						</li>
+						<li>
+							<input type="radio"
+							       name="interview-protect-applicant"
+							       id="interview-protect-applicant-false"
+							       ng-model="interview.aggrieved.applicant"
+							       ng-value="false"
+							       required>
+							<label for="interview-protect-applicant-false">No</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Conditions you would like the court to consider</span>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour">
+							<label for="interview-conditions-respondent-behaviour">I want {{ interview.respondent.name.given }} to behave decently around {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
+							<small class="hint">Every protection order includes the condition: <samp>Be of good behaviour towards {{ interview.aggrieved.name.given }} and not commit domestic violence against {{ interview.aggrieved.name.given }}</samp></small>
+						</li>
+						<li ng-show="interview.aggrieved.children">
+							<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour-children">
+							<label for="interview-conditions-respondent-behaviour-children">I want {{ interview.respondent.name.given }} to behave decently around {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} kids</label>
+							<small class="hint">Every protection order listing children includes the condition: <samp>Be of good behaviour towards the child and not commit associated domestic violence against the child and not expose the child to domestic violence.</samp></small>
+						</li>
+						<li ng-show="interview.aggrieved.associates || interview.aggrieved.applicant">
+							<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour-associates">
+							<label for="interview-conditions-respondent-behaviour-associates">
+								I want {{ interview.respondent.name.given }} towards behave decently towards
+								<span ng-if="interview.aggrieved.associates">{{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family and friends</span><span ng-if="interview.aggrieved.applicant">{{ interview.aggrieved.associates ? ', including ' : '' }} me</span>
+							</label>
+							<small class="hint">Every protection order naming associates includes the condition: <samp>Be of good behaviour towards the named person and not commit associated domestic violence against the named person.</samp></small>
+						</li>
+
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-leave-premises"
+							       ng-model="interview.conditions.leavePremises"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-leave-premises">I want {{ interview.respondent.name.given }} to leave {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
+						</li>
+
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-no-approach"
+							       ng-model="interview.conditions.notApproach.aggrieved"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-no-approach">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
+						</li>
+						<li ng-show="interview.aggrieved.children">
+							<input type="checkbox"
+							       id="interview-conditions-respondent-no-approach-children"
+							       ng-model="interview.conditions.notApproach.children"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-no-approach-children">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} kids</label>
+						</li>
+						<li ng-show="interview.aggrieved.children">
+							<input type="checkbox"
+							       id="interview-conditions-respondent-no-approach-children-place"
+							       ng-model="interview.conditions.notApproach.childrenPlace"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-no-approach-children-place">I want {{ interview.respondent.name.given }} to stay away from the kid’s school/daycare/etc.</label>
+						</li>
+						<li ng-show="interview.aggrieved.applicant">
+							<input type="checkbox"
+							       id="interview-conditions-respondent-no-approach-applicant"
+							       ng-model="interview.conditions.notApproach.applicant"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-no-approach-applicant">I want {{ interview.respondent.name.given }} to stay away from me</label>
+						</li>
+						<li ng-show="interview.aggrieved.associates">
+							<input type="checkbox"
+							       id="interview-conditions-respondent-no-approach-associates"
+							       ng-model="interview.conditions.notApproach.associates"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-no-approach-associates">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family and friends</label>
+						</li>
+
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-not-enter-home"
+							       ng-model="interview.conditions.prohibitEntering.residence"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-not-enter-home">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
+						</li>
+						<li ng-show="interview.aggrieved.applicant">
+							<input type="checkbox"
+							       id="interview-conditions-respondent-not-enter-applicant-home"
+							       ng-model="interview.conditions.prohibitEntering.applicantResidence"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-not-enter-applicant-home">I want {{ interview.respondent.name.given }} to stay away from my home</label>
+						</li>
+						<li ng-show="interview.aggrieved.associates">
+							<input type="checkbox"
+							       id="interview-conditions-respondent-not-enter-associates-home"
+							       ng-model="interview.conditions.prohibitEntering.associatesResidence"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-not-enter-associates-home">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family and friend’s homes</label>
+						</li>
+
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-not-enter-work"
+							       ng-model="interview.conditions.prohibitEntering.workplace"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-not-enter-work">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} workplace</label>
+						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-not-enter-staying"
+							       ng-model="interview.conditions.prohibitEntering.accommodation"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-not-enter-staying">I want {{ interview.respondent.name.given }} to stay away from the place where {{ interview.applicantIsAggrieved ? 'I am' : interview.aggrieved.name.given + ' is' }} currently staying</label>
+						</li>
+
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-no-contact"
+							       ng-model="interview.conditions.noContact"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-no-contact">I want {{ interview.respondent.name.given }} to stop contacting {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
+							<small class="hint">{{ interview.respondent.name.given }} is not allowed to ask anyone else to contact {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} either.</small>
+						</li>
+
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-no-locate"
+							       ng-model="interview.conditions.noLocate"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-no-locate">I want {{ interview.respondent.name.given }} to stop trying to find {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
+							<small class="hint">{{ interview.respondent.name.given }} is not allowed to ask anyone else to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} either.</small>
+						</li>
+
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-return-property"
+							       ng-model="interview.conditions.returnProperty"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-return-property">I want {{ interview.respondent.name.given }} to return {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} property</label>
+							<small class="hint"><dfn>Essential property</dfn> includes …</small>
+						</li>
+
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-change-behaviour"
+							       ng-model="interview.conditions.changeBehaviour"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-change-behaviour">I want {{ interview.respondent.name.given }} to change their behaviour</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
 			<li>
 				<fieldset>
 					<legend>
@@ -495,7 +690,6 @@
 	</form>
 
 
-<!-- TODO skip this step if not asking for temporary protection -->
 	<form class="form" ng-show="interview.page === interview.PAGE.GROUNDS">
 		<div class="status info">
 			<h2>{{ interview.applicantIsAggrieved ? 'You need' : interview.aggrieved.name.given + ' needs' }}</h2>
@@ -533,7 +727,7 @@
 					<span class="label">Reasons for temporary protection</span>
 					<small class="hint">Explain why {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} cannot wait 4 weeks for a protection order</small>
 				</label>
-				<textarea rows="10" cols="40"
+				<textarea class="large-compact" rows="10" cols="40"
 				          ng-model="interview.temporaryProtection.reasons"
 				          id="interview-temporary-protection-reasons"
 				          ng-change="updateTemporaryProtection()"
