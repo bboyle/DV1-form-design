@@ -104,3 +104,17 @@ nav ol button[disabled] {
 	color: #aaa;
 	text-decoration: none;
 }
+
+/* telephone links */
+a[href^="tel:"] {
+	text-decoration: none;
+	white-space: nowrap;
+	color: #639; /* rebeccapurple */
+}
+a[href^="tel:"]::before {
+	content: "(☎) ";
+}
+
+.language-chooser button {
+	font-weight: normal;
+}

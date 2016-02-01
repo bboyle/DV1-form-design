@@ -1,0 +1,200 @@
+<h2>Translation and interpretation</h2>
+
+<form>
+	<em>
+		<button type="button" ng-click="vm.showChooser( vm.preview.code )" dir="{{ vm.preview.dir }}" lang="{{ vm.preview.code }}">{{ vm.preview.title }} <span lang="en" dir="ltr">(Other languages)</span></button>
+	</em>
+
+	<span ng-show="vm.show">
+		<label for="language-choice">Choose language:</label>
+		<select id="language-choice" ng-model="vm.lang">
+			<option ng-repeat="lang in vm.languages" value="{{ lang.code }}">{{ lang.title }}</option>
+		</select>
+	</span>
+
+</form>
+
+
+<aside class="status info" ng-show="vm.lang === 'en'" lang="en">
+	<h3>English</h3>
+	<p>
+	If you need help because of domestic violence please call the Translating and
+	Interpreting Service on <a href="tel:13-14-50">13 14 50</a> and ask them to transfer you to DVConnect on
+	<a href="tel:1800-811-811">1800 811 811</a> for help. If your life is in danger, call the Police on <a href="tel:000">000</a> (triple zero).
+	</p>
+</aside>
+
+<!-- Amharic -->
+<aside class="status info" ng-show="vm.lang === 'am'" lang="am">
+	<h3>ኣማርኛ</h3>
+	<p>በቤተሰብ ሁከት ሳቢያ እርዳታ ከፈለጉ እባክዎ ለትርጉምና
+	አስተርጓሚ አገልግሎት በስልክ <a href="tel:13-14-50" lang="en">13 14 50</a> ይደውሉና እርዳታ
+	ለማግኘት ወደ የቤተሰብ ሁከት ማገናኛ/<span lang="en">DVConnect</span> በስልክ
+	<a href="tel:1800-811-811" lang="en">1800 811 811</a> እንዲያስተላልፉዎት መጠየቅ ነው። ለህይወትዎ
+	የሚያሰጋ ከሆነ በ <a href="tel:000" lang="en">000</a> ለፖሊስ መደወል ነው።</p>
+</aside>
+
+<!-- Arabic -->
+<aside class="status info" ng-show="vm.lang === 'ar'" lang="ar" dir="rtl">
+	<h3>اللغة العربية الفصحى</h3>
+	<p>ُ إذا كنت بحاجة للمساعدة بسبب العنف المنزلي، يرجى االتصال بخدمة
+	الترجمة التحريرية والشفهية على الرقم <a href="tel:13-14-50" lang="en" dir="ltr">13 14 50</a> وطلب توصيلك
+	بـ <span lang="en" dir="ltr">DVConnect</span> على الرقم <a href="tel:1800-811-811" lang="en" dir="ltr">1800 811 811</a> للمساعدة. واذا كانت
+	ُ حياتك م َّعرضة للخطر، اتصل بالشرطة على الرقم <a href="tel:000" lang="en" dir="ltr">000</a>.</p>
+</aside>
+
+<!-- Bosnian -->
+<aside class="status info" ng-show="vm.lang === 'bs'" lang="bs">
+	<h3>bosanski</h3>
+	<p>Ako vam je potrebna pomoć u vezi nasilja u porodici,
+	molimo nazovite Službu za prevođenje i tumačenje
+	na <a href="tel:13-14-50" lang="en">13 14 50</a> i zatražite da vas spoje sa <span lang="en">DVConnect</span>
+	na <a href="tel:1800-811-811" lang="en">1800 811 811</a> za pomoć. Ako vam je život u
+	opasnosti, nazovite policiju na <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Croatian -->
+<aside class="status info" ng-show="vm.lang === 'hr'" lang="hr">
+	<h3>Hrvatski</h3>
+	<p>Ako vam je potrebna pomoć zbog nasilja u obitelji,
+	molimo vas nazovite Službu za prevođenje i
+	tumačenje (<span lang="en">TIS</span>) na tel. <a href="tel:13-14-50" lang="en">13 14 50</a> i zatražite da vas
+	spoje s <span lang="en">DVConnect</span> na broj <a href="tel:1800-811-811" lang="en">1800 811 811</a>. Ako vam
+	je život u opasnosti, nazovite policiju na broj <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Hindi -->
+<aside class="status info" ng-show="vm.lang === 'hi'" lang="hi">
+	<h3>हिन्दी</h3>
+	<p>यदि घरेलू दिंसा के फलस्वरुप आपको सिायता की आ्वशयकता िो तो
+	कृपया अनु्वाि ए्वं िभाषिया से ु ्वा (<span lang="en">Translating and Interpreting Service</span>)
+	को <a href="tel:13-14-50" lang="en">13 14 50</a> पर फोन करें और उनसे षन्वेिन करें षक
+	सिायता के षलए ्वे आपको <a href="tel:1800-811-811" lang="en">1800 811 811</a> पर ट्ांसफर करें। यदि
+	आपका जी्वन खतरे में िो, तो पुषलस को <a href="tel:000" lang="en">000</a> पर फोन करें।</p>
+</aside>
+
+<!-- Japanese -->
+<aside class="status info" ng-show="vm.lang === 'ja'" lang="ja">
+	<h3>日本語</h3>
+	<p>ドメスティックバイオレンスで援助を必要とする場合は、
+	電話<a href="tel:13-14-50" lang="en">13 14 50</a>の翻訳・通訳サービスにお電話の上、援助
+	を受けるために、電話<a href="tel:1800-811-811" lang="en">1800 811 811</a>の<span lang="en">DVConnect</span>につ
+	なぐよう依頼して下さい。生命の危険がある場合は、電話
+	<a href="tel:000" lang="en">000</a>で警察に電話をして下さい。</p>
+</aside>
+
+<!-- Kirundi -->
+<aside class="status info" ng-show="vm.lang === 'rn'" lang="rn">
+	<h3>íkiRǔndi</h3>
+	<p>Niwaba ukeneye imfashanyo kubera ihohoterwa
+	ryo muhira, urasabwe guhamagara Ishirahamwe
+	riraba ivy’Ubusemuzi ku nomero <a href="tel:13-14-50" lang="en">13 14 50</a>, usabe ko
+	baguhamagarira umushinga witwa <span lang="en">DVConnect</span> ku nomero
+	<a href="tel:1800-811-811" lang="en">1800 811 811</a> kugira bagufashe. Ubonye amagara yawe
+	ari mu mazi abira, ca uhamagara Polisi ku nomero <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Russian -->
+<aside class="status info" ng-show="vm.lang === 'ru'" lang="ru">
+	<h3>Русский язык</h3>
+	<p>Если вам нужна помощь в связи с насилием в семье,
+	позвоните в Службу письменных и устных переводов
+	(Translating and Interpreting Service) по номеру <a href="tel:13-14-50" lang="en">13 14 50</a>
+	и попросите, чтобы вас соединили со Службой
+	<span lang="en">DVConnect</span> по номеру <a href="tel:1800-811-811" lang="en">1800 811 811</a>, и вам будет
+	предоставлена помощь. Если вашей жизни угрожает
+	опасность, позвоните в полицию по номеру <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Samoan -->
+<aside class="status info" ng-show="vm.lang === 'sm'" lang="sm">
+	<h3>Gagana Samoa</h3>
+	<p>Afai e te manaomia se fesoasoani ona o faasauaga i
+	aiga faamolemole valaau i le Auaunaga o Faaliliuupu
+	ma Faamatalaupu i le <a href="tel:13-14-50" lang="en">13 14 50</a> ma fesili i a latou e
+	tu’u oe i le <span lang="en">DVConnect</span> i le <a href="tel:1800-811-811" lang="en">1800 811 811</a> (Fesootaiga
+	i Faasauaga i Aiga) mo se fesoasoani. Afai ua
+	lamatia lou ola, valaau Leoleo i le <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Simplified Chinese -->
+<aside class="status info" ng-show="vm.lang === 'zh-Hans'" lang="zh-Hans">
+	<h3>汉字简化方案</h3>
+	<p>如果你因家庭暴力而需要帮助，请致电笔译和口译服务(电话：
+	<a href="tel:13-14-50" lang="en">13 14 50</a>)，请他们为你转接<span lang="en">DVConnect</span>电话<a href="tel:1800-811-811" lang="en">1800 811 811</a>
+	求助。如果你面临生命危险，请拨电话<a href="tel:000" lang="en">000</a>报警。</p>
+</aside>
+
+<!-- Serbian -->
+<aside class="status info" ng-show="vm.lang === 'sr'" lang="sr">
+	<h3>српски</h3>
+	<p>Уколико требате помоћ због насиља у
+	породици, молимо вас назовите преводилачку
+	службу на број <a href="tel:13-14-50" lang="en">13 14 50</a> и затражите да
+	вас споје са ДиВиКонект на <a href="tel:1800-811-811" lang="en">1800 811 811</a> да
+	вам помогну. Ако вам је живот у опасности,
+	назовите полицију на број <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Spanish -->
+<aside class="status info" ng-show="vm.lang === 'es'" lang="es">
+	<h3>español</h3>
+	<p>Si necesita ayuda debido a violencia doméstica,
+	sírvase llamar al Servicio de traducción e
+	interpretación (<span lang="en">Translating and Interpreting Service</span>)
+	al <a href="tel:13-14-50" lang="en">13 14 50</a> y solicíteles que le transfieran la
+	llamada a <span lang="en">DVConnect</span> al número <a href="tel:1800-811-811" lang="en">1800 811 811</a>
+	para obtener ayuda. Si su vida está en peligro,
+	llame a la policía (Police) al <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Swahili -->
+<aside class="status info" ng-show="vm.lang === 'sw'" lang="sw">
+	<h3>Kiswahili</h3>
+	<p>Kama unahitaji usaidizi kwa sababu ya vurugu
+	nyumbani tafadhali pigia Huduma ya Utafsiri na
+	Ukalimani kwenye nambari ya simu <a href="tel:13-14-50" lang="en">13 14 50</a> na
+	uliza wakuelekeze kwa <span lang="en">DVConnect</span> kwenye nambari
+	<a href="tel:1800-811-811" lang="en">1800 811 811</a> kwa usaidizi. Kama maisha yako yako
+	hatarini, pigia Polisi simu kwenye <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Tagalog -->
+<aside class="status info" ng-show="vm.lang === 'tl'" lang="tl">
+	<h3>Tagalog</h3>
+	<p>Kung kailangan mo ng tulong dahil sa karahasan
+	sa tahanan, pakitawagan ang Serbisyo ng
+	Tagasalinwika sa <a href="tel:13-14-50" lang="en">13 14 50</a> at hilingin sa kanilang
+	ilipat ang tawag mo sa <span lang="en">DVConnect</span> sa <a href="tel:1800-811-811" lang="en">1800 811 811</a>
+	para matulungan. Kung nanganganib ang iyong
+	buhay, tawagan ang Pulisya sa <a href="tel:000" lang="en">000</a>.</p>
+</aside>
+
+<!-- Thai -->
+<aside class="status info" ng-show="vm.lang === 'th'" lang="th">
+	<h3>ภาษาไทย</h3>
+	<p>หากท่านต้องการความช่วยเหลืออันเนื่องมาจากการใช้ก�าลังรุนแรงใน ครอบครัว โปรดโทรศัพท์ไปที่บริการแปลและล่าม <a href="tel:13-14-50" lang="en">13 14 50</a> แล้วขอให้
+	เขาต่อสายไปที่ <span lang="en">DVConnect</span> <a href="tel:1800-811-811" lang="en">1800 811 811</a> เพื่อขอความช่วยเหลือ
+	หากชีวิตของท่านตกอยู่ในอันตราย โปรดโทรศัพท์ถึงต�ารวจ <a href="tel:000" lang="en">000</a></p>
+</aside>
+
+<!-- Tigrynia -->
+<aside class="status info" ng-show="vm.lang === 'ti'" lang="ti">
+	<h3>ትግርኛ</h3>
+	<p>ብምኽንያት ዘቤታዊ ዓመጻ ሓገዝ እንተደሊኹም በጃኹም
+	ብቑጽሪ ስልኪ <a href="tel:13-14-50" lang="en">13 14 50</a> ናብ ትርጉምን ኣስተርጓማይ ግልጋሎት
+	(<span lang="en">Translating and Interpreting Service</span>) ብምድዋል ናብ
+	ዘቤታዊ ዓመጻ/<span lang="en">DVConnect</span> ብቑጽሪ ስልኪ <a href="tel:1800-811-811" lang="en">1800 811 811</a>
+	ኣራኽቡኒ ኢልኩም ንገርዎም። ህይወትኩም ኣብ ሓደጋ እንተ’ልያ
+	ድማ ናብ <a href="tel:000" lang="en">000</a> ብምድዋል ፖሊስ ጸውዑ።</p>
+</aside>
+
+<!-- Vietnamese -->
+<aside class="status info" ng-show="vm.lang === 'vi'" lang="vi">
+	<h3>tiếng việt</h3>
+	<p>Nếu quý vị cần trợ giúp vì bị bạo hành trong gia đình,
+	vui lòng gọi Dịch vụ Thông Phiên dịch theo số
+	<a href="tel:13-14-50" lang="en">13 14 50</a> và xin chuyển máy đến <span lang="en">DVConnect</span> theo số
+	<a href="tel:1800-811-811" lang="en">1800 811 811</a> để được trợ giúp. Nếu quý vị bị nguy
+	hiểm đến tính mạng, gọi Cảnh sát theo số <a href="tel:000" lang="en">000</a>.</p>
+</aside>

@@ -49,7 +49,10 @@
 
 <!-- PUT CUSTOM SCRIPTS THAT CANNOT BE DEFERRED HERE (see footer) -->
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-<script src="assets/dv1.js"></script>
+<script src="assets/dv1-app.js"></script>
+<script src="assets/dv1-language-chooser.js"></script>
+<script src="assets/dv1-interview.js"></script>
+<script src="assets/dv1-forms.js"></script>
 
 
 	<meta name="description" content="Step-by-step guide to apply for protection from domestic violence.">
@@ -61,7 +64,7 @@
 	<meta name="DCTERMS.creator" scheme="AGLSTERMS.GOLD" content="c=AU; o=The State of Queensland; ou=Department of Justice and Attorney-General; ou=Justice Services">
 	<meta name="DCTERMS.publisher" scheme="AGLSTERMS.AglsAgent" content="corporateName=The State of Queensland; jurisdiction=Queensland">
 	<meta name="DCTERMS.created" content="2016-01-18">
-	<meta name="DCTERMS.modified" content="2016-01-29">
+	<meta name="DCTERMS.modified" content="2016-02-01">
 	<meta name="DCTERMS.title" content="Apply for a protection order | Your rights, crime and the law">
 	<meta name="DCTERMS.description" content="Step-by-step guide to apply for protection from domestic violence.">
 	<meta name="DCTERMS.subject" scheme="AGLSTERMS.APAIS" content="Domestic Violence">
@@ -106,6 +109,10 @@
 
 
 	<section ng-show="interview.page === interview.PAGE.PREAMBLE">
+
+	<div class="language-chooser"></div>
+
+
 	<div class="preamble status info">
 		<h2>Before you begin</h2>
 		<ul>
