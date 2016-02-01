@@ -603,6 +603,86 @@
 						<span class="h3">Emotional abuse</span>
 					</legend>
 					<ul class="choices">
+<!-- following a person when the person is out in public, including by vehicle or on foot -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-stalking-public"
+							       ng-model="interview.abuse.emotional.stalkingPublic"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-stalking-public">{{ interview.respondent.name.given }} has been following {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} in public</label>
+							<small class="hint">Includes by vehicle or on foot</small>
+						</li>
+<!-- remaining outside a person’s residence or place of work -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-loitering-home"
+							       ng-model="interview.abuse.emotional.loiteringHome"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-loitering-home">{{ interview.respondent.name.given }} has been hanging around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
+						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-loitering-work"
+							       ng-model="interview.abuse.emotional.loiteringWork"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-loitering-work">{{ interview.respondent.name.given }} has been hanging around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} workplace</label>
+						</li>
+<!-- repeatedly contacting a person by telephone, SMS message, email or social networking site without the person’s consent -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-stalking-contact"
+							       ng-model="interview.abuse.emotional.stalkingContact"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-stalking-contact">{{ interview.respondent.name.given }} keeps contacting {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} without {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} consent</label>
+							<small class="hint">Contact can be by telephone, SMS message, email, social networking or other.</small>
+						</li>
+<!-- repeated derogatory taunts, including racial taunts -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-taunt"
+							       ng-model="interview.abuse.emotional.taunt"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-taunt">{{ interview.respondent.name.given }} has repeatedly taunted {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} with derogatory or racial taunts</label>
+						</li>
+<!-- threatening to disclose a person’s sexual orientation to the person’s friends or family without the person’s consent -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-disclose-sexual-orientation"
+							       ng-model="interview.abuse.emotional.discloseSexualOrientation"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-disclose-sexual-orientation">{{ interview.respondent.name.given }} has been threatening to tell {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family or friends about {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} sexual orientaion</label>
+						</li>
+<!-- threatening to withhold a person’s medication -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-withhold-medication"
+							       ng-model="interview.abuse.emotional.withholdMedication"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-withhold-medication">{{ interview.respondent.name.given }} has been threatening to withhold {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} medication</label>
+						</li>
+<!-- preventing a person from making or keeping connections with the person’s family, friends or culture, including cultural or spiritual ceremonies or practices, or preventing the person from expressing the person’s cultural identity -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-prevent-family"
+							       ng-model="interview.abuse.emotional.preventFamily"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-prevent-family">{{ interview.respondent.name.given }} prevents {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} family</label>
+						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-prevent-friends"
+							       ng-model="interview.abuse.emotional.preventFriends"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-prevent-friends">{{ interview.respondent.name.given }} prevents {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from seeing {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} friends</label>
+						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-emotional-prevent-culture"
+							       ng-model="interview.abuse.emotional.preventCulture"
+							       ng-value="true">
+							<label for="interview-abuse-emotional-prevent-culture">{{ interview.respondent.name.given }} prevents {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from expressing {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} cultural identity</label>
+							<small class="hint">Example: stopping {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} from participating in cultural or spiritual ceremonies or practices</small>
+						</li>
 					</ul>
 				</fieldset>
 			</li>
@@ -734,7 +814,7 @@
 				<li ng-if="interview.applicantIsAggrieved">You are also the <dfn>applicant</dfn> (the person applying for a protection order)</li>
 				<li>{{ interview.respondent.name.given }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} needs protection from).</li>
 			</ul>
-			<p ng-if="! interview.applicantIsAggrieved">You are the <dfn>applicant</dfn> (the person applying for a protection order)</p>
+			<p ng-if="! interview.applicantIsAggrieved">You are the <dfn>applicant</dfn> (the person applying for a protection order).</p>
 		</div>
 
 		<ol class="questions">
@@ -1036,8 +1116,7 @@
 				<dd>The court process to get a protection order typically takes 4 weeks (sometimes longer).</dd>
 
 				<dt ng-if="interview.temporaryProtection.requested">Temporary Protection Order</dt>
-				<!-- TODO GENDER PRONOUNS. This covers Kim until his/her court appearance. -->
-				<dd ng-if="interview.temporaryProtection.requested">The court can grant {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} until {{ interview.applicantIsAggrieved ? 'your' : 'their' }} court appearance.</dd>
+				<dd ng-if="interview.temporaryProtection.requested">The court can grant {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
 			</dl>
 		</div>
 

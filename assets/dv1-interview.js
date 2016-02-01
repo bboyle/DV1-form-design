@@ -4,7 +4,8 @@
 // app
 angular.module( 'dv1' )
 // controller for interview
-.controller( 'InterviewController', [ 'application', function( application ) {
+.controller( 'InterviewController', [ 'application', '$element',
+ function(                             application ,  $element ) {
 
 	let vm = this;
 
@@ -60,6 +61,7 @@ angular.module( 'dv1' )
 	vm.goto = function( dest ) {
 		vm.page = dest;
 		vm.pageUnlocked = Math.max( vm.pageUnlocked, dest );
+		$element.scrollTop( 0 );
 	};
 
 	// move through interview
