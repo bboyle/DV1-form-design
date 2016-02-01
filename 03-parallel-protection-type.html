@@ -428,21 +428,37 @@
 					<ul class="choices">
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Intimate personal" id="interview-relationship-intimate-personal">
-							<label for="interview-relationship-intimate-personal">Intimate personal</label>
+							<label for="interview-relationship-intimate-personal">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} have (or had) an intimate personal relationship</label>
 							<small class="hint">Example: were married or in a registered relationship, had a child together, dating, were a couple.</small>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Family" id="interview-relationship-family">
-							<label for="interview-relationship-family">Family</label>
+							<label for="interview-relationship-family">{{ interview.respondent.name.given }} is related to {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
 							<small class="hint">Includes {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} immediate and extended family, in-laws, step- and foster families.</small>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Informal care" id="interview-relationship-informal-care">
-							<label for="interview-relationship-informal-care">Informal care</label>
+							<label for="interview-relationship-informal-care">{{ interview.respondent.name.given }} helps to care for {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
+							<small class="hint">Examples of <dfn>informal care</dfn>: dressing or other personal grooming of a person; preparing a person’s meals or helping a person with eating meals; shopping for a person’s groceries; or telephoning a specialist to make a medical appointment for a person.</small>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Commercial care" id="interview-relationship-commercial-care">
+							<label for="interview-relationship-commercial-care">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} paid carer</label>
+							<small class="hint">Examples of <dfn>commercial care</dfn>: a nurse or paid carer.</small>
 						</li>
 					</ul>
 				</fieldset>
 			</li>
+
+			<li ng-show="interview.aggrieved.relationship.category === 'Commercial care'">
+				<div class="status warn">
+					<h2>You need <samp>(TODO different legal resource)</samp></h2>
+					<p>A domestic violence provention order only applies to domestic relationships. The magistrate cannot give you a protection order naming a carer who is paid.</p>
+					<p>You should seek legal advice.</p>
+					<p>TODO: this needs to be more helpful.</p>
+				</div>
+			</li>
+
 			<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal'">
 				<fieldset>
 					<legend>
@@ -451,35 +467,48 @@
 					<ul class="choices">
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Married" id="interview-relationship-married">
-							<label for="interview-relationship-married">Married</label>
+							<label for="interview-relationship-married">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are married</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Spouse" id="interview-relationship-former-spouse">
-							<label for="interview-relationship-former-spouse">Former Spouse</label>
+							<label for="interview-relationship-former-spouse">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were married</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="De Facto" id="interview-relationship-de-facto">
-							<label for="interview-relationship-de-facto">De Facto</label>
+							<label for="interview-relationship-de-facto">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are in a <dfn>de facto</dfn> relationship</label>
+							<small class="hint">TODO legal definition of a de facto relationship</small>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Registered Relationship" id="interview-relationship-registered-relationship">
-							<label for="interview-relationship-registered-relationship">Registered Relationship</label>
+							<label for="interview-relationship-registered-relationship">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are in a registered relationship</label>
 						</li>
 						<li>
-							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent/Former Parent of a Child" id="interview-relationship-parent-former-parent-of-a-child">
-							<label for="interview-relationship-parent-former-parent-of-a-child">Parent/Former Parent of a Child</label>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Previous Registered Relationship" id="interview-relationship-registered-relationship-past">
+							<label for="interview-relationship-registered-relationship-past">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were in a registered relationship</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent of a Child" id="interview-relationship-parent-of-a-child">
+							<label for="interview-relationship-parent-of-a-child">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are parents of the same child</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Parent of a Child" id="interview-relationship-former-parent-of-a-child">
+							<label for="interview-relationship-former-parent-of-a-child">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were parents of the same child</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Engaged" id="interview-relationship-engaged">
-							<label for="interview-relationship-engaged">Engaged</label>
+							<label for="interview-relationship-engaged">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are engaged</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Were Engaged" id="interview-relationship-were-engaged">
-							<label for="interview-relationship-were-engaged">Were Engaged</label>
+							<label for="interview-relationship-were-engaged">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were engaged</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Couple" id="interview-relationship-couple">
-							<label for="interview-relationship-couple">Couple</label>
+							<label for="interview-relationship-couple">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are a couple</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Past Couple" id="interview-relationship-couple-past">
+							<label for="interview-relationship-couple-past">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were a couple</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -492,38 +521,46 @@
 					<ul class="choices">
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent" id="interview-relationship-parent">
-							<label for="interview-relationship-parent">Parent</label>
+							<label for="interview-relationship-parent">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} parent</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Grandparent" id="interview-relationship-grandparent">
+							<label for="interview-relationship-grandparent">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} grandparent</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Sibling" id="interview-relationship-sibling">
-							<label for="interview-relationship-sibling">Brother or sister</label>
+							<label for="interview-relationship-sibling">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} sibling</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Child" id="interview-relationship-child">
+							<label for="interview-relationship-child">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} child</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Aunt" id="interview-relationship-aunt">
-							<label for="interview-relationship-aunt">Aunt</label>
+							<label for="interview-relationship-aunt">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} aunt</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Uncle" id="interview-relationship-uncle">
-							<label for="interview-relationship-uncle">Uncle</label>
+							<label for="interview-relationship-uncle">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} uncle</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Cousin" id="interview-relationship-cousin">
-							<label for="interview-relationship-cousin">Cousin</label>
+							<label for="interview-relationship-cousin">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} cousin</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Step child" id="interview-relationship-stepchild">
-							<label for="interview-relationship-stepchild">Step child</label>
+							<label for="interview-relationship-stepchild">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} step-child</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Other family" id="interview-relationship-family-other">
-							<label for="interview-relationship-family-other">Other</label>
+							<label for="interview-relationship-family-other">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are related in a different way</label>
 						</li>
 					</ul>
 				</fieldset>
 			</li>
-			<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; interview.aggrieved.relationship.type === 'Couple'">
+			<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; ( interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Past Couple' )">
 				<label for="interview-relationship-couple">
-					<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} and {{ interview.respondent.name.given }} are a couple</span>
+					<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} and {{ interview.respondent.name.given }} {{ interview.aggrieved.relationship.type === 'Couple' ? 'are' : 'were' }} a couple</span>
 					<small class="hint">Include the level of dependency on each other whether financial or otherwise; length of time of the relationship; frequency of contact and degree of intimacy, if any.</small>
 				</label>
 				<textarea cols="40" rows="2"
@@ -812,7 +849,7 @@
 			<ul>
 				<li>{{ interview.applicantIsAggrieved ? 'You are' : interview.aggrieved.name.given + ' is' }} the <dfn>aggrieved</dfn> (the person needing protection).</li>
 				<li ng-if="interview.applicantIsAggrieved">You are also the <dfn>applicant</dfn> (the person applying for a protection order)</li>
-				<li>{{ interview.respondent.name.given }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} needs protection from).</li>
+				<li>{{ interview.respondent.name.given }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you need' : interview.aggrieved.name.given + ' needs' }} protection from).</li>
 			</ul>
 			<p ng-if="! interview.applicantIsAggrieved">You are the <dfn>applicant</dfn> (the person applying for a protection order).</p>
 		</div>
