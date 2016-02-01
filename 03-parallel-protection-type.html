@@ -100,6 +100,7 @@
 			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Aggrieved details</button></li>
 			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Respondent details</button></li>
 			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RELATIONSHIP" ng-click="interview.goto( interview.PAGE.RELATIONSHIP )">Relationship</button></li>
+			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.ABUSE" ng-click="interview.goto( interview.PAGE.ABUSE )">History of abuse</button></li>
 			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto( interview.PAGE.CONDITIONS )">Conditions</button></li>
 			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto( interview.PAGE.GROUNDS )">Grounds</button></li>
 		</ol>
@@ -339,6 +340,16 @@
 					</ol>
 				</fieldset>
 			</li>
+			<li>
+				<label for="interview-aggrieved-gender">
+					<span class="label">Gender</span>
+				</label>
+				<select ng-model="interview.aggrieved.gender" id="interview-aggrieved-gender" ng-change="interview.saveAggrieved()">
+					<option value="F">Female</option>
+					<option value="M">Male</option>
+					<option value="G">Other</option>
+				</select>
+			</li>
 
 			<li class="footer">
 				<ul class="actions">
@@ -386,6 +397,16 @@
 					</ol>
 				</fieldset>
 			</li>
+			<li>
+				<label for="interview-respondent-gender">
+					<span class="label">Gender</span>
+				</label>
+				<select ng-model="interview.respondent.gender" id="interview-respondent-gender" ng-change="interview.saveRespondent()">
+					<option value="F">Female</option>
+					<option value="M">Male</option>
+					<option value="G">Other</option>
+				</select>
+			</li>
 
 			<li class="footer">
 				<ul class="actions">
@@ -397,7 +418,7 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.RELATIONSHIP" ng-submit="interview.goto( interview.PAGE.CONDITIONS )">
+	<form class="form" ng-show="interview.page === interview.PAGE.RELATIONSHIP" ng-submit="interview.goto( interview.PAGE.ABUSE )">
 		<ol class="questions">
 			<li>
 				<fieldset>
@@ -529,6 +550,139 @@
 				       ng-model="interview.aggrieved.relationship.informalCare"
 				></textarea>
 			</li>
+
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="submit">Continue</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+
+
+
+	<form class="form" ng-show="interview.page === interview.PAGE.ABUSE" ng-submit="interview.goto( interview.PAGE.CONDITIONS )">
+		<div class="status info">
+			<h2>What has {{ interview.respondent.name.given }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}?</h2>
+			<p>
+				Domestic and family violence is when one
+				person in a relationship uses violence or
+				abuse to maintain power and control over
+				the other person. Abuse is not always
+				physical — it can be emotional, verbal,
+				sexual, financial or other controlling
+				behaviours that cause the person being
+				abused to live in fear.
+			</p>
+		</div>
+
+		<ol class="questions">
+			<li class="section">
+				<fieldset>
+					<legend>
+						<span class="h3">Economic abuse</span>
+					</legend>
+					<ul class="choices">
+<!-- coercing a person to relinquish control over assets and income -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-control-assets"
+							       ng-model="interview.abuse.economic.relinquishAssets"
+							       ng-value="true">
+							<label for="interview-abuse-economic-control-assets">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} give up {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} assets and income</label>
+						</li>
+<!-- removing or keeping a person’s property without the person’s consent, or threatening to do so -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-theft-threatened"
+							       ng-model="interview.abuse.economic.theftThreatened"
+							       ng-value="true">
+							<label for="interview-abuse-economic-theft-threatened">{{ interview.respondent.name.given }} threatened to steal {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} property</label>
+						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-theft"
+							       ng-model="interview.abuse.economic.theft"
+							       ng-value="true">
+							<label for="interview-abuse-economic-theft">{{ interview.respondent.name.given }} stole {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} property</label>
+						</li>
+<!-- disposing of property owned by a person, or owned jointly with a person, against the person’s wishes and without lawful excuse -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-destroy"
+							       ng-model="interview.abuse.economic.destroyProperty"
+							       ng-value="true">
+							<label for="interview-abuse-economic-destroy">{{ interview.respondent.name.given }} destroyed {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} property</label>
+						</li>
+<!-- without lawful excuse, preventing a person from having access to joint financial assets for the purposes of meeting normal household expenses -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-prevent-joint-access"
+							       ng-model="interview.abuse.economic.preventJointAccess"
+							       ng-value="true">
+							<label for="interview-abuse-economic-prevent-joint-access">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} using {{ interview.applicantIsAggrieved ? 'our' : 'their' }} joint financial assets for household expenses</label>
+						</li>
+<!-- preventing a person from seeking or keeping employment -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-prevent-employment"
+							       ng-model="interview.abuse.economic.preventEmployment"
+							       ng-value="true">
+							<label for="interview-abuse-economic-prevent-employment">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from getting a job</label>
+						</li>
+<!-- coercing a person to claim social security payments -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-social-security-payments"
+							       ng-model="interview.abuse.economic.socialSecurityPayments"
+							       ng-value="true">
+							<label for="interview-abuse-economic-social-security-payments">{{ interview.respondent.name.given }} tried to make {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} claim CentreLink payments</label>
+						</li>
+<!-- coercing a person to sign a power of attorney that would enable the person’s finances to be managed by another person -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-power-attorney"
+							       ng-model="interview.abuse.economic.powerAttorney"
+							       ng-value="true">
+							<label for="interview-abuse-economic-power-attorney">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a <cite>Power of Attorney</cite> statement that took away {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} control over money</label>
+						</li>
+<!-- coercing a person to sign a contract for the purchase of goods or services -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-contract-purchase"
+							       ng-model="interview.abuse.economic.contractPurchase"
+							       ng-value="true">
+							<label for="interview-abuse-economic-contract-purchase">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a contract to buy things {{ interview.respondent.pronoun.they }} wanted</label>
+						</li>
+<!-- coercing a person to sign a contract for the provision of finance, a loan or credit -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-contract-loan"
+							       ng-model="interview.abuse.economic.contractLoan"
+							       ng-value="true">
+							<label for="interview-abuse-economic-contract-loan">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a contract to borrow money for {{ interview.respondent.pronoun.them }}</label>
+							<small class="hint">Examples: taking out a loan, applying for a credit card</small>
+						</li>
+<!-- coercing a person to sign a contract of guarantee -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-contract-guarantee"
+							       ng-model="interview.abuse.economic.contractGuarantee"
+							       ng-value="true">
+							<label for="interview-abuse-economic-contract-guarantee">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a contract of guarantee</label>
+						</li>
+<!-- coercing a person to sign any legal document for the establishment or operation of a business -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-economic-legal-business"
+							       ng-model="interview.abuse.economic.legalBusiness"
+							       ng-value="true">
+							<label for="interview-abuse-economic-legal-business">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a legal document for {{ interview.respondent.pronoun.their }} business</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
 
 			<li class="footer">
 				<ul class="actions">
