@@ -7,7 +7,7 @@ angular.module( 'dv1', [] )
 
 
 // common data service
-.factory( 'application', function() {
+.factory( 'application', [function() {
 	let data = {};
 
 	this.saveAggrieved = function( aggrievedData, isApplicant ) {
@@ -33,12 +33,12 @@ angular.module( 'dv1', [] )
 	};
 
 	return this;
-})
+}])
 
 
 
 // controller for interview
-.controller( 'InterviewController', function( application ) {
+.controller( 'InterviewController', [ 'application', function( application ) {
 
 	let vm = this;
 
@@ -104,12 +104,12 @@ angular.module( 'dv1', [] )
 	vm.goto( 1 );
 
 	return vm;
-})
+}])
 
 
 
 // controller for gazetted form UI
-.controller( 'DV1FormController', function( application ) {
+.controller( 'DV1FormController', [ 'application', function( application ) {
 	let gazetteData = {
 		aggrieved: {
 			name: {
@@ -173,4 +173,4 @@ angular.module( 'dv1', [] )
 	};
 
 	return vm;
-});
+}]);

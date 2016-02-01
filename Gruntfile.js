@@ -22,7 +22,7 @@ module.exports = function( grunt ) {
 
 		// code qa
 		eslint: {
-			app: { src: 'assets/dv1.js' }
+			app: { src: 'assets/*.js' }
 		},
 
 		// watch
@@ -31,7 +31,7 @@ module.exports = function( grunt ) {
 				spawn: false
 			},
 			lint: {
-				files: 'assets/dv1.js',
+				files: 'assets/*.js',
 				tasks: [ 'eslint:app' ]
 			}
 		}
