@@ -11,7 +11,7 @@ angular.module( 'dv1' )
 		return {
 			code: domElement.lang,
 			dir: domElement.dir || 'ltr',
-			title: angular.element( 'h3', domElement ).text()
+			title: angular.element( 'h2', domElement ).text()
 		};
 	});
 

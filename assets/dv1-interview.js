@@ -13,8 +13,9 @@ angular.module( 'dv1' )
 		APPLICANT: 2,
 		AGGRIEVED: 3,
 		RESPONDENT: 4,
-		CONDITIONS: 5,
-		GROUNDS: 6
+		RELATIONSHIP: 5,
+		CONDITIONS: 6,
+		GROUNDS: 7
 	};
 	vm.pageUnlocked = 0;
 
