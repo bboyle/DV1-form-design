@@ -580,6 +580,36 @@
 			<li class="section">
 				<fieldset>
 					<legend>
+						<span class="h3">Physical abuse</span>
+					</legend>
+					<ul class="choices">
+					</ul>
+				</fieldset>
+			</li>
+
+			<li class="section">
+				<fieldset>
+					<legend>
+						<span class="h3">Sexual abuse</span>
+					</legend>
+					<ul class="choices">
+					</ul>
+				</fieldset>
+			</li>
+
+			<li class="section">
+				<fieldset>
+					<legend>
+						<span class="h3">Emotional abuse</span>
+					</legend>
+					<ul class="choices">
+					</ul>
+				</fieldset>
+			</li>
+
+			<li class="section">
+				<fieldset>
+					<legend>
 						<span class="h3">Economic abuse</span>
 					</legend>
 					<ul class="choices">
@@ -683,7 +713,6 @@
 				</fieldset>
 			</li>
 
-
 			<li class="footer">
 				<ul class="actions">
 					<li><strong><button type="submit">Continue</button></strong></li>
@@ -697,6 +726,9 @@
 	<form class="form" ng-show="interview.page === interview.PAGE.CONDITIONS" ng-submit="interview.goto( interview.PAGE.GROUNDS )">
 		<div class="status info">
 			<h2>{{ interview.applicantIsAggrieved ? 'You need' : interview.aggrieved.name.given + ' needs' }} protection from {{ interview.respondent.name.given }}</h2>
+
+			<blockquote>“The way {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.given + ' is' }} being treated is wrong — it’s abuse. People feel angry but everyone has a choice in how they respond to the situation. Anger is not an excuse for domestic violence”</blockquote>
+
 			<ul>
 				<li>{{ interview.applicantIsAggrieved ? 'You are' : interview.aggrieved.name.given + ' is' }} the <dfn>aggrieved</dfn> (the person needing protection).</li>
 				<li ng-if="interview.applicantIsAggrieved">You are also the <dfn>applicant</dfn> (the person applying for a protection order)</li>
@@ -949,7 +981,7 @@
 							       id="interview-conditions-respondent-change-behaviour"
 							       ng-model="interview.conditions.changeBehaviour"
 							       ng-value="true">
-							<label for="interview-conditions-respondent-change-behaviour">I want {{ interview.respondent.name.given }} to change their behaviour</label>
+							<label for="interview-conditions-respondent-change-behaviour">I want {{ interview.respondent.name.given }} to change {{ interview.respondent.pronoun.their }} behaviour</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -970,7 +1002,7 @@
 							       ng-value="true"
 							       ng-click="updateTemporaryProtection()"
 							       required>
-							<label for="interview-temporary-protection-true">I need protection as soon as possible</label>
+							<label for="interview-temporary-protection-true">{{ interview.applicantIsAggrieved ? 'I need' : interview.aggrieved.name.given  + ' needs' }} protection as soon as possible</label>
 						</li>
 						<li>
 							<input type="radio"
@@ -980,7 +1012,7 @@
 							       ng-value="false"
 							       ng-click="updateTemporaryProtection()"
 							       required>
-							<label for="interview-temporary-protection-false">I can wait 4 (or more) weeks</label>
+							<label for="interview-temporary-protection-false">{{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} can wait 4 (or more) weeks</label>
 						</li>
 					</ul>
 				</fieldset>
