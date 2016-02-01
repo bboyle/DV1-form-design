@@ -404,94 +404,103 @@
 					<legend>
 						<span class="label">What is {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} relationship to {{ interview.respondent.name.given }}?</span>
 					</legend>
-					<fieldset>
-						<legend>
-							<span class="label">Intimate personal relationship:</span>
-						</legend>
-						<ul class="choices">
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Married" id="interview-relationship-married">
-								<label for="interview-relationship-married">Married</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Spouse" id="interview-relationship-former-spouse">
-								<label for="interview-relationship-former-spouse">Former Spouse</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="De Facto" id="interview-relationship-de-facto">
-								<label for="interview-relationship-de-facto">De Facto</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Registered Relationship" id="interview-relationship-registered-relationship">
-								<label for="interview-relationship-registered-relationship">Registered Relationship</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent/Former Parent of a Child" id="interview-relationship-parent-former-parent-of-a-child">
-								<label for="interview-relationship-parent-former-parent-of-a-child">Parent/Former Parent of a Child</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Engaged" id="interview-relationship-engaged">
-								<label for="interview-relationship-engaged">Engaged</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Were Engaged" id="interview-relationship-were-engaged">
-								<label for="interview-relationship-were-engaged">Were Engaged</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Couple" id="interview-relationship-couple">
-								<label for="interview-relationship-couple">Couple</label>
-							</li>
-						</ul>
-					</fieldset>
-					<fieldset>
-						<legend>
-							<span class="label">Family relationship:</span>
-						</legend>
-						<ul class="choices">
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent" id="interview-relationship-parent">
-								<label for="interview-relationship-parent">Parent</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Sibling" id="interview-relationship-sibling">
-								<label for="interview-relationship-sibling">Brother or sister</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Aunt" id="interview-relationship-aunt">
-								<label for="interview-relationship-aunt">Aunt</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Uncle" id="interview-relationship-uncle">
-								<label for="interview-relationship-uncle">Uncle</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Cousin" id="interview-relationship-cousin">
-								<label for="interview-relationship-cousin">Cousin</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Step child" id="interview-relationship-stepchild">
-								<label for="interview-relationship-stepchild">Step child</label>
-							</li>
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Other family" id="interview-relationship-family-other">
-								<label for="interview-relationship-family-other">Other</label>
-							</li>
-						</ul>
-					</fieldset>
-					<fieldset>
-						<legend>
-							<span class="label">Informal care relationship:</span>
-						</legend>
-						<ul class="choices">
-							<li>
-								<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Informal care" id="interview-relationship-informal-care">
-								<label for="interview-relationship-informal-care">Informal care</label>
-							</li>
-						</ul>
-					</fieldset>
+					<ul class="choices">
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Intimate personal" id="interview-relationship-intimate-personal">
+							<label for="interview-relationship-intimate-personal">Intimate personal</label>
+							<small class="hint">Example: were married or in a registered relationship, had a child together, dating, were a couple.</small>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Family" id="interview-relationship-family">
+							<label for="interview-relationship-family">Family</label>
+							<small class="hint">Includes {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} immediate and extended family, in-laws, step- and foster families.</small>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Informal care" id="interview-relationship-informal-care">
+							<label for="interview-relationship-informal-care">Informal care</label>
+						</li>
+					</ul>
 				</fieldset>
 			</li>
-			<li ng-show="interview.aggrieved.relationship.type === 'Couple'">
+			<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal'">
+				<fieldset>
+					<legend>
+						<span class="label">Intimate personal relationship:</span>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Married" id="interview-relationship-married">
+							<label for="interview-relationship-married">Married</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Spouse" id="interview-relationship-former-spouse">
+							<label for="interview-relationship-former-spouse">Former Spouse</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="De Facto" id="interview-relationship-de-facto">
+							<label for="interview-relationship-de-facto">De Facto</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Registered Relationship" id="interview-relationship-registered-relationship">
+							<label for="interview-relationship-registered-relationship">Registered Relationship</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent/Former Parent of a Child" id="interview-relationship-parent-former-parent-of-a-child">
+							<label for="interview-relationship-parent-former-parent-of-a-child">Parent/Former Parent of a Child</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Engaged" id="interview-relationship-engaged">
+							<label for="interview-relationship-engaged">Engaged</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Were Engaged" id="interview-relationship-were-engaged">
+							<label for="interview-relationship-were-engaged">Were Engaged</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Couple" id="interview-relationship-couple">
+							<label for="interview-relationship-couple">Couple</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li ng-show="interview.aggrieved.relationship.category === 'Family'">
+				<fieldset>
+					<legend>
+						<span class="label">Family relationship:</span>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent" id="interview-relationship-parent">
+							<label for="interview-relationship-parent">Parent</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Sibling" id="interview-relationship-sibling">
+							<label for="interview-relationship-sibling">Brother or sister</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Aunt" id="interview-relationship-aunt">
+							<label for="interview-relationship-aunt">Aunt</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Uncle" id="interview-relationship-uncle">
+							<label for="interview-relationship-uncle">Uncle</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Cousin" id="interview-relationship-cousin">
+							<label for="interview-relationship-cousin">Cousin</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Step child" id="interview-relationship-stepchild">
+							<label for="interview-relationship-stepchild">Step child</label>
+						</li>
+						<li>
+							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Other family" id="interview-relationship-family-other">
+							<label for="interview-relationship-family-other">Other</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; interview.aggrieved.relationship.type === 'Couple'">
 				<label for="interview-relationship-couple">
 					<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} and {{ interview.respondent.name.given }} are a couple</span>
 					<small class="hint">Include the level of dependency on each other whether financial or otherwise; length of time of the relationship; frequency of contact and degree of intimacy, if any.</small>
@@ -501,7 +510,7 @@
 				       ng-model="interview.aggrieved.relationship.couple"
 				></textarea>
 			</li>
-			<li ng-show="interview.aggrieved.relationship.type === 'Other family'">
+			<li ng-show="interview.aggrieved.relationship.category === 'Family' &amp;&amp; interview.aggrieved.relationship.type === 'Other family'">
 				<label for="interview-relationship-family-other-specify">
 					<span class="label" ng-if="interview.applicantIsAggrieved">How are you related to {{ interview.respondent.name.given }}?</span>
 					<span class="label" ng-if="! interview.applicantIsAggrieved">Describe the family relationship between {{ interview.aggrieved.name.given }} and {{ interview.respondent.name.given }}</span>
@@ -511,7 +520,7 @@
 				       ng-model="interview.aggrieved.relationship.other"
 				></textarea>
 			</li>
-			<li ng-show="interview.aggrieved.relationship.type === 'Informal care'">
+			<li ng-show="interview.aggrieved.relationship.category === 'Informal care'">
 				<label for="interview-relationship-family-informal-care-specify">
 					<span class="label">Describe the informal care relationship {{ interview.applicantIsAggrieved ? 'you have with' : 'between ' + interview.aggrieved.name.given + ' and' }} {{ interview.respondent.name.given }}</span>
 				</label>
