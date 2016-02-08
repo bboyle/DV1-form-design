@@ -68,4 +68,15 @@ angular.module( 'dv1' )
 	};
 
 	return vm;
+}])
+
+
+
+.directive( 'dv1Forms', [function() {
+	return {
+		restrict: 'C',
+		scope: true,
+		controller: 'DV1FormController as dv1',
+		templateUrl: 'dv1-forms.html'
+	};
 }]);

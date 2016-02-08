@@ -1,0 +1,101 @@
+<nav>
+	<button type="button" ng-class="{active: dv1.view.gazette}"   ng-click="dv1.showGazettedForm()">Gazetted form</button>
+	<button type="button" ng-class="{active: ! dv1.view.gazette}" ng-click="dv1.showNames()">Real names</button>
+</nav>
+
+<header>
+	<h1>FORM FV1</h1>
+	<p><cite>Domestic and Family Violence Protection Act 2012 (s.32)</cite></p>
+
+	<h1>Application for a Protection Order</h1>
+	<p>Please note: A copy of this application will be given to the
+		<var ng-if="dv1.view.gazette" class="respondent">respondent</var>
+		<var ng-if="! dv1.view.gazette" class="respondent">{{ dv1.respondent.name.given }}</var>
+	</p>
+</header>
+
+<section>
+	<h2>1. <var class="aggrieved">{{ dv1.aggrieved.name.given }}</var>'s details</h2>
+</section>
+
+<section>
+	<h2>2. <var class="respondent">{{ dv1.respondent.name.given }}</var>'s details</h2>
+</section>
+
+<section ng-hide="dv1.aggrievedIsApplicant">
+	<h2 ng-if="dv1.view.gazette">3. <var class="applicant">Applicant's</var> details</h2>
+	<h2 ng-if="! dv1.view.gazette">3. <var class="applicant">Your</var> details</h2>
+
+	<h3 ng-if="dv1.view.gazette">PART A – A person being authorised by <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var></h3>
+	<h3 ng-if="! dv1.view.gazette">PART A – I am authorised by <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var></h3>
+
+	<h3 ng-if="dv1.view.gazette">PART B – A person acting under another Act for <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var></h3>
+	<h3 ng-if="! dv1.view.gazette">PART B – I am acting under another Act for <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var></h3>
+
+	<h3>PART C – A Police Officer</h3>
+
+	<h3 ng-if="dv1.view.gazette">PART D – A party to a child protection proceeding</h3>
+	<h3 ng-if="! dv1.view.gazette">PART D – I am party to a child protection proceeding</h3>
+</section>
+
+<section ng-show="dv1.aggrievedIsApplicant">
+	<h2 ng-if="dv1.view.gazette">3. <var class="applicant">Applicant's</var> details</h2>
+	<h2 ng-if="! dv1.view.gazette">3. <var class="applicant">Your</var> details</h2>
+
+	<p>Your details have been entered in Section 1. You do not need to repeat them here.</p>
+</section>
+
+<section>
+	<h2>Temporary Protection Order</h2>
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you wish the court to make a temporary protection order?</span>
+					<abbr title="(required)" class="required">*</abbr>
+					<small class="hint">If you request a temporary protection order before the respondent has been served with a copy of the application, you will have to show the court that there are reasons why it is necessary or desirable for you or a named person to be protected by a temporary protection order before the respondent is served with a copy of the application.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="dv1-temporary-protection"
+						       id="dv1-temporary-protection-false"
+						       ng-model="dv1.temporaryProtection.requested"
+						       ng-value="false"
+						       required>
+						<label for="dv1-temporary-protection-false">No</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="dv1-temporary-protection"
+						       id="dv1-temporary-protection-true"
+						       ng-model="dv1.temporaryProtection.requested"
+						       ng-value="true"
+						       required>
+						<label for="dv1-temporary-protection-true">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="dv1.temporaryProtection.requested">
+			<label for="dv1-temporary-protection-reasons">
+				<span class="label">Please state reasons below</span>
+				<abbr title="(required)" class="required">*</abbr>
+					<small class="hint relevance">(If you chose ‘Yes’ above)</small>
+			</label>
+			<textarea ng-model="dv1.temporaryProtection.reasons" rows="10" cols="40" required id="dv1-temporary-protection-reasons"></textarea>
+		</li>
+	</ol>
+</section>
+
+<section>
+	<h2>Conditions sought in the order</h2>
+
+	<p>A court making a domestic violence order must impose a condition that <var class="respondent">{{ dv1.respondent.name.the }}</var> —<br>
+	<samp>Be of good behaviour towards <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var> and not commit domestic violence against <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var>.</samp></p>
+	<p ng-if="dv1.view.gazette || dv1.aggrieved.associates">If the order includes a named person who is an adult —<br>
+	<samp ng-if="dv1.view.gazette || dv1.aggrieved.associates">Be of good behaviour towards the named person and not commit associated domestic violence against the named person.</samp></p>
+	<p ng-if="dv1.view.gazette || dv1.aggrieved.children">If the order includes a named person who is a child —<br>
+	<samp ng-if="dv1.view.gazette || dv1.aggrieved.children">Be of good behaviour towards the child and not commit associated domestic violence against the child and not expose the child to domestic violence.</samp></p>
+	<p>A court may also impose any other condition that the court considers necessary in the circumstances and desirable in the interests of <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var>, any named person or <var class="respondent">{{ dv1.respondent.name.the }}</var>.</p>
+</section>
