@@ -620,6 +620,21 @@
 						<span class="h3">Physical abuse</span>
 					</legend>
 					<ul class="choices">
+<!-- causing personal injury to a person or threatening to do so -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-physical-injure"
+							       ng-model="interview.abuse.physical.injure"
+							       ng-value="true">
+							<label for="interview-abuse-physical-injure">{{ interview.respondent.name.given }} injured {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
+						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-physical-threaten"
+							       ng-model="interview.abuse.physical.threaten"
+							       ng-value="true">
+							<label for="interview-abuse-physical-threaten">{{ interview.respondent.name.given }} threated to hurt {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} physically</label>
+						</li>
 					</ul>
 				</fieldset>
 			</li>
@@ -630,6 +645,21 @@
 						<span class="h3">Sexual abuse</span>
 					</legend>
 					<ul class="choices">
+<!-- coercing a person to engage in sexual activity or attempting to do so -->
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-sexual-coerce"
+							       ng-model="interview.abuse.sexual.coerce"
+							       ng-value="true">
+							<label for="interview-abuse-sexual-coerce">{{ interview.respondent.name.given }} forced {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} to have sex</label>
+						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-abuse-sexual-coerce-attempt"
+							       ng-model="interview.abuse.sexual.coerceAttempt"
+							       ng-value="true">
+							<label for="interview-abuse-sexual-coerce-attempt">{{ interview.respondent.name.given }} tried to force {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} to have sex</label>
+						</li>
 					</ul>
 				</fieldset>
 			</li>
