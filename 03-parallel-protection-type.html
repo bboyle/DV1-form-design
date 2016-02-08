@@ -514,7 +514,7 @@
 
 
 
-	<form class="form" class="formRelationship" ng-show="interview.page === interview.PAGE.RELATIONSHIP" ng-submit="interview.goto( interview.PAGE.ABUSE, $event )">
+	<form class="form" name="formRelationship" ng-show="interview.page === interview.PAGE.RELATIONSHIP" ng-submit="interview.goto( interview.PAGE.ABUSE, $event )">
 		<ol class="questions">
 			<li>
 				<fieldset>
@@ -694,7 +694,7 @@
 
 
 
-	<form class="form" class="formAbuse" ng-show="interview.page === interview.PAGE.ABUSE" ng-submit="interview.goto( interview.PAGE.CONDITIONS, $event )">
+	<form class="form" name="formAbuse" ng-show="interview.page === interview.PAGE.ABUSE" ng-submit="interview.goto( interview.PAGE.CONDITIONS, $event )">
 		<div class="status info">
 			<h2>What has {{ interview.respondent.name.given }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}?</h2>
 			<p>
@@ -966,7 +966,7 @@
 
 
 
-	<form class="form" class="formConditions" ng-show="interview.page === interview.PAGE.CONDITIONS" ng-submit="interview.goto( interview.PAGE.GROUNDS, $event )">
+	<form class="form" name="formConditions" ng-show="interview.page === interview.PAGE.CONDITIONS" ng-submit="interview.goto( interview.PAGE.GROUNDS, $event )">
 		<div class="status info">
 			<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }} protection from {{ interview.respondent.name.given }}</h2>
 
@@ -1270,7 +1270,7 @@
 	</form>
 
 
-	<form class="form" class="formGrounds" ng-show="interview.page === interview.PAGE.GROUNDS" ng-submit="interview.goto( interview.PAGE.COURT, $event )">
+	<form class="form" name="formGrounds" ng-show="interview.page === interview.PAGE.GROUNDS" ng-submit="interview.goto( interview.PAGE.COURT, $event )">
 		<div class="status info">
 			<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }}</h2>
 			<dl>
@@ -1564,7 +1564,7 @@ must attach a copy to your domestic violence order application.
 
 
 
-	<form class="form" class="formCourt" ng-show="interview.page === interview.PAGE.COURT">
+	<form class="form" name="formCourt" ng-show="interview.page === interview.PAGE.COURT">
 		<div class="status info">
 			<h2>Serving the application</h2>
 			<p>{{ interview.respondent.name.given }} must be served with a copy of your application form.
