@@ -4,8 +4,8 @@
 // app
 angular.module( 'dv1' )
 // controller for interview
-.controller( 'InterviewController', [ 'application', '$element',
- function(                             application ,  $element ) {
+.controller( 'InterviewController', [ 'application', '$scope', '$element',
+ function(                             application ,  $scope ,  $element ) {
 
 	let vm = this;
 
@@ -59,7 +59,10 @@ angular.module( 'dv1' )
 
 
 	// page navigation
-	vm.goto = function( dest ) {
+	vm.goto = function( dest, event ) {
+		if (event && $scope[event.target.name].$invalid) {
+			return;
+		}
 		vm.page = dest;
 		vm.pageUnlocked = Math.max( vm.pageUnlocked, dest );
 		$element.scrollTop( 0 );

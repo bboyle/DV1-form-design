@@ -231,7 +231,7 @@
 	</div>
 
 
-	<form class="form" ng-submit="interview.completePreamble()" ng-show="interview.safe === 'Yes'">
+	<form class="form" name="formPreamble" ng-submit="interview.completePreamble()" ng-show="interview.safe === 'Yes'">
 		<ol class="questions">
 
 			<li>
@@ -319,7 +319,7 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.APPLICANT" ng-submit="interview.goto( interview.PAGE.AGGRIEVED )">
+	<form class="form" name="formApplicant" ng-show="interview.page === interview.PAGE.APPLICANT" ng-submit="interview.goto( interview.PAGE.AGGRIEVED, $event )">
 		<ol class="questions">
 			<li>
 				<fieldset>
@@ -394,7 +394,7 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.AGGRIEVED" ng-submit="interview.goto( interview.PAGE.RESPONDENT )">
+	<form class="form" name="formAggrieved" ng-show="interview.page === interview.PAGE.AGGRIEVED" ng-submit="interview.goto( interview.PAGE.RESPONDENT, $event )">
 		<ol class="questions">
 			<li>
 				<fieldset>
@@ -451,7 +451,7 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.RESPONDENT" ng-submit="interview.goto( interview.PAGE.RELATIONSHIP )">
+	<form class="form" name="formRespondent" ng-show="interview.page === interview.PAGE.RESPONDENT" ng-submit="interview.goto( interview.PAGE.RELATIONSHIP, $event )">
 		<ol class="questions">
 			<li ng-show="interview.aggrieved.name.given">
 				<fieldset>
@@ -508,7 +508,7 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.RELATIONSHIP" ng-submit="interview.goto( interview.PAGE.ABUSE )">
+	<form class="form" class="formRelationship" ng-show="interview.page === interview.PAGE.RELATIONSHIP" ng-submit="interview.goto( interview.PAGE.ABUSE, $event )">
 		<ol class="questions">
 			<li>
 				<fieldset>
@@ -688,7 +688,7 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.ABUSE" ng-submit="interview.goto( interview.PAGE.CONDITIONS )">
+	<form class="form" class="formAbuse" ng-show="interview.page === interview.PAGE.ABUSE" ng-submit="interview.goto( interview.PAGE.CONDITIONS, $event )">
 		<div class="status info">
 			<h2>What has {{ interview.respondent.name.given }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}?</h2>
 			<p>
@@ -960,7 +960,7 @@
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.CONDITIONS" ng-submit="interview.goto( interview.PAGE.GROUNDS )">
+	<form class="form" class="formConditions" ng-show="interview.page === interview.PAGE.CONDITIONS" ng-submit="interview.goto( interview.PAGE.GROUNDS, $event )">
 		<div class="status info">
 			<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }} protection from {{ interview.respondent.name.given }}</h2>
 
@@ -1264,7 +1264,7 @@
 	</form>
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.GROUNDS" ng-submit="interview.goto( interview.PAGE.COURT )">
+	<form class="form" class="formGrounds" ng-show="interview.page === interview.PAGE.GROUNDS" ng-submit="interview.goto( interview.PAGE.COURT, $event )">
 		<div class="status info">
 			<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }}</h2>
 			<dl>
@@ -1558,7 +1558,7 @@ must attach a copy to your domestic violence order application.
 
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.COURT">
+	<form class="form" class="formCourt" ng-show="interview.page === interview.PAGE.COURT">
 		<div class="status info">
 			<h2>Serving the application</h2>
 			<p>{{ interview.respondent.name.given }} must be served with a copy of your application form.
