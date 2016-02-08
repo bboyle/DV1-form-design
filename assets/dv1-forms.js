@@ -9,20 +9,26 @@ angular.module( 'dv1' )
 		aggrieved: {
 			name: {
 				given: 'Aggrieved',
+				family: '',
 				the: 'the Aggrieved'
-			}
+			},
+			gender: ''
 		},
 		applicant: {
 			name: {
 				given: 'Applicant',
+				family: '',
 				the: 'the Applicant'
-			}
+			},
+			gender: ''
 		},
 		respondent: {
 			name: {
 				given: 'Respondent',
+				family: '',
 				the: 'the Respondent'
-			}
+			},
+			gender: ''
 		}
 	};
 
@@ -46,13 +52,17 @@ angular.module( 'dv1' )
 		let dummyNames = {
 			aggrieved: {
 				name: {
-					given: 'Kim'
-				}
+					given: 'Kim',
+					family: 'Smith'
+				},
+				gender: 'F'
 			},
 			respondent: {
 				name: {
-					given: 'Ashley'
-				}
+					given: 'Ashley',
+					family: 'Smith'
+				},
+				gender: 'M'
 			}
 		};
 
@@ -65,6 +75,21 @@ angular.module( 'dv1' )
 		vm.respondent.name.the = vm.respondent.name.given;
 
 		vm.view.gazette = false;
+	};
+
+
+	vm.gender = function( abbr ) {
+		switch ( abbr ) {
+		case 'F':
+			return 'Female';
+		case 'M':
+			return 'Male';
+		case '':
+		case undefined:
+			return 'Not specified';
+		default:
+			return 'Other';
+		}
 	};
 
 	return vm;

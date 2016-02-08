@@ -16,15 +16,51 @@
 
 <section>
 	<h2>1. <var class="aggrieved">{{ dv1.aggrieved.name.given }}</var>'s details</h2>
+	<dl>
+		<dt>Given name/s</dt>
+		<dd><var class="aggrieved">{{ dv1.aggrieved.name.given }}</var></dd>
+		<dt>Family name</dt>
+		<dd><var class="aggrieved">{{ dv1.aggrieved.name.family }}</var></dd>
+		<dt>Date of birth</dt>
+		<dd><var class="aggrieved">TODO</var></dd>
+		<dt>Address</dt>
+		<dd><var class="aggrieved">TODO</var></dd>
+		<dt>Gender</dt>
+		<dd><var class="aggrieved">{{ dv1.gender( dv1.aggrieved.gender ) }}</var></dd>
+	</dl>
 </section>
 
 <section>
 	<h2>2. <var class="respondent">{{ dv1.respondent.name.given }}</var>'s details</h2>
+	<dl>
+		<dt>Given name/s</dt>
+		<dd><var class="respondent">{{ dv1.respondent.name.given }}</var></dd>
+		<dt>Family name</dt>
+		<dd><var class="respondent">{{ dv1.respondent.name.family }}</var></dd>
+		<dt>Date of birth</dt>
+		<dd><var class="respondent">TODO</var></dd>
+		<dt>Address</dt>
+		<dd><var class="respondent">TODO</var></dd>
+		<dt>Gender</dt>
+		<dd><var class="respondent">{{ dv1.gender( dv1.respondent.gender ) }}</var></dd>
+	</dl>
 </section>
 
 <section ng-hide="dv1.aggrievedIsApplicant">
 	<h2 ng-if="dv1.view.gazette">3. <var class="applicant">Applicant's</var> details</h2>
 	<h2 ng-if="! dv1.view.gazette">3. <var class="applicant">Your</var> details</h2>
+	<dl>
+		<dt>Given name/s</dt>
+		<dd><var class="applicant">{{ dv1.applicant.name.given }}</var></dd>
+		<dt>Family name</dt>
+		<dd><var class="applicant">{{ dv1.applicant.name.family }}</var></dd>
+		<dt>Date of birth</dt>
+		<dd><var class="applicant">TODO</var></dd>
+		<dt>Address</dt>
+		<dd><var class="applicant">TODO</var></dd>
+		<dt>Gender</dt>
+		<dd><var class="applicant">{{ dv1.gender( dv1.applicant.gender ) }}</var></dd>
+	</dl>
 
 	<h3 ng-if="dv1.view.gazette">PART A – A person being authorised by <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var></h3>
 	<h3 ng-if="! dv1.view.gazette">PART A – I am authorised by <var class="aggrieved">{{ dv1.aggrieved.name.the }}</var></h3>
