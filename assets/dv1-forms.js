@@ -12,6 +12,9 @@ angular.module( 'dv1' )
 				family: '',
 				the: 'the Aggrieved'
 			},
+			pronoun: {
+				them: 'the Aggrieved'
+			},
 			gender: ''
 		},
 		applicant: {
@@ -20,6 +23,9 @@ angular.module( 'dv1' )
 				family: '',
 				the: 'the Applicant'
 			},
+			pronoun: {
+				them: 'the Applicant'
+			},
 			gender: ''
 		},
 		respondent: {
@@ -27,6 +33,9 @@ angular.module( 'dv1' )
 				given: 'Respondent',
 				family: '',
 				the: 'the Respondent'
+			},
+			pronoun: {
+				them: 'the Respondent'
 			},
 			gender: ''
 		}
@@ -55,14 +64,20 @@ angular.module( 'dv1' )
 					given: 'Kim',
 					family: 'Smith'
 				},
-				gender: 'F'
+				pronoun: {
+					them: 'them'
+				},
+				gender: ''
 			},
 			respondent: {
 				name: {
 					given: 'Ashley',
 					family: 'Smith'
 				},
-				gender: 'M'
+				pronoun: {
+					them: 'them'
+				},
+				gender: ''
 			}
 		};
 
