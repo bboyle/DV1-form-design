@@ -43,7 +43,8 @@ angular.module( 'dv1' )
 
 	// view model
 	let vm = this;
-	angular.merge( vm, gazetteData );
+	vm.label = {};
+	angular.merge( vm.label, gazetteData );
 	angular.merge( vm, {
 		view: {
 			gazette: true
@@ -53,8 +54,9 @@ angular.module( 'dv1' )
 
 	// switch between names and gazette view
 	vm.showGazettedForm = function() {
-		angular.merge( vm, gazetteData );
+		angular.merge( vm.label, gazetteData );
 		vm.view.gazette = true;
+		vm.invalid = false;
 	};
 
 	vm.showNames = function() {
@@ -81,15 +83,21 @@ angular.module( 'dv1' )
 			}
 		};
 
-		angular.merge( vm, dummyNames );
-		angular.merge( vm, application.getData() );
+		var data = application.getData();
+		angular.merge( vm.label, dummyNames );
+		angular.merge( vm.label, data );
+		angular.merge( vm, data );
 
 		// pronouns and stuff
 		// vm.applicant.name.the = vm.applicant.name.given;
-		vm.aggrieved.name.the = vm.aggrieved.name.given;
-		vm.respondent.name.the = vm.respondent.name.given;
+		vm.label.aggrieved.name.the = vm.label.aggrieved.name.given;
+		vm.label.respondent.name.the = vm.label.respondent.name.given;
 
 		vm.view.gazette = false;
+		if ( vm.aggrieved.relationship.category === 'Commercial care' ) {
+			vm.issues = [ 'Commercial Care relationships are not covered by the Act.' ];
+			vm.invalid = true;
+		}
 	};
 
 
