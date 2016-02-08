@@ -17,7 +17,8 @@ angular.module( 'dv1' )
 		RELATIONSHIP: 5,
 		ABUSE: 6,
 		CONDITIONS: 7,
-		GROUNDS: 8
+		GROUNDS: 8,
+		COURT: 9
 	};
 	vm.pageUnlocked = 0;
 

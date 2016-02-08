@@ -64,7 +64,7 @@
 	<meta name="DCTERMS.creator" scheme="AGLSTERMS.GOLD" content="c=AU; o=The State of Queensland; ou=Department of Justice and Attorney-General; ou=Justice Services">
 	<meta name="DCTERMS.publisher" scheme="AGLSTERMS.AglsAgent" content="corporateName=The State of Queensland; jurisdiction=Queensland">
 	<meta name="DCTERMS.created" content="2016-01-18">
-	<meta name="DCTERMS.modified" content="2016-02-01">
+	<meta name="DCTERMS.modified" content="2016-02-08">
 	<meta name="DCTERMS.title" content="Apply for a protection order | Your rights, crime and the law">
 	<meta name="DCTERMS.description" content="Step-by-step guide to apply for protection from domestic violence.">
 	<meta name="DCTERMS.subject" scheme="AGLSTERMS.APAIS" content="Domestic Violence">
@@ -93,20 +93,24 @@
 
 
 <article ng-controller="InterviewController as interview">
-	<nav>
-		<ol>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Preamble</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto( interview.PAGE.APPLICANT )">Applicant details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Aggrieved details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Respondent details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RELATIONSHIP" ng-click="interview.goto( interview.PAGE.RELATIONSHIP )">Relationship</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.ABUSE" ng-click="interview.goto( interview.PAGE.ABUSE )">History of abuse</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto( interview.PAGE.CONDITIONS )">Conditions</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto( interview.PAGE.GROUNDS )">Grounds</button></li>
-		</ol>
-	</nav>
+	<header>
+		<nav>
+			<ol>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Preamble</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto( interview.PAGE.APPLICANT )">Applicant details</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Aggrieved details</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Respondent details</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RELATIONSHIP" ng-click="interview.goto( interview.PAGE.RELATIONSHIP )">Relationship</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.ABUSE" ng-click="interview.goto( interview.PAGE.ABUSE )">History of abuse</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto( interview.PAGE.CONDITIONS )">Conditions</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto( interview.PAGE.GROUNDS )">Grounds</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.COURT" ng-click="interview.goto( interview.PAGE.COURT )">Preparing for court</button></li>
+			</ol>
+		</nav>
 
-	<h1>Apply for a protection order</h1>
+		<h1 style="margin-bottom: 0">Apply for a protection order</h1>
+		<p style="margin-top: 0">Guide to completing an application for a protection order</p>
+	</header>
 
 
 
@@ -118,10 +122,36 @@
 	<div class="preamble status info">
 		<h2>Before you begin</h2>
 		<ul>
-			<li>We will ask questions about your situation — what happened and when — what protection you need. This online interview can take an hour or more to complete.</li>
-			<li>At the end, you will have the necessary forms to take to court. Protection orders may take 4 weeks or longer. We will ask if you need a <dfn>temporary protection order</dfn> to protect you while waiting for the court to hear your case.</li>
+			<li>This online guide can take an hour or more to complete. You may find the questions difficult.
+				We will ask questions about your situation — what happened and when — what protection you need.</li>
+			<li>At the end of this guide you will have the necessary forms to take to court.</li>
+		</ul>
+	</div>
+
+	<div class="status info">
+		<h2>Going to court</h2>
+		<ul>
+			<li>You need to file the forms and all attachments at a Magistrates Court.</li>
+			<li>You will be given a date to appear in court (usually in about four weeks time).</li>
+			<li>You will be given a date to appear in court as soon as possible if you also ask for an urgent temporary protection order. You have to explain why this is necessary.</li>
+			<li>The person you want protection from will have to appear in court at the same time.</li>
 			<li>You can apply yourself. You can also ask a friend or lawyer to apply on your behalf. In some situations, the police may apply for you.</li>
 		</ul>
+
+		<p>The nearest Magistrates Court is:<br>
+			Beaudesert Magistrates Court<br>
+			29 William Street<br>
+			Beaudesert Qld 4285
+			(<a href="https://maps.google.com.au/maps?f=d&amp;hl=en&amp;geocode=&amp;saddr=&amp;daddr=Beaudesert+Magistrates+Court,+29+William+Street,+Beaudesert,+Qld,+4285&amp;sll=-23.551772,145.287924&amp;sspn=0.017034,0.020578&amp;ie=UTF8&amp;ll=-27.990044,152.997108&amp;spn=0.016409,0.020578&amp;z=16" target="_blank">map</a>)<br>
+			<br>
+			<a href="tel:+61-7-5542-2055">(07) 5542 2055</a><br>
+			<a href="mailto:courthouse.beaudesert@justice.qld.gov.au">courthouse.beaudesert@justice.qld.gov.au</a><br>
+			<br>
+			It is open Monday–Friday from 8:30am–4:30pm.</p>
+
+			<!-- <p>You can file your application today.</p> -->
+			<!-- TODO opening hours, public holidays, closures -->
+			<p>You can file your application on Monday.</p>
 	</div>
 
 	<form>
@@ -204,11 +234,11 @@
 					<ul class="choices">
 						<li>
 							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="yes" required id="applicant-danger-yes">
-							<label for="applicant-danger-yes">Yes — call 000 and ask for police</label>
+							<label for="applicant-danger-yes">Yes</label> — call <a href="tel:000">000</a> and ask for police
 						</li>
 						<li>
 							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="maybe" required id="applicant-danger-dunno">
-							<label for="applicant-danger-dunno">I don't know — contact DVConnect</label>
+							<label for="applicant-danger-dunno">I don't know</label> — contact DVConnect
 						</li>
 						<li>
 							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="no" required id="applicant-danger-no">
@@ -219,12 +249,62 @@
 			</li>
 
 			<li ng-show="interview.applicantInDanger === 'no'">
+				<fieldset>
+					<legend>
+						<span class="label">Do I need to get legal advice?</span>
+						<small class="hint">You should get legal advice before starting the process to get a domestic violence order.</small>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="yes" required id="legal-advice-yes">
+							<label for="legal-advice-yes">I have discussed this with a lawyer</label>
+						</li>
+						<li>
+							<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="later" required id="legal-advice-later">
+							<label for="legal-advice-later">I want to fill out this form now and talk to a lawyer after</label>
+							<small class="hint">You can take your documents to a lawyer before you file them at a Magistrates Court.</small>
+						</li>
+						<li>
+							<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="how" required id="legal-advice-how">
+							<label for="legal-advice-how">How can I get legal advice?</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li ng-show="interview.applicantInDanger === 'no' &amp;&amp; ( interview.legalAdvice === 'yes' || interview.legalAdvice === 'later' )">
 				<ul class="actions">
 					<li><strong><button>Continue</button></strong></li>
 				</ul>
 			</li>
 		</ol>
 	</form>
+
+	<div class="status warn" ng-show="interview.applicantInDanger === 'yes'">
+		<h2>What can I do if I need help urgently?</h2>
+		<ul>
+			<li>Call <a href="tel:000">000</a> and ask for the <q>police</q></li>
+			<li>Read <a href="http://www.legalaid.qld.gov.au/Find-legal-information/Publications/Legal-information-guides/How-to-apply-for-a-domestic-violence-order/What-can-I-do-if-I-need-help-urgently">What can I do if I need help urgently?</a> (Legal Aid Queensland)</li>
+		</ul>
+	</div>
+
+	<div class="status warn" ng-show="interview.applicantInDanger === 'maybe'">
+		<h2>What can I do if I need help urgently?</h2>
+		<ul>
+			<li>Read <a href="http://www.legalaid.qld.gov.au/Find-legal-information/Publications/Legal-information-guides/How-to-apply-for-a-domestic-violence-order/What-can-I-do-if-I-need-help-urgently">What can I do if I need help urgently?</a> (Legal Aid Queensland)</li>
+		</ul>
+	</div>
+
+	<div class="status info" ng-show="interview.legalAdvice === 'how'">
+		<h2>How can I get legal advice?</h2>
+		<p>You can get legal advice from:</p>
+		<ul>
+			<li>Legal Aid Queensland – call <a href="tel:1300-65-11-88">1300 65 11 88</a> for free legal advice</li>
+			<li>a community legal centre – go to <a href="http://www.qails.org.au">www.qails.org.au</a> or <a href="http://www.legalaid.qld.gov.au">www.legalaid.qld.gov.au</a> or call <a href="tel:1300-65-11-88">1300 65 11 88</a> to check services in your area</li>
+			<li>a private solicitor – call the Queensland Law Society or visit <a href="http://www.qls.com.au">www.qls.com.au</a> for names of solicitors who can help.</li>
+		</ul>
+	</div>
+
 	</section>
 
 
@@ -877,9 +957,9 @@
 			<blockquote>“The way {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.given + ' is' }} being treated is wrong — it’s abuse. People feel angry but everyone has a choice in how they respond to the situation. Anger is not an excuse for domestic violence”</blockquote>
 
 			<ul>
-				<li>{{ interview.applicantIsAggrieved ? 'You are' : interview.aggrieved.name.given + ' is' }} the <dfn>aggrieved</dfn> (the person needing protection).</li>
+				<li>{{ interview.applicantIsAggrieved ? 'You are' : interview.aggrieved.name.given + ' is' }} the <dfn>aggrieved</dfn> (the person wanting protection).</li>
 				<li ng-if="interview.applicantIsAggrieved">You are also the <dfn>applicant</dfn> (the person applying for a protection order)</li>
-				<li>{{ interview.respondent.name.given }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you need' : interview.aggrieved.name.given + ' needs' }} protection from).</li>
+				<li>{{ interview.respondent.name.given }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.given + ' wants' }} protection from).</li>
 			</ul>
 			<p ng-if="! interview.applicantIsAggrieved">You are the <dfn>applicant</dfn> (the person applying for a protection order).</p>
 		</div>
@@ -1017,19 +1097,26 @@
 
 						<li>
 							<input type="checkbox"
-							       id="interview-conditions-respondent-leave-premises"
-							       ng-model="interview.conditions.leavePremises"
-							       ng-value="true">
-							<label for="interview-conditions-respondent-leave-premises">I want {{ interview.respondent.name.given }} to leave {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
-						</li>
-
-						<li>
-							<input type="checkbox"
 							       id="interview-conditions-respondent-no-approach"
 							       ng-model="interview.conditions.notApproach.aggrieved"
 							       ng-value="true">
 							<label for="interview-conditions-respondent-no-approach">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
 						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-leave-premises"
+							       ng-model="interview.conditions.leavePremises"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-leave-premises">I want {{ interview.respondent.name.given }} to leave {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
+						</li>
+						<li>
+							<input type="checkbox"
+							       id="interview-conditions-respondent-not-enter-home"
+							       ng-model="interview.conditions.prohibitEntering.residence"
+							       ng-value="true">
+							<label for="interview-conditions-respondent-not-enter-home">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
+						</li>
+
 						<li ng-show="interview.aggrieved.children">
 							<input type="checkbox"
 							       id="interview-conditions-respondent-no-approach-children"
@@ -1059,13 +1146,6 @@
 							<label for="interview-conditions-respondent-no-approach-associates">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family and friends</label>
 						</li>
 
-						<li>
-							<input type="checkbox"
-							       id="interview-conditions-respondent-not-enter-home"
-							       ng-model="interview.conditions.prohibitEntering.residence"
-							       ng-value="true">
-							<label for="interview-conditions-respondent-not-enter-home">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
-						</li>
 						<li ng-show="interview.aggrieved.applicant">
 							<input type="checkbox"
 							       id="interview-conditions-respondent-not-enter-applicant-home"
@@ -1174,7 +1254,7 @@
 	</form>
 
 
-	<form class="form" ng-show="interview.page === interview.PAGE.GROUNDS">
+	<form class="form" ng-show="interview.page === interview.PAGE.GROUNDS" ng-submit="interview.goto( interview.PAGE.COURT )">
 		<div class="status info">
 			<h2>{{ interview.applicantIsAggrieved ? 'You need' : interview.aggrieved.name.given + ' needs' }}</h2>
 			<dl>
@@ -1186,6 +1266,40 @@
 				<dd ng-if="interview.temporaryProtection.requested">The court can grant {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
 			</dl>
 		</div>
+
+<!--
+You need to provide as much detail on the application form as you can. You should
+describe every domestic violence incident that has happened, including:
+• when it happened
+• where it happened
+• what happened
+• how it happened
+• who was there
+• any injuries you suffered and
+• how you felt – eg did you feel threatened, fearful or scared?
+You should avoid generalising or exaggerating the incidents — stick to the facts.
+
+Step 3 – Gather evidence and attach to the form
+You should also start gathering the information (evidence) you will need to
+support your application. Information that may be helpful includes:
+• photos of any injuries taken at the time the domestic violence happened
+• photos of any injuries taken later when they are more visible (like bruising
+that shows up a day or two later)
+• statements from people who saw or heard the domestic violence or who you have told about the domestic violence over a period of time
+• diary entries you have made about the domestic violence
+• doctors’ reports
+• other court orders eg other domestic violence orders or family court orders
+• reports from counsellors that you have seen
+• all text and voicemail messages, emails, letters and social media entries (printed out with dates).
+Attach this evidence to your application form.
+If possible, try to use photographs that have a date stamp on them; they can
+help you remember when the incidents happened. Photographs (or colour
+photocopies of them) can be attached to your application form.
+
+If you have any court orders, like family law orders about your children,
+Childrens Court orders or any old or current domestic violence orders, you
+must attach a copy to your domestic violence order application.
+ -->
 
 		<ol class="questions">
 			<li>
@@ -1220,11 +1334,51 @@
 
 			<li class="footer">
 				<ul class="actions">
-					<!-- <li><strong><button type="submit">Continue</button></strong></li> -->
+					<li><strong><button type="submit">Continue</button></strong></li>
 				</ul>
 			</li>
 		</ol>
 	</form>
+
+
+
+	<form class="form" ng-show="interview.page === interview.PAGE.COURT">
+		<div class="status info">
+			<h2>Serving the application</h2>
+			<p>{{ interview.respondent.name.given }} must be served with a copy of your application form.
+			   You do not have to serve the respondent yourself.
+			   Court registry staff will give a copy to the Queensland Police Service and they will ensure {{ interview.respondent.name.given }} is served with your application.</p>
+		</div>
+
+		<section>
+			<h2>Filing the application</h2>
+			<p>You may file the application at any <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court in Queensland</a>.
+			Applications are free—you do not have to pay a filing fee.
+			You will be given a court date when {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.given + ' needs' }} to go to court.
+			{{ interview.applicantIsAggrieved ? 'You' : interview.aggrieved.name.given }} may appear by {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }}self or with legal representation.
+			There may be circumstances where a police prosecutor will assist {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} in the court room.
+			You should contact {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} local police station well before the court date if you think this is required.</p>
+		</section>
+
+		<ol class="questions">
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">About your safety</span>
+					</legend>
+				</fieldset>
+			</li>
+
+
+
+			<li class="footer">
+				<ul class="actions">
+					<!-- <li><strong><button type="submit">Continue</button></strong></li> -->
+				</ul>
+			</li>
+		</ol>
+
+
 </article>
 
 
