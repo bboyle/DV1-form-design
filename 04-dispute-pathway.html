@@ -50,10 +50,15 @@
 		<blockquote>
 			<p>
 				I want
+				<select ng-model="target">
+					<option value="me">my</option>
+					<option value="partner">my partner’s</option>
+					<option value="friend">my friend’s</option>
+				</select>
 				<select ng-model="source">
-					<option value="ex">my ex</option>
-					<option value="partner">my partner</option>
-					<option value="carer">my carer</option>
+					<option value="ex">ex</option>
+					<option value="partner">partner</option>
+					<option value="carer">carer</option>
 				</select>
 				to stop
 				<select ng-model="abusing">
@@ -61,11 +66,7 @@
 					<option>following</option>
 					<option>stealing from</option>
 				</select>
-				<select ng-model="target">
-					<option>me</option>
-					<option value="partner">my partner</option>
-					<option value="friend">my friend</option>
-				</select>
+				{{ target ? target === 'me' ? 'me' : 'them' : 'me' }}.
 			</p>
 		</blockquote>
 	</header>
