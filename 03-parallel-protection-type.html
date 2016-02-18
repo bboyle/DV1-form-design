@@ -78,7 +78,7 @@
 <body ng-app="dv1" ng-init="beta = true;" ng-class="{ beta: beta }">
 
 
-<a id="quick-exit" target="_top" href="http://www.google.com/" accesskey="q">Quick exit ➟</a>
+<div id="quick-exit" data-accesskey="Esc" title="www.google.com"><a target="_top" href="https://www.google.com/" data-accesskey="Esc">Quick exit ➟</a></div>
 <script src="http://bboyle.github.io/quick-exit/dist/quick-exit.min.js"></script>
 
 
@@ -96,7 +96,7 @@
 	<header>
 		<nav>
 			<ol>
-				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Preamble</button></li>
+				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Eligibility</button></li>
 				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto( interview.PAGE.APPLICANT )">Applicant details</button></li>
 				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Aggrieved details</button></li>
 				<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Respondent details</button></li>
@@ -162,6 +162,8 @@
 			<!-- <p>You can file your application today.</p> -->
 			<!-- TODO opening hours, public holidays, closures -->
 			<p>You can file your application on Monday.</p>
+
+			<p><a href="http://www.qld.gov.au/law/court/courts/courthouse-locations/">Find another Magistrates Court</a></p>
 	</div>
 
 	<form>
@@ -221,13 +223,14 @@
 			<li>clear your browser history</li>
 			<li>take note of the <em>Quick Exit</em> button on the side of the screen. Use this if you need to quickly exit the site.</li>
 		</ul>
-
+<!--
 		<h3>Save and continue later</h3>
 		<ul>
 			<li>Would you like to setup save and continue later?</li>
 			<li>We can email your application to a trusted email address: your own, a friend, family or a service provider</li>
 			<li>We can save your responses on this computer which you can access again using a safe word</li>
 		</ul>
+ -->
 	</div>
 
 
