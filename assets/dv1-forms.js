@@ -115,6 +115,13 @@ angular.module( 'dv1' )
 		}
 	};
 
+
+	// expand/collapse form
+	vm.collapsed = false;
+	vm.toggle = function() {
+		vm.collapsed = ! vm.collapsed;
+	};
+
 	return vm;
 }])
 
