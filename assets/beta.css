@@ -1,0 +1,51 @@
+/* BETA WARNING */
+header.beta-warning {
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	background: #F7D418;
+	color: #000;
+	margin-top: 3rem;
+	padding: 1.3rem;
+	box-sizing: border-box;
+	z-index: 1000;
+	opacity: 0.5;
+	transform: translateY( -200vh );
+	transition:
+		transform .3s ease-out,
+		opacity .2s ease-out;
+}
+header.beta-warning strong {
+	text-transform: uppercase;
+}
+header.beta-warning a {
+	color: #000;
+}
+header.beta-warning button {
+	background: transparent;
+	color: #00f;
+	border: none;
+	padding: 0;
+	margin: 0;
+	display: inline;
+	text-decoration: underline;
+}
+header.beta-warning::before,
+header.beta-warning::after {
+	background: rgba( 255, 255, 255, .67 );
+	height: 100vh;
+	width: 100vw;
+	content: "";
+	display: block;
+	position: absolute;
+	left: 0;
+	bottom: 100%;
+}
+header.beta-warning::after {
+	top: 100%;
+}
+
+body.beta header.beta-warning {
+	transform: none;
+	opacity: 1;
+}
