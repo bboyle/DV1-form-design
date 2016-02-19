@@ -51,6 +51,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular-animate.min.js"></script>
 <script src="assets/dvDocumentApp.js"></script>
+<script src="assets/dvDocumentForm1.js"></script>
+<script src="assets/dvDocumentAggrieved.js"></script>
 <script src="assets/dvDocumentSafety.js"></script>
 
 
@@ -141,14 +143,8 @@
 	</form>
 
 	<div id="article-container">
-		<article id="dva-f1" ng-show="document === 'f1'">
-			<h1>TODO: DVA F1</h1>
-		</article>
-
-		<article id="dva-f-aggrieved" ng-show="document === 'f-aggrieved'">
-			<h1>TODO: Confidential details form</h1>
-		</article>
-
+		<article class="dva-f1" ng-show="document === 'f1'"></article>
+		<article class="dva-f-aggrieved" ng-show="document === 'f-aggrieved'"></article>
 		<article class="dva-f-safety" ng-show="document === 'f-safety'"></article>
 	</div>
 </div>
