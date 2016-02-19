@@ -1,4 +1,4 @@
 'use strict';
 
 // app
-var app = angular.module( 'dvDocumentApp', [ 'ngAnimate' ]);
+angular.module( 'dvDocumentApp', [ 'ngAnimate' ]);

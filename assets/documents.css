@@ -23,7 +23,9 @@ article {
 	border: 1px solid #ccc;
 	background: #fff;
 	height: calc(100vh - 6em);
-	width: calc(100% - 6em);
+	/*width: calc(100% - 6em);*/
+	width: 45em;
+	overflow-y: auto;
 	margin: 3em;
 	padding: 3em;
 	box-sizing: border-box;
