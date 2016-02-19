@@ -19,12 +19,14 @@
 	box-sizing: border-box;
 }
 
+/* animate articles (documents) */
 article {
 	border: 1px solid #ccc;
 	background: #fff;
 	height: calc(100vh - 6em);
 	/*width: calc(100% - 6em);*/
 	width: 45em;
+	overflow-x: hidden;
 	overflow-y: auto;
 	margin: 3em;
 	padding: 3em;
@@ -36,6 +38,10 @@ article {
 	transform: scale(1);
 	opacity: 1;
 }
+article.ng-hide {
+	transform: translateX(100%) scale(0.25);
+	opacity: 0;
+}
 article.ng-hide-remove,
 article.ng-hide-remove-active {
 	will-change: opacity, transform;
@@ -43,10 +49,24 @@ article.ng-hide-remove-active {
 		opacity .7s ease,
 		transform .3s ease;
 }
-article.ng-hide {
-	transform: translateX(100%) scale(0.25);
-	opacity: 0;
+
+/* animate sections (pages within documents)
+section.ng-enter {
+	animation: 0.3s slideIn;
 }
+section.ng-leave {
+	animation: 0.3s slideOut;
+}
+
+@keyframes slideIn {
+	  0  { transform: translateX(100%); }
+	100% { transform: none; }
+}
+
+@keyframes slideOut {
+	  0  { transform: none }
+	100% { transform: translateX(-100%); }
+} */
 
 
 /* documents nav */
@@ -88,4 +108,9 @@ article.ng-hide {
 #documents figcaption {
 	font: Menu;
 	text-align: center;
+}
+
+/* angular stuff */
+a[ng-click] {
+	cursor: pointer;
 }

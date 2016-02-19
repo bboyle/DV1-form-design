@@ -7,10 +7,189 @@
 
 <p>Please note: A copy of this application will be given to the respondent</p>
 
-<section>
-	<h2>Aggrieved's details</h2>
+<div ng-switch="f1.page.number">
+<section ng-switch-default>
+	<h2>{{ f1.page.number }}. Aggrieved's details</h2>
+
+	<p>If the aggrieved does not want the respondent to know their home address please either:</p>
+	<ul>
+		<li>Give an address where court documents can be sent e.g. post office box or</li>
+		<li>Complete an “<a tabindex="0" ng-click="$parent.document = 'f-aggrieved'">Aggrieved Details Form</a>” which will not be provided to the respondent</li>
+	</ul>
+
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(2)">Proceed to Question 2</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
 </section>
 
-<section>
-	<h2>Respondent's details</h2>
+
+<section ng-switch-when="2">
+	<h2>{{ f1.page.number }}. Respondent's details</h2>
+	<form ng-submit="f1.saveRespondent()">
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(4)">If you are the aggrieved, proceed to Question 4</button></strong></li>
+					<li><button  type="button" ng-click="f1.gotoPage(3)">If you are <strong>not</strong> the aggrieved, proceed to Question 3</button></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
 </section>
+
+
+<section ng-switch-when="3">
+	<h2>{{ f1.page.number }}. Applicants's details</h2>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(4)">Proceed to Question 4</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="4">
+	<h2>{{ f1.page.number }}. Temporary Protection Order</h2>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(5)">Proceed to Question 5</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="5">
+	<h2>{{ f1.page.number }}. Relationships between the aggrieved and the respondent</h2>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(6)">Proceed to Question 6</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="6">
+	<h2>{{ f1.page.number }}. Grounds for a protection order</h2>
+	<p>State grounds as to why a protection order is necessary or desirable to protect the aggrieved. It must be shown that domestic violence has occurred. Include specific example of behaviour by the respondent. <em>Attach extra pages if necessary<</em>/p>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(7)">Proceed to Question 7</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="7">
+	<h2>{{ f1.page.number }}. Children of the aggrieved or children who usually live with the aggrieved</h2>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(8)">Proceed to Question 8</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="8">
+	<h2>{{ f1.page.number }}. Relatives or associates you would like to be named on the order</h2>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(9)">Proceed to Question 9</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="9">
+	<h2>{{ f1.page.number }}. Weapons</h2>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(10)">Proceed to Question 10</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="10">
+	<h2>{{ f1.page.number }}. Details of any other orders</h2>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(11)">Proceed to Question 11</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="11">
+	<h2>{{ f1.page.number }}. Conditions sought in the order</h2>
+	<form>
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(12)">Proceed to Question 12</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+<section ng-switch-when="12">
+	<h2>{{ f1.page.number }}. Statutory Declaration</h2>
+
+	<div class="status info">
+		<h2>What to read or do next</h2>
+		<ul>
+			<li>TODO Use form submission handler to generate PDF documents</li>
+			<li>Gather attachments together (past orders)</li>
+			<li>Legal advice (if you haven't already seen a lawyer)</li>
+			<li>Lodge them at Magistrates Court: TODO time and place</li>
+			<li>Prepare for court (assistance)</li>
+		</ul>
+	</div>
+</section>
+</div>
+
+
+<footer>
+	<p><small><cite>Domestic and Family Violence Protection Act 2012</cite></small></p>
+	<p><small>Form DV1 — version 1 – 17 September 2012</small></p>
+	<p><small>Page <select ng-model="f1.page" ng-options="page.number for page in f1.pages track by page.number"></select> of 12</small></p>
+</footer>
