@@ -19,17 +19,15 @@
 	box-sizing: border-box;
 }
 
-/* animate articles (documents) */
 article {
 	border: 1px solid #ccc;
 	background: #fff;
 	height: calc(100vh - 6em);
 	/*width: calc(100% - 6em);*/
 	width: 45em;
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow: hidden;
 	margin: 3em;
-	padding: 3em;
+	padding: 1em 0;
 	box-sizing: border-box;
 	top: 0;
 	left: 0;
@@ -37,7 +35,11 @@ article {
 	box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.2);
 	transform: scale(1);
 	opacity: 1;
+	display: flex;
+	flex-flow: column;
+	align-items: stretch;
 }
+/* animate articles (documents) */
 article.ng-hide {
 	transform: translateX(100%) scale(0.25);
 	opacity: 0;
@@ -49,6 +51,26 @@ article.ng-hide-remove-active {
 		opacity .7s ease,
 		transform .3s ease;
 }
+/* footer layout */
+article > div {
+	padding: 0 3em;
+	height: 0;
+	flex-grow: 1;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.dva-f1 > footer {
+	padding: 0 3em;
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	font: Caption;
+}
+.dva-f1 > footer select {
+	padding: 0;
+	border: none;
+}
+
 
 /* animate sections (pages within documents)
 section.ng-enter {
