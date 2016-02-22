@@ -1,0 +1,329 @@
+<form novalidate>
+	<ol class="questions">
+
+		<li class="atomic group">
+			<fieldset>
+				<legend>
+					<span class="label">Name</span>
+				</legend>
+				<ol class="questions compact">
+					<li>
+						<label for="respondent-name-given">
+							<span class="label">Given name/s</span>
+							<abbr class="required" title="(required)">*</abbr>
+						</label>
+						<input ng-model="f1.respondent.name.given" size="15" required="required" type="text" id="respondent-name-given" />
+					</li>
+					<li>
+						<label for="respondent-name-family">
+							<span class="label">Family name</span>
+							<abbr class="required" title="(required)">*</abbr>
+						</label>
+						<input ng-model="f1.respondent.name.family" size="15" required="required" type="text" id="respondent-name-family" />
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li>
+			<label for="respondent-date-of-birth">
+				<span class="label">Date of birth</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<input type="date" ng-model="f1.respondent.dateOfBirth" size="20" min="1900-01-01" max="{{ ::f1.meta.dateCreated | date: 'yyyy-MM-dd' }}" required="required" placeholder="Example: 1963-02-23" id="respondent-date-of-birth" />
+			<output ng-if="f1.respondent.dateOfBirth">{{ f1.respondent.dateOfBirth | date: 'd MMMM yyyy' }}</output>
+		</li>
+		<li class="atomic group">
+			<fieldset>
+				<legend>
+					<span class="label">Address</span>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="respondent-address-street1">
+							<span class="label">Address line 1</span>
+							<abbr title="(required)" class="required">*</abbr>
+						</label>
+						<input type="text" ng-model="f1.respondent.address.street1" size="40" required="required" id="respondent-address-street1" />
+					</li>
+					<li>
+						<label for="respondent-address-street2">
+							<span class="label">Address line 2</span>
+						</label>
+						<input type="text" ng-model="f1.respondent.address.street2" size="40" id="respondent-address-street2" />
+					</li>
+					<li class="group">
+						<ol class="questions compact">
+							<li>
+								<label for="respondent-address-town">
+									<span class="label">Town, city or suburb</span>
+									<abbr title="(required)" class="required">*</abbr>
+								</label>
+								<input type="text" ng-model="f1.respondent.address.town" size="20" required="required" id="respondent-address-town" />
+							</li>
+							<li>
+								<label for="respondent-address-state">
+									<span class="label">State</span>
+									<abbr title="(required)" class="required">*</abbr>
+								</label>
+								<input type="text" ng-model="f1.respondent.address.state" size="5" value="QLD" required="required" id="respondent-address-state" />
+							</li>
+							<li>
+								<label for="respondent-address-postcode">
+									<span class="label">Postcode</span>
+									<abbr title="(required)" class="required">*</abbr>
+								</label>
+								<input type="text" ng-model="f1.respondent.address.postcode" size="5" required="required" id="respondent-address-postcode" />
+							</li>
+						</ol>
+					</li>
+					<li>
+						<label for="respondent-address-country">
+							<span class="label">Country</span>
+							<abbr title="(required)" class="required">*</abbr>
+						</label>
+						<input type="text" ng-model="f1.respondent.address.country" size="20" value="Australia" required="required" id="respondent-address-country" />
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li>
+			<label for="respondent-gender">
+				<span class="label">Gender</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<select ng-model="f1.respondent.gender" id="respondent-gender">
+				<option>—please select—</option>
+				<option>Female</option>
+				<option>Male</option>
+				<option>Other</option>
+			</select>
+			<span ng-show="f1.respondent.gender === 'Other'">
+				<label for="respondent-gender-other">please specify</label>
+				<input type="text" ng-model="f1.respondent.genderOther" list="datalist-genders" required="required" />
+			</span>
+		</li>
+		<li>
+			<label for="respondent-home-number">
+				<span class="label">Home number</span>
+			</label>
+			<input type="tel" ng-model="f1.respondent.homeNumber" size="20" id="respondent-home-number" />
+		</li>
+		<li>
+			<label for="respondent-mobile-number">
+				<span class="label">Mobile number</span>
+			</label>
+			<input type="tel" ng-model="f1.respondent.mobileNumber" size="20" id="respondent-mobile-number" />
+		</li>
+		<li>
+			<label for="respondent-work-phone">
+				<span class="label">Work Phone</span>
+			</label>
+			<input type="tel" ng-model="f1.respondent.workPhone" size="20" id="respondent-work-phone" />
+		</li>
+		<li>
+			<label for="respondent-email">
+				<span class="label">Email</span>
+			</label>
+			<input type="email" ng-model="f1.respondent.email" size="40" id="respondent-email" />
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the respondent require an interpreter?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="respondent-interpreter" ng-model="f1.respondent.requiresInterpreter" ng-value="false" required="required" id="respondent-interpreter-no" />
+						<label for="respondent-interpreter-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="respondent-interpreter" ng-model="f1.respondent.requiresInterpreter" ng-value="true" required="required" id="respondent-interpreter-yes" />
+						<label for="respondent-interpreter-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="f1.respondent.requiresInterpreter">
+			<label for="respondent-language-dialect">
+				<span class="label">Language/Dialect</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<input type="text" ng-model="f1.respondent.language" size="20" required="required" id="respondent-language-dialect" />
+		</li>
+		<li>
+			<fieldset id="name1">
+				<legend>
+					<span class="label">Does the respondent identify as</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="respondent-identify-as" ng-model="f1.respondent.identifyAs" value="Aboriginal" id="respondent-identify-as-aboriginal" />
+						<label for="respondent-identify-as-aboriginal">Aboriginal</label>
+					</li>
+					<li>
+						<input type="radio" name="respondent-identify-as" ng-model="f1.respondent.identifyAs" value="Torres Strait Islander" id="respondent-identify-as-torres-strait-islander" />
+						<label for="respondent-identify-as-torres-strait-islander">Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="respondent-identify-as" ng-model="f1.respondent.identifyAs" value="Aboriginal and Torres Strait Islander" id="respondent-identify-as-aboriginal-and-torres-strait-islander" />
+						<label for="respondent-identify-as-aboriginal-and-torres-strait-islander">Aboriginal and Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="respondent-identify-as" ng-model="f1.respondent.identifyAs" value="N/A" id="respondent-identify-as-na" />
+						<label for="respondent-identify-as-na">None of the above</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the respondent have a disability, illness or impairment where support and/or special arrangements are required?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="respondent-have-a-disability" ng-model="f1.respondent.hasDisability" ng-value="false" required="required" id="respondent-have-a-disability-no" />
+						<label for="respondent-have-a-disability-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="respondent-have-a-disability" ng-model="f1.respondent.hasDisability" ng-value="true" required="required" id="respondent-have-a-disability-yes" />
+						<label for="respondent-have-a-disability-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<label for="respondent-employment">
+				<span class="label">Current place of employment</span>
+			</label>
+			<input type="text" id="respondent-employment" ng-model="f1.respondent.employment" size="30" />
+		</li>
+		<li>
+			<label for="respondent-vehicle-model">
+				<span class="label">Vehicle model</span>
+			</label>
+			<input type="text" id="respondent-vehicle-model" ng-model="f1.respondent.vehicle.model" size="30" />
+		</li>
+		<li>
+			<label for="respondent-vehicle-registration">
+				<span class="label">Vehicle registration</span>
+			</label>
+			<input type="text" id="respondent-vehicle-registration" ng-model="f1.respondent.vehicle.registration" size="10" />
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Is the respondent under 18 years of age?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="respondent-under-18" ng-model="f1.respondent.under18" ng-value="false" required="required" id="respondent-under-18-no" />
+						<label for="respondent-under-18-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="respondent-under-18" ng-model="f1.respondent.under18" ng-value="true" required="required" id="respondent-under-18-yes" />
+						<label for="respondent-under-18-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li class="section" ng-show="f1.respondent.under18">
+			<fieldset>
+				<legend>
+					<p>Please supply the details of a parent as all documents must be given to a parent of the respondent unless the court orders otherwise.</p>
+					<!-- <small class="hint relevance">(If you chose ‘Yes’ above)</small> -->
+				</legend>
+				<ol class="questions">
+					<li class="atomic group">
+						<fieldset>
+							<legend>
+								<span class="label">Parent's name</span>
+								<small class="hint"></small>
+							</legend>
+							<ol class="questions compact">
+								<li>
+									<label for="respondent-parent-name-given">
+										<span class="label">Given name</span>
+										<abbr class="required" title="(required)">*</abbr>
+									</label>
+									<input ng-model="f1.respondent.parent.name.given" size="15" required="required" type="text" id="respondent-parent-name-given" />
+								</li>
+								<li>
+									<label for="respondent-parent-name-family">
+										<span class="label">Family name</span>
+										<abbr class="required" title="(required)">*</abbr>
+									</label>
+									<input ng-model="f1.respondent.parent.name.family" size="15" required="required" type="text" id="respondent-parent-name-family" />
+								</li>
+							</ol>
+						</fieldset>
+					</li>
+					<li class="atomic group">
+						<fieldset>
+							<legend>
+								<span class="label">Parent's address</span>
+							</legend>
+							<ol class="questions">
+								<li>
+									<label for="respondent-parent-address-street1">
+										<span class="label">Address line 1</span>
+										<abbr title="(required)" class="required">*</abbr>
+									</label>
+									<input type="text" ng-model="f1.respondent.parent.address.street1" size="40" required="required" id="respondent-parent-address-street1" />
+								</li>
+								<li>
+									<label for="respondent-parent-address-street2">
+										<span class="label">Address line 2</span>
+									</label>
+									<input type="text" ng-model="f1.respondent.parent.address.street2" size="40" id="respondent-parent-address-street2" />
+								</li>
+								<li class="group">
+									<ol class="questions compact">
+										<li>
+											<label for="respondent-parent-address-town">
+												<span class="label">Town, city or suburb</span>
+												<abbr title="(required)" class="required">*</abbr>
+											</label>
+											<input type="text" ng-model="f1.respondent.parent.address.town" size="20" required="required" id="respondent-parent-address-town" />
+										</li>
+										<li>
+											<label for="respondent-parent-address-state">
+												<span class="label">State</span>
+												<abbr title="(required)" class="required">*</abbr>
+											</label>
+											<input type="text" ng-model="f1.respondent.parent.address.state" size="5" required="required" id="respondent-parent-address-state" />
+										</li>
+										<li>
+											<label for="respondent-parent-address-postcode">
+												<span class="label">Postcode</span>
+												<abbr title="(required)" class="required">*</abbr>
+											</label>
+											<input type="text" ng-model="f1.respondent.parent.address.postcode" size="5" required="required" id="respondent-parent-address-postcode" />
+										</li>
+									</ol>
+								</li>
+								<li>
+									<label for="respondent-parent-address-country">
+										<span class="label">Country</span>
+										<abbr title="(required)" class="required">*</abbr>
+									</label>
+									<input type="text" ng-model="f1.respondent.parent.address.country" size="20" required="required" id="respondent-parent-address-country" />
+								</li>
+							</ol>
+						</fieldset>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="button" ng-click="f1.gotoPage(4)">If you are the aggrieved, proceed to Question 4</button></strong></li>
+				<li><button  type="button" ng-click="f1.gotoPage(3)">If you are <strong>not</strong> the aggrieved, proceed to Question 3</button></li>
+			</ul>
+		</li>
+	</ol>
+</form>

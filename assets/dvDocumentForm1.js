@@ -9,7 +9,7 @@ angular.module( 'dvDocumentApp' )
 	// first question
 	f1.pages = [
 		{ number:  1, url: 'assets/partials/_dva-f-1-aggrieved.html' },
-		{ number:  2 },
+		{ number:  2, url: 'assets/partials/_dva-f-1-respondent.html' },
 		{ number:  3 },
 		{ number:  4 },
 		{ number:  5 },
@@ -22,32 +22,53 @@ angular.module( 'dvDocumentApp' )
 		{ number: 12 }
 	];
 
-	f1.aggrieved = {
-		dateOfBirth: undefined,
-		under18: undefined,
-		address: {
-			state: 'QLD',
-			country: 'Australia'
-		}
-	};
-
 	f1.meta = {
 		dateCreated: new Date()
 	};
+	f1.aggrieved = {
+		address: {
+			state: 'QLD',
+			country: 'Australia'
+		},
+		parent: {
+			address: {
+				state: 'QLD',
+				country: 'Australia'
+			}
+		}
+	};
+	f1.respondent = {
+		address: {
+			state: 'QLD',
+			country: 'Australia'
+		},
+		parent: {
+			address: {
+				state: 'QLD',
+				country: 'Australia'
+			}
+		}
+	};
+
 
 	// age and date of birth
-	$scope.$watch( 'f1.aggrieved.dateOfBirth', function( dob ) {
-		if (! angular.isDate( dob )) {
-			return;
-		}
-		// http://www.romcartridge.com/2010/01/javascript-function-to-calculate-age.html
-		var today = f1.meta.dateCreated;
-		var age = today.getFullYear() - dob.getFullYear();
-		if (today.getMonth() < dob.getMonth() - 1 || (dob.getMonth() - 1 == today.getMonth() && today.getDate() < dob.getDate() )) {
-			age--;
-		}
-		f1.aggrieved.under18 = age < 18;
-	});
+	function under18( party ) {
+		return function( dob ) {
+			if (! angular.isDate( dob )) {
+				return;
+			}
+			// http://www.romcartridge.com/2010/01/javascript-function-to-calculate-age.html
+			var today = f1.meta.dateCreated;
+			var age = today.getFullYear() - dob.getFullYear();
+			if (today.getMonth() < dob.getMonth() - 1 || (dob.getMonth() - 1 == today.getMonth() && today.getDate() < dob.getDate() )) {
+				age--;
+			}
+			f1[ party ].under18 = age < 18;
+		};
+	}
+
+	$scope.$watch( 'f1.aggrieved.dateOfBirth',  under18( 'aggrieved'  ));
+	$scope.$watch( 'f1.respondent.dateOfBirth', under18( 'respondent' ));
 
 
 	f1.gotoPage = function( pageNumber ) {

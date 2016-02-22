@@ -24,16 +24,8 @@
 
 	<section ng-switch-when="2">
 		<h2>{{ f1.page.number }}. Respondent's details</h2>
-		<form ng-submit="f1.saveRespondent()">
-			<ol class="questions">
-				<li class="footer">
-					<ul class="actions">
-						<li><strong><button type="button" ng-click="f1.gotoPage(4)">If you are the aggrieved, proceed to Question 4</button></strong></li>
-						<li><button  type="button" ng-click="f1.gotoPage(3)">If you are <strong>not</strong> the aggrieved, proceed to Question 3</button></li>
-					</ul>
-				</li>
-			</ol>
-		</form>
+
+		<div ng-include="f1.page.url"></div>
 	</section>
 
 
