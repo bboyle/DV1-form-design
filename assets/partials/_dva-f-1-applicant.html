@@ -1,0 +1,254 @@
+<div class="status info">
+	<h2>This section only applies if a person other than the aggrieved is making the application</h2>
+	<form novalidate>
+		<ol class="questions">
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Are you the aggreived?</span>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="are-you-the-aggreived" ng-model="f1.applicant.isAggrieved" ng-value="true" id="are-you-the-aggreived-yes" />
+							<label for="are-you-the-aggreived-yes">Yes</label>
+						</li>
+						<li>
+							<input type="radio" name="are-you-the-aggreived" ng-model="f1.applicant.isAggrieved" ng-value="false" id="are-you-the-aggreived-no" />
+							<label for="are-you-the-aggreived-no">No</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li ng-show="f1.applicant.isAggrieved === false">
+				<fieldset>
+					<legend>
+						<span class="label">Which of the following describes you?</span>
+						<abbr title="(required)" class="required">*</abbr>
+						<small class="hint"></small>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" name="applicant-part" ng-model="f1.applicant.part" value="A" required="required" id="applicant-part-a" />
+							<label for="applicant-part-a">A person being authorised by the Aggrieved</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-part" ng-model="f1.applicant.part" value="B" required="required" id="applicant-part-b" />
+							<label for="applicant-part-b">A person acting under another Act for the Aggrieved</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-part" ng-model="f1.applicant.part" value="C" required="required" id="applicant-part-c" />
+							<label for="applicant-part-c">A Police Officer</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-part" ng-model="f1.applicant.part" value="D" required="required" id="applicant-part-d" />
+							<label for="applicant-part-d">A party to a child protection proceeding</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li class="footer" ng-show="f1.applicant.isAggrieved">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(4)">Proceed to Question 4</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</div>
+
+
+<div ng-show="f1.applicant.isAggrieved === false &amp;&amp; f1.applicant.part">
+	<header ng-switch="f1.applicant.part">
+		<h3 ng-switch-when="A">PART A — A person being authorised by the Aggrieved</h3>
+		<h3 ng-switch-when="B">PART B — A person acting under another Act for the Aggrieved</h3>
+		<h3 ng-switch-when="C">PART C — A Police Officer</h3>
+		<h3 ng-switch-when="D">PART D — A party to a child protection proceeding</h3>
+	</header>
+	<form novalidate>
+		<ol class="questions">
+			<li class="atomic group">
+				<fieldset>
+					<legend>
+						<span class="label">Name</span>
+					</legend>
+					<ol class="questions compact">
+						<li>
+							<label for="applicant-name-given">
+								<span class="label">Given name/s</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input ng-model="f1.applicant.name.given" size="15" required="required" type="text" id="applicant-name-given" />
+						</li>
+						<li>
+							<label for="applicant-name-family">
+								<span class="label">Family name</span>
+								<abbr class="required" title="(required)">*</abbr>
+							</label>
+							<input ng-model="f1.applicant.name.family" size="15" required="required" type="text" id="applicant-name-family" />
+						</li>
+					</ol>
+				</fieldset>
+			</li>
+			<li class="atomic group">
+				<fieldset>
+					<legend>
+						<span class="label">Address</span>
+					</legend>
+					<ol class="questions">
+						<li>
+							<label for="applicant-address-street1">
+								<span class="label">Address line 1</span>
+								<abbr title="(required)" class="required">*</abbr>
+							</label>
+							<input type="text" ng-model="f1.applicant.address.street1" size="40" required="required" id="applicant-address-street1" />
+						</li>
+						<li>
+							<label for="applicant-address-street2">
+								<span class="label">Address line 2</span>
+							</label>
+							<input type="text" ng-model="f1.applicant.address.street2" size="40" id="applicant-address-street2" />
+						</li>
+						<li class="group">
+							<ol class="questions compact">
+								<li>
+									<label for="applicant-address-town">
+										<span class="label">Town, city or suburb</span>
+										<abbr title="(required)" class="required">*</abbr>
+									</label>
+									<input type="text" ng-model="f1.applicant.address.town" size="20" required="required" id="applicant-address-town" />
+								</li>
+								<li>
+									<label for="applicant-address-state">
+										<span class="label">State</span>
+										<abbr title="(required)" class="required">*</abbr>
+									</label>
+									<input type="text" ng-model="f1.applicant.address.state" size="5" value="QLD" required="required" id="applicant-address-state" />
+								</li>
+								<li>
+									<label for="applicant-address-postcode">
+										<span class="label">Postcode</span>
+										<abbr title="(required)" class="required">*</abbr>
+									</label>
+									<input type="text" ng-model="f1.applicant.address.postcode" size="5" required="required" id="applicant-address-postcode" />
+								</li>
+							</ol>
+						</li>
+						<li>
+							<label for="applicant-address-country">
+								<span class="label">Country</span>
+								<abbr title="(required)" class="required">*</abbr>
+							</label>
+							<input type="text" ng-model="f1.applicant.address.country" size="20" value="Australia" required="required" id="applicant-address-country" />
+						</li>
+					</ol>
+				</fieldset>
+			</li>
+			<li>
+				<label for="applicant-gender">
+					<span class="label">Gender</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</label>
+				<select ng-model="f1.applicant.gender" id="applicant-gender">
+					<option>—please select—</option>
+					<option>Female</option>
+					<option>Male</option>
+					<option>Other</option>
+				</select>
+				<span ng-show="f1.applicant.gender === 'Other'">
+					<label for="applicant-gender-other">please specify</label>
+					<input type="text" ng-model="f1.applicant.genderOther" list="datalist-genders" required="required" />
+				</span>
+			</li>
+
+			<li ng-if="f1.applicant.part === 'A'">
+				<fieldset>
+					<legend>
+						<span class="label">Is the authorisation of the aggrieved in writing?</span>
+						<abbr title="(required)" class="required">*</abbr>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="application-authorised" ng-model="f1.applicant.authorisation.written" ng-value="false" required="required" id="application-authorised-no" />
+							<label for="application-authorised-no">No</label>
+						</li>
+						<li>
+							<input type="radio" name="application-authorised" ng-model="f1.applicant.authorisation.written" ng-value="true" required="required" id="application-authorised-yes" />
+							<label for="application-authorised-yes">Yes</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li ng-show="f1.applicant.authorisation.written === false">
+				<label for="application-authorisation-received">
+					<span class="label">How is authorisation communicated from the aggrieved?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</label>
+				<textarea ng-model="f1.applicant.authorisation.other" rows="2" cols="40" required="required" id="application-authorisation-received"></textarea>
+			</li>
+
+			<li ng-if="f1.applicant.part === 'B'">
+				<fieldset>
+					<legend>
+						<span class="label">Who is the application being made by?</span>
+						<abbr title="(required)" class="required">*</abbr>
+					</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="applicant-acting" ng-model="f1.applicant.acting" value="A guardian" required="required" id="applicant-acting-a-guardian" />
+						<label for="applicant-acting-a-guardian">A guardian</label>
+					</li>
+					<li>
+						<input type="radio" name="applicant-acting" ng-model="f1.applicant.acting" value="Adult Guardian" required="required" id="applicant-acting-adult-guardian" />
+						<label for="applicant-acting-adult-guardian">Adult Guardian</label>
+					</li>
+					<li>
+						<input type="radio" name="applicant-acting" ng-model="f1.applicant.acting" value="Enduring power of attorney" required="required" id="applicant-acting-enduring-power-of-attorney" />
+						<label for="applicant-acting-enduring-power-of-attorney">Enduring power of attorney</label>
+					</li>
+					<li>
+						<input type="radio" name="applicant-acting" ng-model="f1.applicant.acting" value="Other" required="required" id="applicant-acting-other" />
+						<label for="applicant-acting-other">Other</label>
+					</li>
+				</ul>
+				</fieldset>
+			</li>
+			<li ng-show="f1.applicant.acting === 'Other'">
+				<label for="applicant-acting-other-specified">
+					<span class="label">Please specify</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</label>
+				<input type="text" ng-model="f1.applicant.acting.other" size="40" required="required" id="applicant-acting-other-specified" />
+			</li>
+
+<!-- TODO Part C police officer -->
+
+			<li ng-if="f1.applicant.part === 'D'">
+				<fieldset>
+					<legend>
+						<span class="label">What type of party to a child protection proceeding are you?</span>
+						<abbr title="(required)" class="required">*</abbr>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A child for whom an order is sought in a child protection proceeding" required="required" id="applicant-child-protection-party-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
+							<label for="applicant-child-protection-party-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">A child for whom an order is sought in a child protection proceeding</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A separate legal representative for a child for whom an order is sought in a child protection proceeding" required="required" id="applicant-child-protection-party-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
+							<label for="applicant-child-protection-party-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">A separate legal representative for a child for whom an order is sought in a child protection proceeding</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="An applicant or respondent in a child protection proceeding" required="required" id="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding" />
+							<label for="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding">An applicant or respondent in a child protection proceeding</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="button" ng-click="f1.gotoPage(4)">Proceed to Question 4</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</div>

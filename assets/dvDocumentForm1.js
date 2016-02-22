@@ -10,7 +10,7 @@ angular.module( 'dvDocumentApp' )
 	f1.pages = [
 		{ number:  1, url: 'assets/partials/_dva-f-1-aggrieved.html' },
 		{ number:  2, url: 'assets/partials/_dva-f-1-respondent.html' },
-		{ number:  3 },
+		{ number:  3, url: 'assets/partials/_dva-f-1-applicant.html' },
 		{ number:  4 },
 		{ number:  5 },
 		{ number:  6 },
@@ -47,6 +47,12 @@ angular.module( 'dvDocumentApp' )
 				state: 'QLD',
 				country: 'Australia'
 			}
+		}
+	};
+	f1.applicant = {
+		address: {
+			state: 'QLD',
+			country: 'Australia'
 		}
 	};
 
