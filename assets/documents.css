@@ -33,8 +33,6 @@ article {
 	left: 0;
 	position: absolute;
 	box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.2);
-	transform: scale(1);
-	opacity: 1;
 	display: flex;
 	flex-flow: column;
 	align-items: stretch;
@@ -69,6 +67,35 @@ article > div {
 .dva-f1 > footer select {
 	padding: 0;
 	border: none;
+}
+
+/* animate relevance */
+ol.questions > li {
+	transform-origin: 0 0;
+}
+ol.questions > li.ng-hide-add,
+ol.questions > li.ng-hide-add-remove {
+	display: none;
+}
+ol.questions > li.ng-hide {
+	transform: scaleY(0);
+	opacity: 0;
+}
+ol.questions > li.ng-hide-remove,
+ol.questions > li.ng-hide-remove-active {
+	will-change: opacity, transform;
+	transition:
+		opacity .7s ease,
+		transform .3s ease;
+}
+
+/* date input */
+.date-day {
+	text-align: right;
+	width: 2.3em;
+}
+.date-year {
+	width: 4em;
 }
 
 

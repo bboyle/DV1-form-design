@@ -18,15 +18,7 @@
 			<li>Complete an “<a tabindex="0" ng-click="$parent.document = 'f-aggrieved'">Aggrieved Details Form</a>” which will not be provided to the respondent</li>
 		</ul>
 
-		<form>
-			<ol class="questions">
-				<li class="footer">
-					<ul class="actions">
-						<li><strong><button type="button" ng-click="f1.gotoPage(2)">Proceed to Question 2</button></strong></li>
-					</ul>
-				</li>
-			</ol>
-		</form>
+		<div ng-include="f1.page.url"></div>
 	</section>
 
 

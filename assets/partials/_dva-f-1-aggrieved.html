@@ -1,0 +1,311 @@
+<form novalidate>
+	<ol class="questions">
+
+		<li class="atomic group">
+			<fieldset>
+				<legend>
+					<span class="label">Name</span>
+				</legend>
+				<ol class="questions compact">
+					<li>
+						<label for="aggrieved-name-given">
+							<span class="label">Given name/s</span>
+							<abbr class="required" title="(required)">*</abbr>
+						</label>
+						<input ng-model="f1.aggrieved.name.given" size="15" required="required" type="text" id="aggrieved-name-given" />
+					</li>
+					<li>
+						<label for="aggrieved-name-family">
+							<span class="label">Family name</span>
+							<abbr class="required" title="(required)">*</abbr>
+						</label>
+						<input ng-model="f1.aggrieved.name.family" size="15" required="required" type="text" id="aggrieved-name-family" />
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li>
+			<label for="aggrieved-date-of-birth">
+				<span class="label">Date of birth</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<input type="date" ng-model="f1.aggrieved.dateOfBirth" size="20" min="1900-01-01" max="{{ ::f1.meta.dateCreated | date: 'yyyy-MM-dd' }}" required="required" placeholder="Example: 1963-02-23" id="aggrieved-date-of-birth" />
+			<output ng-if="f1.aggrieved.dateOfBirth">{{ f1.aggrieved.dateOfBirth | date: 'd MMMM yyyy' }}</output>
+		</li>
+		<li class="atomic group">
+			<fieldset>
+				<legend>
+					<span class="label">Address</span>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="aggrieved-address-street1">
+							<span class="label">Address line 1</span>
+							<abbr title="(required)" class="required">*</abbr>
+						</label>
+						<input type="text" ng-model="f1.aggrieved.address.street1" size="40" required="required" id="aggrieved-address-street1" />
+					</li>
+					<li>
+						<label for="aggrieved-address-street2">
+							<span class="label">Address line 2</span>
+						</label>
+						<input type="text" ng-model="f1.aggrieved.address.street2" size="40" id="aggrieved-address-street2" />
+					</li>
+					<li class="group">
+						<ol class="questions compact">
+							<li>
+								<label for="aggrieved-address-town">
+									<span class="label">Town, city or suburb</span>
+									<abbr title="(required)" class="required">*</abbr>
+								</label>
+								<input type="text" ng-model="f1.aggrieved.address.town" size="20" required="required" id="aggrieved-address-town" />
+							</li>
+							<li>
+								<label for="aggrieved-address-state">
+									<span class="label">State</span>
+									<abbr title="(required)" class="required">*</abbr>
+								</label>
+								<input type="text" ng-model="f1.aggrieved.address.state" size="5" value="QLD" required="required" id="aggrieved-address-state" />
+							</li>
+							<li>
+								<label for="aggrieved-address-postcode">
+									<span class="label">Postcode</span>
+									<abbr title="(required)" class="required">*</abbr>
+								</label>
+								<input type="text" ng-model="f1.aggrieved.address.postcode" size="5" required="required" id="aggrieved-address-postcode" />
+							</li>
+						</ol>
+					</li>
+					<li>
+						<label for="aggrieved-address-country">
+							<span class="label">Country</span>
+							<abbr title="(required)" class="required">*</abbr>
+						</label>
+						<input type="text" ng-model="f1.aggrieved.address.country" size="20" value="Australia" required="required" id="aggrieved-address-country" />
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li>
+			<label for="aggrieved-gender">
+				<span class="label">Gender</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<select ng-model="f1.aggrieved.gender" id="aggrieved-gender">
+				<option>—please select—</option>
+				<option>Female</option>
+				<option>Male</option>
+				<option>Other</option>
+			</select>
+			<span ng-show="f1.aggrieved.gender === 'Other'">
+				<label for="aggrieved-gender-other">please specify</label>
+				<input type="text" ng-model="f1.aggrieved.genderOther" list="datalist-genders" required="required" />
+			</span>
+		</li>
+		<li>
+			<label for="aggrieved-home-number">
+				<span class="label">Home number</span>
+			</label>
+			<input type="tel" ng-model="f1.aggrieved.homeNumber" size="20" id="aggrieved-home-number" />
+		</li>
+		<li>
+			<label for="aggrieved-mobile-number">
+				<span class="label">Mobile number</span>
+			</label>
+			<input type="tel" ng-model="f1.aggrieved.mobileNumber" size="20" id="aggrieved-mobile-number" />
+		</li>
+		<li>
+			<label for="aggrieved-work-phone">
+				<span class="label">Work Phone</span>
+			</label>
+			<input type="tel" ng-model="f1.aggrieved.workPhone" size="20" id="aggrieved-work-phone" />
+		</li>
+		<li>
+			<label for="aggrieved-email">
+				<span class="label">Email</span>
+			</label>
+			<input type="email" ng-model="f1.aggrieved.email" size="40" id="aggrieved-email" />
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the aggrieved require an interpreter?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="aggrieved-interpreter" ng-model="f1.aggrieved.requiresInterpreter" ng-value="false" required="required" id="aggrieved-interpreter-no" />
+						<label for="aggrieved-interpreter-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="aggrieved-interpreter" ng-model="f1.aggrieved.requiresInterpreter" ng-value="true" required="required" id="aggrieved-interpreter-yes" />
+						<label for="aggrieved-interpreter-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="f1.aggrieved.requiresInterpreter">
+			<label for="aggrieved-language-dialect">
+				<span class="label">Language/Dialect</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<input type="text" ng-model="f1.aggrieved.language" size="20" required="required" id="aggrieved-language-dialect" />
+		</li>
+		<li>
+			<fieldset id="name1">
+				<legend>
+					<span class="label">Does the aggrieved identify as</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="aggrieved-identify-as" ng-model="f1.aggrieved.identifyAs" value="Aboriginal" id="aggrieved-identify-as-aboriginal" />
+						<label for="aggrieved-identify-as-aboriginal">Aboriginal</label>
+					</li>
+					<li>
+						<input type="radio" name="aggrieved-identify-as" ng-model="f1.aggrieved.identifyAs" value="Torres Strait Islander" id="aggrieved-identify-as-torres-strait-islander" />
+						<label for="aggrieved-identify-as-torres-strait-islander">Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="aggrieved-identify-as" ng-model="f1.aggrieved.identifyAs" value="Aboriginal and Torres Strait Islander" id="aggrieved-identify-as-aboriginal-and-torres-strait-islander" />
+						<label for="aggrieved-identify-as-aboriginal-and-torres-strait-islander">Aboriginal and Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="aggrieved-identify-as" ng-model="f1.aggrieved.identifyAs" id="aggrieved-identify-as-na" />
+						<label for="aggrieved-identify-as-na">None of the above</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the aggrieved have a disability, illness or impairment where support and/or special arrangements are required?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="aggrieved-have-a-disability" ng-model="f1.aggrieved.hasDisability" ng-value="false" required="required" id="aggrieved-have-a-disability-no" />
+						<label for="aggrieved-have-a-disability-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="aggrieved-have-a-disability" ng-model="f1.aggrieved.hasDisability" ng-value="true" required="required" id="aggrieved-have-a-disability-yes" />
+						<label for="aggrieved-have-a-disability-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Is the aggrieved under 18 years of age?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="aggrieved-under-18" ng-model="f1.aggrieved.under18" ng-value="false" required="required" id="aggrieved-under-18-no" />
+						<label for="aggrieved-under-18-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="aggrieved-under-18" ng-model="f1.aggrieved.under18" ng-value="true" required="required" id="aggrieved-under-18-yes" />
+						<label for="aggrieved-under-18-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li class="section" ng-show="f1.aggrieved.under18">
+			<fieldset>
+				<legend>
+					<p>Please supply the details of a parent as all documents must be given to a parent of the aggrieved unless the court orders otherwise.</p>
+					<!-- <small class="hint relevance">(If you chose ‘Yes’ above)</small> -->
+				</legend>
+				<ol class="questions">
+					<li class="atomic group">
+						<fieldset>
+							<legend>
+								<span class="label">Parent's name</span>
+								<small class="hint"></small>
+							</legend>
+							<ol class="questions compact">
+								<li>
+									<label for="aggrieved-parent-name-given">
+										<span class="label">Given name</span>
+										<abbr class="required" title="(required)">*</abbr>
+									</label>
+									<input ng-model="f1.aggrieved.parent.name.given" size="15" required="required" type="text" id="aggrieved-parent-name-given" />
+								</li>
+								<li>
+									<label for="aggrieved-parent-name-family">
+										<span class="label">Family name</span>
+										<abbr class="required" title="(required)">*</abbr>
+									</label>
+									<input ng-model="f1.aggrieved.parent.name.family" size="15" required="required" type="text" id="aggrieved-parent-name-family" />
+								</li>
+							</ol>
+						</fieldset>
+					</li>
+					<li class="atomic group">
+						<fieldset>
+							<legend>
+								<span class="label">Parent's address</span>
+							</legend>
+							<ol class="questions">
+								<li>
+									<label for="aggrieved-parent-address-street1">
+										<span class="label">Address line 1</span>
+										<abbr title="(required)" class="required">*</abbr>
+									</label>
+									<input type="text" ng-model="f1.aggrieved.parent.address.street1" size="40" required="required" id="aggrieved-parent-address-street1" />
+								</li>
+								<li>
+									<label for="aggrieved-parent-address-street2">
+										<span class="label">Address line 2</span>
+									</label>
+									<input type="text" ng-model="f1.aggrieved.parent.address.street2" size="40" id="aggrieved-parent-address-street2" />
+								</li>
+								<li class="group">
+									<ol class="questions compact">
+										<li>
+											<label for="aggrieved-parent-address-town">
+												<span class="label">Town, city or suburb</span>
+												<abbr title="(required)" class="required">*</abbr>
+											</label>
+											<input type="text" ng-model="f1.aggrieved.parent.address.town" size="20" required="required" id="aggrieved-parent-address-town" />
+										</li>
+										<li>
+											<label for="aggrieved-parent-address-state">
+												<span class="label">State</span>
+												<abbr title="(required)" class="required">*</abbr>
+											</label>
+											<input type="text" ng-model="f1.aggrieved.parent.address.state" size="5" required="required" id="aggrieved-parent-address-state" />
+										</li>
+										<li>
+											<label for="aggrieved-parent-address-postcode">
+												<span class="label">Postcode</span>
+												<abbr title="(required)" class="required">*</abbr>
+											</label>
+											<input type="text" ng-model="f1.aggrieved.parent.address.postcode" size="5" required="required" id="aggrieved-parent-address-postcode" />
+										</li>
+									</ol>
+								</li>
+								<li>
+									<label for="aggrieved-parent-address-country">
+										<span class="label">Country</span>
+										<abbr title="(required)" class="required">*</abbr>
+									</label>
+									<input type="text" ng-model="f1.aggrieved.parent.address.country" size="20" required="required" id="aggrieved-parent-address-country" />
+								</li>
+							</ol>
+						</fieldset>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="button" ng-click="f1.gotoPage(2)">Proceed to Question 2</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
