@@ -64,7 +64,7 @@
 	<meta name="DCTERMS.creator" scheme="AGLSTERMS.GOLD" content="c=AU; o=The State of Queensland; ou=Department of Justice and Attorney-General; ou=Justice Services">
 	<meta name="DCTERMS.publisher" scheme="AGLSTERMS.AglsAgent" content="corporateName=The State of Queensland; jurisdiction=Queensland">
 	<meta name="DCTERMS.created" content="2016-01-18">
-	<meta name="DCTERMS.modified" content="2016-02-08">
+	<meta name="DCTERMS.modified" content="2016-02-23">
 	<meta name="DCTERMS.title" content="Apply for a protection order | Your rights, crime and the law">
 	<meta name="DCTERMS.description" content="Step-by-step guide to apply for protection from domestic violence.">
 	<meta name="DCTERMS.subject" scheme="AGLSTERMS.APAIS" content="Domestic Violence">
@@ -75,7 +75,7 @@
 	<meta name="DCTERMS.jurisdiction" scheme="AGLSTERMS.AglsJuri" content="Queensland">
 </head>
 
-<body ng-app="dv1" ng-init="beta = true;" ng-class="{ beta: beta }">
+<body ng-app="dv1" ng-init="beta = true;" ng-class="{ beta: beta, compact: collapsed }">
 
 
 <div id="quick-exit" data-accesskey="Esc" title="www.google.com"><a target="_top" href="https://www.google.com/" data-accesskey="Esc">Quick exit ➟</a></div>
@@ -89,8 +89,7 @@
 		(<button type="button" ng-click="beta = false">Close this message</button>)
 	</header>
 
-
-
+	<button class="collapse ng-cloak" type="button" ng-click="collapsed = ! collapsed">{{ collapsed ? 'Expand' : 'Collapse' }}</button>
 
 <article ng-controller="InterviewController as interview">
 	<header>
@@ -108,18 +107,19 @@
 			</ol>
 		</nav>
 
-		<h1 style="margin-bottom: 0">Apply for a protection order</h1>
+		<h1 style="margin-bottom: 0">Complete an application for a protection order</h1>
 		<p style="margin-top: 0">Guide to completing an application for a protection order</p>
 	</header>
-
 
 	<datalist id="placenames">
 		<option value="Home">
 		<option value="Work">
 	</datalist>
 	<datalist id="witnesses">
+		<option value="coworkers">
 		<option value="children">
 		<option value="partner">
+		<option value="parents">
 		<option value="a neighbour">
 	</datalist>
 
@@ -132,8 +132,8 @@
 	<div class="preamble status info">
 		<h2>Before you begin</h2>
 		<ul>
-			<li>This online guide can take an hour or more to complete. You may find the questions difficult.
-				We will ask questions about your situation — what happened and when — what protection you need.</li>
+			<li>This online form can take an hour or more to complete. You can apply yourself. You can also ask a friend or lawyer to apply on your behalf. In some situations, the police may apply for you.</li>
+			<li>You may find answering these questions difficult because we will ask questions about your situation—what happened and when—what protection you need.</li>
 			<li>At the end of this guide you will have the necessary forms to take to court.</li>
 		</ul>
 	</div>
@@ -141,14 +141,14 @@
 	<div class="status info">
 		<h2>Going to court</h2>
 		<ul>
-			<li>You need to file the forms and all attachments at a Magistrates Court.</li>
-			<li>You will be given a date to appear in court (usually in about four weeks time).</li>
-			<li>You will be given a date to appear in court as soon as possible if you also ask for an urgent temporary protection order. You have to explain why this is necessary.</li>
-			<li>The person you want protection from will have to appear in court at the same time.</li>
-			<li>You can apply yourself. You can also ask a friend or lawyer to apply on your behalf. In some situations, the police may apply for you.</li>
+			<li>You need to lodge the forms and all attachments at a magistrates court.</li>
+			<li>You will be given a date to appear in court (usually in about 4 weeks time).</li>
+			<li>Your court date can be sooner if you also ask for an urgent temporary protection order. You have to explain why you need this.</li>
+			<li>The person you want to be protected from will have to appear in court at the same time.</li>
+			<li></li>
 		</ul>
 
-		<p>The nearest Magistrates Court is:<br>
+		<p>The nearest magistrates court is:<br>
 			Beaudesert Magistrates Court<br>
 			29 William Street<br>
 			Beaudesert Qld 4285
@@ -161,15 +161,15 @@
 
 			<!-- <p>You can file your application today.</p> -->
 			<!-- TODO opening hours, public holidays, closures -->
-			<p>You can file your application on Monday.</p>
+			<p>You can lodge your application on Monday.</p>
 
 			<p><a href="http://www.qld.gov.au/law/court/courts/courthouse-locations/">Find another Magistrates Court</a></p>
 	</div>
 
 	<form>
 	<div class="status warn">
-		<h2>Is your web browsing safe?</h2>
-		<p>Someone may be able to tell you visited this web page.</p>
+		<h2>Is your web use safe?</h2>
+		<p>Someone you know may be able to tell you visited this web page.</p>
 		<ol class="questions">
 			<li>
 				<fieldset>
@@ -180,7 +180,7 @@
 					<ul class="choices">
 						<li>
 							<input type="radio" ng-model="interview.safe" value="No" required id="interview-is-safe-no">
-							<label for="interview-is-safe-no">No — someone could spy on my web browser</label>
+							<label for="interview-is-safe-no">No—someone I know could spy on my web use</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.safe" value="Not sure" required id="interview-is-safe-not-sure">
@@ -188,7 +188,7 @@
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.safe" value="Yes" required id="interview-is-safe-yes">
-							<label for="interview-is-safe-yes">Yes — this computer is completely safe</label>
+							<label for="interview-is-safe-yes">Yes—this computer is completely safe</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -201,8 +201,8 @@
 	<div class="status info" ng-show="interview.safe === 'No'">
 		<h2>Protect yourself online</h2>
 		<ol>
-			<li>Learn about <a href="#">safe browsing habits</a></li>
-			<li>Leave this web page and <a href="#">clear your browser history</a></li>
+			<li>Learn about <a href="#">safe web use habits</a></li>
+			<li>Leave this web page and <a href="#">clear your web history</a></li>
 		</ol>
 	</div>
 
@@ -212,16 +212,16 @@
 			<li>contact Queensland Police</li>
 			<li>contact DVConnect</li>
 			<li>from a computer at a public library</li>
-			<li>from a computer or tablet at a friend of family home</li>
+			<li>from a computer or tablet at a someone else's place</li>
 			<li>in person, at a Queensland Magistrates Court</li>
 			<li>from a safe smartphone (e.g. <a href="http://wesnet.org.au/home2/projects/telstra-safe-connections-project/">Safe Connections</a></li>
 		</ul>
 
 		<h3>Continue applying</h3>
 		<ul>
-			<li>switch to a <a href="#">private browsing session</a></li>
-			<li>clear your browser history</li>
-			<li>take note of the <em>Quick Exit</em> button on the side of the screen. Use this if you need to quickly exit the site.</li>
+			<li>switch to a <a href="#">private web session</a></li>
+			<li>clear your web history</li>
+			<li>use the <em>Quick Exit</em> button on the side of the screen if you need to quickly exit this site.</li>
 		</ul>
 <!--
 		<h3>Save and continue later</h3>
@@ -240,22 +240,22 @@
 			<li>
 				<fieldset>
 					<legend>
-						<span class="label">Are you in immediate danger?</span>
+						<span class="label">Are you in danger right now?</span>
 						<abbr title="(required)" class="required">*</abbr>
-						<small class="hint">If someone could hurt you while you are answering this form you should call the police. Police can provide immediate assistance and apply for a protection order for you.</small>
+						<small class="hint">If someone could hurt you while you're completing this form you should call the police. Police can help you right now and apply for a protection order for you.</small>
 					</legend>
 					<ul class="choices">
 						<li>
 							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="yes" required id="applicant-danger-yes">
-							<label for="applicant-danger-yes">Yes</label> — call <a href="tel:000">000</a> and ask for police
+							<label for="applicant-danger-yes">Yes</label>—call <a href="tel:000">000</a> and ask for police
 						</li>
 						<li>
 							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="maybe" required id="applicant-danger-dunno">
-							<label for="applicant-danger-dunno">I don't know</label> — contact DVConnect
+							<label for="applicant-danger-dunno">I don't know</label>—contact DVConnect
 						</li>
 						<li>
 							<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="no" required id="applicant-danger-no">
-							<label for="applicant-danger-no">It is safe for me to fill out this form (it could take an hour or longer)</label>
+							<label for="applicant-danger-no">It's safe for me to fill out this form (I know it could take 1 hour or longer)</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -264,22 +264,22 @@
 			<li ng-show="interview.applicantInDanger === 'no'">
 				<fieldset>
 					<legend>
-						<span class="label">Do I need to get legal advice?</span>
-						<small class="hint">You should get legal advice before starting the process to get a domestic violence order.</small>
+						<span class="label">Do you need legal advice?</span>
+						<small class="hint">You should get legal advice before starting the process to get a protection order.</small>
 					</legend>
 					<ul class="choices">
 						<li>
 							<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="yes" required id="legal-advice-yes">
-							<label for="legal-advice-yes">I have discussed this with a lawyer</label>
+							<label for="legal-advice-yes">No—I've already talked to a lawyer</label>
 						</li>
 						<li>
 							<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="later" required id="legal-advice-later">
 							<label for="legal-advice-later">I want to fill out this form now and talk to a lawyer later</label>
-							<small class="hint">You can take your documents to a lawyer before you file them at a Magistrates Court.</small>
+							<small class="hint">You can take this form to a lawyer before you lodge it at a magistrates court.</small>
 						</li>
 						<li>
 							<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="how" required id="legal-advice-how">
-							<label for="legal-advice-how">How can I get legal advice?</label>
+							<label for="legal-advice-how">Yes—how can I get legal advice?</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -527,23 +527,24 @@
 					<ul class="choices">
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Intimate personal" id="interview-relationship-intimate-personal">
-							<label for="interview-relationship-intimate-personal">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} have (or had) an intimate personal relationship</label>
-							<small class="hint">Example: were married or in a registered relationship, had a child together, dating, were a couple.</small>
+							<label for="interview-relationship-intimate-personal">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} have (or had) an intimate personal relationship</label>
+							<small class="hint">Example: are/were married or in a registered relationship, have/had a child together, are/were dating, are/were a couple.</small>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Family" id="interview-relationship-family">
-							<label for="interview-relationship-family">{{ interview.respondent.name.given }} is related to {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
-							<small class="hint">Includes {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} immediate and extended family, in-laws, step- and foster families.</small>
+							<label ng-if="interview.applicantIsAggrieved" for="interview-relationship-family">we are related</label>
+							<label ng-if="! interview.applicantIsAggrieved" for="interview-relationship-family">{{ interview.respondent.name.given }} is related to {{ interview.aggrieved.name.given }}</label>
+							<small class="hint">Includes {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} immediate and extended family, in-laws, step- or foster family.</small>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Informal care" id="interview-relationship-informal-care">
-							<label for="interview-relationship-informal-care">{{ interview.respondent.name.given }} helps to care for {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
-							<small class="hint">Examples of <dfn>informal care</dfn>: dressing or other personal grooming of a person; preparing a person’s meals or helping a person with eating meals; shopping for a person’s groceries; or telephoning a specialist to make a medical appointment for a person.</small>
+							<label for="interview-relationship-informal-care">{{ interview.respondent.name.given }} helps care for {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
+							<small class="hint">Examples of <dfn>informal care</dfn>: dressing or other personal grooming; preparing meals or helping with eating; shopping for groceries; or calling a specialist to make a medical appointment.</small>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Commercial care" id="interview-relationship-commercial-care">
 							<label for="interview-relationship-commercial-care">{{ interview.respondent.name.given }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} paid carer</label>
-							<small class="hint">Examples of <dfn>commercial care</dfn>: a nurse or paid carer.</small>
+							<small class="hint">Example: <dfn>commercial care</dfn> by a nurse.</small>
 						</li>
 					</ul>
 				</fieldset>
@@ -566,48 +567,48 @@
 					<ul class="choices">
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Married" id="interview-relationship-married">
-							<label for="interview-relationship-married">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are married</label>
+							<label for="interview-relationship-married">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} are married</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Spouse" id="interview-relationship-former-spouse">
-							<label for="interview-relationship-former-spouse">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were married</label>
+							<label for="interview-relationship-former-spouse">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} were married</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="De Facto" id="interview-relationship-de-facto">
-							<label for="interview-relationship-de-facto">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are in a <dfn>de facto</dfn> relationship</label>
+							<label for="interview-relationship-de-facto">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} are in a <dfn>de facto</dfn> relationship</label>
 							<small class="hint">TODO legal definition of a de facto relationship</small>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Registered Relationship" id="interview-relationship-registered-relationship">
-							<label for="interview-relationship-registered-relationship">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are in a registered relationship</label>
+							<label for="interview-relationship-registered-relationship">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} are in a registered relationship</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Previous Registered Relationship" id="interview-relationship-registered-relationship-past">
-							<label for="interview-relationship-registered-relationship-past">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were in a registered relationship</label>
+							<label for="interview-relationship-registered-relationship-past">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} were in a registered relationship</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent of a Child" id="interview-relationship-parent-of-a-child">
-							<label for="interview-relationship-parent-of-a-child">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are parents of the same child</label>
+							<label for="interview-relationship-parent-of-a-child">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} are parents of the same child</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Parent of a Child" id="interview-relationship-former-parent-of-a-child">
-							<label for="interview-relationship-former-parent-of-a-child">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were parents of the same child</label>
+							<label for="interview-relationship-former-parent-of-a-child">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} were parents of the same child</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Engaged" id="interview-relationship-engaged">
-							<label for="interview-relationship-engaged">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are engaged</label>
+							<label for="interview-relationship-engaged">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} are engaged</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Were Engaged" id="interview-relationship-were-engaged">
-							<label for="interview-relationship-were-engaged">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were engaged</label>
+							<label for="interview-relationship-were-engaged">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} were engaged</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Couple" id="interview-relationship-couple">
-							<label for="interview-relationship-couple">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} are a couple</label>
+							<label for="interview-relationship-couple">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} are a couple</label>
 						</li>
 						<li>
 							<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Past Couple" id="interview-relationship-couple-past">
-							<label for="interview-relationship-couple-past">{{ interview.respondent.name.given }} and {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} were a couple</label>
+							<label for="interview-relationship-couple-past">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.given + ' and ' + interview.aggrieved.name.given }} were a couple</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -660,7 +661,7 @@
 			<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; ( interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Past Couple' )">
 				<label for="interview-relationship-couple">
 					<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} and {{ interview.respondent.name.given }} {{ interview.aggrieved.relationship.type === 'Couple' ? 'are' : 'were' }} a couple</span>
-					<small class="hint">Include the level of dependency on each other whether financial or otherwise; length of time of the relationship; frequency of contact and degree of intimacy, if any.</small>
+					<small class="hint">Describe {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given +'’s' }} level of dependence on each other, whether financial or otherwise; how long you've been in a relationship; how often you have contact and {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.their }} degree of intimacy (if any).</small>
 				</label>
 				<textarea cols="40" rows="2"
 				       id="interview-relationship-couple"
@@ -703,9 +704,9 @@
 			<p>
 				Domestic and family violence is when one
 				person in a relationship uses violence or
-				abuse to maintain power and control over
+				abuse to have power and control over
 				the other person. Abuse is not always
-				physical — it can be emotional, verbal,
+				physical—it can be emotional, verbal,
 				sexual, financial or other controlling
 				behaviours that cause the person being
 				abused to live in fear.
@@ -775,7 +776,7 @@
 							       id="interview-abuse-emotional-stalking-public"
 							       ng-model="interview.abuse.emotional.stalkingPublic"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-stalking-public">{{ interview.respondent.name.given }} has been following {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} in public</label>
+							<label for="interview-abuse-emotional-stalking-public">{{ interview.respondent.name.given }} followed {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} in public places</label>
 							<small class="hint">Includes by vehicle or on foot</small>
 						</li>
 <!-- remaining outside a person’s residence or place of work -->
@@ -784,14 +785,14 @@
 							       id="interview-abuse-emotional-loitering-home"
 							       ng-model="interview.abuse.emotional.loiteringHome"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-loitering-home">{{ interview.respondent.name.given }} has been hanging around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
+							<label for="interview-abuse-emotional-loitering-home">{{ interview.respondent.name.given }} hung around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} home</label>
 						</li>
 						<li>
 							<input type="checkbox"
 							       id="interview-abuse-emotional-loitering-work"
 							       ng-model="interview.abuse.emotional.loiteringWork"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-loitering-work">{{ interview.respondent.name.given }} has been hanging around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} workplace</label>
+							<label for="interview-abuse-emotional-loitering-work">{{ interview.respondent.name.given }} hung around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} workplace</label>
 						</li>
 <!-- repeatedly contacting a person by telephone, SMS message, email or social networking site without the person’s consent -->
 						<li>
@@ -799,7 +800,7 @@
 							       id="interview-abuse-emotional-stalking-contact"
 							       ng-model="interview.abuse.emotional.stalkingContact"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-stalking-contact">{{ interview.respondent.name.given }} keeps contacting {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} without {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} consent</label>
+							<label for="interview-abuse-emotional-stalking-contact">{{ interview.respondent.name.given }} contacted {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} without {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} approval</label>
 							<small class="hint">Contact can be by telephone, SMS message, email, social networking or other.</small>
 						</li>
 <!-- repeated derogatory taunts, including racial taunts -->
@@ -808,7 +809,7 @@
 							       id="interview-abuse-emotional-taunt"
 							       ng-model="interview.abuse.emotional.taunt"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-taunt">{{ interview.respondent.name.given }} has repeatedly taunted {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} with derogatory or racial taunts</label>
+							<label for="interview-abuse-emotional-taunt">{{ interview.respondent.name.given }} repeatedly insulted {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} with put-downs or racial insults</label>
 						</li>
 <!-- threatening to disclose a person’s sexual orientation to the person’s friends or family without the person’s consent -->
 						<li>
@@ -816,7 +817,7 @@
 							       id="interview-abuse-emotional-disclose-sexual-orientation"
 							       ng-model="interview.abuse.emotional.discloseSexualOrientation"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-disclose-sexual-orientation">{{ interview.respondent.name.given }} has been threatening to tell {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family or friends about {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} sexual orientaion</label>
+							<label for="interview-abuse-emotional-disclose-sexual-orientation">{{ interview.respondent.name.given }} threatened to tell {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family or friends about {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} sexual preference</label>
 						</li>
 <!-- threatening to withhold a person’s medication -->
 						<li>
@@ -824,7 +825,7 @@
 							       id="interview-abuse-emotional-withhold-medication"
 							       ng-model="interview.abuse.emotional.withholdMedication"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-withhold-medication">{{ interview.respondent.name.given }} has been threatening to withhold {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} medication</label>
+							<label for="interview-abuse-emotional-withhold-medication">{{ interview.respondent.name.given }} threatened to keep {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} medication from me</label>
 						</li>
 <!-- preventing a person from making or keeping connections with the person’s family, friends or culture, including cultural or spiritual ceremonies or practices, or preventing the person from expressing the person’s cultural identity -->
 						<li>
@@ -832,22 +833,22 @@
 							       id="interview-abuse-emotional-prevent-family"
 							       ng-model="interview.abuse.emotional.preventFamily"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-prevent-family">{{ interview.respondent.name.given }} prevents {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} family</label>
+							<label for="interview-abuse-emotional-prevent-family">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from seeing or talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} family</label>
 						</li>
 						<li>
 							<input type="checkbox"
 							       id="interview-abuse-emotional-prevent-friends"
 							       ng-model="interview.abuse.emotional.preventFriends"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-prevent-friends">{{ interview.respondent.name.given }} prevents {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from seeing {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} friends</label>
+							<label for="interview-abuse-emotional-prevent-friends">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from seeing ot talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} friends</label>
 						</li>
 						<li>
 							<input type="checkbox"
 							       id="interview-abuse-emotional-prevent-culture"
 							       ng-model="interview.abuse.emotional.preventCulture"
 							       ng-value="true">
-							<label for="interview-abuse-emotional-prevent-culture">{{ interview.respondent.name.given }} prevents {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from expressing {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} cultural identity</label>
-							<small class="hint">Example: stopping {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} from participating in cultural or spiritual ceremonies or practices</small>
+							<label for="interview-abuse-emotional-prevent-culture">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} from expressing {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} cultural identity</label>
+							<small class="hint">Example: stopped {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} from taking part in cultural or spiritual ceremonies or practices</small>
 						</li>
 					</ul>
 				</fieldset>
@@ -865,7 +866,7 @@
 							       id="interview-abuse-economic-control-assets"
 							       ng-model="interview.abuse.economic.relinquishAssets"
 							       ng-value="true">
-							<label for="interview-abuse-economic-control-assets">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} give up {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} assets and income</label>
+							<label for="interview-abuse-economic-control-assets">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} give up {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} assets and/or income</label>
 						</li>
 <!-- removing or keeping a person’s property without the person’s consent, or threatening to do so -->
 						<li>
@@ -896,7 +897,7 @@
 							       id="interview-abuse-economic-prevent-joint-access"
 							       ng-model="interview.abuse.economic.preventJointAccess"
 							       ng-value="true">
-							<label for="interview-abuse-economic-prevent-joint-access">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} using {{ interview.applicantIsAggrieved ? 'our' : 'their' }} joint financial assets for household expenses</label>
+							<label for="interview-abuse-economic-prevent-joint-access">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} using {{ interview.applicantIsAggrieved ? 'our' : 'their' }} joint bank account for household shopping</label>
 						</li>
 <!-- preventing a person from seeking or keeping employment -->
 						<li>
@@ -912,7 +913,7 @@
 							       id="interview-abuse-economic-social-security-payments"
 							       ng-model="interview.abuse.economic.socialSecurityPayments"
 							       ng-value="true">
-							<label for="interview-abuse-economic-social-security-payments">{{ interview.respondent.name.given }} tried to make {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} claim CentreLink payments</label>
+							<label for="interview-abuse-economic-social-security-payments">{{ interview.respondent.name.given }} tried to make {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} claim Centrelink payments</label>
 						</li>
 <!-- coercing a person to sign a power of attorney that would enable the person’s finances to be managed by another person -->
 						<li>
@@ -928,7 +929,7 @@
 							       id="interview-abuse-economic-contract-purchase"
 							       ng-model="interview.abuse.economic.contractPurchase"
 							       ng-value="true">
-							<label for="interview-abuse-economic-contract-purchase">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a contract to buy things {{ interview.respondent.pronoun.they }} wanted</label>
+							<label for="interview-abuse-economic-contract-purchase">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a contract to buy things I didn't want to buy</label>
 						</li>
 <!-- coercing a person to sign a contract for the provision of finance, a loan or credit -->
 						<li>
@@ -936,7 +937,7 @@
 							       id="interview-abuse-economic-contract-loan"
 							       ng-model="interview.abuse.economic.contractLoan"
 							       ng-value="true">
-							<label for="interview-abuse-economic-contract-loan">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a contract to borrow money for {{ interview.respondent.pronoun.them }}</label>
+							<label for="interview-abuse-economic-contract-loan">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a contract to borrow money I didn't want to borrow</label>
 							<small class="hint">Examples: taking out a loan, applying for a credit card</small>
 						</li>
 <!-- coercing a person to sign a contract of guarantee -->
@@ -953,7 +954,7 @@
 							       id="interview-abuse-economic-legal-business"
 							       ng-model="interview.abuse.economic.legalBusiness"
 							       ng-value="true">
-							<label for="interview-abuse-economic-legal-business">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a legal document for {{ interview.respondent.pronoun.their }} business</label>
+							<label for="interview-abuse-economic-legal-business">{{ interview.respondent.name.given }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} sign a legal document I didn't want to sign for {{ interview.respondent.pronoun.their }} business</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -973,7 +974,7 @@
 		<div class="status info">
 			<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }} protection from {{ interview.respondent.name.given }}</h2>
 
-			<blockquote>“The way {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.given + ' is' }} being treated is wrong — it’s abuse. People feel angry but everyone has a choice in how they respond to the situation. Anger is not an excuse for domestic violence”</blockquote>
+			<blockquote>“The way {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.given + ' is' }} being treated is wrong—it’s abuse. People feel angry but everyone has a choice in how they respond to the situation. Anger is not an excuse for domestic violence”</blockquote>
 
 			<ul>
 				<li>{{ interview.applicantIsAggrieved ? 'You are' : interview.aggrieved.name.given + ' is' }} the <dfn>aggrieved</dfn> (the person wanting protection).</li>
@@ -1006,7 +1007,7 @@
 			<li>
 				<fieldset>
 					<legend>
-						<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.given }} have children that need protection from {{ interview.respondent.name.given }}?</span>
+						<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.given }} have children who need protection from {{ interview.respondent.name.given }}?</span>
 					</legend>
 					<ul class="choices compact">
 						<li>
@@ -1033,8 +1034,9 @@
 			<li>
 				<fieldset>
 					<legend>
-						<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.given }} have associates that need protection from {{ interview.respondent.name.given }}?</span>
-						<small class="hint"><dfn>Associates</dfn> can mean family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.given + ' knows' }}.</small>
+						<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.given + ' knows' }} need protection from {{ interview.respondent.name.given }}?</span>
+						<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.given + ' knows' }}.
+						They are known as {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.given + ' knows' }} <dfn>associates</dfn>.</small>
 					</legend>
 					<ul class="choices compact">
 						<li>
@@ -1092,7 +1094,7 @@
 			<li>
 				<fieldset>
 					<legend>
-						<span class="label">Conditions you would like the court to consider</span>
+						<span class="label">Conditions you want the court to consider</span>
 					</legend>
 					<ul class="choices">
 						<li>
@@ -1108,8 +1110,8 @@
 						<li ng-show="interview.aggrieved.associates || interview.aggrieved.applicant">
 							<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour-associates">
 							<label for="interview-conditions-respondent-behaviour-associates">
-								I want {{ interview.respondent.name.given }} towards behave decently towards
-								<span ng-if="interview.aggrieved.associates">{{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family and friends</span><span ng-if="interview.aggrieved.applicant">{{ interview.aggrieved.associates ? ', including ' : '' }} me</span>
+								I want {{ interview.respondent.name.given }} to behave decently towards
+								<span ng-if="interview.aggrieved.associates">{{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} associates</span><span ng-if="interview.aggrieved.applicant">{{ interview.aggrieved.associates ? ', including ' : '' }} me</span>
 							</label>
 							<small class="hint">Every protection order naming associates includes the condition: <samp>Be of good behaviour towards the named person and not commit associated domestic violence against the named person.</samp></small>
 						</li>
@@ -1148,7 +1150,7 @@
 							       id="interview-conditions-respondent-no-approach-children-place"
 							       ng-model="interview.conditions.notApproach.childrenPlace"
 							       ng-value="true">
-							<label for="interview-conditions-respondent-no-approach-children-place">I want {{ interview.respondent.name.given }} to stay away from the kid’s school/daycare/etc.</label>
+							<label for="interview-conditions-respondent-no-approach-children-place">I want {{ interview.respondent.name.given }} to stay away from the kids’ school/daycare/etc.</label>
 						</li>
 						<li ng-show="interview.aggrieved.applicant">
 							<input type="checkbox"
@@ -1177,7 +1179,7 @@
 							       id="interview-conditions-respondent-not-enter-associates-home"
 							       ng-model="interview.conditions.prohibitEntering.associatesResidence"
 							       ng-value="true">
-							<label for="interview-conditions-respondent-not-enter-associates-home">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} family and friend’s homes</label>
+							<label for="interview-conditions-respondent-not-enter-associates-home">I want {{ interview.respondent.name.given }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.given + '’s' }} associates’ homes</label>
 						</li>
 
 						<li>
@@ -1201,7 +1203,7 @@
 							       ng-model="interview.conditions.noContact"
 							       ng-value="true">
 							<label for="interview-conditions-respondent-no-contact">I want {{ interview.respondent.name.given }} to stop contacting {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
-							<small class="hint">{{ interview.respondent.name.given }} is not allowed to ask anyone else to contact {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} either.</small>
+							<small class="hint">{{ interview.respondent.name.given }} won't be allowed to ask anyone else to contact {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} either.</small>
 						</li>
 
 						<li>
@@ -1210,7 +1212,7 @@
 							       ng-model="interview.conditions.noLocate"
 							       ng-value="true">
 							<label for="interview-conditions-respondent-no-locate">I want {{ interview.respondent.name.given }} to stop trying to find {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }}</label>
-							<small class="hint">{{ interview.respondent.name.given }} is not allowed to ask anyone else to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} either.</small>
+							<small class="hint">{{ interview.respondent.name.given }} won't be allowed to ask anyone else to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} either.</small>
 						</li>
 
 						<li>
@@ -1227,7 +1229,7 @@
 							       id="interview-conditions-respondent-change-behaviour"
 							       ng-model="interview.conditions.changeBehaviour"
 							       ng-value="true">
-							<label for="interview-conditions-respondent-change-behaviour">I want {{ interview.respondent.name.given }} to change {{ interview.respondent.pronoun.their }} behaviour</label>
+							<label for="interview-conditions-respondent-change-behaviour">I want {{ interview.respondent.name.given }} to behave differently</label>
 						</li>
 					</ul>
 				</fieldset>
@@ -1237,7 +1239,7 @@
 				<fieldset>
 					<legend>
 						<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.given }} need protection now?</span>
-						<small class="hint">It may take <strong>4 weeks (or more)</strong> before a protection order is served.</small>
+						<small class="hint">It may take <strong>4 (or more) weeks</strong> for a protection order to be served on {{ interview.respondent.name.given }}.</small>
 					</legend>
 					<ul class="choices">
 						<li>
@@ -1278,15 +1280,15 @@
 			<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }}</h2>
 			<dl>
 				<dt>Protection Order</dt>
-				<dd>This will protect {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} for up to 2 years (can be reviewed and extended if necessary).</dd>
+				<dd>This will protect {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} for up to 2 years (it can be reviewed and extended if necessary).</dd>
 				<dd>The court process to get a protection order typically takes 4 weeks (sometimes longer).</dd>
 
 				<dt ng-if="interview.temporaryProtection.requested">Temporary Protection Order</dt>
-				<dd ng-if="interview.temporaryProtection.requested">The court can grant {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
+				<dd ng-if="interview.temporaryProtection.requested">The court can give {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
 			</dl>
 
 			<h3></h3>
-			<p>You need to provide as much detail on the application form as you can.
+			<p>You need to provide as much detail as you can on the application form.
 			You should describe every domestic violence incident that has happened, including:</p>
 			<ul>
 				<li>when it happened</li>
@@ -1297,7 +1299,7 @@
 				<li>any injuries you suffered and</li>
 				<li>how you felt – for example: did you feel threatened, fearful or scared?</li>
 			</ul>
-			<p>You should avoid generalising or exaggerating the incidents — stick to the facts.</p>
+			<p>You should avoid generalising or exaggerating the incidents—stick to the facts.</p>
 		</div>
 
 <!--
@@ -1327,8 +1329,8 @@ must attach a copy to your domestic violence order application.
 			<li>
 				<fieldset>
 					<legend>
-						<span class="label">State grounds as to why a protection order is necessary or desirable to protect {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</span>
-						<small class="hint">It must be shown that domestic violence has occurred. Include specific example of behaviour by the respondent. Attach extra pages if necessary.</small>
+						<span class="label">Describe why you want a protection order to protect {{ interview.applicantIsAggrieved ? 'yourself' : interview.aggrieved.name.given }} from {{ interview.respondent.name.given }}. This is known as your <dfn>grounds for protection</dfn>.</span>
+						<small class="hint">You must be shown that domestic violence has happened. Include specific examples of {{ interview.respondent.name.given }}’s behaviour. Attach extra pages if you need more space.</small>
 					</legend>
 					<ol class="questions">
 						<li>
@@ -1340,35 +1342,35 @@ must attach a copy to your domestic violence order application.
 									<li>
 										<label for="interview-grounds-most-recent-description">
 											<span class="label">What did {{ interview.respondent.name.given }} do?</span>
-											<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.given }} said and did. Do not exaggerate or generalise. Do not tone down, explain or apologise for the actions.</small>
+											<small class="hint">Stick to the facts. Provide deates and palces. Describe exactly what {{ interview.respondent.name.given }} said and did. Don't exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
 										</label>
 										<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10"></textarea>
 									</li>
 									<li>
 										<label for="interview-grounds-most-recent-feel">
 											<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} feel?</span>
-											<small class="hint">Examples: did {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} feel threatened, fearful or scared?</small>
+											<small class="hint">Examples: threatened, fearful or scared?</small>
 										</label>
 										<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3"></textarea>
 									</li>
 									<li>
 										<label for="interview-grounds-most-recent-when">
 											<span class="label">When did this happen?</span>
-											<small class="hint">A specific date and time is best</small>
+											<small class="hint">Give a specific date and time</small>
 										</label>
 										<input type="text" id="interview-grounds-most-recent-when" ng-model="interview.grounds.mostRecent.when" size="15">
 									</li>
 									<li>
 										<label for="interview-grounds-most-recent-where">
 											<span class="label">Where did this happen?</span>
-											<small class="hint">Example: home, work, an address or description of a place</small>
+											<small class="hint">Example: at home, work, an address or describe the place</small>
 										</label>
 										<input type="text" id="interview-grounds-most-recent-where" ng-model="interview.grounds.mostRecent.where" size="30" list="placenames">
 									</li>
 									<li>
 										<label for="interview-grounds-most-recent-witness">
 											<span class="label">Who else witnessed this?</span>
-											<small class="hint">Example: partners, children, friends, neighbours.</small>
+											<small class="hint">Example: partners, children, parents, friends, neighbours.</small>
 										</label>
 										<input type="text" id="interview-grounds-most-recent-witness" ng-model="interview.grounds.mostRecent.witness" size="30" list="witnesses">
 									</li>
@@ -1402,7 +1404,7 @@ must attach a copy to your domestic violence order application.
 									<li>
 										<label for="interview-grounds-past-abuse-description">
 											<span class="label">What did {{ interview.respondent.name.given }} do?</span>
-											<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.name.given }} said and did. Do not exaggerate or generalise. Do not tone down, explain or apologise for the actions.</small>
+											<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.name.given }} said and did. Do not exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
 										</label>
 										<textarea id="interview-grounds-past-abuse-description" ng-model="interview.grounds.pastAbuse.description" cols="40" rows="10"></textarea>
 									</li>
@@ -1570,21 +1572,20 @@ must attach a copy to your domestic violence order application.
 	<form class="form" name="formCourt" ng-show="interview.page === interview.PAGE.COURT">
 		<div class="status info">
 			<h2>Serving the application</h2>
-			<p>{{ interview.respondent.name.given }} must be served with a copy of your application form.
-			   You do not have to serve the respondent yourself.
-			   Court registry staff will give a copy to the Queensland Police Service and they will ensure {{ interview.respondent.name.given }} is served with your application.</p>
+			<p>Court registry staff will give a copy to the Queensland Police Service and they will make sure {{ interview.respondent.name.given }} is served. {{ interview.respondent.name.given }} <strong>must</strong> be served with a copy of the application.</p>
 		</div>
 
 		<section>
-			<h2>Filing the application</h2>
-			<p>You may file the application at any <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court in Queensland</a>.
-			Applications are free—you do not have to pay a filing fee.
-			You will be given a court date when {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.given + ' needs' }} to go to court.
-			{{ interview.applicantIsAggrieved ? 'You' : interview.aggrieved.name.given }} may appear by {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }}self or with legal representation.
-			There may be circumstances where a police prosecutor will assist {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} in the court room.
-			You should contact {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} local police station well before the court date if you think this is required.</p>
+			<h2>Lodging the application</h2>
+			<p>You may lodge the application at any <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court in Queensland</a>.
+			Lodging your application is free.
+			You will be given a date when {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} must go to court.
+			{{ interview.applicantIsAggrieved ? 'You' : interview.aggrieved.name.given }} can appear by {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }}self or with a solicitor or lawyer.
+			There may be circumstances where a police prosecutor will help {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} in the court room.
+			You should contact {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} local police station well before the court date if you think you need help from the police.</p>
 		</section>
 
+<!--
 		<ol class="questions">
 			<li>
 				<fieldset>
@@ -1593,7 +1594,7 @@ must attach a copy to your domestic violence order application.
 					</legend>
 				</fieldset>
 			</li>
-
+-->
 
 
 			<li class="footer">
@@ -1606,8 +1607,7 @@ must attach a copy to your domestic violence order application.
 
 
 
-<article class="dv1-forms" ng-class="{collapse: dv1.collapsed}"></article>
-
+<article class="dv1-forms"></article>
 
 
 <div id="scripts">

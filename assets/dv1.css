@@ -9,11 +9,22 @@ body > article {
 	padding: 0 1em 10em;
 	box-sizing: border-box;
 	height: 100vh;
+	width: 50%;
 	overflow-y: auto;
 	transition: max-width .3s cubic-bezier(.36,.48,.95,1.09);
 }
-article.collapse {
-	max-width: 10%;
+
+body.compact > article {
+	width: 90%;
+}
+body.compact > article + article {
+	width: 10%;
+}
+
+button.collapse {
+	position: fixed;
+	top: 0;
+	right: 20px;
 }
 
 var {
