@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-AU" lang="en-AU">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Apply for a protection order | Your rights, crime and the law | Queensland Government</title>
+	<title>Prepare your application for a protection order | Your rights, crime and the law | Queensland Government</title>
 
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -66,8 +66,8 @@
 	<meta name="DCTERMS.creator" scheme="AGLSTERMS.GOLD" content="c=AU; o=The State of Queensland; ou=Department of Justice and Attorney-General; ou=Justice Services">
 	<meta name="DCTERMS.publisher" scheme="AGLSTERMS.AglsAgent" content="corporateName=The State of Queensland; jurisdiction=Queensland">
 	<meta name="DCTERMS.created" content="2016-02-18">
-	<meta name="DCTERMS.modified" content="2016-02-22">
-	<meta name="DCTERMS.title" content="Apply for a protection order | Your rights, crime and the law">
+	<meta name="DCTERMS.modified" content="2016-02-25">
+	<meta name="DCTERMS.title" content="Prepare your application for a protection order | Your rights, crime and the law">
 	<meta name="DCTERMS.description" content="Step-by-step guide to apply for protection from domestic violence.">
 	<meta name="DCTERMS.subject" scheme="AGLSTERMS.APAIS" content="Domestic Violence">
 	<meta name="AGLSTERMS.function" scheme="AGLSTERMS.AGIFT" content="JUSTICE ADMINISTRATION - Human rights obligations">
@@ -105,7 +105,7 @@
 					<button ng-click="document = 'f1'">
 						<figure>
 							<img src="assets/thumbs/dva-f1.png" alt="" />
-							<figcaption>Application form</figcaption>
+							<figcaption>Application for a Protection Order</figcaption>
 						</figure>
 					</button>
 				</li>
@@ -146,6 +146,16 @@
 	</form>
 
 	<div id="article-container">
+
+		<div class="placeholder" ng-hide="document">
+			<strong>Prepare your application for a protection order</strong>
+			<p>This is a guided form to help you prepare your application for a protection order.</p>
+
+			<form>
+				<div class="actions"><button ng-click="document = 'f1'">Start application</button></div>
+			</form>
+		</div>
+
 		<article class="dva-f1" ng-show="document === 'f1'"></article>
 		<article class="dva-f-aggrieved" ng-show="document === 'f-aggrieved'"></article>
 		<article class="dva-f-safety" ng-show="document === 'f-safety'"></article>

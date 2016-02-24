@@ -18,6 +18,12 @@
 	left: 0;
 	box-sizing: border-box;
 }
+#article-container > .placeholder {
+	display: flex;
+	flex-flow: column;
+	align-items: center;
+	justify-content: center;
+}
 
 article {
 	border: 1px solid #ccc;
@@ -85,7 +91,7 @@ ol.questions > li.ng-hide-remove,
 ol.questions > li.ng-hide-remove-active {
 	will-change: opacity, transform;
 	transition:
-		opacity .7s ease,
+		opacity .5s ease-out,
 		transform .3s ease;
 }
 
