@@ -1,6 +1,5 @@
 <nav>
-	<button type="button" ng-class="{active: dv1.view.gazette}"   ng-click="dv1.showGazettedForm()">Gazetted form</button>
-	<button type="button" ng-class="{active: ! dv1.view.gazette}" ng-click="dv1.showNames()">Real names</button>
+	<button type="button" ng-click="dv1.view.gazette ? dv1.showNames() : dv1.showGazettedForm()">{{ dv1.view.gazette ? 'Show real names' : 'Show official form' }}</button>
 </nav>
 
 <header>

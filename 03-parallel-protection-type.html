@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-AU" lang="en-AU">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title>Apply for a protection order | Your rights, crime and the law | Queensland Government</title>
+	<title>Prepare your application for a protection order | Your rights, crime and the law | Queensland Government</title>
 
 
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,8 +64,8 @@
 	<meta name="DCTERMS.creator" scheme="AGLSTERMS.GOLD" content="c=AU; o=The State of Queensland; ou=Department of Justice and Attorney-General; ou=Justice Services">
 	<meta name="DCTERMS.publisher" scheme="AGLSTERMS.AglsAgent" content="corporateName=The State of Queensland; jurisdiction=Queensland">
 	<meta name="DCTERMS.created" content="2016-01-18">
-	<meta name="DCTERMS.modified" content="2016-02-23">
-	<meta name="DCTERMS.title" content="Apply for a protection order | Your rights, crime and the law">
+	<meta name="DCTERMS.modified" content="2016-02-25">
+	<meta name="DCTERMS.title" content="Prepare your application for a protection order | Your rights, crime and the law">
 	<meta name="DCTERMS.description" content="Step-by-step guide to apply for protection from domestic violence.">
 	<meta name="DCTERMS.subject" scheme="AGLSTERMS.APAIS" content="Domestic Violence">
 	<meta name="AGLSTERMS.function" scheme="AGLSTERMS.AGIFT" content="JUSTICE ADMINISTRATION - Human rights obligations">
@@ -107,8 +107,8 @@
 			</ol>
 		</nav>
 
-		<h1 style="margin-bottom: 0">Complete an application for a protection order</h1>
-		<p style="margin-top: 0">Guide to completing an application for a protection order</p>
+		<h1 style="margin-bottom: 0">Prepare your application for a protection order</h1>
+		<p style="margin-top: 0">This is a guided form to help you prepare your application for a protection order.</p>
 	</header>
 
 	<datalist id="placenames">
@@ -897,7 +897,7 @@
 							       id="interview-abuse-economic-prevent-joint-access"
 							       ng-model="interview.abuse.economic.preventJointAccess"
 							       ng-value="true">
-							<label for="interview-abuse-economic-prevent-joint-access">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} using {{ interview.applicantIsAggrieved ? 'our' : 'their' }} joint bank account for household shopping</label>
+							<label for="interview-abuse-economic-prevent-joint-access">{{ interview.respondent.name.given }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.given }} using {{ interview.applicantIsAggrieved ? 'our' : 'their' }} joint bank account for household expenses</label>
 						</li>
 <!-- preventing a person from seeking or keeping employment -->
 						<li>
@@ -1277,13 +1277,13 @@
 
 	<form class="form" name="formGrounds" ng-show="interview.page === interview.PAGE.GROUNDS" ng-submit="interview.goto( interview.PAGE.COURT, $event )">
 		<div class="status info">
-			<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }}</h2>
+			<h2>Based on your answers, {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.given + ' wants' }} to apply for</h2>
 			<dl>
-				<dt>Protection Order</dt>
+				<dt>a <strong>Protection Order</strong></dt>
 				<dd>This will protect {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} for up to 2 years (it can be reviewed and extended if necessary).</dd>
 				<dd>The court process to get a protection order typically takes 4 weeks (sometimes longer).</dd>
 
-				<dt ng-if="interview.temporaryProtection.requested">Temporary Protection Order</dt>
+				<dt ng-if="interview.temporaryProtection.requested"><em>and</em> a <strong>Temporary Protection Order</strong></dt>
 				<dd ng-if="interview.temporaryProtection.requested">The court can give {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
 			</dl>
 
