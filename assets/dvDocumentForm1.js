@@ -8,9 +8,9 @@ angular.module( 'dvDocumentApp' )
 
 	// first question
 	f1.pages = [
-		{ number:  1, url: 'assets/partials/_dva-f-1-aggrieved.html' },
-		{ number:  2, url: 'assets/partials/_dva-f-1-respondent.html' },
-		{ number:  3, url: 'assets/partials/_dva-f-1-applicant.html' },
+		{ number:  1, url: 'assets/partials/dva-f-1-aggrieved.html' },
+		{ number:  2, url: 'assets/partials/dva-f-1-respondent.html' },
+		{ number:  3, url: 'assets/partials/dva-f-1-applicant.html' },
 		{ number:  4 },
 		{ number:  5 },
 		{ number:  6 },
