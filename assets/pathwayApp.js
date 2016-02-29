@@ -86,8 +86,8 @@ angular
 		if ( vm.party ) {
 			if ( vm.party.indexOf( 'family' ) !== -1 ) {
 				setGender( vm.respondent, vm.partyFamily );
-			} else if ( vm.party.indexOf( 'ex' ) !== -1 ) {
-				setGender( vm.respondent, vm.partyEx );
+			} else if ( /partner|ex/.test( vm.party )) {
+				setGender( vm.respondent, vm.partyIntimate );
 			} else {
 				setGender( vm.respondent );
 			}

@@ -70,7 +70,7 @@
 					by
 					<select ng-model="madlib.party" ng-change="madlib.updateParties()">
 						<optgroup ng-if="madlib.applicant.isAggrieved" label="Who is abusing you?">
-							<option value="my partner">my partner</option>
+							<option value="my partner">my {{ madlib.party === 'my partner' ? '' : 'partner' }}</option>
 							<option value="my ex">my ex</option>
 							<option value="my partner’s ex">my partner’s ex</option>
 							<option value="my family">my {{ madlib.party === 'my family' ? '' : 'family' }}</option>
@@ -81,6 +81,7 @@
 							<option value="my stranger">a stranger</option>
 						</optgroup>
 						<optgroup ng-if="! madlib.applicant.isAggrieved" label="Who is abusing them?">
+							<option value="their partner">{{ madlib.aggrieved.pronoun.their }} {{ madlib.party === 'their partner' ? '' : 'partner' }}</option>
 							<option value="their ex">{{ madlib.aggrieved.pronoun.their }} ex</option>
 							<option value="my ex">my ex</option>
 							<option value="their family">{{ madlib.aggrieved.pronoun.their }} {{ madlib.party === 'their family' ? '' : 'family' }}</option>
@@ -91,7 +92,7 @@
 						</optgroup>
 					</select>
 				</span>
-				<select ng-model="madlib.partyEx" ng-show="madlib.party === 'my ex' || madlib.party === 'my partner’s ex' || madlib.party === 'their ex'" ng-change="madlib.updateParties()">
+				<select ng-model="madlib.partyIntimate" ng-show="madlib.party === 'my partner' || madlib.party === 'my ex' || madlib.party === 'my partner’s ex' || madlib.party === 'their ex' || madlib.party === 'their partner'" ng-change="madlib.updateParties()">
 					<option value=""></option>
 					<option value="husband">husband</option>
 					<option value="wife">wife</option>
@@ -100,6 +101,8 @@
 				</select>
 				<select ng-model="madlib.partyFamily" ng-show="madlib.party === 'my family' || madlib.party === 'my partner’s family' || madlib.party === 'their family'" ng-change="madlib.updateParties()">
 					<option value="">family</option>
+					<option value="husband">husband</option>
+					<option value="wife">wife</option>
 					<option value="mother">mother</option>
 					<option value="father">father</option>
 					<option value="grandmother">grandmother</option>
