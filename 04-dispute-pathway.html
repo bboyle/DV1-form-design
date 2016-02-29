@@ -12,9 +12,13 @@
 		max-width: 90%;
 	}
 
+	label {
+		display: block;
+	}
+
 	/* blockquote for customer story */
 	blockquote {
-		font: 1.5em/1.3 Georgia, Times, 'Times New Roman', serif;
+		font: 1em/1.3 Georgia, Times, 'Times New Roman', serif;
 		color: #777;
 		margin: 0;
 		padding: 0;
@@ -27,20 +31,18 @@
 		font: inherit;
 		display: inline;
 	}
-	/* larger font on medium/large layouts */
-	@media (min-width: 640px) {
-		blockquote {
-			font-size: 3em;
-		}
+
+
+	select {
+		border: solid 2px #41403E;
+		border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
 	}
+
+
 	</style>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-	<script>
-	angular
-	.module('dv1-pathway', [])
-	.controller('MadLibController', function() {});
-	</script>
+	<script src="assets/pathwayApp.js"></script>
 
 </head>
 <body ng-app="dv1-pathway" ng-controller="MadLibController as madlib">
@@ -49,63 +51,129 @@
 		<h1>Family violence pathways</h1>
 		<blockquote>
 			<p>
-				I want
-				<select ng-model="target">
-					<option value="me">my</option>
-					<option value="partner">my partner’s</option>
-					<option value="friend">my friend’s</option>
+				<select ng-model="madlib.applicant.relationship" ng-change="madlib.updateParties()">
+					<option value="me">I</option>
+					<option value="boyfriend">My boyfriend</option>
+					<option value="girlfriend">My girlfriend</option>
+					<option value="daughter">My daughter</option>
+					<option value="son">My son</option>
+					<option value="mother">My mother</option>
+					<option value="father">My father</option>
+					<option value="friend">My friend</option>
+					<option value="neighbour">My neighbour</option>
+					<option value="coworker">My coworker</option>
+					<option value="someone">Someone I know</option>
 				</select>
-				<select ng-model="source">
-					<option value="ex">ex</option>
-					<option value="partner">partner</option>
-					<option value="carer">carer</option>
+				{{ madlib.applicant.isAggrieved ? 'am' : 'is' }}
+				being abused
+				<span ng-show="madlib.applicant.relationship">
+					by
+					<select ng-model="madlib.party" ng-change="madlib.updateParties()">
+						<optgroup ng-if="madlib.applicant.isAggrieved" label="Who is abusing you?">
+							<option value="my partner">my partner</option>
+							<option value="my ex">my ex</option>
+							<option value="my partner’s ex">my partner’s ex</option>
+							<option value="my family">my {{ madlib.party === 'my family' ? '' : 'family' }}</option>
+							<option value="my partner’s family">my partner’s {{ madlib.party === 'my partner’s family' ? '' : 'family' }}</option>
+							<option value="my carer">my carer</option>
+							<option value="my boss">my boss</option>
+							<option value="my coworker">a coworker</option>
+							<option value="my stranger">a stranger</option>
+						</optgroup>
+						<optgroup ng-if="! madlib.applicant.isAggrieved" label="Who is abusing them?">
+							<option value="their ex">{{ madlib.aggrieved.pronoun.their }} ex</option>
+							<option value="my ex">my ex</option>
+							<option value="their family">{{ madlib.aggrieved.pronoun.their }} {{ madlib.party === 'their family' ? '' : 'family' }}</option>
+							<option value="my family">my {{ madlib.party === 'my family' ? '' : 'family' }}</option>
+							<option value="their carer">{{ madlib.aggrieved.pronoun.their }} carer</option>
+							<option value="their work">someone at work</option>
+							<option value="their stranger">a stranger</option>
+						</optgroup>
+					</select>
+				</span>
+				<select ng-model="madlib.partyEx" ng-show="madlib.party === 'my ex' || madlib.party === 'my partner’s ex' || madlib.party === 'their ex'" ng-change="madlib.updateParties()">
+					<option value=""></option>
+					<option value="husband">husband</option>
+					<option value="wife">wife</option>
+					<option value="boyfriend">boyfriend</option>
+					<option value="girlfriend">girlfriend</option>
 				</select>
-				to stop
-				<select ng-model="abusing">
+				<select ng-model="madlib.partyFamily" ng-show="madlib.party === 'my family' || madlib.party === 'my partner’s family' || madlib.party === 'their family'" ng-change="madlib.updateParties()">
+					<option value="">family</option>
+					<option value="mother">mother</option>
+					<option value="father">father</option>
+					<option value="grandmother">grandmother</option>
+					<option value="grandfather">grandfather</option>
+					<option value="aunt">aunt</option>
+					<option value="uncle">uncle</option>
+					<option value="son">son</option>
+					<option value="daughter">daughter</option>
+					<option value="grandson">grandson</option>
+					<option value="granddaughter">granddaughter</option>
+					<option value="nephew">nephew</option>
+					<option value="neice">neice</option>
+					<option value="cousin">cousin</option>
+					<!-- step family -->
+					<option value="stepbrother">stepbrother</option>
+					<option value="stepsister">stepsister</option>
+					<option value="stepfather">stepfather</option>
+					<option value="stepmother">stepmother</option>
+					<option value="stepson">stepson</option>
+					<option value="stepdaughter">stepdaughter</option>
+					<!-- in-laws -->
+					<option value="mother-in-law">mother-in-law</option>
+					<option value="father-in-law">father-in-law</option>
+					<option value="brother-in-law">brother-in-law</option>
+					<option value="sister-in-law">sister-in-law</option>
+				</select>
+			</p>
+			<p>
+				I want {{ madlib.respondent.pronoun.them }} to stop
+				<select ng-model="madlib.abusing">
 					<option>hitting</option>
-					<option>following</option>
+					<option>stalking</option>
 					<option>stealing from</option>
 				</select>
-				{{ target ? target === 'me' ? 'me' : 'them' : 'me' }}.
+				{{ madlib.applicant.isAggrieved ? 'me' : madlib.aggrieved.pronoun.them }}.
 			</p>
 		</blockquote>
 	</header>
 
 
-	<section ng-show="source === 'carer'">
+	<section ng-show="madlib.source === 'carer'">
 		<ol class="questions">
 			<li>
 				<label for="duration">
 					<span class="label">What type of carer?</span>
 				</label>
 				<ul class="choices">
-					<li><input type="radio" name="carer-type" ng-model="carerType" value="commercial"> my carer is paid to help me</li>
-					<li><input type="radio" name="carer-type" ng-model="carerType" value="domestic"> my carer is not paid</li>
+					<li><input type="radio" name="carer-type" ng-model="madlib.carerType" value="commercial"> my carer is paid to help me</li>
+					<li><input type="radio" name="carer-type" ng-model="madlib.carerType" value="domestic"> my carer is not paid</li>
 				</ul>
 			</li>
-			<li ng-show="carerType === 'commercial'">
+			<li ng-show="madlib.carerType === 'commercial'">
 				<p>You <strong>cannot</strong> get a domestic violence protection order. File a complaint with the business.</p>
 			</li>
-			<li ng-show="carerType === 'domestic'">
+			<li ng-show="madlib.carerType === 'domestic'">
 				<p>You can get a domestic violence protection order.</p>
 			</li>
 		</ol>
 	</section>
 
 
-	<div ng-show="source === 'ex' || source === 'partner'">
-		<section ng-show="target !== 'me'">
-			<p>Your {{ target }} can apply for a domestic violence protection order.</p>
+	<div ng-show="madlib.source === 'ex' || madlib.source === 'partner'">
+		<section ng-show="madlib.target !== 'me'">
+			<p>Your {{ madlib.target }} can apply for a domestic violence protection order.</p>
 			<p>You can apply for them if they authorise you. <a href="#">Find out more</a>.</p>
 		</section>
 
-		<section ng-show="target === 'me'" ng-hide="source === 'carer'">
+		<section ng-show="madlib.target === 'me'" ng-hide="madlib.source === 'carer'">
 			<p>You can apply for a domestic violence protection order. <a href="#">Find out more</a>.</p>
 
 			<ol class="questions">
 				<li>
 					<label for="duration">
-						<span class="label">How long has your {{ source }} been {{ abusing }} you?</span>
+						<span class="label">How long has your {{ madlib.source }} been {{ madlib.abusing }} you?</span>
 					</label>
 					<ul class="choices">
 						<li><input type="radio"> just once</li>
