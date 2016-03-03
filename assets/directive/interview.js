@@ -4,21 +4,26 @@
 // app
 angular.module( 'dv1' )
 // controller for interview
-.controller( 'InterviewController', [ 'application', '$scope', '$element',
- function(                             application ,  $scope ,  $element ) {
+.controller( 'InterviewController', [ 'application', '$scope', '$document',
+ function(                             application ,  $scope ,  $document ) {
 
 	let vm = this;
 
 	vm.PAGE = {
 		PREAMBLE: 1,
-		APPLICANT: 2,
+		STORY: 2,
 		AGGRIEVED: 3,
 		RESPONDENT: 4,
 		RELATIONSHIP: 5,
-		ABUSE: 6,
-		CONDITIONS: 7,
-		GROUNDS: 8,
-		COURT: 9
+		ORDERS: 6,
+		GROUNDS: 7,
+		URGENT: 8,
+		CHILDREN: 9,
+		ASSOCIATES: 10,
+		CONDITIONS: 11,
+		WEAPONS: 12,
+		APPLICANT: 13,
+		NEXT: 14
 	};
 	vm.pageUnlocked = 0;
 
@@ -83,7 +88,7 @@ angular.module( 'dv1' )
 		}
 		vm.page = dest;
 		vm.pageUnlocked = Math.max( vm.pageUnlocked, dest );
-		$element.scrollTop( 0 );
+		$document.scrollTop( 0 );
 	};
 
 	// move through interview

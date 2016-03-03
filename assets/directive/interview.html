@@ -1,20 +1,25 @@
-<header>
-	<nav>
-		<ol>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Eligibility</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto( interview.PAGE.APPLICANT )">Applicant details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Aggrieved details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Respondent details</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.RELATIONSHIP" ng-click="interview.goto( interview.PAGE.RELATIONSHIP )">Relationship</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.ABUSE" ng-click="interview.goto( interview.PAGE.ABUSE )">History of abuse</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto( interview.PAGE.CONDITIONS )">Conditions</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto( interview.PAGE.GROUNDS )">Grounds</button></li>
-			<li><button type="button" ng-disabled="interview.pageUnlocked < interview.PAGE.COURT" ng-click="interview.goto( interview.PAGE.COURT )">Preparing for court</button></li>
-		</ol>
-	</nav>
+<nav style="position: fixed; left: 0">
+	<ol>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Eligibility</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.STORY" ng-click="interview.goto( interview.PAGE.STORY )">Applicant details</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Aggrieved details</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Respondent details</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.RELATIONSHIP" ng-click="interview.goto( interview.PAGE.RELATIONSHIP )">Relationship</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.ORDERS" ng-click="interview.goto( interview.PAGE.ORDERS )">Other orders</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto( interview.PAGE.GROUNDS )">Grounds</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.URGENT" ng-click="interview.goto( interview.PAGE.URGENT )">Urgent applications</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.CHILDREN" ng-click="interview.goto( interview.PAGE.CHILDREN )">Children</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.ASSOCIATES" ng-click="interview.goto( interview.PAGE.ASSOCIATES )">Relatives/associates</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto( interview.PAGE.CONDITIONS )">Conditions</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.WEAPONS" ng-click="interview.goto( interview.PAGE.WEAPONS )">Weapons</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto( interview.PAGE.APPLICANT )">Applicant details</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.NEXT" ng-click="interview.goto( interview.PAGE.NEXT )">Preparing for court</button></li>
+	</ol>
+</nav>
 
-	<h1 style="margin-bottom: 0">Prepare your application for a protection order</h1>
-	<p style="margin-top: 0">Take these documents to a magistrates court to apply for a protection order.</p>
+<header>
+	<h1>Prepare your application for a protection order</h1>
+	<p>Take these documents to a magistrates court to apply for a protection order.</p>
 </header>
 
 <datalist id="placenames">
@@ -228,7 +233,9 @@
 
 
 
-<form class="form" name="formApplicant" ng-show="interview.page === interview.PAGE.APPLICANT" ng-submit="interview.goto( interview.PAGE.AGGRIEVED, $event )">
+<form class="form" name="formApplicant"
+      ng-show="interview.page === interview.PAGE.STORY"
+      ng-submit="interview.goto( interview.PAGE.AGGRIEVED, $event )">
 	<ol class="questions">
 		<li>
 			<fieldset>
@@ -319,101 +326,6 @@
 			</fieldset>
 		</li>
 
-		<li ng-show="interview.party" class="group atomic">
-			<div class="status info" ng-show="! interview.applicantIsAggrieved">
-				<h2>Will you be lodging this application for your {{ interview.applicant.relationship }}?</h2>
-				<p>To lodge an application on behalf of your {{ interview.applicant.relationship }} you need their authorisation (preferably in writing).</p>
-				<p>Or you can prepare these documents for them—they can lodge them at the magistrates court.</p>
-				<p>If you are lodging the application, your details will be included on the form. Remember that the respondent receives a copy!</p>
-			</div>
-			<div class="status info" ng-show="interview.applicantIsAggrieved">
-				<h2>Will you be lodging the application at the court?</h2>
-				<p>You can authorise someone else (preferably in writing) to lodge the application on your behalf. This person is called the <dfn>applicant</dfn>.</p>
-				<p>You will need to include their details on the form. Remember that the respondent receives a copy!</p>
-			</div>
-
-			<!-- TODO customer may not be applicant! -->
-			<fieldset>
-				<legend>
-					<span class="label">Who will lodge the application at the magistrates court?</span>
-				</legend>
-				<ul class="choices">
-					<li ng-if="! interview.applicantIsAggrieved">
-						<input type="radio"
-						       name="application-lodged-by"
-						       ng-model="interview.whoWillLodge"
-						       value="applicant"
-						       required
-						       id="application-lodged-by-applicant">
-						<label for="application-lodged-by-applicant">I will lodge the application</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="application-lodged-by"
-						       ng-model="interview.whoWillLodge"
-						       value="aggrieved"
-						       required
-						       id="application-lodged-by-aggrieved">
-						<label ng-if="interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">I will lodge it myself</label>
-						<label ng-if="! interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">My {{ interview.applicant.relationship }} will lodge it {{ interview.aggrieved.pronoun.them }}self</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="application-lodged-by"
-						       ng-model="interview.whoWillLodge"
-						       value="third party"
-						       required
-						       id="application-lodged-by-another">
-						<label for="application-lodged-by-another">Someone else</label>
-						<small class="hint">You will be asked for their details later.</small>
-					</li>
-					<li>
-						<input type="radio"
-						       name="application-lodged-by"
-						       ng-model="interview.whoWillLodge"
-						       value="unknown"
-						       required
-						       id="application-lodged-by-unknown">
-						<label for="application-lodged-by-unknown">Don't know</label>
-						<small class="hint">Leave the applicant details section blank on the form. You will need to complete it when the form is signed and witnessed, before you lodge at court.</small>
-					</li>
-				</ul>
-			</fieldset>
-<!--
-			<fieldset>
-				<legend>
-					<span class="label">What is your name?</span>
-				</legend>
-				<ol class="questions compact">
-					<li>
-						<label for="applicant-name-given">
-							<span class="label">Given name</span>
-							<abbr class="required" title="(required)">*</abbr>
-						</label>
-						<input type="text" size="15"
-						       id="applicant-name-given"
-						       ng-model="interview.applicant.name.given"
-						       ng-required="! interview.applicantIsAggrieved"
-						       ng-change="interview.saveApplicant()"
-						>
-					</li>
-					<li>
-						<label for="applicant-name-family">
-							<span class="label">Family name</span>
-							<abbr class="required" title="(required)">*</abbr>
-						</label>
-						<input type="text" size="15"
-						       id="applicant-name-family"
-						       ng-model="interview.applicant.name.family"
-						       ng-required="! interview.applicantIsAggrieved"
-						       ng-change="interview.saveApplicant()"
-						>
-					</li>
-				</ol>
-			</fieldset>
--->
-		</li>
-
 		<li class="footer">
 			<ul class="actions">
 				<li><strong><button type="submit">Continue</button></strong></li>
@@ -424,7 +336,9 @@
 
 
 
-<form class="form" name="formAggrieved" ng-show="interview.page === interview.PAGE.AGGRIEVED" ng-submit="interview.goto( interview.PAGE.RESPONDENT, $event )">
+<form class="form" name="formAggrieved"
+      ng-show="interview.page === interview.PAGE.AGGRIEVED"
+      ng-submit="interview.goto( interview.PAGE.RESPONDENT, $event )">
 	<ol class="questions">
 		<li class="group atomic">
 			<fieldset>
@@ -498,7 +412,9 @@
 
 
 
-<form class="form" name="formRespondent" ng-show="interview.page === interview.PAGE.RESPONDENT" ng-submit="interview.goto( interview.PAGE.RELATIONSHIP, $event )">
+<form class="form" name="formRespondent"
+      ng-show="interview.page === interview.PAGE.RESPONDENT"
+      ng-submit="interview.goto( interview.PAGE.RELATIONSHIP, $event )">
 	<ol class="questions">
 		<li ng-show="interview.aggrieved.name.given" class="group atomic">
 			<fieldset>
@@ -572,7 +488,9 @@
 
 
 
-<form class="form" name="formRelationship" ng-show="interview.page === interview.PAGE.RELATIONSHIP" ng-submit="interview.goto( interview.PAGE.ABUSE, $event )">
+<form class="form" name="formRelationship"
+      ng-show="interview.page === interview.PAGE.RELATIONSHIP"
+      ng-submit="interview.goto( interview.PAGE.ORDERS, $event )">
 	<ol class="questions">
 		<li>
 			<fieldset>
@@ -753,7 +671,29 @@
 
 
 
-<form class="form" name="formAbuse" ng-show="interview.page === interview.PAGE.ABUSE" ng-submit="interview.goto( interview.PAGE.CONDITIONS, $event )">
+<section ng-show="interview.page === interview.PAGE.ORDERS">
+	<h2>Details of any other orders</h2>
+
+	<h3>Cross applications</h3>
+
+	<form class="form" name="formOrders" ng-submit="interview.goto( interview.PAGE.GROUNDS, $event )">
+
+
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="submit">Continue</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.GROUNDS">
+<h2>Grounds</h2>
+<form class="form" name="formAbuse" ng-submit="interview.goto( interview.PAGE.URGENT, $event )">
 	<div class="status info">
 		<h2>What has {{ interview.respondent.name.given }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}?</h2>
 		<p>
@@ -1014,6 +954,277 @@
 				</ul>
 			</fieldset>
 		</li>
+	</ol>
+
+	<div class="status info">
+		<h2>Based on your answers, {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.given + ' wants' }} to apply for</h2>
+		<dl>
+			<dt>a <strong>Protection Order</strong></dt>
+			<dd>This will protect {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} for up to 2 years (it can be reviewed and extended if necessary).</dd>
+			<dd>The court process to get a protection order typically takes 4 weeks (sometimes longer).</dd>
+
+			<dt ng-if="interview.temporaryProtection.requested"><em>and</em> a <strong>Temporary Protection Order</strong></dt>
+			<dd ng-if="interview.temporaryProtection.requested">The court can give {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
+		</dl>
+
+		<h3></h3>
+		<p>You need to provide as much detail as you can on the application form.
+		You should describe every domestic violence incident that has happened, including:</p>
+		<ul>
+			<li>when it happened</li>
+			<li>where it happened</li>
+			<li>what happened</li>
+			<li>how it happened</li>
+			<li>who was there</li>
+			<li>any injuries you suffered and</li>
+			<li>how you felt – for example: did you feel threatened, fearful or scared?</li>
+		</ul>
+		<p>You should avoid generalising or exaggerating the incidents—stick to the facts.</p>
+	</div>
+
+	<!--
+	Step 3 – Gather evidence and attach to the form
+	You should also start gathering the information (evidence) you will need to
+	support your application. Information that may be helpful includes:
+	• photos of any injuries taken at the time the domestic violence happened
+	• photos of any injuries taken later when they are more visible (like bruising
+	that shows up a day or two later)
+	• statements from people who saw or heard the domestic violence or who you have told about the domestic violence over a period of time
+	• diary entries you have made about the domestic violence
+	• doctors’ reports
+	• other court orders eg other domestic violence orders or family court orders
+	• reports from counsellors that you have seen
+	• all text and voicemail messages, emails, letters and social media entries (printed out with dates).
+	Attach this evidence to your application form.
+	If possible, try to use photographs that have a date stamp on them; they can
+	help you remember when the incidents happened. Photographs (or colour
+	photocopies of them) can be attached to your application form.
+
+	If you have any court orders, like family law orders about your children,
+	Childrens Court orders or any old or current domestic violence orders, you
+	must attach a copy to your domestic violence order application.
+	-->
+
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Describe why you want a protection order to protect {{ interview.applicantIsAggrieved ? 'yourself' : interview.aggrieved.name.given }} from {{ interview.respondent.name.given }}. This is known as your <dfn>grounds for protection</dfn>.</span>
+					<small class="hint">You must be shown that domestic violence has happened. Include specific examples of {{ interview.respondent.name.given }}’s behaviour. Attach extra pages if you need more space.</small>
+				</legend>
+				<ol class="questions">
+					<li>
+						<fieldset>
+							<legend>
+								<span class="label">Describe the <strong>last time</strong> {{ interview.respondent.name.given }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</span>
+							</legend>
+							<ol class="questions">
+								<li>
+									<label for="interview-grounds-most-recent-description">
+										<span class="label">What did {{ interview.respondent.name.given }} do?</span>
+										<small class="hint">Stick to the facts. Provide deates and palces. Describe exactly what {{ interview.respondent.name.given }} said and did. Don't exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
+									</label>
+									<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-most-recent-feel">
+										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} feel?</span>
+										<small class="hint">Examples: threatened, fearful or scared?</small>
+									</label>
+									<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-most-recent-when">
+										<span class="label">When did this happen?</span>
+										<small class="hint">Give a specific date and time</small>
+									</label>
+									<input type="text" id="interview-grounds-most-recent-when" ng-model="interview.grounds.mostRecent.when" size="15">
+								</li>
+								<li>
+									<label for="interview-grounds-most-recent-where">
+										<span class="label">Where did this happen?</span>
+										<small class="hint">Example: at home, work, an address or describe the place</small>
+									</label>
+									<input type="text" id="interview-grounds-most-recent-where" ng-model="interview.grounds.mostRecent.where" size="30" list="placenames">
+								</li>
+								<li>
+									<label for="interview-grounds-most-recent-witness">
+										<span class="label">Who else witnessed this?</span>
+										<small class="hint">Example: partners, children, parents, friends, neighbours.</small>
+									</label>
+									<input type="text" id="interview-grounds-most-recent-witness" ng-model="interview.grounds.mostRecent.witness" size="30" list="witnesses">
+								</li>
+							</ol>
+						</fieldset>
+					</li>
+
+					<li>
+						<fieldset>
+							<legend>
+								<span class="label">Has {{ interview.respondent.name.given }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} before this?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio" ng-model="interview.grounds.pastAbuse.occurred" name="interview-grounds-past-abuse" value="No" required id="interview-grounds-past-abuse-no">
+									<label for="interview-grounds-past-abuse-no">No</label>
+								</li>
+								<li>
+									<input type="radio" ng-model="interview.grounds.pastAbuse.occurred" name="interview-grounds-past-abuse" value="Yes" required id="interview-grounds-past-abuse-yes">
+									<label for="interview-grounds-past-abuse-yes">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li ng-show="interview.grounds.pastAbuse.occurred === 'Yes'">
+						<fieldset>
+							<legend>
+								<span class="label">Describe how {{ interview.respondent.name.given }} has abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} in the past?</span>
+							</legend>
+							<ol class="questions">
+								<li>
+									<label for="interview-grounds-past-abuse-description">
+										<span class="label">What did {{ interview.respondent.name.given }} do?</span>
+										<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.name.given }} said and did. Do not exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
+									</label>
+									<textarea id="interview-grounds-past-abuse-description" ng-model="interview.grounds.pastAbuse.description" cols="40" rows="10"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-past-abuse-feel">
+										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} feel?</span>
+										<small class="hint">Examples: did {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} feel threatened, fearful or scared?</small>
+									</label>
+									<textarea id="interview-grounds-past-abuse-feel" ng-model="interview.grounds.pastAbuse.feel" cols="40" rows="3"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-past-abuse-when">
+										<span class="label">When did this first happen?</span>
+										<small class="hint">A specific date and time is best</small>
+									</label>
+									<input type="text" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" size="15">
+								</li>
+								<li>
+									<label for="interview-grounds-past-abuse-where">
+										<span class="label">Where has this happened?</span>
+										<small class="hint">List all the places the abuse has happened</small>
+									</label>
+									<textarea class="compact-large" id="interview-grounds-past-abuse-where" ng-model="interview.grounds.pastAbuse.where" cols="40" rows="10"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-past-abuse-witness">
+										<span class="label">Who has witnessed this?</span>
+										<small class="hint">Describe what was witnessed, by who, and when</small>
+									</label>
+									<textarea class="compact-large" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" cols="40" rows="10"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-past-abuse-witness">
+										<span class="label">Who has witnessed this?</span>
+										<small class="hint">Describe what was witnessed, by who, and when</small>
+									</label>
+									<textarea class="compact-large" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" cols="40" rows="10"></textarea>
+								</li>
+							</ol>
+						</fieldset>
+					</li>
+
+					<li ng-show="interview.abuse.physical.injure">
+						<fieldset>
+							<legend>
+								<span class="label">You said {{ interview.respondent.name.given }} has injured {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</span>
+								<small class="hint">Describe what happened and provide details about when, where and how often</small>
+							</legend>
+							<ol class="questions">
+								<li>
+									<label for="interview-grounds-injury-description">
+										<span class="label">What did {{ interview.respondent.name.given }} do?</span>
+										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.given }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} was hurt.</small>
+									</label>
+									<textarea id="interview-grounds-injury-description" ng-model="interview.grounds.injury.description" cols="40" rows="10"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-injury-when">
+										<span class="label">When did this happen?</span>
+										<small class="hint">A specific date and time is best</small>
+									</label>
+									<input type="text" id="interview-grounds-injury-when" ng-model="interview.grounds.injury.when" size="15">
+								</li>
+								<li>
+									<label for="interview-grounds-injury-where">
+										<span class="label">Where did this happen?</span>
+										<small class="hint">Example: home, work, an address or description of a place</small>
+									</label>
+									<textarea class="compact-large" id="interview-grounds-injury-where" ng-model="interview.grounds.injury.where" cols="40" rows="10"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-injury-witness">
+										<span class="label">Who else witnessed this?</span>
+										<small class="hint">Example: partners, children, friends, neighbours.</small>
+									</label>
+									<textarea class="compact-large" id="interview-grounds-injury-witness" ng-model="interview.grounds.injury.witness" cols="40" rows="10"></textarea>
+								</li>
+							</ol>
+						</fieldset>
+					</li>
+
+					<li ng-show="interview.abuse.physical.threaten">
+						<fieldset>
+							<legend>
+								<span class="label">Describe how {{ interview.respondent.name.given }} has threatened {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</span>
+								<small class="hint">You said {{ interview.respondent.name.given }} has threatened to hurt {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</small>
+							</legend>
+							<ol class="questions">
+								<li>
+									<label for="interview-grounds-injury-threat-description">
+										<span class="label">What did {{ interview.respondent.name.given }} say?</span>
+										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.given }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} felt.</small>
+									</label>
+									<textarea id="interview-grounds-injury-threat-description" ng-model="interview.grounds.injuryThreat.description" cols="40" rows="10"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-injury-threat-when">
+										<span class="label">When did this happen?</span>
+										<small class="hint">A specific date and time is best</small>
+									</label>
+									<input type="text" id="interview-grounds-injury-threat-when" ng-model="interview.grounds.injuryThreat.when" size="15">
+								</li>
+								<li>
+									<label for="interview-grounds-injury-threat-where">
+										<span class="label">Where did this happen?</span>
+										<small class="hint">Example: home, work, an address or description of a place</small>
+									</label>
+									<textarea class="compact-large" id="interview-grounds-injury-threat-where" ng-model="interview.grounds.injuryThreat.where" cols="40" rows="10"></textarea>
+								</li>
+								<li>
+									<label for="interview-grounds-injury-threat-witness">
+										<span class="label">Who else witnessed this?</span>
+										<small class="hint">Example: partners, children, friends, neighbours.</small>
+									</label>
+									<textarea class="compact-large" id="interview-grounds-injury-threat-witness" ng-model="interview.grounds.injuryThreat.witness" cols="40" rows="10"></textarea>
+								</li>
+							</ol>
+						</fieldset>
+					</li>
+				</ol>
+			</fieldset>
+
+
+		</li>
+
+		<li ng-if="interview.aggrieved.children">
+			TODO: GROUNDS FOR INCLUDING {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} CHILD(REN)
+			<!-- TODO child vs children. Use actual children names -->
+			(how does this differ to the general grounds?)
+		</li>
+
+		<li ng-if="interview.aggrieved.associates">
+			TODO: GROUNDS FOR INCLUDING ASSOCIATES
+			(how does this differ to the general grounds?)
+		</li>
+
+		<li ng-if="false">
+			TODO: GROUNDS FOR CONDITIONS
+			(how does this differ to the general grounds?)
+		</li>
 
 		<li class="footer">
 			<ul class="actions">
@@ -1022,10 +1233,101 @@
 		</li>
 	</ol>
 </form>
+</section>
+
+
+<section ng-show="interview.page === interview.PAGE.URGENT">
+<h2>Do you require urgent protection?</h2>
+<form class="form" name="formUrgent" ng-submit="interview.goto( interview.PAGE.CHILDREN, $event )">
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.given }} need protection now?</span>
+					<small class="hint">If you believe you’re in immediate danger and the normal application process won’t protect you quickly enough, you can apply for an urgent temporary protection order.</small>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio"
+						       name="interview-temporary-protection"
+						       id="interview-temporary-protection-true"
+						       ng-model="interview.temporaryProtection.requested"
+						       ng-value="true"
+						       ng-click="updateTemporaryProtection()"
+						       required>
+						<label for="interview-temporary-protection-true">{{ interview.applicantIsAggrieved ? 'I need' : interview.aggrieved.name.given  + ' needs' }} protection as soon as possible</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-temporary-protection"
+						       id="interview-temporary-protection-false"
+						       ng-model="interview.temporaryProtection.requested"
+						       ng-value="false"
+						       ng-click="updateTemporaryProtection()"
+						       required>
+						<label for="interview-temporary-protection-false">{{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} can wait 4 (or more) weeks</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-if="interview.temporaryProtection.requested">
+			<label for="interview-temporary-protection-reasons">
+				<span class="label">Reasons for temporary protection</span>
+				<small class="hint">Explain why {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} cannot wait 4 weeks for a protection order</small>
+			</label>
+			<textarea class="large-compact" rows="10" cols="40"
+			          ng-model="interview.temporaryProtection.reasons"
+			          id="interview-temporary-protection-reasons"
+			          ng-change="updateTemporaryProtection()"
+			          ng-required="interview.temporaryProtection.requested"
+			></textarea>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
 
 
 
-<form class="form" name="formConditions" ng-show="interview.page === interview.PAGE.CONDITIONS" ng-submit="interview.goto( interview.PAGE.GROUNDS, $event )">
+
+<section ng-show="interview.page === interview.PAGE.CHILDREN">
+<h2>Are there children who live or spend time with you who need protection?</h2>
+<form class="form" name="formChildren" ng-submit="interview.goto( interview.PAGE.ASSOCIATES, $event )">
+	<ol class="questions">
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.ASSOCIATES">
+<h2>Do relatives or associates need protection?</h2>
+<form class="form" name="formAssociates" ng-submit="interview.goto( interview.PAGE.CONDITIONS, $event )">
+	<ol class="questions">
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.CONDITIONS">
+<h2>What conditions are you seeking in the protection order?</h2>
+<form class="form" name="formConditions" ng-show="interview.page === interview.PAGE.CONDITIONS" ng-submit="interview.goto( interview.PAGE.WEAPONS, $event )">
 	<div class="status info">
 		<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }} protection from {{ interview.respondent.name.given }}</h2>
 
@@ -1290,328 +1592,129 @@
 			</fieldset>
 		</li>
 
-		<li>
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.WEAPONS">
+<h2>Does the respondent have access to weapons?</h2>
+<form class="form" name="formWeapons" ng-submit="interview.goto( interview.PAGE.APPLICANT, $event )">
+	<ol class="questions">
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+<section ng-show="interview.page === interview.PAGE.APPLICANT">
+<h2>Is this application being made on someone else’s behalf?</h2>
+
+<div class="status info" ng-show="! interview.applicantIsAggrieved">
+	<h2>Will you be lodging this application for your {{ interview.applicant.relationship }}?</h2>
+	<p>To lodge an application on behalf of your {{ interview.applicant.relationship }} you need their authorisation (preferably in writing).</p>
+	<p>Or you can prepare these documents for them—they can lodge them at the magistrates court.</p>
+	<p>If you are lodging the application, your details will be included on the form. Remember that the respondent receives a copy!</p>
+</div>
+<div class="status info" ng-show="interview.applicantIsAggrieved">
+	<h2>Will you be lodging the application at the court?</h2>
+	<p>You can authorise someone else (preferably in writing) to lodge the application on your behalf. This person is called the <dfn>applicant</dfn>.</p>
+	<p>You will need to include their details on the form. Remember that the respondent receives a copy!</p>
+</div>
+
+<form class="form" name="formApplicant" ng-submit="interview.goto( interview.PAGE.NEXT, $event )">
+	<ol class="questions">
+		<li class="group atomic">
+			<!-- TODO customer may not be applicant! -->
 			<fieldset>
 				<legend>
-					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.given }} need protection now?</span>
-					<small class="hint">If you believe you’re in immediate danger and the normal application process won’t protect you quickly enough, you can apply for an urgent temporary protection order.</small>
+					<span class="label">Who will lodge the application at the magistrates court?</span>
 				</legend>
 				<ul class="choices">
-					<li>
+					<li ng-if="! interview.applicantIsAggrieved">
 						<input type="radio"
-						       name="interview-temporary-protection"
-						       id="interview-temporary-protection-true"
-						       ng-model="interview.temporaryProtection.requested"
-						       ng-value="true"
-						       ng-click="updateTemporaryProtection()"
-						       required>
-						<label for="interview-temporary-protection-true">{{ interview.applicantIsAggrieved ? 'I need' : interview.aggrieved.name.given  + ' needs' }} protection as soon as possible</label>
+						       name="application-lodged-by"
+						       ng-model="interview.whoWillLodge"
+						       value="applicant"
+						       required
+						       id="application-lodged-by-applicant">
+						<label for="application-lodged-by-applicant">I will lodge the application</label>
 					</li>
 					<li>
 						<input type="radio"
-						       name="interview-temporary-protection"
-						       id="interview-temporary-protection-false"
-						       ng-model="interview.temporaryProtection.requested"
-						       ng-value="false"
-						       ng-click="updateTemporaryProtection()"
-						       required>
-						<label for="interview-temporary-protection-false">{{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.given }} can wait 4 (or more) weeks</label>
+						       name="application-lodged-by"
+						       ng-model="interview.whoWillLodge"
+						       value="aggrieved"
+						       required
+						       id="application-lodged-by-aggrieved">
+						<label ng-if="interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">I will lodge it myself</label>
+						<label ng-if="! interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">My {{ interview.applicant.relationship }} will lodge it {{ interview.aggrieved.pronoun.them }}self</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="application-lodged-by"
+						       ng-model="interview.whoWillLodge"
+						       value="third party"
+						       required
+						       id="application-lodged-by-another">
+						<label for="application-lodged-by-another">Someone else</label>
+						<small class="hint">You will be asked for their details later.</small>
+					</li>
+					<li>
+						<input type="radio"
+						       name="application-lodged-by"
+						       ng-model="interview.whoWillLodge"
+						       value="unknown"
+						       required
+						       id="application-lodged-by-unknown">
+						<label for="application-lodged-by-unknown">Don't know</label>
+						<small class="hint">Leave the applicant details section blank on the form. You will need to complete it when the form is signed and witnessed, before you lodge at court.</small>
 					</li>
 				</ul>
 			</fieldset>
-		</li>
-
-		<li class="footer">
-			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
-			</ul>
-		</li>
-	</ol>
-</form>
-
-
-<form class="form" name="formGrounds" ng-show="interview.page === interview.PAGE.GROUNDS" ng-submit="interview.goto( interview.PAGE.COURT, $event )">
-	<div class="status info">
-		<h2>Based on your answers, {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.given + ' wants' }} to apply for</h2>
-		<dl>
-			<dt>a <strong>Protection Order</strong></dt>
-			<dd>This will protect {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} for up to 2 years (it can be reviewed and extended if necessary).</dd>
-			<dd>The court process to get a protection order typically takes 4 weeks (sometimes longer).</dd>
-
-			<dt ng-if="interview.temporaryProtection.requested"><em>and</em> a <strong>Temporary Protection Order</strong></dt>
-			<dd ng-if="interview.temporaryProtection.requested">The court can give {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
-		</dl>
-
-		<h3></h3>
-		<p>You need to provide as much detail as you can on the application form.
-		You should describe every domestic violence incident that has happened, including:</p>
-		<ul>
-			<li>when it happened</li>
-			<li>where it happened</li>
-			<li>what happened</li>
-			<li>how it happened</li>
-			<li>who was there</li>
-			<li>any injuries you suffered and</li>
-			<li>how you felt – for example: did you feel threatened, fearful or scared?</li>
-		</ul>
-		<p>You should avoid generalising or exaggerating the incidents—stick to the facts.</p>
-	</div>
-
 <!--
-Step 3 – Gather evidence and attach to the form
-You should also start gathering the information (evidence) you will need to
-support your application. Information that may be helpful includes:
-• photos of any injuries taken at the time the domestic violence happened
-• photos of any injuries taken later when they are more visible (like bruising
-that shows up a day or two later)
-• statements from people who saw or heard the domestic violence or who you have told about the domestic violence over a period of time
-• diary entries you have made about the domestic violence
-• doctors’ reports
-• other court orders eg other domestic violence orders or family court orders
-• reports from counsellors that you have seen
-• all text and voicemail messages, emails, letters and social media entries (printed out with dates).
-Attach this evidence to your application form.
-If possible, try to use photographs that have a date stamp on them; they can
-help you remember when the incidents happened. Photographs (or colour
-photocopies of them) can be attached to your application form.
-
-If you have any court orders, like family law orders about your children,
-Childrens Court orders or any old or current domestic violence orders, you
-must attach a copy to your domestic violence order application.
--->
-
-	<ol class="questions">
-		<li>
 			<fieldset>
 				<legend>
-					<span class="label">Describe why you want a protection order to protect {{ interview.applicantIsAggrieved ? 'yourself' : interview.aggrieved.name.given }} from {{ interview.respondent.name.given }}. This is known as your <dfn>grounds for protection</dfn>.</span>
-					<small class="hint">You must be shown that domestic violence has happened. Include specific examples of {{ interview.respondent.name.given }}’s behaviour. Attach extra pages if you need more space.</small>
+					<span class="label">What is your name?</span>
 				</legend>
-				<ol class="questions">
+				<ol class="questions compact">
 					<li>
-						<fieldset>
-							<legend>
-								<span class="label">Describe the <strong>last time</strong> {{ interview.respondent.name.given }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</span>
-							</legend>
-							<ol class="questions">
-								<li>
-									<label for="interview-grounds-most-recent-description">
-										<span class="label">What did {{ interview.respondent.name.given }} do?</span>
-										<small class="hint">Stick to the facts. Provide deates and palces. Describe exactly what {{ interview.respondent.name.given }} said and did. Don't exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
-									</label>
-									<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-most-recent-feel">
-										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} feel?</span>
-										<small class="hint">Examples: threatened, fearful or scared?</small>
-									</label>
-									<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-most-recent-when">
-										<span class="label">When did this happen?</span>
-										<small class="hint">Give a specific date and time</small>
-									</label>
-									<input type="text" id="interview-grounds-most-recent-when" ng-model="interview.grounds.mostRecent.when" size="15">
-								</li>
-								<li>
-									<label for="interview-grounds-most-recent-where">
-										<span class="label">Where did this happen?</span>
-										<small class="hint">Example: at home, work, an address or describe the place</small>
-									</label>
-									<input type="text" id="interview-grounds-most-recent-where" ng-model="interview.grounds.mostRecent.where" size="30" list="placenames">
-								</li>
-								<li>
-									<label for="interview-grounds-most-recent-witness">
-										<span class="label">Who else witnessed this?</span>
-										<small class="hint">Example: partners, children, parents, friends, neighbours.</small>
-									</label>
-									<input type="text" id="interview-grounds-most-recent-witness" ng-model="interview.grounds.mostRecent.witness" size="30" list="witnesses">
-								</li>
-							</ol>
-						</fieldset>
+						<label for="applicant-name-given">
+							<span class="label">Given name</span>
+							<abbr class="required" title="(required)">*</abbr>
+						</label>
+						<input type="text" size="15"
+						       id="applicant-name-given"
+						       ng-model="interview.applicant.name.given"
+						       ng-required="! interview.applicantIsAggrieved"
+						       ng-change="interview.saveApplicant()"
+						>
 					</li>
-
 					<li>
-						<fieldset>
-							<legend>
-								<span class="label">Has {{ interview.respondent.name.given }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} before this?</span>
-							</legend>
-							<ul class="choices compact">
-								<li>
-									<input type="radio" ng-model="interview.grounds.pastAbuse.occurred" name="interview-grounds-past-abuse" value="No" required id="interview-grounds-past-abuse-no">
-									<label for="interview-grounds-past-abuse-no">No</label>
-								</li>
-								<li>
-									<input type="radio" ng-model="interview.grounds.pastAbuse.occurred" name="interview-grounds-past-abuse" value="Yes" required id="interview-grounds-past-abuse-yes">
-									<label for="interview-grounds-past-abuse-yes">Yes</label>
-								</li>
-							</ul>
-						</fieldset>
-					</li>
-					<li ng-show="interview.grounds.pastAbuse.occurred === 'Yes'">
-						<fieldset>
-							<legend>
-								<span class="label">Describe how {{ interview.respondent.name.given }} has abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} in the past?</span>
-							</legend>
-							<ol class="questions">
-								<li>
-									<label for="interview-grounds-past-abuse-description">
-										<span class="label">What did {{ interview.respondent.name.given }} do?</span>
-										<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.name.given }} said and did. Do not exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
-									</label>
-									<textarea id="interview-grounds-past-abuse-description" ng-model="interview.grounds.pastAbuse.description" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-feel">
-										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} feel?</span>
-										<small class="hint">Examples: did {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} feel threatened, fearful or scared?</small>
-									</label>
-									<textarea id="interview-grounds-past-abuse-feel" ng-model="interview.grounds.pastAbuse.feel" cols="40" rows="3"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-when">
-										<span class="label">When did this first happen?</span>
-										<small class="hint">A specific date and time is best</small>
-									</label>
-									<input type="text" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" size="15">
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-where">
-										<span class="label">Where has this happened?</span>
-										<small class="hint">List all the places the abuse has happened</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-past-abuse-where" ng-model="interview.grounds.pastAbuse.where" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-witness">
-										<span class="label">Who has witnessed this?</span>
-										<small class="hint">Describe what was witnessed, by who, and when</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-witness">
-										<span class="label">Who has witnessed this?</span>
-										<small class="hint">Describe what was witnessed, by who, and when</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" cols="40" rows="10"></textarea>
-								</li>
-							</ol>
-						</fieldset>
-					</li>
-
-					<li ng-show="interview.abuse.physical.injure">
-						<fieldset>
-							<legend>
-								<span class="label">You said {{ interview.respondent.name.given }} has injured {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</span>
-								<small class="hint">Describe what happened and provide details about when, where and how often</small>
-							</legend>
-							<ol class="questions">
-								<li>
-									<label for="interview-grounds-injury-description">
-										<span class="label">What did {{ interview.respondent.name.given }} do?</span>
-										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.given }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} was hurt.</small>
-									</label>
-									<textarea id="interview-grounds-injury-description" ng-model="interview.grounds.injury.description" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-injury-when">
-										<span class="label">When did this happen?</span>
-										<small class="hint">A specific date and time is best</small>
-									</label>
-									<input type="text" id="interview-grounds-injury-when" ng-model="interview.grounds.injury.when" size="15">
-								</li>
-								<li>
-									<label for="interview-grounds-injury-where">
-										<span class="label">Where did this happen?</span>
-										<small class="hint">Example: home, work, an address or description of a place</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-injury-where" ng-model="interview.grounds.injury.where" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-injury-witness">
-										<span class="label">Who else witnessed this?</span>
-										<small class="hint">Example: partners, children, friends, neighbours.</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-injury-witness" ng-model="interview.grounds.injury.witness" cols="40" rows="10"></textarea>
-								</li>
-							</ol>
-						</fieldset>
-					</li>
-
-					<li ng-show="interview.abuse.physical.threaten">
-						<fieldset>
-							<legend>
-								<span class="label">Describe how {{ interview.respondent.name.given }} has threatened {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</span>
-								<small class="hint">You said {{ interview.respondent.name.given }} has threatened to hurt {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }}</small>
-							</legend>
-							<ol class="questions">
-								<li>
-									<label for="interview-grounds-injury-threat-description">
-										<span class="label">What did {{ interview.respondent.name.given }} say?</span>
-										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.given }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} felt.</small>
-									</label>
-									<textarea id="interview-grounds-injury-threat-description" ng-model="interview.grounds.injuryThreat.description" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-injury-threat-when">
-										<span class="label">When did this happen?</span>
-										<small class="hint">A specific date and time is best</small>
-									</label>
-									<input type="text" id="interview-grounds-injury-threat-when" ng-model="interview.grounds.injuryThreat.when" size="15">
-								</li>
-								<li>
-									<label for="interview-grounds-injury-threat-where">
-										<span class="label">Where did this happen?</span>
-										<small class="hint">Example: home, work, an address or description of a place</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-injury-threat-where" ng-model="interview.grounds.injuryThreat.where" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-injury-threat-witness">
-										<span class="label">Who else witnessed this?</span>
-										<small class="hint">Example: partners, children, friends, neighbours.</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-injury-threat-witness" ng-model="interview.grounds.injuryThreat.witness" cols="40" rows="10"></textarea>
-								</li>
-							</ol>
-						</fieldset>
+						<label for="applicant-name-family">
+							<span class="label">Family name</span>
+							<abbr class="required" title="(required)">*</abbr>
+						</label>
+						<input type="text" size="15"
+						       id="applicant-name-family"
+						       ng-model="interview.applicant.name.family"
+						       ng-required="! interview.applicantIsAggrieved"
+						       ng-change="interview.saveApplicant()"
+						>
 					</li>
 				</ol>
 			</fieldset>
-
-
-		</li>
-
-		<li ng-if="interview.aggrieved.children">
-			TODO: GROUNDS FOR INCLUDING {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} CHILD(REN)
-			<!-- TODO child vs children. Use actual children names -->
-			(how does this differ to the general grounds?)
-		</li>
-
-		<li ng-if="interview.aggrieved.associates">
-			TODO: GROUNDS FOR INCLUDING ASSOCIATES
-			(how does this differ to the general grounds?)
-		</li>
-
-		<li ng-if="false">
-			TODO: GROUNDS FOR CONDITIONS
-			(how does this differ to the general grounds?)
-		</li>
-
-		<li ng-if="interview.temporaryProtection.requested">
-			<label for="interview-temporary-protection-reasons">
-				<span class="label">Reasons for temporary protection</span>
-				<small class="hint">Explain why {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} cannot wait 4 weeks for a protection order</small>
-			</label>
-			<textarea class="large-compact" rows="10" cols="40"
-			          ng-model="interview.temporaryProtection.reasons"
-			          id="interview-temporary-protection-reasons"
-			          ng-change="updateTemporaryProtection()"
-			          ng-required="interview.temporaryProtection.requested"
-			></textarea>
+-->
 		</li>
 
 		<li class="footer">
@@ -1621,40 +1724,33 @@ must attach a copy to your domestic violence order application.
 		</li>
 	</ol>
 </form>
+</section>
 
 
 
-<form class="form" name="formCourt" ng-show="interview.page === interview.PAGE.COURT">
-	<div class="status info">
-		<h2>Serving the application</h2>
-		<p>Court registry staff will give a copy to the Queensland Police Service and they will make sure {{ interview.respondent.name.given }} is served. {{ interview.respondent.name.given }} <strong>must</strong> be served with a copy of the application.</p>
-	</div>
+<section ng-show="interview.page === interview.PAGE.NEXT">
+<h2>What to do next?</h2>
 
-	<section>
-		<h2>Lodging the application</h2>
-		<p>You may lodge the application at any <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court in Queensland</a>.
-		Lodging your application is free.
-		You will be given a date when {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} must go to court.
-		{{ interview.applicantIsAggrieved ? 'You' : interview.aggrieved.name.given }} can appear by {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }}self or with a solicitor or lawyer.
-		There may be circumstances where a police prosecutor will help {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} in the court room.
-		You should contact {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} local police station well before the court date if you think you need help from the police.</p>
-	</section>
+<ul>
+	<li>Printing forms</li>
+	<li>Gathering other documents and evidence</li>
+	<li>Legal advice</li>
+	<li>Declaration (signed and witnessed)</li>
+	<li>Lodging at court (days, locations)</li>
+</ul>
 
-<!--
-	<ol class="questions">
-		<li>
-			<fieldset>
-				<legend>
-					<span class="label">About your safety</span>
-				</legend>
-			</fieldset>
-		</li>
--->
+<div class="status info">
+	<h2>Serving the application</h2>
+	<p>Court registry staff will give a copy to the Queensland Police Service and they will make sure {{ interview.respondent.name.given }} is served. {{ interview.respondent.name.given }} <strong>must</strong> be served with a copy of the application.</p>
+</div>
 
-
-		<li class="footer">
-			<ul class="actions">
-				<!-- <li><strong><button type="submit">Continue</button></strong></li> -->
-			</ul>
-		</li>
-	</ol>
+<section>
+	<h3>Lodging the application</h3>
+	<p>You may lodge the application at any <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court in Queensland</a>.
+	Lodging your application is free.
+	You will be given a date when {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} must go to court.
+	{{ interview.applicantIsAggrieved ? 'You' : interview.aggrieved.name.given }} can appear by {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }}self or with a solicitor or lawyer.
+	There may be circumstances where a police prosecutor will help {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.given }} in the court room.
+	You should contact {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.given + '’s' }} local police station well before the court date if you think you need help from the police.</p>
+</section>
+</section>
