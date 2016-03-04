@@ -9,17 +9,20 @@ angular.module( 'dv1' )
 		G: {
 			they: 'they',
 			their: 'their',
-			them: 'them'
+			them: 'them',
+			your: 'their'
 		},
 		F: {
 			they: 'she',
 			their: 'her',
-			them: 'her'
+			them: 'her',
+			your: 'her'
 		},
 		M: {
 			they: 'he',
 			their: 'his',
-			them: 'him'
+			them: 'him',
+			your: 'his'
 		}
 	};
 	const GENDER = {
@@ -74,6 +77,11 @@ angular.module( 'dv1' )
 		data.aggrieved.name.short = data.aggrieved.name.given || 'the aggrieved';
 		if ( isApplicant ) {
 			this.saveApplicant( aggrievedData );
+			data.aggrieved.pronoun.you = 'you';
+			data.aggrieved.pronoun.your = 'your';
+		} else {
+			data.aggrieved.pronoun.you = data.aggrieved.name.short;
+			data.aggrieved.pronoun.your = PRONOUN[ data.aggrieved.gender ].your || PRONOUN.G.your;
 		}
 	};
 	this.saveApplicant = function( applicantData ) {

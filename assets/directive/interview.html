@@ -760,7 +760,7 @@
 
 
 <section ng-show="interview.page === interview.PAGE.GROUNDS">
-<h2>Grounds</h2>
+<h2>Why {{ interview.applicantIsAggrieved ? 'do you' : 'does ' + interview.aggrieved.name.short }} need protection?</h2>
 <form class="form" name="formGrounds" ng-submit="interview.continue( $event )">
 	<div class="status info">
 		<h2>What has {{ interview.respondent.name.short }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</h2>
@@ -777,522 +777,153 @@
 	</div>
 
 	<ol class="questions">
-		<li class="section">
-			<fieldset>
-				<legend>
-					<span class="h3">Physical abuse</span>
-				</legend>
-				<ul class="choices">
-<!-- causing personal injury to a person or threatening to do so -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-physical-injure"
-						       ng-model="interview.abuse.physical.injure"
-						       ng-value="true">
-						<label for="interview-abuse-physical-injure">{{ interview.respondent.name.short }} injured {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
-					</li>
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-physical-threaten"
-						       ng-model="interview.abuse.physical.threaten"
-						       ng-value="true">
-						<label for="interview-abuse-physical-threaten">{{ interview.respondent.name.short }} threated to hurt {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} physically</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-
-		<li class="section">
-			<fieldset>
-				<legend>
-					<span class="h3">Sexual abuse</span>
-				</legend>
-				<ul class="choices">
-<!-- coercing a person to engage in sexual activity or attempting to do so -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-sexual-coerce"
-						       ng-model="interview.abuse.sexual.coerce"
-						       ng-value="true">
-						<label for="interview-abuse-sexual-coerce">{{ interview.respondent.name.short }} forced {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} to have sex</label>
-					</li>
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-sexual-coerce-attempt"
-						       ng-model="interview.abuse.sexual.coerceAttempt"
-						       ng-value="true">
-						<label for="interview-abuse-sexual-coerce-attempt">{{ interview.respondent.name.short }} tried to force {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} to have sex</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-
-		<li class="section">
-			<fieldset>
-				<legend>
-					<span class="h3">Emotional abuse</span>
-				</legend>
-				<ul class="choices">
-<!-- following a person when the person is out in public, including by vehicle or on foot -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-stalking-public"
-						       ng-model="interview.abuse.emotional.stalkingPublic"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-stalking-public">{{ interview.respondent.name.short }} followed {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} in public places</label>
-						<small class="hint">Includes by vehicle or on foot</small>
-					</li>
-<!-- remaining outside a person’s residence or place of work -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-loitering-home"
-						       ng-model="interview.abuse.emotional.loiteringHome"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-loitering-home">{{ interview.respondent.name.short }} hung around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} home</label>
-					</li>
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-loitering-work"
-						       ng-model="interview.abuse.emotional.loiteringWork"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-loitering-work">{{ interview.respondent.name.short }} hung around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} workplace</label>
-					</li>
-<!-- repeatedly contacting a person by telephone, SMS message, email or social networking site without the person’s consent -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-stalking-contact"
-						       ng-model="interview.abuse.emotional.stalkingContact"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-stalking-contact">{{ interview.respondent.name.short }} contacted {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} without {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} approval</label>
-						<small class="hint">Contact can be by telephone, SMS message, email, social networking or other.</small>
-					</li>
-<!-- repeated derogatory taunts, including racial taunts -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-taunt"
-						       ng-model="interview.abuse.emotional.taunt"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-taunt">{{ interview.respondent.name.short }} repeatedly insulted {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} with put-downs or racial insults</label>
-					</li>
-<!-- threatening to disclose a person’s sexual orientation to the person’s friends or family without the person’s consent -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-disclose-sexual-orientation"
-						       ng-model="interview.abuse.emotional.discloseSexualOrientation"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-disclose-sexual-orientation">{{ interview.respondent.name.short }} threatened to tell {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} family or friends about {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} sexual preference</label>
-					</li>
-<!-- threatening to withhold a person’s medication -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-withhold-medication"
-						       ng-model="interview.abuse.emotional.withholdMedication"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-withhold-medication">{{ interview.respondent.name.short }} threatened to keep {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} medication from me</label>
-					</li>
-<!-- preventing a person from making or keeping connections with the person’s family, friends or culture, including cultural or spiritual ceremonies or practices, or preventing the person from expressing the person’s cultural identity -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-prevent-family"
-						       ng-model="interview.abuse.emotional.preventFamily"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-prevent-family">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} from seeing or talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} family</label>
-					</li>
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-prevent-friends"
-						       ng-model="interview.abuse.emotional.preventFriends"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-prevent-friends">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} from seeing or talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} friends</label>
-					</li>
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-emotional-prevent-culture"
-						       ng-model="interview.abuse.emotional.preventCulture"
-						       ng-value="true">
-						<label for="interview-abuse-emotional-prevent-culture">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} from expressing {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} cultural identity</label>
-						<small class="hint">Example: taking part in cultural or spiritual ceremonies or practices</small>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-
-		<li class="section">
-			<fieldset>
-				<legend>
-					<span class="h3">Economic abuse</span>
-				</legend>
-				<ul class="choices">
-<!-- coercing a person to relinquish control over assets and income -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-control-assets"
-						       ng-model="interview.abuse.economic.relinquishAssets"
-						       ng-value="true">
-						<label for="interview-abuse-economic-control-assets">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} give up {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} assets and/or income</label>
-					</li>
-<!-- removing or keeping a person’s property without the person’s consent, or threatening to do so -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-theft-threatened"
-						       ng-model="interview.abuse.economic.theftThreatened"
-						       ng-value="true">
-						<label for="interview-abuse-economic-theft-threatened">{{ interview.respondent.name.short }} threatened to steal {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} property</label>
-					</li>
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-theft"
-						       ng-model="interview.abuse.economic.theft"
-						       ng-value="true">
-						<label for="interview-abuse-economic-theft">{{ interview.respondent.name.short }} stole {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} property</label>
-					</li>
-<!-- disposing of property owned by a person, or owned jointly with a person, against the person’s wishes and without lawful excuse -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-destroy"
-						       ng-model="interview.abuse.economic.destroyProperty"
-						       ng-value="true">
-						<label for="interview-abuse-economic-destroy">{{ interview.respondent.name.short }} destroyed {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} property</label>
-					</li>
-<!-- without lawful excuse, preventing a person from having access to joint financial assets for the purposes of meeting normal household expenses -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-prevent-joint-access"
-						       ng-model="interview.abuse.economic.preventJointAccess"
-						       ng-value="true">
-						<label for="interview-abuse-economic-prevent-joint-access">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} using {{ interview.applicantIsAggrieved ? 'our' : 'their' }} joint bank account for household expenses</label>
-					</li>
-<!-- preventing a person from seeking or keeping employment -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-prevent-employment"
-						       ng-model="interview.abuse.economic.preventEmployment"
-						       ng-value="true">
-						<label for="interview-abuse-economic-prevent-employment">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} from getting a job</label>
-					</li>
-<!-- coercing a person to claim social security payments -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-social-security-payments"
-						       ng-model="interview.abuse.economic.socialSecurityPayments"
-						       ng-value="true">
-						<label for="interview-abuse-economic-social-security-payments">{{ interview.respondent.name.short }} tried to make {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} claim Centrelink payments</label>
-					</li>
-<!-- coercing a person to sign a power of attorney that would enable the person’s finances to be managed by another person -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-power-attorney"
-						       ng-model="interview.abuse.economic.powerAttorney"
-						       ng-value="true">
-						<label for="interview-abuse-economic-power-attorney">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a <cite>Power of Attorney</cite> statement that took away {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} control over money</label>
-					</li>
-<!-- coercing a person to sign a contract for the purchase of goods or services -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-contract-purchase"
-						       ng-model="interview.abuse.economic.contractPurchase"
-						       ng-value="true">
-						<label for="interview-abuse-economic-contract-purchase">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a contract to buy things {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.pronoun.they }} didn't want to buy</label>
-					</li>
-<!-- coercing a person to sign a contract for the provision of finance, a loan or credit -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-contract-loan"
-						       ng-model="interview.abuse.economic.contractLoan"
-						       ng-value="true">
-						<label for="interview-abuse-economic-contract-loan">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a contract to borrow money {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.pronoun.they }} didn't want to borrow</label>
-						<small class="hint">Examples: taking out a loan, applying for a credit card</small>
-					</li>
-<!-- coercing a person to sign a contract of guarantee -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-contract-guarantee"
-						       ng-model="interview.abuse.economic.contractGuarantee"
-						       ng-value="true">
-						<label for="interview-abuse-economic-contract-guarantee">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a contract of guarantee</label>
-					</li>
-<!-- coercing a person to sign any legal document for the establishment or operation of a business -->
-					<li>
-						<input type="checkbox"
-						       id="interview-abuse-economic-legal-business"
-						       ng-model="interview.abuse.economic.legalBusiness"
-						       ng-value="true">
-						<label for="interview-abuse-economic-legal-business">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a legal document {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.pronoun.they }} didn't want to sign for {{ interview.respondent.name.short }}’s business</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-	</ol>
-
-	<div class="status info">
-		<h2>Based on your answers, {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.short + ' wants' }} to apply for</h2>
-		<dl>
-			<dt>a <strong>Protection Order</strong></dt>
-			<dd>This will protect {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} for up to 2 years (it can be reviewed and extended if necessary).</dd>
-			<dd>The court process to get a protection order typically takes 4 weeks (sometimes longer).</dd>
-
-			<dt ng-if="interview.temporaryProtection.requested"><em>and</em> a <strong>Temporary Protection Order</strong></dt>
-			<dd ng-if="interview.temporaryProtection.requested">The court can give {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
-		</dl>
-
-		<h3></h3>
-		<p>You need to provide as much detail as you can on the application form.
-		You should describe every domestic violence incident that has happened, including:</p>
-		<ul>
-			<li>when it happened</li>
-			<li>where it happened</li>
-			<li>what happened</li>
-			<li>how it happened</li>
-			<li>who was there</li>
-			<li>any injuries you suffered and</li>
-			<li>how you felt – for example: did you feel threatened, fearful or scared?</li>
-		</ul>
-		<p>You should avoid generalising or exaggerating the incidents—stick to the facts.</p>
-	</div>
-
-	<!--
-	Step 3 – Gather evidence and attach to the form
-	You should also start gathering the information (evidence) you will need to
-	support your application. Information that may be helpful includes:
-	• photos of any injuries taken at the time the domestic violence happened
-	• photos of any injuries taken later when they are more visible (like bruising
-	that shows up a day or two later)
-	• statements from people who saw or heard the domestic violence or who you have told about the domestic violence over a period of time
-	• diary entries you have made about the domestic violence
-	• doctors’ reports
-	• other court orders eg other domestic violence orders or family court orders
-	• reports from counsellors that you have seen
-	• all text and voicemail messages, emails, letters and social media entries (printed out with dates).
-	Attach this evidence to your application form.
-	If possible, try to use photographs that have a date stamp on them; they can
-	help you remember when the incidents happened. Photographs (or colour
-	photocopies of them) can be attached to your application form.
-
-	If you have any court orders, like family law orders about your children,
-	Childrens Court orders or any old or current domestic violence orders, you
-	must attach a copy to your domestic violence order application.
-	-->
-
-	<ol class="questions">
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">Describe why you want a protection order to protect {{ interview.applicantIsAggrieved ? 'yourself' : interview.aggrieved.name.short }} from {{ interview.respondent.name.short }}. This is known as your <dfn>grounds for protection</dfn>.</span>
-					<small class="hint">You must be shown that domestic violence has happened. Include specific examples of {{ interview.respondent.name.short }}’s behaviour. Attach extra pages if you need more space.</small>
+					<span class="h3">Has {{ interview.respondent.name.short }} behaved in a way that is</span>
 				</legend>
-				<ol class="questions">
+				<ul class="choices">
 					<li>
-						<fieldset>
-							<legend>
-								<span class="label">Describe the <strong>last time</strong> {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
-							</legend>
-							<ol class="questions">
-								<li>
-									<label for="interview-grounds-most-recent-description">
-										<span class="label">What did {{ interview.respondent.name.short }} do?</span>
-										<small class="hint">Stick to the facts. Provide deates and palces. Describe exactly what {{ interview.respondent.name.short }} said and did. Don't exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
-									</label>
-									<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-most-recent-feel">
-										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
-										<small class="hint">Examples: threatened, fearful or scared?</small>
-									</label>
-									<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-most-recent-when">
-										<span class="label">When did this happen?</span>
-										<small class="hint">Give a specific date and time</small>
-									</label>
-									<input type="text" id="interview-grounds-most-recent-when" ng-model="interview.grounds.mostRecent.when" size="15">
-								</li>
-								<li>
-									<label for="interview-grounds-most-recent-where">
-										<span class="label">Where did this happen?</span>
-										<small class="hint">Example: at home, work, an address or describe the place</small>
-									</label>
-									<input type="text" id="interview-grounds-most-recent-where" ng-model="interview.grounds.mostRecent.where" size="30" list="placenames">
-								</li>
-								<li>
-									<label for="interview-grounds-most-recent-witness">
-										<span class="label">Who else witnessed this?</span>
-										<small class="hint">Example: partners, children, parents, friends, neighbours.</small>
-									</label>
-									<input type="text" id="interview-grounds-most-recent-witness" ng-model="interview.grounds.mostRecent.witness" size="30" list="witnesses">
-								</li>
-							</ol>
-						</fieldset>
+						<input type="checkbox"
+						       id="interview-abuse-physical"
+						       ng-model="interview.abuse.physical"
+						       ng-value="true">
+						<label for="interview-abuse-physical">physically abusive</label>
 					</li>
-
 					<li>
-						<fieldset>
-							<legend>
-								<span class="label">Has {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} before this?</span>
-							</legend>
-							<ul class="choices compact">
-								<li>
-									<input type="radio" ng-model="interview.grounds.pastAbuse.occurred" name="interview-grounds-past-abuse" value="No" required id="interview-grounds-past-abuse-no">
-									<label for="interview-grounds-past-abuse-no">No</label>
-								</li>
-								<li>
-									<input type="radio" ng-model="interview.grounds.pastAbuse.occurred" name="interview-grounds-past-abuse" value="Yes" required id="interview-grounds-past-abuse-yes">
-									<label for="interview-grounds-past-abuse-yes">Yes</label>
-								</li>
-							</ul>
-						</fieldset>
+						<input type="checkbox"
+						       id="interview-abuse-sexual"
+						       ng-model="interview.abuse.sexual"
+						       ng-value="true">
+						<label for="interview-abuse-sexual">sexually abusive</label>
 					</li>
-					<li ng-show="interview.grounds.pastAbuse.occurred === 'Yes'">
-						<fieldset>
-							<legend>
-								<span class="label">Describe how {{ interview.respondent.name.short }} has abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} in the past?</span>
-							</legend>
-							<ol class="questions">
-								<li>
-									<label for="interview-grounds-past-abuse-description">
-										<span class="label">What did {{ interview.respondent.name.short }} do?</span>
-										<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.name.short }} said and did. Do not exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
-									</label>
-									<textarea id="interview-grounds-past-abuse-description" ng-model="interview.grounds.pastAbuse.description" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-feel">
-										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
-										<small class="hint">Examples: did {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel threatened, fearful or scared?</small>
-									</label>
-									<textarea id="interview-grounds-past-abuse-feel" ng-model="interview.grounds.pastAbuse.feel" cols="40" rows="3"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-when">
-										<span class="label">When did this first happen?</span>
-										<small class="hint">A specific date and time is best</small>
-									</label>
-									<input type="text" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" size="15">
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-where">
-										<span class="label">Where has this happened?</span>
-										<small class="hint">List all the places the abuse has happened</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-past-abuse-where" ng-model="interview.grounds.pastAbuse.where" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-witness">
-										<span class="label">Who has witnessed this?</span>
-										<small class="hint">Describe what was witnessed, by who, and when</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-past-abuse-witness">
-										<span class="label">Who has witnessed this?</span>
-										<small class="hint">Describe what was witnessed, by who, and when</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-past-abuse-when" ng-model="interview.grounds.pastAbuse.when" cols="40" rows="10"></textarea>
-								</li>
-							</ol>
-						</fieldset>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-emotional"
+						       ng-model="interview.abuse.emotional"
+						       ng-value="true">
+						<label for="interview-abuse-emotional">emotionally or psychologially abusive</label>
 					</li>
-
-					<li ng-show="interview.abuse.physical.injure">
-						<fieldset>
-							<legend>
-								<span class="label">You said {{ interview.respondent.name.short }} has injured {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
-								<small class="hint">Describe what happened and provide details about when, where and how often</small>
-							</legend>
-							<ol class="questions">
-								<li>
-									<label for="interview-grounds-injury-description">
-										<span class="label">What did {{ interview.respondent.name.short }} do?</span>
-										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.short }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} was hurt.</small>
-									</label>
-									<textarea id="interview-grounds-injury-description" ng-model="interview.grounds.injury.description" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-injury-when">
-										<span class="label">When did this happen?</span>
-										<small class="hint">A specific date and time is best</small>
-									</label>
-									<input type="text" id="interview-grounds-injury-when" ng-model="interview.grounds.injury.when" size="15">
-								</li>
-								<li>
-									<label for="interview-grounds-injury-where">
-										<span class="label">Where did this happen?</span>
-										<small class="hint">Example: home, work, an address or description of a place</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-injury-where" ng-model="interview.grounds.injury.where" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-injury-witness">
-										<span class="label">Who else witnessed this?</span>
-										<small class="hint">Example: partners, children, friends, neighbours.</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-injury-witness" ng-model="interview.grounds.injury.witness" cols="40" rows="10"></textarea>
-								</li>
-							</ol>
-						</fieldset>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-threat"
+						       ng-model="interview.abuse.threat"
+						       ng-value="true">
+						<label for="interview-abuse-threat">threatening</label>
 					</li>
-
-					<li ng-show="interview.abuse.physical.threaten">
-						<fieldset>
-							<legend>
-								<span class="label">Describe how {{ interview.respondent.name.short }} has threatened {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
-								<small class="hint">You said {{ interview.respondent.name.short }} has threatened to hurt {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</small>
-							</legend>
-							<ol class="questions">
-								<li>
-									<label for="interview-grounds-injury-threat-description">
-										<span class="label">What did {{ interview.respondent.name.short }} say?</span>
-										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.short }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} felt.</small>
-									</label>
-									<textarea id="interview-grounds-injury-threat-description" ng-model="interview.grounds.injuryThreat.description" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-injury-threat-when">
-										<span class="label">When did this happen?</span>
-										<small class="hint">A specific date and time is best</small>
-									</label>
-									<input type="text" id="interview-grounds-injury-threat-when" ng-model="interview.grounds.injuryThreat.when" size="15">
-								</li>
-								<li>
-									<label for="interview-grounds-injury-threat-where">
-										<span class="label">Where did this happen?</span>
-										<small class="hint">Example: home, work, an address or description of a place</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-injury-threat-where" ng-model="interview.grounds.injuryThreat.where" cols="40" rows="10"></textarea>
-								</li>
-								<li>
-									<label for="interview-grounds-injury-threat-witness">
-										<span class="label">Who else witnessed this?</span>
-										<small class="hint">Example: partners, children, friends, neighbours.</small>
-									</label>
-									<textarea class="compact-large" id="interview-grounds-injury-threat-witness" ng-model="interview.grounds.injuryThreat.witness" cols="40" rows="10"></textarea>
-								</li>
-							</ol>
-						</fieldset>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-coercive"
+						       ng-model="interview.abuse.coercive"
+						       ng-value="true">
+						<label for="interview-abuse-coercive">coercive</label>
 					</li>
-				</ol>
+				</ul>
 			</fieldset>
-
-
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="h3">Has {{ interview.respondent.name.short }}</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-injury"
+						       ng-model="interview.abuse.injury"
+						       ng-value="true">
+						<label for="interview-abuse-injury">caused personal injury to {{ interview.aggrieved.pronoun.you }} or threatened to do so</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-coercedSexually"
+						       ng-model="interview.abuse.coercedSexually"
+						       ng-value="true">
+						<label for="interview-abuse-coercedSexually">coerced {{ interview.aggrieved.pronoun.you }} into sexual activity or attempted to do so</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-propertyDamage"
+						       ng-model="interview.abuse.propertyDamage"
+						       ng-value="true">
+						<label for="interview-abuse-propertyDamage">damaged {{ interview.aggrieved.pronoun.your }} property or threatened to do so</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-liberty"
+						       ng-model="interview.abuse.liberty"
+						       ng-value="true">
+						<label for="interview-abuse-liberty">deprived {{ interview.aggrieved.pronoun.you }} of {{ interview.aggrieved.pronoun.your }} liberty or threatened to do so</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-selfHarm"
+						       ng-model="interview.abuse.selfHarm"
+						       ng-value="true">
+						<label for="interview-abuse-selfHarm">threatened to harm {{ interview.respondent.pronoun.them }}self or suicide to intimidate {{ interview.aggrieved.pronoun.you }} or someone else</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Did any of the domestic and family violence happen where {{ interview.applicantIsAggrieved ? 'you live' : interview.aggrieved.name.short + ' lives' }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-abuse-at-residence" ng-model="interview.abuse.atResidence" ng-value="false" required id="interview-abuse-at-residence-no">
+						<label for="interview-abuse-at-residence-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-abuse-at-residence" ng-model="interview.abuse.atResidence" ng-value="true" required id="interview-abuse-at-residence-yes">
+						<label for="interview-abuse-at-residence-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
 		</li>
 
-		<li ng-if="interview.aggrieved.children">
-			TODO: GROUNDS FOR INCLUDING {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} CHILD(REN)
-			<!-- TODO child vs children. Use actual children names -->
-			(how does this differ to the general grounds?)
+		<li>
+			<div class="status info">
+				<h2>Explaining what has happened</h2>
+				<p>Now please expand upon the domestic violence you have indicated above, including the date or the approximate dates, (e.g. March - April 2015) of specific incidents.</p>
+                <p>Please start with the most recent incident of domestic or family violence and include all major incidents.</p>
+			</div>
+
+			<label>
+				<span class="label">Describe the abuse</span>
+				<small class="hint">Include 3-4 examples to help the court to understand why you need protection.
+				   You may not feel comfortable repeating some of the words, or describing what happened to you, but it is important the court knows exactly what happened.</small>
+			</label>
+			<textarea id="interview-abuse-description" ng-model="interview.abuse.description" cols="40" rows="10"></textarea>
 		</li>
 
-		<li ng-if="interview.aggrieved.associates">
-			TODO: GROUNDS FOR INCLUDING ASSOCIATES
-			(how does this differ to the general grounds?)
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Will you attach extra pages describing the domestic violence?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="false" required id="interview-abuse-description-attachment-no">
+						<label for="interview-abuse-description-attachment-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="true" required id="interview-abuse-description-attachment-yes">
+						<label for="interview-abuse-description-attachment-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
 		</li>
 
-		<li ng-if="false">
-			TODO: GROUNDS FOR CONDITIONS
-			(how does this differ to the general grounds?)
+		<li ng-show="interview.attachments.abuseDescription">
+			<div class="status info">
+				<h2>Attaching evidence</h2>
+				<p>You can attach extra pages to this application describing the domestic violence. This can include your own words describing events, but also reports from police or medical staff and photos.</p>
+				<p>Remember to bring all pages with you when to lodge this application at court.</p>
+			</div>
 		</li>
+
 
 		<li class="footer">
 			<ul class="actions">
