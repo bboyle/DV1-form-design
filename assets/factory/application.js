@@ -81,7 +81,7 @@ angular.module( 'dv1' )
 			data.aggrieved.pronoun.your = 'your';
 		} else {
 			data.aggrieved.pronoun.you = data.aggrieved.name.short;
-			data.aggrieved.pronoun.your = PRONOUN[ data.aggrieved.gender ].your || PRONOUN.G.your;
+			data.aggrieved.pronoun.your = PRONOUN[ GENDER[ data.aggrieved.gender ] || GENDER.GENERIC ].your;
 		}
 	};
 	this.saveApplicant = function( applicantData ) {
