@@ -2,7 +2,7 @@
 
 
 // app
-angular.module( 'dv1', [] )
+angular.module( 'dv1', [ 'ngAnimate' ])
 
 
 

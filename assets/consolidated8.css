@@ -1,0 +1,50 @@
+/* master layout */
+
+/* animate relevance */
+ol.questions > li {
+	transform-origin: 0 0;
+}
+ol.questions > li.ng-hide {
+	transform: scaleY(0);
+	opacity: 0;
+}
+ol.questions > li.ng-hide-remove,
+ol.questions > li.ng-hide-remove-active {
+	will-change: opacity, transform;
+	transition:
+		opacity .5s ease-out,
+		transform .3s ease;
+}
+
+
+/* process nav */
+nav ol button {
+	border: none;
+	background: transparent;
+}
+nav ol button:hover,
+nav ol button:focus {
+	color: rebeccapurple;
+	text-decoration: underline;
+}
+nav ol button[disabled]:hover,
+nav ol button[disabled]:focus,
+nav ol button[disabled] {
+	cursor: text;
+	color: #aaa;
+	text-decoration: none;
+}
+
+/* telephone links */
+a[href^="tel:"] {
+	text-decoration: none;
+	white-space: nowrap;
+	color: #639; /* rebeccapurple */
+}
+a[href^="tel:"]::before {
+	content: "(☎) ";
+}
+
+.language-chooser button {
+	font-weight: normal;
+}
