@@ -1,7 +1,7 @@
 <nav style="position: fixed; left: 0">
 	<ol>
 		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Eligibility</button></li>
-		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.STORY" ng-click="interview.goto( interview.PAGE.STORY )">Applicant details</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.STORY" ng-click="interview.goto( interview.PAGE.STORY )">Your situation</button></li>
 		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Aggrieved details</button></li>
 		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Respondent details</button></li>
 		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.RELATIONSHIP" ng-click="interview.goto( interview.PAGE.RELATIONSHIP )">Relationship</button></li>
@@ -234,7 +234,7 @@
 
 
 <section ng-show="interview.page === interview.PAGE.STORY">
-<form class="form" name="formApplicant" ng-submit="interview.continue( $event )">
+<form class="form" name="formStory" ng-submit="interview.continue( $event )">
 	<ol class="questions">
 		<li>
 			<fieldset>
@@ -1616,21 +1616,21 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" ng-model="interview.respondent.weapon.access" ng-value="false" required id="interview-respondent-weapon-access-no">
-						<label for="interview-respondent-weapon-access-no">No</label>
+						<input type="radio" name="interview-weapon-access" ng-model="interview.respondent.weapon.access" ng-value="false" required id="interview-weapon-access-no">
+						<label for="interview-weapon-access-no">No</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.respondent.weapon.access" ng-value="true" required id="interview-respondent-weapon-access-yes">
-						<label for="interview-respondent-weapon-access-yes">Yes</label>
+						<input type="radio" name="interview-weapon-access" ng-model="interview.respondent.weapon.access" ng-value="true" required id="interview-weapon-access-yes">
+						<label for="interview-weapon-access-yes">Yes</label>
 					</li>
 				</ul>
 			</fieldset>
 		</li>
 		<li ng-show="interview.respondent.weapon.access">
-			<label for="interview-respondent-weapon-access-details">
+			<label for="interview-weapon-access-details">
 				<span class="label">Please state the number of weapons, the type of weapons and all possible places where they may be found</span>
 			</label>
-			<textarea id="interview-respondent-weapon-access-details" ng-model="interview.respondent.weapon.accessDetails" cols="40" rows="10"></textarea>
+			<textarea id="interview-weapon-access-details" ng-model="interview.respondent.weapon.accessDetails" cols="40" rows="10"></textarea>
 		</li>
 
 		<li>
@@ -1641,12 +1641,12 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" ng-model="interview.respondent.weapon.threat" ng-value="false" required id="interview-respondent-weapon-threat-no">
-						<label for="interview-respondent-weapon-threat-no">No</label>
+						<input type="radio" name="interview-weapon-threat" ng-model="interview.respondent.weapon.threat" ng-value="false" required id="interview-weapon-threat-no">
+						<label for="interview-weapon-threat-no">No</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.respondent.weapon.threat" ng-value="true" required id="interview-respondent-weapon-threat-yes">
-						<label for="interview-respondent-weapon-threat-yes">Yes</label>
+						<input type="radio" name="interview-weapon-threat" ng-model="interview.respondent.weapon.threat" ng-value="true" required id="interview-weapon-threat-yes">
+						<label for="interview-weapon-threat-yes">Yes</label>
 					</li>
 				</ul>
 			</fieldset>
@@ -1660,21 +1660,21 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" ng-model="interview.respondent.weapon.threat2" ng-value="false" required id="interview-respondent-weapon-threat2-no">
-						<label for="interview-respondent-weapon-threat2-no">No</label>
+						<input type="radio" name="interview-weapon-threat2" ng-model="interview.respondent.weapon.threat2" ng-value="false" required id="interview-weapon-threat2-no">
+						<label for="interview-weapon-threat2-no">No</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.respondent.weapon.threat2" ng-value="true" required id="interview-respondent-weapon-threat2-yes">
-						<label for="interview-respondent-weapon-threat2-yes">Yes</label>
+						<input type="radio" name="interview-weapon-threat2" ng-model="interview.respondent.weapon.threat2" ng-value="true" required id="interview-weapon-threat2-yes">
+						<label for="interview-weapon-threat2-yes">Yes</label>
 					</li>
 				</ul>
 			</fieldset>
 		</li>
 		<li ng-show="interview.respondent.weapon.threat || interview.respondent.weapon.threat2">
-			<label for="interview-respondent-weapon-threat-details">
+			<label for="interview-weapon-threat-details">
 				<span class="label">Provide details of what the respondent did</span>
 			</label>
-			<textarea id="interview-respondent-weapon-threat-details" ng-model="interview.respondent.weapon.threatDetails" cols="40" rows="10"></textarea>
+			<textarea id="interview-weapon-threat-details" ng-model="interview.respondent.weapon.threatDetails" cols="40" rows="10"></textarea>
 		</li>
 
 		<li>
@@ -1685,12 +1685,12 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" ng-model="interview.respondent.weapon.licence" ng-value="false" required id="interview-respondent-weapon-licence-no">
-						<label for="interview-respondent-weapon-licence-no">No</label>
+						<input type="radio" name="interview-weapon-licence" ng-model="interview.respondent.weapon.licence" ng-value="false" required id="interview-weapon-licence-no">
+						<label for="interview-weapon-licence-no">No</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.respondent.weapon.licence" ng-value="true" required id="interview-respondent-weapon-licence-yes">
-						<label for="interview-respondent-weapon-licence-yes">Yes</label>
+						<input type="radio" name="interview-weapon-licence" ng-model="interview.respondent.weapon.licence" ng-value="true" required id="interview-weapon-licence-yes">
+						<label for="interview-weapon-licence-yes">Yes</label>
 					</li>
 				</ul>
 			</fieldset>
@@ -1703,10 +1703,10 @@
 			</div>
 		</li>
 		<li ng-show="interview.respondent.weapon.licence">
-			<label for="interview-respondent-weapon-licence-details">
+			<label for="interview-weapon-licence-details">
 				<span class="label">Please provide details of any weapons {{ interview.respondent.name.short }} has access to and where they are located</span>
 			</label>
-			<textarea id="interview-respondent-weapon-licence-details" ng-model="interview.respondent.weapon.licenceDetails" cols="40" rows="10"></textarea>
+			<textarea id="interview-weapon-licence-details" ng-model="interview.respondent.weapon.licenceDetails" cols="40" rows="10"></textarea>
 		</li>
 
 		<li class="footer">
@@ -1760,7 +1760,7 @@
 						       required
 						       id="application-lodged-by-aggrieved">
 						<label ng-if="interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">I will lodge it myself</label>
-						<label ng-if="! interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">My {{ interview.applicant.relationship }} will lodge it {{ interview.aggrieved.pronoun.them }}self</label>
+						<label ng-if="! interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">{{ interview.aggrieved.name.short }} will lodge it</label>
 					</li>
 					<li>
 						<input type="radio"
