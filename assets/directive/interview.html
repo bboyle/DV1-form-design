@@ -376,6 +376,18 @@
 			</fieldset>
 		</li>
 		<li>
+			<label for="interview-aggrieved-address">
+				<span class="label">Address</span>
+			</label>
+			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30"></textarea>
+		</li>
+		<li>
+			<label for="interview-aggrieved-date-birth">
+				<span class="label">Date of birth</span>
+			</label>
+			<input type="date" id="interview-aggrieved-date-birth" ng-model="interview.aggrieved.dateBirth">
+		</li>
+		<li>
 			<label for="interview-aggrieved-gender">
 				<span class="label">Gender</span>
 				<abbr class="required" title="(required)">*</abbr>
@@ -401,6 +413,158 @@
 				<option value="Genderfluid">Genderfluid</option>
 				<option value="Transvestite">Transvestite</option>
 			</select>
+		</li>
+		<li>
+			<label for="interview-aggrieved-phone-home">
+				<span class="label">Home phone</span>
+			</label>
+			<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20">
+		</li>
+		<li>
+			<label for="interview-aggrieved-phone-mobile">
+				<span class="label">Mobile</span>
+			</label>
+			<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20">
+		</li>
+		<li>
+			<label for="interview-aggrieved-phone-work">
+				<span class="label">Work phone</span>
+			</label>
+			<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20">
+		</li>
+		<li>
+			<label for="interview-aggrieved-email">
+				<span class="label">Email</span>
+			</label>
+			<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30">
+		</li>
+		<li>
+			<label for="interview-aggrieved-idNumber">
+				<span class="label">ID number (optional)</span>
+				<small class="hint">Example: Drivers licence, 18+ card</small>
+			</label>
+			<input type="tel" id="interview-aggrieved-idNumber" ng-model="interview.aggrieved.idNumber" size="20">
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the aggrieved require an interpreter?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-aggrieved-interpreter" ng-model="interview.aggrieved.requiresInterpreter" ng-value="false" required="required" id="aggrieved-interpreter-no">
+						<label for="aggrieved-interpreter-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-interpreter" ng-model="interview.aggrieved.requiresInterpreter" ng-value="true" required="required" id="aggrieved-interpreter-yes">
+						<label for="aggrieved-interpreter-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.aggrieved.requiresInterpreter">
+			<label for="aggrieved-language-dialect">
+				<span class="label">Language/Dialect</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<input type="text" ng-model="interview.aggrieved.language" size="20" required="required" id="aggrieved-language-dialect">
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the aggrieved identify as</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="interview-aggrieved-identify-as" ng-model="interview.aggrieved.identifyAs" value="Aboriginal" id="aggrieved-identify-as-aboriginal">
+						<label for="aggrieved-identify-as-aboriginal">Aboriginal</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-identify-as" ng-model="interview.aggrieved.identifyAs" value="Torres Strait Islander" id="aggrieved-identify-as-torres-strait-islander">
+						<label for="aggrieved-identify-as-torres-strait-islander">Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-identify-as" ng-model="interview.aggrieved.identifyAs" value="Aboriginal and Torres Strait Islander" id="aggrieved-identify-as-aboriginal-and-torres-strait-islander">
+						<label for="aggrieved-identify-as-aboriginal-and-torres-strait-islander">Aboriginal and Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-identify-as" ng-model="interview.aggrieved.identifyAs" value="N/A" id="aggrieved-identify-as-na">
+						<label for="aggrieved-identify-as-na">None of the above</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the aggrieved have a disability, illness or impairment where support and/or special arrangements are required?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-aggrieved-have-a-disability" ng-model="interview.aggrieved.hasDisability" ng-value="false" required="required" id="aggrieved-have-a-disability-no">
+						<label for="aggrieved-have-a-disability-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-have-a-disability" ng-model="interview.aggrieved.hasDisability" ng-value="true" required="required" id="aggrieved-have-a-disability-yes">
+						<label for="aggrieved-have-a-disability-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.aggrieved.hasDisability">
+			<label for="aggrieved-disability-details">
+				<span class="label">Please provide details about {{ interview.aggrieved.pronoun.your }} needs</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<textarea ng-model="interview.aggrieved.disabilityNeeds" id="aggrieved-disability-details" rows="3" cols="40"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Is the aggrieved under 18 years of age?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-aggrieved-under-18" ng-model="interview.aggrieved.under18" ng-value="false" required="required" id="aggrieved-under-18-no">
+						<label for="aggrieved-under-18-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-under-18" ng-model="interview.aggrieved.under18" ng-value="true" required="required" id="aggrieved-under-18-yes">
+						<label for="aggrieved-under-18-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li class="section" ng-show="interview.aggrieved.under18">
+			<fieldset>
+				<legend>
+					<span class="h2">Parent's details</span>
+					<p>All documents must be given to a parent unless the court orders otherwise.</p>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="aggrieved-parent-name">
+							<span class="label">Parent's name</span>
+							<abbr class="required" title="(required)">*</abbr>
+						</label>
+						<input ng-model="interview.aggrieved.parent.name.full" size="30" required="required" type="text" id="aggrieved-parent-name">
+					</li>
+					<li>
+						<label for="aggrieved-parent-address">
+							<span class="label">Parent's address</span>
+						</label>
+						<textarea ng-model="interview.aggrieved.parent.address" id="aggrieved-parent-address" rows="3" cols="4"></textarea>
+					</li>
+				</ol>
+			</fieldset>
 		</li>
 
 		<li class="footer">
@@ -452,6 +616,18 @@
 			</fieldset>
 		</li>
 		<li>
+			<label for="interview-respondent-address">
+				<span class="label">Address</span>
+			</label>
+			<textarea id="interview-respondent-address" ng-model="interview.respondent.address" rows="3" cols="30"></textarea>
+		</li>
+		<li>
+			<label for="interview-respondent-date-birth">
+				<span class="label">Date of birth</span>
+			</label>
+			<input type="date" id="interview-respondent-date-birth" ng-model="interview.respondent.dateBirth">
+		</li>
+		<li>
 			<label for="interview-respondent-gender">
 				<span class="label">Gender</span>
 				<abbr class="required" title="(required)">*</abbr>
@@ -477,6 +653,179 @@
 				<option value="Genderfluid">Genderfluid</option>
 				<option value="Transvestite">Transvestite</option>
 			</select>
+		</li>
+		<li>
+			<label for="interview-respondent-phone-home">
+				<span class="label">Home phone</span>
+			</label>
+			<input type="tel" id="interview-respondent-phone-home" ng-model="interview.respondent.contact.phone.home" size="20">
+		</li>
+		<li>
+			<label for="interview-respondent-phone-mobile">
+				<span class="label">Mobile</span>
+			</label>
+			<input type="tel" id="interview-respondent-phone-mobile" ng-model="interview.respondent.contact.phone.mobile" size="20">
+		</li>
+		<li>
+			<label for="interview-respondent-phone-work">
+				<span class="label">Work phone</span>
+			</label>
+			<input type="tel" id="interview-respondent-phone-work" ng-model="interview.respondent.contact.phone.work" size="20">
+		</li>
+		<li>
+			<label for="interview-respondent-email">
+				<span class="label">Email</span>
+			</label>
+			<input type="email" id="interview-respondent-email" ng-model="interview.respondent.contact.email" size="30">
+		</li>
+		<li>
+			<label for="interview-respondent-idNumber">
+				<span class="label">ID number (optional)</span>
+				<small class="hint">Example: Drivers licence, 18+ card</small>
+			</label>
+			<input type="tel" id="interview-respondent-idNumber" ng-model="interview.respondent.idNumber" size="20">
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the respondent require an interpreter?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-respondent-interpreter" ng-model="interview.respondent.requiresInterpreter" ng-value="false" required="required" id="respondent-interpreter-no">
+						<label for="respondent-interpreter-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-interpreter" ng-model="interview.respondent.requiresInterpreter" ng-value="true" required="required" id="respondent-interpreter-yes">
+						<label for="respondent-interpreter-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.respondent.requiresInterpreter">
+			<label for="respondent-language-dialect">
+				<span class="label">Language/Dialect</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<input type="text" ng-model="interview.respondent.language" size="20" required="required" id="respondent-language-dialect">
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the respondent identify as</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="interview-respondent-identify-as" ng-model="interview.respondent.identifyAs" value="Aboriginal" id="respondent-identify-as-aboriginal">
+						<label for="respondent-identify-as-aboriginal">Aboriginal</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-identify-as" ng-model="interview.respondent.identifyAs" value="Torres Strait Islander" id="respondent-identify-as-torres-strait-islander">
+						<label for="respondent-identify-as-torres-strait-islander">Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-identify-as" ng-model="interview.respondent.identifyAs" value="Aboriginal and Torres Strait Islander" id="respondent-identify-as-aboriginal-and-torres-strait-islander">
+						<label for="respondent-identify-as-aboriginal-and-torres-strait-islander">Aboriginal and Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-identify-as" ng-model="interview.respondent.identifyAs" value="N/A" id="respondent-identify-as-na">
+						<label for="respondent-identify-as-na">None of the above</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does the respondent have a disability, illness or impairment where support and/or special arrangements are required?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-respondent-have-a-disability" ng-model="interview.respondent.hasDisability" ng-value="false" required="required" id="respondent-have-a-disability-no">
+						<label for="respondent-have-a-disability-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-have-a-disability" ng-model="interview.respondent.hasDisability" ng-value="true" required="required" id="respondent-have-a-disability-yes">
+						<label for="respondent-have-a-disability-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.respondent.hasDisability">
+			<label for="respondent-disability-details">
+				<span class="label">Please provide details about {{ interview.respondent.name.short }}’s needs</span>
+				<abbr title="(required)" class="required">*</abbr>
+			</label>
+			<textarea ng-model="interview.respondent.disabilityNeeds" id="respondent-disability-details" rows="3" cols="40"></textarea>
+		</li>
+
+		<li>
+			<label for="interview-respondent-employment">
+				<span class="label">Current place of employment</span>
+			</label>
+			<textarea id="interview-respondent-employment" ng-model="interview.respondent.employment.address" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<label for="interview-respondent-vehicle-model">
+				<span class="label">Vehicle model</span>
+			</label>
+			<input type="text" id="interview-respondent-vehicle-model" ng-model="interview.respondent.vehicle.model" size="30">
+		</li>
+		<li>
+			<label for="interview-respondent-vehicle-registration">
+				<span class="label">Vehicle registration</span>
+			</label>
+			<input type="text" id="interview-respondent-vehicle-registration" ng-model="interview.respondent.vehicle.registration" size="30">
+		</li>
+
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Is the respondent under 18 years of age?</span>
+					<abbr title="(required)" class="required">*</abbr>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-respondent-under-18" ng-model="interview.respondent.under18" ng-value="false" required="required" id="respondent-under-18-no">
+						<label for="respondent-under-18-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-under-18" ng-model="interview.respondent.under18" ng-value="true" required="required" id="respondent-under-18-yes">
+						<label for="respondent-under-18-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li class="section" ng-show="interview.respondent.under18">
+			<fieldset>
+				<legend>
+					<span class="h2">Parent's details</span>
+					<p>All documents must be given to a parent unless the court orders otherwise.</p>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="respondent-parent-name">
+							<span class="label">Parent's name</span>
+							<abbr class="required" title="(required)">*</abbr>
+						</label>
+						<input ng-model="interview.respondent.parent.name.full" size="30" required="required" type="text" id="respondent-parent-name">
+					</li>
+					<li>
+						<label for="respondent-parent-address">
+							<span class="label">Parent's address</span>
+						</label>
+						<textarea ng-model="interview.respondent.parent.address" id="respondent-parent-address" rows="3" cols="4"></textarea>
+					</li>
+				</ol>
+			</fieldset>
 		</li>
 
 		<li class="footer">
@@ -1222,7 +1571,8 @@
 							<option value="Bi-Gender">Bi-Gender</option>
 							<option value="Genderfluid">Genderfluid</option>
 							<option value="Transvestite">Transvestite</option>
-						</select>					</li>
+						</select>
+					</li>
 					<li>
 						<label for="interview-associate{{$index}}-date-birth">
 							<span class="label">Date of birth</span>
