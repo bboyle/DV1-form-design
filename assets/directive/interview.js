@@ -33,18 +33,27 @@ angular.module( 'dv1' )
 	vm.updateParties = function() {
 		vm.applicantIsAggrieved = vm.applicant.relationship === 'me';
 		application.setGender( vm.aggrieved, vm.applicant.relationship );
-		application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
 
 		if ( vm.party ) {
 			if ( vm.party.indexOf( 'family' ) !== -1 ) {
+				vm.aggrieved.relationship.category = 'Family';
 				application.setGender( vm.respondent, vm.partyFamily );
 			} else if ( /partner|ex/.test( vm.party )) {
+				vm.aggrieved.relationship.category = 'Intimate personal';
 				application.setGender( vm.respondent, vm.partyIntimate );
+				switch ( vm.partyIntimate ) {
+				case 'husband':
+				case 'wife':
+					vm.aggrieved.relationship.type = /ex/.test( vm.aggrieved.relationship.party ) ? 'Past Spouse' : 'Married';
+					break;
+				}
 			} else {
 				application.setGender( vm.respondent, vm.party );
 			}
 			application.saveRespondent( vm.respondent );
 		}
+
+		application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
 	};
 
 	vm.saveAggrieved = function() {

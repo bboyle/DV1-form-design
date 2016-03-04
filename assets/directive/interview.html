@@ -497,28 +497,28 @@
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">What is {{ interview.applicantIsAggrieved ? 'your' : interview.respondent.name.short + '’s' }} relationship to {{ interview.respondent.name.short }}?</span>
+					<span class="label">What is {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} relationship to {{ interview.respondent.name.short }}?</span>
 				</legend>
 				<ul class="choices">
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Intimate personal" id="interview-relationship-intimate-personal">
-						<label for="interview-relationship-intimate-personal">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} have (or had) an intimate personal relationship</label>
+						<label for="interview-relationship-intimate-personal">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} have (or had) an intimate personal relationship</label>
 						<small class="hint">Example: are/were married or in a registered relationship, have/had a child together, are/were dating, are/were a couple.</small>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Family" id="interview-relationship-family">
 						<label ng-if="interview.applicantIsAggrieved" for="interview-relationship-family">we are related</label>
-						<label ng-if="! interview.applicantIsAggrieved" for="interview-relationship-family">{{ interview.respondent.name.short }} is related to {{ interview.respondent.name.short }}</label>
-						<small class="hint">Includes {{ interview.applicantIsAggrieved ? 'your' : interview.respondent.name.short + '’s' }} immediate and extended family, in-laws, step- or foster family.</small>
+						<label ng-if="! interview.applicantIsAggrieved" for="interview-relationship-family">{{ interview.aggrieved.name.short }} is related to {{ interview.respondent.name.short }}</label>
+						<small class="hint">Includes {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} immediate and extended family, in-laws, step- or foster family.</small>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Informal care" id="interview-relationship-informal-care">
-						<label for="interview-relationship-informal-care">{{ interview.respondent.name.short }} helps care for {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }}</label>
+						<label for="interview-relationship-informal-care">{{ interview.respondent.name.short }} helps care for {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
 						<small class="hint">Examples of <dfn>informal care</dfn>: dressing or other personal grooming; preparing meals or helping with eating; shopping for groceries; or calling a specialist to make a medical appointment.</small>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Commercial care" id="interview-relationship-commercial-care">
-						<label for="interview-relationship-commercial-care">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} paid carer</label>
+						<label for="interview-relationship-commercial-care">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} paid carer</label>
 						<small class="hint">Example: <dfn>commercial care</dfn> by a nurse.</small>
 					</li>
 				</ul>
@@ -542,120 +542,76 @@
 				<ul class="choices">
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Married" id="interview-relationship-married">
-						<label for="interview-relationship-married">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} are married</label>
+						<label for="interview-relationship-married">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} are married</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Spouse" id="interview-relationship-former-spouse">
-						<label for="interview-relationship-former-spouse">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} were married</label>
+						<label for="interview-relationship-former-spouse">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} were married</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="De Facto" id="interview-relationship-de-facto">
-						<label for="interview-relationship-de-facto">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} are in a <dfn>de facto</dfn> relationship</label>
-						<small class="hint">TODO legal definition of a de facto relationship</small>
+						<label for="interview-relationship-de-facto">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} are in a <dfn>de facto</dfn> relationship</label>
+						<small class="hint">2 people living together as a couple who are not married or related</small>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Registered Relationship" id="interview-relationship-registered-relationship">
-						<label for="interview-relationship-registered-relationship">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} are in a registered relationship</label>
+						<label for="interview-relationship-registered-relationship">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} are in a civil partnership/registered relationship</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Previous Registered Relationship" id="interview-relationship-registered-relationship-past">
-						<label for="interview-relationship-registered-relationship-past">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} were in a registered relationship</label>
+						<label for="interview-relationship-registered-relationship-past">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} were in a civil partnership/registered relationship</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent of a Child" id="interview-relationship-parent-of-a-child">
-						<label for="interview-relationship-parent-of-a-child">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} are parents of the same child</label>
+						<label for="interview-relationship-parent-of-a-child">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} are parents of the same child</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Parent of a Child" id="interview-relationship-former-parent-of-a-child">
-						<label for="interview-relationship-former-parent-of-a-child">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} were parents of the same child</label>
+						<label for="interview-relationship-former-parent-of-a-child">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} were parents of the same child</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Engaged" id="interview-relationship-engaged">
-						<label for="interview-relationship-engaged">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} are engaged</label>
+						<label for="interview-relationship-engaged">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} are engaged</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Were Engaged" id="interview-relationship-were-engaged">
-						<label for="interview-relationship-were-engaged">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} were engaged</label>
+						<label for="interview-relationship-were-engaged">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} were engaged</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Couple" id="interview-relationship-couple">
-						<label for="interview-relationship-couple">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} are a couple</label>
+						<label for="interview-relationship-couple">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} are a couple</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Past Couple" id="interview-relationship-couple-past">
-						<label for="interview-relationship-couple-past">{{ interview.applicantIsAggrieved ? 'we' : interview.respondent.name.short + ' and ' + interview.respondent.name.short }} were a couple</label>
+						<label for="interview-relationship-couple-past">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} were a couple</label>
 					</li>
 				</ul>
 			</fieldset>
 		</li>
+
 		<li ng-show="interview.aggrieved.relationship.category === 'Family'">
-			<fieldset>
-				<legend>
-					<span class="label">Family relationship:</span>
-				</legend>
-				<ul class="choices">
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent" id="interview-relationship-parent">
-						<label for="interview-relationship-parent">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} parent</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Grandparent" id="interview-relationship-grandparent">
-						<label for="interview-relationship-grandparent">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} grandparent</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Sibling" id="interview-relationship-sibling">
-						<label for="interview-relationship-sibling">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} sibling</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Child" id="interview-relationship-child">
-						<label for="interview-relationship-child">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} child</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Aunt" id="interview-relationship-aunt">
-						<label for="interview-relationship-aunt">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} aunt</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Uncle" id="interview-relationship-uncle">
-						<label for="interview-relationship-uncle">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} uncle</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Cousin" id="interview-relationship-cousin">
-						<label for="interview-relationship-cousin">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} cousin</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Step child" id="interview-relationship-stepchild">
-						<label for="interview-relationship-stepchild">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} step-child</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Other family" id="interview-relationship-family-other">
-						<label for="interview-relationship-family-other">{{ interview.respondent.name.short }} and {{ interview.applicantIsAggrieved ? 'I' : interview.respondent.name.short }} are related in a different way</label>
-					</li>
-				</ul>
-			</fieldset>
+			<label for="interview-family-relationship">
+				<span class="label">Family relationship</span>
+				<small class="hint" ng-if="interview.applicantIsAggrieved">How are you related to {{ interview.respondent.name.short }}?</small>
+				<small class="hint" ng-if="! interview.applicantIsAggrieved">Describe the family relationship between {{ interview.aggrieved.name.short }} and {{ interview.respondent.name.short }}</small>
+			</label>
+			<input for="interview-family-relationship" type="text" ng-model="interview.partyFamily" size="20" ng-change="interview.updateParties()">
 		</li>
+
 		<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; ( interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Past Couple' )">
 			<label for="interview-relationship-couple">
-				<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} and {{ interview.respondent.name.short }} {{ interview.aggrieved.relationship.type === 'Couple' ? 'are' : 'were' }} a couple</span>
-				<small class="hint">Describe {{ interview.applicantIsAggrieved ? 'your' : interview.respondent.name.short +'’s' }} level of dependence on each other, whether financial or otherwise; how long you've been in a relationship; how often you have contact and {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.their }} degree of intimacy (if any).</small>
+				<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} {{ interview.aggrieved.relationship.type === 'Couple' ? 'are' : 'were' }} a couple</span>
+				<small class="hint">Describe {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short +'’s' }} level of dependence on each other, whether financial or otherwise; how long you've been in a relationship; how often you have contact and {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.their }} degree of intimacy (if any).</small>
 			</label>
 			<textarea cols="40" rows="2"
 			       id="interview-relationship-couple"
 			       ng-model="interview.aggrieved.relationship.couple"
 			></textarea>
 		</li>
-		<li ng-show="interview.aggrieved.relationship.category === 'Family' &amp;&amp; interview.aggrieved.relationship.type === 'Other family'">
-			<label for="interview-relationship-family-other-specify">
-				<span class="label" ng-if="interview.applicantIsAggrieved">How are you related to {{ interview.respondent.name.short }}?</span>
-				<span class="label" ng-if="! interview.applicantIsAggrieved">Describe the family relationship between {{ interview.respondent.name.short }} and {{ interview.respondent.name.short }}</span>
-			</label>
-			<textarea cols="40" rows="2"
-			       id="interview-relationship-family-other-specify"
-			       ng-model="interview.aggrieved.relationship.other"
-			></textarea>
-		</li>
+
 		<li ng-show="interview.aggrieved.relationship.category === 'Informal care'">
 			<label for="interview-relationship-family-informal-care-specify">
-				<span class="label">Describe the informal care relationship {{ interview.applicantIsAggrieved ? 'you have with' : 'between ' + interview.respondent.name.short + ' and' }} {{ interview.respondent.name.short }}</span>
+				<span class="label">Describe the informal care relationship {{ interview.applicantIsAggrieved ? 'you have with' : 'between ' + interview.aggrieved.name.short + ' and' }} {{ interview.respondent.name.short }}</span>
 			</label>
 			<textarea cols="40" rows="2"
 			       id="interview-relationship-family-informal-care-specify"
@@ -696,7 +652,7 @@
 <h2>Grounds</h2>
 <form class="form" name="formGrounds" ng-submit="interview.continue( $event )">
 	<div class="status info">
-		<h2>What has {{ interview.respondent.name.short }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }}?</h2>
+		<h2>What has {{ interview.respondent.name.short }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</h2>
 		<p>
 			Domestic and family violence is when one
 			person in a relationship uses violence or
@@ -722,14 +678,14 @@
 						       id="interview-abuse-physical-injure"
 						       ng-model="interview.abuse.physical.injure"
 						       ng-value="true">
-						<label for="interview-abuse-physical-injure">{{ interview.respondent.name.short }} injured {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }}</label>
+						<label for="interview-abuse-physical-injure">{{ interview.respondent.name.short }} injured {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-abuse-physical-threaten"
 						       ng-model="interview.abuse.physical.threaten"
 						       ng-value="true">
-						<label for="interview-abuse-physical-threaten">{{ interview.respondent.name.short }} threated to hurt {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} physically</label>
+						<label for="interview-abuse-physical-threaten">{{ interview.respondent.name.short }} threated to hurt {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} physically</label>
 					</li>
 				</ul>
 			</fieldset>
@@ -747,14 +703,14 @@
 						       id="interview-abuse-sexual-coerce"
 						       ng-model="interview.abuse.sexual.coerce"
 						       ng-value="true">
-						<label for="interview-abuse-sexual-coerce">{{ interview.respondent.name.short }} forced {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} to have sex</label>
+						<label for="interview-abuse-sexual-coerce">{{ interview.respondent.name.short }} forced {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} to have sex</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-abuse-sexual-coerce-attempt"
 						       ng-model="interview.abuse.sexual.coerceAttempt"
 						       ng-value="true">
-						<label for="interview-abuse-sexual-coerce-attempt">{{ interview.respondent.name.short }} tried to force {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} to have sex</label>
+						<label for="interview-abuse-sexual-coerce-attempt">{{ interview.respondent.name.short }} tried to force {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} to have sex</label>
 					</li>
 				</ul>
 			</fieldset>
@@ -772,7 +728,7 @@
 						       id="interview-abuse-emotional-stalking-public"
 						       ng-model="interview.abuse.emotional.stalkingPublic"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-stalking-public">{{ interview.respondent.name.short }} followed {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} in public places</label>
+						<label for="interview-abuse-emotional-stalking-public">{{ interview.respondent.name.short }} followed {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} in public places</label>
 						<small class="hint">Includes by vehicle or on foot</small>
 					</li>
 <!-- remaining outside a person’s residence or place of work -->
@@ -781,14 +737,14 @@
 						       id="interview-abuse-emotional-loitering-home"
 						       ng-model="interview.abuse.emotional.loiteringHome"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-loitering-home">{{ interview.respondent.name.short }} hung around outside {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} home</label>
+						<label for="interview-abuse-emotional-loitering-home">{{ interview.respondent.name.short }} hung around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} home</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-abuse-emotional-loitering-work"
 						       ng-model="interview.abuse.emotional.loiteringWork"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-loitering-work">{{ interview.respondent.name.short }} hung around outside {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} workplace</label>
+						<label for="interview-abuse-emotional-loitering-work">{{ interview.respondent.name.short }} hung around outside {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} workplace</label>
 					</li>
 <!-- repeatedly contacting a person by telephone, SMS message, email or social networking site without the person’s consent -->
 					<li>
@@ -796,7 +752,7 @@
 						       id="interview-abuse-emotional-stalking-contact"
 						       ng-model="interview.abuse.emotional.stalkingContact"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-stalking-contact">{{ interview.respondent.name.short }} contacted {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} without {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} approval</label>
+						<label for="interview-abuse-emotional-stalking-contact">{{ interview.respondent.name.short }} contacted {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} without {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} approval</label>
 						<small class="hint">Contact can be by telephone, SMS message, email, social networking or other.</small>
 					</li>
 <!-- repeated derogatory taunts, including racial taunts -->
@@ -805,7 +761,7 @@
 						       id="interview-abuse-emotional-taunt"
 						       ng-model="interview.abuse.emotional.taunt"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-taunt">{{ interview.respondent.name.short }} repeatedly insulted {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} with put-downs or racial insults</label>
+						<label for="interview-abuse-emotional-taunt">{{ interview.respondent.name.short }} repeatedly insulted {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} with put-downs or racial insults</label>
 					</li>
 <!-- threatening to disclose a person’s sexual orientation to the person’s friends or family without the person’s consent -->
 					<li>
@@ -813,7 +769,7 @@
 						       id="interview-abuse-emotional-disclose-sexual-orientation"
 						       ng-model="interview.abuse.emotional.discloseSexualOrientation"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-disclose-sexual-orientation">{{ interview.respondent.name.short }} threatened to tell {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} family or friends about {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} sexual preference</label>
+						<label for="interview-abuse-emotional-disclose-sexual-orientation">{{ interview.respondent.name.short }} threatened to tell {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} family or friends about {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} sexual preference</label>
 					</li>
 <!-- threatening to withhold a person’s medication -->
 					<li>
@@ -821,7 +777,7 @@
 						       id="interview-abuse-emotional-withhold-medication"
 						       ng-model="interview.abuse.emotional.withholdMedication"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-withhold-medication">{{ interview.respondent.name.short }} threatened to keep {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} medication from me</label>
+						<label for="interview-abuse-emotional-withhold-medication">{{ interview.respondent.name.short }} threatened to keep {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} medication from me</label>
 					</li>
 <!-- preventing a person from making or keeping connections with the person’s family, friends or culture, including cultural or spiritual ceremonies or practices, or preventing the person from expressing the person’s cultural identity -->
 					<li>
@@ -829,22 +785,22 @@
 						       id="interview-abuse-emotional-prevent-family"
 						       ng-model="interview.abuse.emotional.preventFamily"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-prevent-family">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} from seeing or talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} family</label>
+						<label for="interview-abuse-emotional-prevent-family">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} from seeing or talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} family</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-abuse-emotional-prevent-friends"
 						       ng-model="interview.abuse.emotional.preventFriends"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-prevent-friends">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} from seeing ot talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} friends</label>
+						<label for="interview-abuse-emotional-prevent-friends">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} from seeing or talking to {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} friends</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-abuse-emotional-prevent-culture"
 						       ng-model="interview.abuse.emotional.preventCulture"
 						       ng-value="true">
-						<label for="interview-abuse-emotional-prevent-culture">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} from expressing {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} cultural identity</label>
-						<small class="hint">Example: stopped {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} from taking part in cultural or spiritual ceremonies or practices</small>
+						<label for="interview-abuse-emotional-prevent-culture">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} from expressing {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} cultural identity</label>
+						<small class="hint">Example: taking part in cultural or spiritual ceremonies or practices</small>
 					</li>
 				</ul>
 			</fieldset>
@@ -862,7 +818,7 @@
 						       id="interview-abuse-economic-control-assets"
 						       ng-model="interview.abuse.economic.relinquishAssets"
 						       ng-value="true">
-						<label for="interview-abuse-economic-control-assets">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} give up {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} assets and/or income</label>
+						<label for="interview-abuse-economic-control-assets">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} give up {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} assets and/or income</label>
 					</li>
 <!-- removing or keeping a person’s property without the person’s consent, or threatening to do so -->
 					<li>
@@ -870,14 +826,14 @@
 						       id="interview-abuse-economic-theft-threatened"
 						       ng-model="interview.abuse.economic.theftThreatened"
 						       ng-value="true">
-						<label for="interview-abuse-economic-theft-threatened">{{ interview.respondent.name.short }} threatened to steal {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} property</label>
+						<label for="interview-abuse-economic-theft-threatened">{{ interview.respondent.name.short }} threatened to steal {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} property</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-abuse-economic-theft"
 						       ng-model="interview.abuse.economic.theft"
 						       ng-value="true">
-						<label for="interview-abuse-economic-theft">{{ interview.respondent.name.short }} stole {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} property</label>
+						<label for="interview-abuse-economic-theft">{{ interview.respondent.name.short }} stole {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} property</label>
 					</li>
 <!-- disposing of property owned by a person, or owned jointly with a person, against the person’s wishes and without lawful excuse -->
 					<li>
@@ -885,7 +841,7 @@
 						       id="interview-abuse-economic-destroy"
 						       ng-model="interview.abuse.economic.destroyProperty"
 						       ng-value="true">
-						<label for="interview-abuse-economic-destroy">{{ interview.respondent.name.short }} destroyed {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} property</label>
+						<label for="interview-abuse-economic-destroy">{{ interview.respondent.name.short }} destroyed {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} property</label>
 					</li>
 <!-- without lawful excuse, preventing a person from having access to joint financial assets for the purposes of meeting normal household expenses -->
 					<li>
@@ -893,7 +849,7 @@
 						       id="interview-abuse-economic-prevent-joint-access"
 						       ng-model="interview.abuse.economic.preventJointAccess"
 						       ng-value="true">
-						<label for="interview-abuse-economic-prevent-joint-access">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} using {{ interview.applicantIsAggrieved ? 'our' : 'their' }} joint bank account for household expenses</label>
+						<label for="interview-abuse-economic-prevent-joint-access">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} using {{ interview.applicantIsAggrieved ? 'our' : 'their' }} joint bank account for household expenses</label>
 					</li>
 <!-- preventing a person from seeking or keeping employment -->
 					<li>
@@ -901,7 +857,7 @@
 						       id="interview-abuse-economic-prevent-employment"
 						       ng-model="interview.abuse.economic.preventEmployment"
 						       ng-value="true">
-						<label for="interview-abuse-economic-prevent-employment">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} from getting a job</label>
+						<label for="interview-abuse-economic-prevent-employment">{{ interview.respondent.name.short }} stopped {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} from getting a job</label>
 					</li>
 <!-- coercing a person to claim social security payments -->
 					<li>
@@ -909,7 +865,7 @@
 						       id="interview-abuse-economic-social-security-payments"
 						       ng-model="interview.abuse.economic.socialSecurityPayments"
 						       ng-value="true">
-						<label for="interview-abuse-economic-social-security-payments">{{ interview.respondent.name.short }} tried to make {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} claim Centrelink payments</label>
+						<label for="interview-abuse-economic-social-security-payments">{{ interview.respondent.name.short }} tried to make {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} claim Centrelink payments</label>
 					</li>
 <!-- coercing a person to sign a power of attorney that would enable the person’s finances to be managed by another person -->
 					<li>
@@ -917,7 +873,7 @@
 						       id="interview-abuse-economic-power-attorney"
 						       ng-model="interview.abuse.economic.powerAttorney"
 						       ng-value="true">
-						<label for="interview-abuse-economic-power-attorney">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} sign a <cite>Power of Attorney</cite> statement that took away {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} control over money</label>
+						<label for="interview-abuse-economic-power-attorney">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a <cite>Power of Attorney</cite> statement that took away {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.pronoun.their }} control over money</label>
 					</li>
 <!-- coercing a person to sign a contract for the purchase of goods or services -->
 					<li>
@@ -925,7 +881,7 @@
 						       id="interview-abuse-economic-contract-purchase"
 						       ng-model="interview.abuse.economic.contractPurchase"
 						       ng-value="true">
-						<label for="interview-abuse-economic-contract-purchase">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} sign a contract to buy things I didn't want to buy</label>
+						<label for="interview-abuse-economic-contract-purchase">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a contract to buy things {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.pronoun.they }} didn't want to buy</label>
 					</li>
 <!-- coercing a person to sign a contract for the provision of finance, a loan or credit -->
 					<li>
@@ -933,7 +889,7 @@
 						       id="interview-abuse-economic-contract-loan"
 						       ng-model="interview.abuse.economic.contractLoan"
 						       ng-value="true">
-						<label for="interview-abuse-economic-contract-loan">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} sign a contract to borrow money I didn't want to borrow</label>
+						<label for="interview-abuse-economic-contract-loan">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a contract to borrow money {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.pronoun.they }} didn't want to borrow</label>
 						<small class="hint">Examples: taking out a loan, applying for a credit card</small>
 					</li>
 <!-- coercing a person to sign a contract of guarantee -->
@@ -942,7 +898,7 @@
 						       id="interview-abuse-economic-contract-guarantee"
 						       ng-model="interview.abuse.economic.contractGuarantee"
 						       ng-value="true">
-						<label for="interview-abuse-economic-contract-guarantee">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} sign a contract of guarantee</label>
+						<label for="interview-abuse-economic-contract-guarantee">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a contract of guarantee</label>
 					</li>
 <!-- coercing a person to sign any legal document for the establishment or operation of a business -->
 					<li>
@@ -950,7 +906,7 @@
 						       id="interview-abuse-economic-legal-business"
 						       ng-model="interview.abuse.economic.legalBusiness"
 						       ng-value="true">
-						<label for="interview-abuse-economic-legal-business">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }} sign a legal document I didn't want to sign for {{ interview.respondent.pronoun.their }} business</label>
+						<label for="interview-abuse-economic-legal-business">{{ interview.respondent.name.short }} made {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }} sign a legal document {{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.pronoun.they }} didn't want to sign for {{ interview.respondent.name.short }}’s business</label>
 					</li>
 				</ul>
 			</fieldset>
@@ -958,14 +914,14 @@
 	</ol>
 
 	<div class="status info">
-		<h2>Based on your answers, {{ interview.applicantIsAggrieved ? 'you want' : interview.respondent.name.short + ' wants' }} to apply for</h2>
+		<h2>Based on your answers, {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.short + ' wants' }} to apply for</h2>
 		<dl>
 			<dt>a <strong>Protection Order</strong></dt>
-			<dd>This will protect {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} for up to 2 years (it can be reviewed and extended if necessary).</dd>
+			<dd>This will protect {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} for up to 2 years (it can be reviewed and extended if necessary).</dd>
 			<dd>The court process to get a protection order typically takes 4 weeks (sometimes longer).</dd>
 
 			<dt ng-if="interview.temporaryProtection.requested"><em>and</em> a <strong>Temporary Protection Order</strong></dt>
-			<dd ng-if="interview.temporaryProtection.requested">The court can give {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
+			<dd ng-if="interview.temporaryProtection.requested">The court can give {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} temporary protection when you lodge this form (without waiting 4 weeks). This covers {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} until {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} court appearance.</dd>
 		</dl>
 
 		<h3></h3>
@@ -1010,14 +966,14 @@
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">Describe why you want a protection order to protect {{ interview.applicantIsAggrieved ? 'yourself' : interview.respondent.name.short }} from {{ interview.respondent.name.short }}. This is known as your <dfn>grounds for protection</dfn>.</span>
+					<span class="label">Describe why you want a protection order to protect {{ interview.applicantIsAggrieved ? 'yourself' : interview.aggrieved.name.short }} from {{ interview.respondent.name.short }}. This is known as your <dfn>grounds for protection</dfn>.</span>
 					<small class="hint">You must be shown that domestic violence has happened. Include specific examples of {{ interview.respondent.name.short }}’s behaviour. Attach extra pages if you need more space.</small>
 				</legend>
 				<ol class="questions">
 					<li>
 						<fieldset>
 							<legend>
-								<span class="label">Describe the <strong>last time</strong> {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }}</span>
+								<span class="label">Describe the <strong>last time</strong> {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
 							</legend>
 							<ol class="questions">
 								<li>
@@ -1029,7 +985,7 @@
 								</li>
 								<li>
 									<label for="interview-grounds-most-recent-feel">
-										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} feel?</span>
+										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
 										<small class="hint">Examples: threatened, fearful or scared?</small>
 									</label>
 									<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3"></textarea>
@@ -1062,7 +1018,7 @@
 					<li>
 						<fieldset>
 							<legend>
-								<span class="label">Has {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} before this?</span>
+								<span class="label">Has {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} before this?</span>
 							</legend>
 							<ul class="choices compact">
 								<li>
@@ -1079,7 +1035,7 @@
 					<li ng-show="interview.grounds.pastAbuse.occurred === 'Yes'">
 						<fieldset>
 							<legend>
-								<span class="label">Describe how {{ interview.respondent.name.short }} has abused {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} in the past?</span>
+								<span class="label">Describe how {{ interview.respondent.name.short }} has abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} in the past?</span>
 							</legend>
 							<ol class="questions">
 								<li>
@@ -1091,8 +1047,8 @@
 								</li>
 								<li>
 									<label for="interview-grounds-past-abuse-feel">
-										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} feel?</span>
-										<small class="hint">Examples: did {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} feel threatened, fearful or scared?</small>
+										<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
+										<small class="hint">Examples: did {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel threatened, fearful or scared?</small>
 									</label>
 									<textarea id="interview-grounds-past-abuse-feel" ng-model="interview.grounds.pastAbuse.feel" cols="40" rows="3"></textarea>
 								</li>
@@ -1131,14 +1087,14 @@
 					<li ng-show="interview.abuse.physical.injure">
 						<fieldset>
 							<legend>
-								<span class="label">You said {{ interview.respondent.name.short }} has injured {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }}</span>
+								<span class="label">You said {{ interview.respondent.name.short }} has injured {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
 								<small class="hint">Describe what happened and provide details about when, where and how often</small>
 							</legend>
 							<ol class="questions">
 								<li>
 									<label for="interview-grounds-injury-description">
 										<span class="label">What did {{ interview.respondent.name.short }} do?</span>
-										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.short }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} was hurt.</small>
+										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.short }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} was hurt.</small>
 									</label>
 									<textarea id="interview-grounds-injury-description" ng-model="interview.grounds.injury.description" cols="40" rows="10"></textarea>
 								</li>
@@ -1170,14 +1126,14 @@
 					<li ng-show="interview.abuse.physical.threaten">
 						<fieldset>
 							<legend>
-								<span class="label">Describe how {{ interview.respondent.name.short }} has threatened {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }}</span>
-								<small class="hint">You said {{ interview.respondent.name.short }} has threatened to hurt {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }}</small>
+								<span class="label">Describe how {{ interview.respondent.name.short }} has threatened {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
+								<small class="hint">You said {{ interview.respondent.name.short }} has threatened to hurt {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</small>
 							</legend>
 							<ol class="questions">
 								<li>
 									<label for="interview-grounds-injury-threat-description">
 										<span class="label">What did {{ interview.respondent.name.short }} say?</span>
-										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.short }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} felt.</small>
+										<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.name.short }} did and how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} felt.</small>
 									</label>
 									<textarea id="interview-grounds-injury-threat-description" ng-model="interview.grounds.injuryThreat.description" cols="40" rows="10"></textarea>
 								</li>
@@ -1212,7 +1168,7 @@
 		</li>
 
 		<li ng-if="interview.aggrieved.children">
-			TODO: GROUNDS FOR INCLUDING {{ interview.applicantIsAggrieved ? 'your' : interview.respondent.name.short + '’s' }} CHILD(REN)
+			TODO: GROUNDS FOR INCLUDING {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} CHILD(REN)
 			<!-- TODO child vs children. Use actual children names -->
 			(how does this differ to the general grounds?)
 		</li>
@@ -1244,7 +1200,7 @@
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.respondent.name.short }} need protection now?</span>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} need protection now?</span>
 					<small class="hint">If you believe you’re in immediate danger and the normal application process won’t protect you quickly enough, you can apply for an urgent temporary protection order.</small>
 				</legend>
 				<ul class="choices">
@@ -1256,7 +1212,7 @@
 						       ng-value="true"
 						       ng-click="updateTemporaryProtection()"
 						       required>
-						<label for="interview-temporary-protection-true">{{ interview.applicantIsAggrieved ? 'I need' : interview.respondent.name.short  + ' needs' }} protection as soon as possible</label>
+						<label for="interview-temporary-protection-true">{{ interview.applicantIsAggrieved ? 'I need' : interview.aggrieved.name.short  + ' needs' }} protection as soon as possible</label>
 					</li>
 					<li>
 						<input type="radio"
@@ -1266,7 +1222,7 @@
 						       ng-value="false"
 						       ng-click="updateTemporaryProtection()"
 						       required>
-						<label for="interview-temporary-protection-false">{{ interview.applicantIsAggrieved ? 'I' : interview.respondent.name.short }} can wait 4 (or more) weeks</label>
+						<label for="interview-temporary-protection-false">{{ interview.applicantIsAggrieved ? 'I' : interview.aggrieved.name.short }} can wait 4 (or more) weeks</label>
 					</li>
 				</ul>
 			</fieldset>
@@ -1274,7 +1230,7 @@
 		<li ng-if="interview.temporaryProtection.requested">
 			<label for="interview-temporary-protection-reasons">
 				<span class="label">Reasons for temporary protection</span>
-				<small class="hint">Explain why {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} cannot wait 4 weeks for a protection order</small>
+				<small class="hint">Explain why {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} cannot wait 4 weeks for a protection order</small>
 			</label>
 			<textarea class="large-compact" rows="10" cols="40"
 			          ng-model="interview.temporaryProtection.reasons"
@@ -1330,14 +1286,14 @@
 <h2>What conditions are you seeking in the protection order?</h2>
 <form class="form" name="formConditions" ng-submit="interview.continue( $event )">
 	<div class="status info">
-		<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.respondent.name.short + ' wants' }} protection from {{ interview.respondent.name.short }}</h2>
+		<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.short + ' wants' }} protection from {{ interview.respondent.name.short }}</h2>
 
-		<blockquote>“The way {{ interview.applicantIsAggrieved ? 'you are' : interview.respondent.name.short + ' is' }} being treated is wrong—it’s abuse. People feel angry but everyone has a choice in how they respond to the situation. Anger is not an excuse for domestic violence”</blockquote>
+		<blockquote>“The way {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} being treated is wrong—it’s abuse. People feel angry but everyone has a choice in how they respond to the situation. Anger is not an excuse for domestic violence”</blockquote>
 
 		<ul>
-			<li>{{ interview.applicantIsAggrieved ? 'You are' : interview.respondent.name.short + ' is' }} the <dfn>aggrieved</dfn> (the person wanting protection).</li>
+			<li>{{ interview.applicantIsAggrieved ? 'You are' : interview.aggrieved.name.short + ' is' }} the <dfn>aggrieved</dfn> (the person wanting protection).</li>
 			<li ng-if="interview.applicantIsAggrieved">You are also the <dfn>applicant</dfn> (the person applying for a protection order)</li>
-			<li>{{ interview.respondent.name.short }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you want' : interview.respondent.name.short + ' wants' }} protection from).</li>
+			<li>{{ interview.respondent.name.short }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.short + ' wants' }} protection from).</li>
 		</ul>
 		<p ng-if="! interview.applicantIsAggrieved">You are the <dfn>applicant</dfn> (the person applying for a protection order).</p>
 	</div>
@@ -1365,7 +1321,7 @@
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.respondent.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
 				</legend>
 				<ul class="choices compact">
 					<li>
@@ -1392,9 +1348,9 @@
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }} need protection from {{ interview.respondent.name.short }}?</span>
-					<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.respondent.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
-					They are known as {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }} <dfn>associates</dfn>.</small>
+					<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} need protection from {{ interview.respondent.name.short }}?</span>
+					<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
+					They are known as {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} <dfn>associates</dfn>.</small>
 				</legend>
 				<ul class="choices compact">
 					<li>
@@ -1423,7 +1379,7 @@
 		<li ng-if="! interview.applicantIsAggrieved">
 			<fieldset>
 				<legend>
-					<span class="label">{{ interview.applicant.name.given }}, do you need protection from {{ interview.respondent.name.short }} too?</span>
+					<span class="label">Do you need protection from {{ interview.respondent.name.short }} too?</span>
 					<small class="hint">{{ interview.respondent.name.short }} will know you applied for this protection order.</small>
 				</legend>
 				<ul class="choices compact">
@@ -1457,19 +1413,19 @@
 				<ul class="choices">
 					<li>
 						<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour">
-						<label for="interview-conditions-respondent-behaviour">I want {{ interview.respondent.name.short }} to behave decently around {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }}</label>
-						<small class="hint">Every protection order includes the condition: <samp>Be of good behaviour towards {{ interview.respondent.name.short }} and not commit domestic violence against {{ interview.respondent.name.short }}</samp></small>
+						<label for="interview-conditions-respondent-behaviour">I want {{ interview.respondent.name.short }} to behave decently around {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
+						<small class="hint">Every protection order includes the condition: <samp>Be of good behaviour towards {{ interview.aggrieved.name.short }} and not commit domestic violence against {{ interview.aggrieved.name.short }}</samp></small>
 					</li>
 					<li ng-show="interview.aggrieved.children">
 						<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour-children">
-						<label for="interview-conditions-respondent-behaviour-children">I want {{ interview.respondent.name.short }} to behave decently around {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} kids</label>
+						<label for="interview-conditions-respondent-behaviour-children">I want {{ interview.respondent.name.short }} to behave decently around {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} kids</label>
 						<small class="hint">Every protection order listing children includes the condition: <samp>Be of good behaviour towards the child and not commit associated domestic violence against the child and not expose the child to domestic violence.</samp></small>
 					</li>
 					<li ng-show="interview.aggrieved.associates || interview.aggrieved.applicant">
 						<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour-associates">
 						<label for="interview-conditions-respondent-behaviour-associates">
 							I want {{ interview.respondent.name.short }} to behave decently towards
-							<span ng-if="interview.aggrieved.associates">{{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} associates</span><span ng-if="interview.aggrieved.applicant">{{ interview.aggrieved.associates ? ', including ' : '' }} me</span>
+							<span ng-if="interview.aggrieved.associates">{{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} associates</span><span ng-if="interview.aggrieved.applicant">{{ interview.aggrieved.associates ? ', including ' : '' }} me</span>
 						</label>
 						<small class="hint">Every protection order naming associates includes the condition: <samp>Be of good behaviour towards the named person and not commit associated domestic violence against the named person.</samp></small>
 					</li>
@@ -1479,21 +1435,21 @@
 						       id="interview-conditions-respondent-no-approach"
 						       ng-model="interview.conditions.notApproach.aggrieved"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-no-approach">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }}</label>
+						<label for="interview-conditions-respondent-no-approach">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-conditions-respondent-leave-premises"
 						       ng-model="interview.conditions.leavePremises"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-leave-premises">I want {{ interview.respondent.name.short }} to leave {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} home</label>
+						<label for="interview-conditions-respondent-leave-premises">I want {{ interview.respondent.name.short }} to leave {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} home</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-conditions-respondent-not-enter-home"
 						       ng-model="interview.conditions.prohibitEntering.residence"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-not-enter-home">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} home</label>
+						<label for="interview-conditions-respondent-not-enter-home">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} home</label>
 					</li>
 
 					<li ng-show="interview.aggrieved.children">
@@ -1501,7 +1457,7 @@
 						       id="interview-conditions-respondent-no-approach-children"
 						       ng-model="interview.conditions.notApproach.children"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-no-approach-children">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} kids</label>
+						<label for="interview-conditions-respondent-no-approach-children">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} kids</label>
 					</li>
 					<li ng-show="interview.aggrieved.children">
 						<input type="checkbox"
@@ -1522,7 +1478,7 @@
 						       id="interview-conditions-respondent-no-approach-associates"
 						       ng-model="interview.conditions.notApproach.associates"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-no-approach-associates">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} family and friends</label>
+						<label for="interview-conditions-respondent-no-approach-associates">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} family and friends</label>
 					</li>
 
 					<li ng-show="interview.aggrieved.applicant">
@@ -1537,7 +1493,7 @@
 						       id="interview-conditions-respondent-not-enter-associates-home"
 						       ng-model="interview.conditions.prohibitEntering.associatesResidence"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-not-enter-associates-home">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} associates’ homes</label>
+						<label for="interview-conditions-respondent-not-enter-associates-home">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} associates’ homes</label>
 					</li>
 
 					<li>
@@ -1545,14 +1501,14 @@
 						       id="interview-conditions-respondent-not-enter-work"
 						       ng-model="interview.conditions.prohibitEntering.workplace"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-not-enter-work">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} workplace</label>
+						<label for="interview-conditions-respondent-not-enter-work">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} workplace</label>
 					</li>
 					<li>
 						<input type="checkbox"
 						       id="interview-conditions-respondent-not-enter-staying"
 						       ng-model="interview.conditions.prohibitEntering.accommodation"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-not-enter-staying">I want {{ interview.respondent.name.short }} to stay away from the place where {{ interview.applicantIsAggrieved ? 'I am' : interview.respondent.name.short + ' is' }} currently staying</label>
+						<label for="interview-conditions-respondent-not-enter-staying">I want {{ interview.respondent.name.short }} to stay away from the place where {{ interview.applicantIsAggrieved ? 'I am' : interview.aggrieved.name.short + ' is' }} currently staying</label>
 					</li>
 
 					<li>
@@ -1560,8 +1516,8 @@
 						       id="interview-conditions-respondent-no-contact"
 						       ng-model="interview.conditions.noContact"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-no-contact">I want {{ interview.respondent.name.short }} to stop contacting {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }}</label>
-						<small class="hint">{{ interview.respondent.name.short }} won't be allowed to ask anyone else to contact {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} either.</small>
+						<label for="interview-conditions-respondent-no-contact">I want {{ interview.respondent.name.short }} to stop contacting {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
+						<small class="hint">{{ interview.respondent.name.short }} won't be allowed to ask anyone else to contact {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} either.</small>
 					</li>
 
 					<li>
@@ -1569,8 +1525,8 @@
 						       id="interview-conditions-respondent-no-locate"
 						       ng-model="interview.conditions.noLocate"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-no-locate">I want {{ interview.respondent.name.short }} to stop trying to find {{ interview.applicantIsAggrieved ? 'me' : interview.respondent.name.short }}</label>
-						<small class="hint">{{ interview.respondent.name.short }} won't be allowed to ask anyone else to find {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} either.</small>
+						<label for="interview-conditions-respondent-no-locate">I want {{ interview.respondent.name.short }} to stop trying to find {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
+						<small class="hint">{{ interview.respondent.name.short }} won't be allowed to ask anyone else to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} either.</small>
 					</li>
 
 					<li>
@@ -1578,7 +1534,7 @@
 						       id="interview-conditions-respondent-return-property"
 						       ng-model="interview.conditions.returnProperty"
 						       ng-value="true">
-						<label for="interview-conditions-respondent-return-property">I want {{ interview.respondent.name.short }} to return {{ interview.applicantIsAggrieved ? 'my' : interview.respondent.name.short + '’s' }} property</label>
+						<label for="interview-conditions-respondent-return-property">I want {{ interview.respondent.name.short }} to return {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} property</label>
 						<small class="hint"><dfn>Essential property</dfn> includes …</small>
 					</li>
 
@@ -1850,9 +1806,9 @@
 	<h3>Lodging the application</h3>
 	<p>You may lodge the application at any <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court in Queensland</a>.
 	Lodging your application is free.
-	You will be given a date when {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} must go to court.
-	{{ interview.applicantIsAggrieved ? 'You' : interview.respondent.name.short }} can appear by {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }}self or with a solicitor or lawyer.
-	There may be circumstances where a police prosecutor will help {{ interview.applicantIsAggrieved ? 'you' : interview.respondent.name.short }} in the court room.
-	You should contact {{ interview.applicantIsAggrieved ? 'your' : interview.respondent.name.short + '’s' }} local police station well before the court date if you think you need help from the police.</p>
+	You will be given a date when {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} must go to court.
+	{{ interview.applicantIsAggrieved ? 'You' : interview.aggrieved.name.short }} can appear by {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }}self or with a solicitor or lawyer.
+	There may be circumstances where a police prosecutor will help {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} in the court room.
+	You should contact {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} local police station well before the court date if you think you need help from the police.</p>
 </section>
 </section>
