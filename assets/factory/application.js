@@ -9,17 +9,17 @@ angular.module( 'dv1' )
 		G: {
 			they: 'they',
 			their: 'their',
-			them: 'them',
+			them: 'them'
 		},
 		F: {
 			they: 'she',
 			their: 'her',
-			them: 'her',
+			them: 'her'
 		},
 		M: {
 			they: 'he',
 			their: 'his',
-			them: 'him',
+			them: 'him'
 		}
 	};
 	const GENDER = {
@@ -37,9 +37,19 @@ angular.module( 'dv1' )
 
 
 	let data = {};
-	data.respondent = { pronoun: PRONOUN.G };
-	data.aggrieved  = { pronoun: PRONOUN.G };
-	data.applicant  = { pronoun: PRONOUN.G };
+	data.respondent = {
+		name: { short: 'the respondent' },
+		pronoun: PRONOUN.G
+	};
+	data.aggrieved  = {
+		name: { short: 'the aggrieved' },
+		pronoun: PRONOUN.G
+	};
+	data.aggrieved.pronoun.you = data.aggrieved.name.short;
+	data.applicant  = {
+		name: { short: 'the applicant' },
+		pronoun: PRONOUN.G
+	};
 
 	// set gender based on "idenfied as"
 	// example: setGender( vm.aggrieved, 'their wife' );
@@ -54,21 +64,24 @@ angular.module( 'dv1' )
 
 		party.gender = GENDER[ gender ];
 		party.pronoun = PRONOUN[ gender ];
-	}
+	};
 
 
 	this.saveAggrieved = function( aggrievedData, isApplicant ) {
 		data.aggrieved = aggrievedData;
 		data.aggrievedIsApplicant = isApplicant === true;
+		data.aggrieved.name.short = data.aggrieved.name.given || 'the aggrieved';
 		if ( isApplicant ) {
 			this.saveApplicant( aggrievedData );
 		}
 	};
 	this.saveApplicant = function( applicantData ) {
 		data.applicant = applicantData;
+		data.applicant.name.short = data.applicant.name.given || 'the applicant';
 	};
 	this.saveRespondent = function( respondentData ) {
 		data.respondent = respondentData;
+		data.respondent.name.short = data.respondent.name.given || 'the respondent';
 	};
 
 	this.saveTemporaryProtection = function( tpoData ) {

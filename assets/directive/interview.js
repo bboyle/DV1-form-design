@@ -91,6 +91,10 @@ angular.module( 'dv1' )
 		$document.scrollTop( 0 );
 	};
 
+	vm.continue = function( event ) {
+		vm.goto( vm.page + 1, event );
+	};
+
 	// move through interview
 	vm.completePreamble = function() {
 		vm.saveApplicant();
