@@ -593,7 +593,7 @@
 			<label for="interview-family-relationship">
 				<span class="label">Family relationship</span>
 				<small class="hint" ng-if="interview.applicantIsAggrieved">How are you related to {{ interview.respondent.name.short }}?</small>
-				<small class="hint" ng-if="! interview.applicantIsAggrieved">Describe the family relationship between {{ interview.aggrieved.name.short }} and {{ interview.respondent.name.short }}</small>
+				<small class="hint" ng-if="! interview.applicantIsAggrieved">How are {{ interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} related?</small>
 			</label>
 			<input for="interview-family-relationship" type="text" ng-model="interview.partyFamily" size="20" ng-change="interview.updateParties()">
 		</li>
@@ -633,9 +633,120 @@
 <section ng-show="interview.page === interview.PAGE.ORDERS">
 	<h2>Details of any other orders</h2>
 
-	<h3>Cross applications</h3>
-
 	<form class="form" name="formOrders" ng-submit="interview.continue( $event )">
+		<ol class="questions">
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Have {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} been involved in other court proceedings where an order has been made?</span>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="interview-orders-exist" ng-model="interview.orders.exist" ng-value="false" required id="interview-orders-exist-no">
+							<label for="interview-orders-exist-no">No</label>
+						</li>
+						<li>
+							<input type="radio" name="interview-orders-exist" ng-model="interview.orders.exist" ng-value="true" required id="interview-orders-exist-yes">
+							<label for="interview-orders-exist-yes">Yes</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li ng-show="interview.orders.exist">
+				<fieldset>
+					<legend>
+						<span class="label">Please tick the box next to the type of order</span>
+						<small class="hint">Attach copies to each order to inform the court when the order was made and whether it is still current</small>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="checkbox" ng-model="interview.orders.childProtection" ng-value="true" required id="interview-orders-child-protection">
+							<label for="interview-orders-child-protection">Child Protection Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.qldDVO" ng-value="true" required id="interview-orders-qld-dvo">
+							<label for="interview-orders-qld-dvo">Queensland Domestic Violence Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.policeProtection" ng-value="true" required id="interview-orders-police-protection">
+							<label for="interview-orders-police-protection">Police Protection Notice</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.voluntaryIntervention" ng-value="true" required id="interview-orders-voluntary-intervention">
+							<label for="interview-orders-voluntary-intervention">Voluntary Intervention Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.interstateDVO" ng-value="true" required id="interview-orders-interstate-dvo">
+							<label for="interview-orders-interstate-dvo">Interstate Domestic Violence Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.NZ_DVO" ng-value="true" required id="interview-orders-nz-dvo">
+							<label for="interview-orders-nz-dvo">New Zealand Domestic Violence Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.familyCourt" ng-value="true" required id="interview-orders-family-court">
+							<label for="interview-orders-family-court">Family Court Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.ordersOther" ng-value="true" required id="interview-orders-other">
+							<label for="interview-orders-other">Other relevant court order</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li ng-show="interview.ordersOther">
+				<label for="interview-orders-other-type">
+					<span class="label">Type of order</span>
+				</label>
+				<input type="text" id="interview-orders-other-type" ng-model="interview.orders.other">
+			</li>
+
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Is there a current Protection Order application, between {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} that has not yet been decided by the court?</span>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="interview-orders-protection-progress" ng-model="interview.orders.protectionInProgress" ng-value="false" required id="interview-orders-protection-progress-no">
+							<label for="interview-orders-protection-progress-no">No</label>
+						</li>
+						<li>
+							<input type="radio" name="interview-orders-protection-progress" ng-model="interview.orders.protectionInProgress" ng-value="true" required id="interview-orders-protection-progress-yes">
+							<label for="interview-orders-protection-progress-yes">Yes</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Is there another application for a protection order before a court, where {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} named as the respondent, and {{ interview.respondent.name.short}} is named as the aggrieved?</span>
+						<small class="hint">This is known as a <dfn>cross application</dfn>. You must tell the court about the cross application. The court must consider whether it is appropriate for both applications to be heard together.</small>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="interview-orders-cross-application" ng-model="interview.orders.crossApplication" ng-value="false" required id="interview-orders-cross-application-no">
+							<label for="interview-orders-cross-application-no">No</label>
+						</li>
+						<li>
+							<input type="radio" name="interview-orders-cross-application" ng-model="interview.orders.crossApplication" ng-value="true" required id="interview-orders-cross-application-yes">
+							<label for="interview-orders-cross-application-yes">Yes</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li ng-show="interview.orders.crossApplication">
+				<div class="status info">
+					<h2>Attach a copy of the cross application</h2>
+					<p>The court must consider whether it is appropriate for both applications to be heard together.</p>
+				</div>
+			</li>
+		</ol>
+
 		<ol class="questions">
 			<li class="footer">
 				<ul class="actions">
