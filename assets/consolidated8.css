@@ -48,3 +48,10 @@ a[href^="tel:"]::before {
 .language-chooser button {
 	font-weight: normal;
 }
+
+/* add/del buttons */
+.add, .del {
+	padding-top: .5em;
+	padding-bottom: .5em;
+	font-size: 80%;
+}

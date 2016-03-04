@@ -1025,9 +1025,116 @@
 
 
 <section ng-show="interview.page === interview.PAGE.CHILDREN">
-<h2>Are there children who live or spend time with you who need protection?</h2>
+<div class="status info">
+	<h2>Are there children who live or spend time with {{ interview.aggrieved.pronoun.you }} who need protection?</h2>
+	<p>If {{ interview.aggrieved.pronoun.you }} have a child who lives with {{ interview.aggrieved.pronoun.them }}, or spends time at {{ interview.aggrieved.pronoun.their }} house on a regular basis, they can be included in this application. If the court is satisfied it is appropriate, the court can include a child on the order to ensure that {{ interview.respondent.name.short }} must also be of good behaviour towards the child, and not to expose the child to domestic violence.</p>
+	<p>If you do not want the respondent to know the address details of the child, please provide an alternate address (e.g. of a friend or relative or a post office box).</p>
+</div>
+
 <form class="form" name="formChildren" ng-submit="interview.continue( $event )">
 	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-children"
+						       id="interview-protect-children-true"
+						       ng-model="interview.aggrieved.nameChildren"
+						       ng-value="true"
+						       required>
+						<label for="interview-protect-children-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-children"
+						       id="interview-protect-children-false"
+						       ng-model="interview.aggrieved.nameChildren"
+						       ng-value="false"
+						       required>
+						<label for="interview-protect-children-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li class="group" ng-show="interview.aggrieved.nameChildren" ng-repeat="child in interview.aggrieved.children">
+			<fieldset>
+				<legend>
+					<span class="label">Child {{ $index + 1 }}</span>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="interview-child{{$index}}-name">
+							<span class="label">Full name</span>
+						</label>
+						<input type="text" id="interview-child{{$index}}-name" ng-model="child.name.full" size="30">
+					</li>
+					<li>
+						<label for="interview-child{{$index}}-gender">
+							<span class="label">Gender</span>
+						</label>
+						<select ng-model="child.gender" id="interview-child{{$index}}-gender">
+							<option value=""></option>
+							<option value="Female">Female</option>
+							<option value="Male">Male</option>
+							<option value="Man">Man</option>
+							<option value="Woman">Woman</option>
+							<option value="Transgender">Transgender</option>
+							<option value="Transsexual">Transsexual</option>
+							<option value="Genderqueer">Genderqueer</option>
+							<option value="Non-gendered">Non-gendered</option>
+							<option value="Agender">Agender</option>
+							<option value="Genderless">Genderless</option>
+							<option value="Non-binary">Non-binary</option>
+							<option value="Trans Man">Trans Man</option>
+							<option value="Trans Woman">Trans Woman</option>
+							<option value="Third Gender">Third Gender</option>
+							<option value="Two-Spirit">Two-Spirit</option>
+							<option value="Bi-Gender">Bi-Gender</option>
+							<option value="Genderfluid">Genderfluid</option>
+							<option value="Transvestite">Transvestite</option>
+						</select>
+					</li>
+					<li>
+						<label for="interview-child{{$index}}-date-birth">
+							<span class="label">Date of birth</span>
+						</label>
+						<input type="date" id="interview-child{{$index}}-date-birth" ng-model="child.dateBirth">
+					</li>
+					<li>
+						<label for="interview-child{{$index}}-address">
+							<span class="label">Address</span>
+						</label>
+						<textarea id="interview-child{{$index}}-address" ng-model="child.address" rows="3" cols="30"></textarea>
+					</li>
+					<li class="footer">
+						<ul class="actions">
+							<li ng-if="$index"><button type="button" class="del" ng-click="interview.removeChild( $index )">Remove child {{ $index + 1 }}</button></li>
+							<li><button type="button" class="add" ng-click="interview.addChild( $index )">Add another child</button></li>
+						</ul>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.aggrieved.nameChildren">
+			<div class="status info">
+				<h2>You must provide clear reasons why the {{ interview.aggrieved.children.length > 1 ? 'children' : 'child' }} should be named on the order</h2>
+				<p>A child may be included on an order if the court is satisfied that naming the child on the order is necessary or desirable to protect the child from associated domestic violence, or being exposed to domestic violence committed by the respondent. Associated domestic violence is where domestic violence is committed against a child, relative or associate of an aggrieved.</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.aggrieved.nameChildren">
+			<label for="interview-children-grounds">
+				<span class="label">Please provide details about of specific incidents where {{ interview.respondent.name.short }} has committed domestic violence towards a child or exposed a child to domestic violence</span>
+				<small class="hint">Include date or approximate dates</small>
+			</label>
+			<textarea id="interview-children-grounds" ng-model="interview.grounds.children" cols="30" rows="10"></textarea>
+		</li>
+
 		<li class="footer">
 			<ul class="actions">
 				<li><strong><button type="submit">Continue</button></strong></li>
@@ -1040,9 +1147,138 @@
 
 
 <section ng-show="interview.page === interview.PAGE.ASSOCIATES">
-<h2>Do relatives or associates need protection?</h2>
+<div class="status info">
+	<h2>Do relatives or associates need protection?</h2>
+	<p>If you are concerned about the safety of {{ interview.applicantIsAggrieved ? 'your' : interview.applicant.name.short + '’s' }} relatives or associates, you can include them on the application for protection.</p>
+	<p>A relative refers to someone who is connected to you by a family relationship.
+	As associate can be a person who is your current spouse, a person that works with you, lives at the same address or provides you with support.</p>
+</div>
+
 <form class="form" name="formAssociates" ng-submit="interview.continue( $event )">
 	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} need protection from {{ interview.respondent.name.short }}?</span>
+					<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
+					They are known as {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} <dfn>associates</dfn>.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-associates"
+						       id="interview-protect-associates-true"
+						       ng-model="interview.aggrieved.nameAssociates"
+						       ng-value="true"
+						       required>
+						<label for="interview-protect-associates-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-associates"
+						       id="interview-protect-associates-false"
+						       ng-model="interview.aggrieved.nameAssociates"
+						       ng-value="false"
+						       required>
+						<label for="interview-protect-associates-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li class="group" ng-show="interview.aggrieved.nameAssociates" ng-repeat="associate in interview.aggrieved.associates">
+			<fieldset>
+				<legend>
+					<span class="label">Associate {{ $index + 1 }}</span>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="interview-associate{{$index}}-name">
+							<span class="label">Full name</span>
+						</label>
+						<input type="text" id="interview-associate{{$index}}-name" ng-model="associate.name.full" size="30">
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-gender">
+							<span class="label">Gender</span>
+						</label>
+						<select ng-model="associate.gender" id="interview-associate{{$index}}-gender">
+							<option value=""></option>
+							<option value="Female">Female</option>
+							<option value="Male">Male</option>
+							<option value="Man">Man</option>
+							<option value="Woman">Woman</option>
+							<option value="Transgender">Transgender</option>
+							<option value="Transsexual">Transsexual</option>
+							<option value="Genderqueer">Genderqueer</option>
+							<option value="Non-gendered">Non-gendered</option>
+							<option value="Agender">Agender</option>
+							<option value="Genderless">Genderless</option>
+							<option value="Non-binary">Non-binary</option>
+							<option value="Trans Man">Trans Man</option>
+							<option value="Trans Woman">Trans Woman</option>
+							<option value="Third Gender">Third Gender</option>
+							<option value="Two-Spirit">Two-Spirit</option>
+							<option value="Bi-Gender">Bi-Gender</option>
+							<option value="Genderfluid">Genderfluid</option>
+							<option value="Transvestite">Transvestite</option>
+						</select>					</li>
+					<li>
+						<label for="interview-associate{{$index}}-date-birth">
+							<span class="label">Date of birth</span>
+						</label>
+						<input type="date" id="interview-associate{{$index}}-date-birth" ng-model="associate.dateBirth">
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-address">
+							<span class="label">Address</span>
+						</label>
+						<textarea id="interview-associate{{$index}}-address" ng-model="associate.address" rows="3" cols="30"></textarea>
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-phone">
+							<span class="label">Phone</span>
+						</label>
+						<input type="tel" id="interview-associate{{$index}}-phone" ng-model="associate.contact.phone" size="20">
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-email">
+							<span class="label">Email</span>
+						</label>
+						<input type="email" id="interview-associate{{$index}}-email" ng-model="associate.contact.email" size="30">
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-idNumber">
+							<span class="label">ID number (optional)</span>
+							<small class="hint">Example: Drivers licence, 18+ card</small>
+						</label>
+						<input type="tel" id="interview-associate{{$index}}-idNumber" ng-model="associate.idNumber" size="20">
+					</li>
+					<li class="footer">
+						<ul class="actions">
+							<li ng-if="$index"><button type="button" class="del" ng-click="interview.removeAssociate( $index )">Remove associate {{ $index + 1 }}</button></li>
+							<li><button type="button" class="add" ng-click="interview.addAssociate( $index )">Add another associate</button></li>
+						</ul>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.aggrieved.nameAssociates">
+			<div class="status info">
+				<h2>You must explain why you wish the {{ interview.aggrieved.associates.length > 1 ? 'associates' : 'associate' }} to be named on the order</h2>
+				<p>You need to provide clear reasons why it is necessary or desirable to protect your relative or associate from associated domestic violence.</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.aggrieved.nameAssociates">
+			<label for="interview-associates-grounds">
+				<span class="label">Please provide details of specific incidents where {{ interview.respondent.name.short }} has committed associated domestic violence or exposed the relative or associate to domestic violence</span>
+				<small class="hint">Include date or approximate dates</small>
+			</label>
+			<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="10"></textarea>
+		</li>
+
 		<li class="footer">
 			<ul class="actions">
 				<li><strong><button type="submit">Continue</button></strong></li>
@@ -1090,62 +1326,6 @@
 			  - stay away from schools, daycare etc = name child on order + extra condition
 			  - "other conduct"
 	 -->
-		<li>
-			<fieldset>
-				<legend>
-					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio"
-						       name="interview-protect-children"
-						       id="interview-protect-children-true"
-						       ng-model="interview.aggrieved.children"
-						       ng-value="true"
-						       required>
-						<label for="interview-protect-children-true">Yes</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="interview-protect-children"
-						       id="interview-protect-children-false"
-						       ng-model="interview.aggrieved.children"
-						       ng-value="false"
-						       required>
-						<label for="interview-protect-children-false">No</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-		<li>
-			<fieldset>
-				<legend>
-					<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} need protection from {{ interview.respondent.name.short }}?</span>
-					<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
-					They are known as {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} <dfn>associates</dfn>.</small>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio"
-						       name="interview-protect-associates"
-						       id="interview-protect-associates-true"
-						       ng-model="interview.aggrieved.associates"
-						       ng-value="true"
-						       required>
-						<label for="interview-protect-associates-true">Yes</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="interview-protect-associates"
-						       id="interview-protect-associates-false"
-						       ng-model="interview.aggrieved.associates"
-						       ng-value="false"
-						       required>
-						<label for="interview-protect-associates-false">No</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
 
 		<!-- TODO nicer UX for naming the applicant as an associate (opt-in) -->
 		<li ng-if="! interview.applicantIsAggrieved">
@@ -1188,12 +1368,12 @@
 						<label for="interview-conditions-respondent-behaviour">I want {{ interview.respondent.name.short }} to behave decently around {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
 						<small class="hint">Every protection order includes the condition: <samp>Be of good behaviour towards {{ interview.aggrieved.name.short }} and not commit domestic violence against {{ interview.aggrieved.name.short }}</samp></small>
 					</li>
-					<li ng-show="interview.aggrieved.children">
+					<li ng-show="interview.aggrieved.nameChildren">
 						<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour-children">
 						<label for="interview-conditions-respondent-behaviour-children">I want {{ interview.respondent.name.short }} to behave decently around {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} kids</label>
 						<small class="hint">Every protection order listing children includes the condition: <samp>Be of good behaviour towards the child and not commit associated domestic violence against the child and not expose the child to domestic violence.</samp></small>
 					</li>
-					<li ng-show="interview.aggrieved.associates || interview.aggrieved.applicant">
+					<li ng-show="interview.aggrieved.nameAssociates || ! interview.applicantIsAggrieved">
 						<input type="checkbox" disabled checked id="interview-conditions-respondent-behaviour-associates">
 						<label for="interview-conditions-respondent-behaviour-associates">
 							I want {{ interview.respondent.name.short }} to behave decently towards
@@ -1224,28 +1404,28 @@
 						<label for="interview-conditions-respondent-not-enter-home">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} home</label>
 					</li>
 
-					<li ng-show="interview.aggrieved.children">
+					<li ng-show="interview.aggrieved.nameChildren">
 						<input type="checkbox"
 						       id="interview-conditions-respondent-no-approach-children"
 						       ng-model="interview.conditions.notApproach.children"
 						       ng-value="true">
 						<label for="interview-conditions-respondent-no-approach-children">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} kids</label>
 					</li>
-					<li ng-show="interview.aggrieved.children">
+					<li ng-show="interview.aggrieved.nameChildren">
 						<input type="checkbox"
 						       id="interview-conditions-respondent-no-approach-children-place"
 						       ng-model="interview.conditions.notApproach.childrenPlace"
 						       ng-value="true">
 						<label for="interview-conditions-respondent-no-approach-children-place">I want {{ interview.respondent.name.short }} to stay away from the kids’ school/daycare/etc.</label>
 					</li>
-					<li ng-show="interview.aggrieved.applicant">
+					<li ng-show="! interview.applicantIsAggrieved">
 						<input type="checkbox"
 						       id="interview-conditions-respondent-no-approach-applicant"
 						       ng-model="interview.conditions.notApproach.applicant"
 						       ng-value="true">
 						<label for="interview-conditions-respondent-no-approach-applicant">I want {{ interview.respondent.name.short }} to stay away from me</label>
 					</li>
-					<li ng-show="interview.aggrieved.associates">
+					<li ng-show="interview.aggrieved.nameAssociates">
 						<input type="checkbox"
 						       id="interview-conditions-respondent-no-approach-associates"
 						       ng-model="interview.conditions.notApproach.associates"
@@ -1253,14 +1433,14 @@
 						<label for="interview-conditions-respondent-no-approach-associates">I want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} family and friends</label>
 					</li>
 
-					<li ng-show="interview.aggrieved.applicant">
+					<li ng-show="! interview.applicantIsAggrieved">
 						<input type="checkbox"
 						       id="interview-conditions-respondent-not-enter-applicant-home"
 						       ng-model="interview.conditions.prohibitEntering.applicantResidence"
 						       ng-value="true">
 						<label for="interview-conditions-respondent-not-enter-applicant-home">I want {{ interview.respondent.name.short }} to stay away from my home</label>
 					</li>
-					<li ng-show="interview.aggrieved.associates">
+					<li ng-show="interview.aggrieved.nameAssociates">
 						<input type="checkbox"
 						       id="interview-conditions-respondent-not-enter-associates-home"
 						       ng-model="interview.conditions.prohibitEntering.associatesResidence"

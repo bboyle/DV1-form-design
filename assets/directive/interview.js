@@ -89,6 +89,20 @@ angular.module( 'dv1' )
 		application.saveTemporaryProtection( vm.temporaryProtection );
 	};
 
+	// add another child
+	vm.addChild = function( i ) {
+		vm.aggrieved.children.splice( i + 1, 0, {} );
+	};
+	vm.removeChild = function( i ) {
+		vm.aggrieved.children.splice( i, 1 );
+	};
+	vm.addAssociate = function( i ) {
+		vm.aggrieved.associates.splice( i + 1, 0, {} );
+	};
+	vm.removeAssociate = function( i ) {
+		vm.aggrieved.associates.splice( i, 1 );
+	};
+
 
 	// page navigation
 	vm.goto = function( dest, event ) {

@@ -47,7 +47,9 @@ angular.module( 'dv1' )
 	data.aggrieved  = {
 		name: { short: 'the aggrieved' },
 		pronoun: PRONOUN.G,
-		relationship: {}
+		relationship: {},
+		children: [ {} ],
+		associates: [ {} ]
 	};
 	data.aggrieved.pronoun.you = data.aggrieved.name.short;
 	data.applicant  = {
