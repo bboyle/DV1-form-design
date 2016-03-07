@@ -42,11 +42,11 @@ angular.module( 'dv1' )
 	let data = {};
 	data.respondent = {
 		name: { short: 'the respondent' },
-		pronoun: PRONOUN.G
+		pronoun: angular.copy( PRONOUN.G )
 	};
 	data.aggrieved  = {
 		name: { short: 'the aggrieved' },
-		pronoun: PRONOUN.G,
+		pronoun: angular.copy( PRONOUN.G ),
 		relationship: {},
 		children: [ {} ],
 		associates: [ {} ]
@@ -54,13 +54,15 @@ angular.module( 'dv1' )
 	data.aggrieved.pronoun.you = data.aggrieved.name.short;
 	data.applicant  = {
 		name: { short: 'the applicant' },
-		pronoun: PRONOUN.G
+		pronoun: angular.copy( PRONOUN.G )
 	};
+
 
 	// set gender based on "idenfied as"
 	// example: setGender( vm.aggrieved, 'their wife' );
 	// wife is in GENDER.FEMALE_RELATIONSHIPS so will set them as female.
 	this.setGender = function( party, relationship ) {
+		relationship = relationship || party.gender;
 		var gender = GENDER.GENERIC;
 		if ( GENDER.FEMALE_RELATIONSHIPS.test( relationship )) {
 			gender = GENDER.FEMALE;
@@ -68,8 +70,8 @@ angular.module( 'dv1' )
 			gender = GENDER.MALE;
 		}
 
-		party.gender = GENDER[ gender ];
-		party.pronoun = PRONOUN[ gender ];
+		party.gender = angular.copy( GENDER[ gender ]);
+		party.pronoun = angular.copy( PRONOUN[ gender ]);
 	};
 
 
@@ -83,7 +85,7 @@ angular.module( 'dv1' )
 			data.aggrieved.pronoun.your = 'your';
 		} else {
 			data.aggrieved.pronoun.you = data.aggrieved.name.short;
-			data.aggrieved.pronoun.your = PRONOUN[ GENDER[ data.aggrieved.gender ] || GENDER.GENERIC ].your;
+			data.aggrieved.pronoun.your = angular.copy( PRONOUN[ GENDER[ data.aggrieved.gender ] || GENDER.GENERIC ].your );
 		}
 	};
 	this.saveApplicant = function( applicantData ) {

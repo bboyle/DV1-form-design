@@ -59,23 +59,29 @@ angular.module( 'dv1' )
 			} else {
 				application.setGender( vm.respondent, vm.party );
 			}
-			application.saveRespondent( vm.respondent );
+			vm.saveRespondent();
 		}
 
-		application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
+		vm.saveAggrieved();
 	};
 
 	vm.saveAggrieved = function() {
+		application.setGender( vm.aggrieved );
 		application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
+		if ( vm.applicantIsAggrieved ) {
+			vm.applicant = vm.aggrieved;
+		}
 	};
 	vm.saveApplicant = function() {
 		if ( vm.applicantIsAggrieved ) {
 			application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
 		} else {
+			application.setGender( vm.applicant );
 			application.saveApplicant( vm.applicant );
 		}
 	};
 	vm.saveRespondent = function() {
+		application.setGender( vm.respondent );
 		application.saveRespondent( vm.respondent );
 	};
 

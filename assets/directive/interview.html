@@ -1217,20 +1217,66 @@
 				<p>Please include all major incidents of domestic or family violence.</p>
 			</div>
 
-			<label for="interview-abuse-description">
-				<span class="label">Describe the abuse</span>
-				<small class="hint">Include 3-4 examples to help the court to understand why you need protection.
-				   You may not feel comfortable repeating some of the words, or describing what happened to you, but it is important the court knows exactly what happened.</small>
-			</label>
-			<textarea id="interview-abuse-description" ng-model="interview.abuse.description" cols="40" rows="10"></textarea>
+			<fieldset>
+				<legend>
+					<span class="label">Describe how {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="interview-grounds-most-recent-description">
+							<span class="label">What did {{ interview.respondent.pronoun.they }} do?</span>
+							<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.pronoun.they }} said and did. Don't exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
+						</label>
+						<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10"></textarea>
+					</li>
+					<li>
+						<label for="interview-grounds-most-recent-feel">
+							<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
+							<small class="hint">Examples: threatened, fearful or scared?</small>
+						</label>
+						<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3"></textarea>
+					</li>
+					<li>
+						<label for="interview-grounds-most-recent-when">
+							<span class="label">When did this happen?</span>
+							<small class="hint">Give a specific date and time</small>
+						</label>
+						<input type="text" id="interview-grounds-most-recent-when" ng-model="interview.grounds.mostRecent.when" size="15">
+					</li>
+					<li>
+						<label for="interview-grounds-most-recent-where">
+							<span class="label">Where did this happen?</span>
+							<small class="hint">Example: at home, work, an address or describe the place</small>
+						</label>
+						<input type="text" id="interview-grounds-most-recent-where" ng-model="interview.grounds.mostRecent.where" size="30" list="placenames">
+					</li>
+					<li>
+						<label for="interview-grounds-most-recent-witness">
+							<span class="label">Who else witnessed this?</span>
+							<small class="hint">Example: partners, children, parents, friends, neighbours.</small>
+						</label>
+						<input type="text" id="interview-grounds-most-recent-witness" ng-model="interview.grounds.mostRecent.witness" size="30" list="witnesses">
+					</li>
+				</ol>
+			</fieldset>
 		</li>
 
-		<li ng-show="interview.attachments.abuseDescription">
-			<div class="status info">
-				<h2>Attaching evidence</h2>
-				<p>You can attach extra pages to this application describing the domestic violence. This can include your own words describing events, but also reports from police or medical staff and photos.</p>
-				<p>Remember to bring all pages with you when to lodge this application at court.</p>
-			</div>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Has {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} more than once?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="false" required id="interview-grounds-multiple-no">
+						<label for="interview-grounds-multiple-no">No</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="true" required id="interview-grounds-multiple-yes">
+						<label for="interview-grounds-multiple-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
 		</li>
 
 		<li>
@@ -1292,6 +1338,15 @@
 				</ul>
 			</fieldset>
 		</li>
+
+		<li ng-show="interview.grounds.multipleIncidents || interview.attachments.abuseDescription">
+			<div class="status info">
+				<h2>Attaching evidence</h2>
+				<p>You can attach extra pages to this application describing the domestic violence. This can include your own words describing events, but also reports from police or medical staff and photos.</p>
+				<p>Remember to bring all pages with you when to lodge this application at court.</p>
+			</div>
+		</li>
+
 
 		<li class="footer">
 			<ul class="actions">
