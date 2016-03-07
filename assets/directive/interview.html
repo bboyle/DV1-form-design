@@ -427,8 +427,8 @@
 			<fieldset>
 				<legend>
 					<span ng-if="interview.applicantIsAggrieved" class="label">What is your name?</span>
-					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship" class="label">What is your {{ interview.applicant.relationship.aggrieved }}’s name?</span>
-					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship" class="label">What is the name of the person in need of protection?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship.aggrieved" class="label">What is your {{ interview.applicant.relationship.aggrieved }}’s name?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship.aggrieved" class="label">What is the name of the person in need of protection?</span>
 				</legend>
 				<ol class="questions compact">
 					<li>
@@ -503,8 +503,8 @@
 			<fieldset>
 				<legend>
 					<span ng-if="interview.applicantIsAggrieved" class="label">What is your name?</span>
-					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship" class="label">What is your {{ interview.applicant.relationship }}’s name?</span>
-					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship" class="label">What is the name of the person in need of protection?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship.aggrieved" class="label">What is your {{ interview.applicant.relationship.aggrieved }}’s name?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship.aggrieved" class="label">What is the name of the person in need of protection?</span>
 				</legend>
 				<ol class="questions compact">
 					<li>
@@ -1465,7 +1465,7 @@
 		<li ng-show="interview.tpo.apply">
 			<label for="interview-tpo-description">
 				<span class="label">Tell us why a temporary protection order is necessary</span>
-				<small class="hint">Describe domestic violence that has happened in the last few days and why you are concerned about {{ interview.applicantIsAggrieved ? 'your' : ( interview.applicant.relationship ? 'your ' + interview.applicant.relationship : interview.aggrieved.name.short ) + '’s' }} immediate safety.</small>
+				<small class="hint">Describe domestic violence that has happened in the last few days and why you are concerned about {{ interview.applicantIsAggrieved ? 'your' : ( interview.applicant.relationship.category ? 'your ' + interview.applicant.relationship.category : interview.aggrieved.name.short ) + '’s' }} immediate safety.</small>
 			</label>
 			<textarea id="interview-tpo-description" ng-model="interview.tpo.grounds" cols="40" rows="10"></textarea>
 		</li>
@@ -2318,8 +2318,8 @@
 <h2>Is this application being made on someone else’s behalf?</h2>
 
 <div class="status info" ng-show="! interview.applicantIsAggrieved">
-	<h2>Will you be lodging this application for your {{ interview.applicant.relationship }}?</h2>
-	<p>To lodge an application on behalf of your {{ interview.applicant.relationship }} you need their authorisation (preferably in writing).</p>
+	<h2>Will you be lodging this application for your {{ interview.applicant.relationship.aggrieved }}?</h2>
+	<p>To lodge an application on behalf of your {{ interview.applicant.relationship.aggrieved }} you need their authorisation (preferably in writing).</p>
 	<p>Or you can prepare these documents for them—they can lodge them at the magistrates court.</p>
 	<p>If you are lodging the application, your details will be included on the form. Remember that {{ interview.respondent.name.short }} receives a copy!</p>
 </div>
