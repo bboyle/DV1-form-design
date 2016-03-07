@@ -11,17 +11,26 @@ angular.module( 'dv1' )
 
 	vm.PAGE = {
 		PREAMBLE: 1,
+		// aggrieved story
 		STORY: 2,
 		AGGRIEVED: 3,
 		RESPONDENT: 4,
 		RELATIONSHIP: 5,
-		ORDERS: 6,
-		GROUNDS: 7,
-		URGENT: 8,
+		// what happened and what you want
+		GROUNDS: 5,
+		CONDITIONS: 6,
+		URGENT: 7,
+		// other details needed by court
+		// your details
+		AGGRIEVED2: 8,
 		CHILDREN: 9,
 		ASSOCIATES: 10,
-		CONDITIONS: 11,
-		WEAPONS: 12,
+		// respondent details
+		RESPONDENT2: 11,
+		// WEAPONS: 12,
+		// shared (aggrieved + respondent)
+		ORDERS: 12,
+		// applicant
 		APPLICANT: 13,
 		NEXT: 14
 	};
