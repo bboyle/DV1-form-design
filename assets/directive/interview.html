@@ -1312,7 +1312,7 @@
 		</li>
 		<li ng-show="interview.respondent.weapon.threat || interview.respondent.weapon.threat2">
 			<label for="interview-weapon-threat-details">
-				<span class="label">Provide details of what {{ interview.respondent.name.short }} did</span>
+				<span class="label">Provide details of what {{ interview.respondent.pronoun.they }} did</span>
 			</label>
 			<textarea id="interview-weapon-threat-details" ng-model="interview.respondent.weapon.threatDetails" cols="40" rows="10"></textarea>
 		</li>
@@ -2377,7 +2377,7 @@
 			</fieldset>
 		</li>
 
-		<li ng-hide="interview.whoWillLodge === 'aggrieved'">
+		<li ng-show="interview.whoWillLodge === 'third party' || interview.whoWillLodge === 'applicant'">
 			<div class="status info">
 				<h2>This section only applies if a person other than {{ interview.aggrieved.name.short }} is making the application</h2>
 				<ol class="questions">
@@ -2411,7 +2411,7 @@
 			</div>
 		</li>
 
-		<li class="section" ng-hide="interview.whoWillLodge === 'aggrieved'">
+		<li class="section" ng-show="interview.whoWillLodge === 'third party' || interview.whoWillLodge === 'applicant'">
 			<header ng-switch="interview.applicant.part">
 				<h3 ng-switch-when="A">PART A — A person being authorised by {{ interview.aggrieved.name.short }}</h3>
 				<h3 ng-switch-when="B">PART B — A person acting under another Act for the Aggrieved</h3>
