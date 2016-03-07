@@ -1264,11 +1264,11 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="false" required id="interview-grounds-multiple-no">
+						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="false" id="interview-grounds-multiple-no">
 						<label for="interview-grounds-multiple-no">No</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="true" required id="interview-grounds-multiple-yes">
+						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="true" id="interview-grounds-multiple-yes">
 						<label for="interview-grounds-multiple-yes">Yes</label>
 					</li>
 				</ul>
@@ -1576,13 +1576,6 @@
 			</fieldset>
 		</li>
 
-		<li ng-show="interview.aggrieved.nameChildren">
-			<div class="status info">
-				<h2>You must provide clear reasons why the {{ interview.aggrieved.children.length > 1 ? 'children' : 'child' }} should be named on the order</h2>
-				<p>A child may be included on an order if the court is satisfied that naming the child on the order is necessary or desirable to protect the child from associated domestic violence, or being exposed to domestic violence committed by the respondent. Associated domestic violence is where domestic violence is committed against a child, relative or associate of an aggrieved.</p>
-			</div>
-		</li>
-
 		<li class="footer">
 			<ul class="actions">
 				<li><strong><button type="submit">Continue</button></strong></li>
@@ -1616,7 +1609,7 @@
 						<input type="radio"
 						       name="interview-protect-associates2"
 						       id="interview-protect-associates2-true"
-						       ng-model="interview.aggrieved.nameAssociates"
+						       ng-model="interview.conditions.nameAssociates"
 						       ng-value="true">
 						<label for="interview-protect-associates2-true">Yes</label>
 					</li>
@@ -1624,7 +1617,7 @@
 						<input type="radio"
 						       name="interview-protect-associates2"
 						       id="interview-protect-associates2-false"
-						       ng-model="interview.aggrieved.nameAssociates"
+						       ng-model="interview.conditions.nameAssociates"
 						       ng-value="false">
 						<label for="interview-protect-associates2-false">No</label>
 					</li>
@@ -1632,7 +1625,7 @@
 			</fieldset>
 		</li>
 
-		<li class="group" ng-show="interview.aggrieved.nameAssociates" ng-repeat="associate in interview.aggrieved.associates">
+		<li class="group" ng-show="interview.conditions.nameAssociates" ng-repeat="associate in interview.aggrieved.associates">
 			<fieldset>
 				<legend>
 					<span class="label">Associate {{ $index + 1 }}</span>
@@ -1761,6 +1754,10 @@
 			</fieldset>
 		</li>
 		<li ng-show="interview.conditions.nameChildren">
+			<div class="status info">
+				<h2>You must provide clear reasons why the {{ interview.aggrieved.children.length > 1 ? 'children' : 'child' }} should be named on the order</h2>
+				<p>A child may be included on an order if the court is satisfied that naming the child on the order is necessary or desirable to protect the child from associated domestic violence, or being exposed to domestic violence committed by the respondent. Associated domestic violence is where domestic violence is committed against a child, relative or associate of an aggrieved.</p>
+			</div>
 			<label for="interview-children-grounds">
 				<span class="label">Please provide details about of specific incidents where {{ interview.respondent.name.short }} has committed domestic violence towards a child or exposed a child to domestic violence</span>
 				<small class="hint">Include date or approximate dates</small>
@@ -1829,9 +1826,6 @@
 				<h2>You must explain why you wish the {{ interview.aggrieved.associates.length > 1 ? 'associates' : 'associate' }} to be named on the order</h2>
 				<p>You need to provide clear reasons why it is necessary or desirable to protect your relative or associate from associated domestic violence.</p>
 			</div>
-		</li>
-
-		<li ng-show="interview.conditions.nameAssociates || interview.conditions.nameApplicant">
 			<label for="interview-associates-grounds">
 				<span class="label">Please provide details of specific incidents where {{ interview.respondent.name.short }} has committed associated domestic violence or exposed the relative or associate to domestic violence</span>
 				<small class="hint">Include date or approximate dates</small>
