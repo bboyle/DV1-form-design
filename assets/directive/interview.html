@@ -1376,7 +1376,7 @@
 <section ng-show="interview.page === interview.PAGE.CHILDREN">
 <div class="status info">
 	<h2>Are there children who live or spend time with {{ interview.aggrieved.pronoun.you }} who need protection?</h2>
-	<p>If {{ interview.aggrieved.pronoun.you }} have a child who lives with {{ interview.aggrieved.pronoun.them }}, or spends time at {{ interview.aggrieved.pronoun.their }} house on a regular basis, they can be included in this application. If the court is satisfied it is appropriate, the court can include a child on the order to ensure that {{ interview.respondent.name.short }} must also be of good behaviour towards the child, and not to expose the child to domestic violence.</p>
+	<p>If {{ interview.applicantIsAggrieved ? 'you have' : interview.aggrieved.pronoun.you + ' has' }} a child who lives with {{ interview.applicantIsAggrieved ? interview.aggrieved.pronoun.you : interview.aggrieved.pronoun.them }}, or spends time at {{ interview.applicantIsAggrieved ? interview.aggrieved.pronoun.your : interview.aggrieved.pronoun.their }} house on a regular basis, they can be included in this application. If the court is satisfied it is appropriate, the court can include a child on the order to ensure that {{ interview.respondent.name.short }} must also be of good behaviour towards the child, and not to expose the child to domestic violence.</p>
 	<p>If you do not want the respondent to know the address details of the child, please provide an alternate address (e.g. of a friend or relative or a post office box).</p>
 </div>
 
