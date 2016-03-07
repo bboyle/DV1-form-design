@@ -178,10 +178,10 @@
 		<li ng-show="interview.applicantIsAggrieved === false">
 			<fieldset>
 				<legend>
-					<span class="label">Tell us about the situation</span>
+					<span class="label">Who do they need protection from?</span>
 				</legend>
 				<p>
-					<select ng-model="interview.applicant.relationship" ng-change="interview.updateParties()">
+					<select ng-model="interview.applicant.relationship.aggrieved" ng-change="interview.updateParties()">
 						<option value="boyfriend">My boyfriend</option>
 						<option value="girlfriend">My girlfriend</option>
 						<option value="daughter">My daughter</option>
@@ -194,8 +194,7 @@
 						<option value="someone">Someone I know</option>
 					</select>
 					is being abused
-					<span ng-show="interview.applicant.relationship">
-						by
+					<span ng-show="interview.applicant.relationship.aggrieved"> by
 						<select ng-model="interview.party" ng-change="interview.updateParties()">
 							<optgroup label="Who is abusing them?">
 								<option value="their partner">{{ interview.aggrieved.pronoun.their }} {{ interview.party === 'their partner' ? '' : 'partner' }}</option>
@@ -351,26 +350,23 @@
 		<li ng-show="interview.applicantIsAggrieved &amp;&amp; interview.applicantInDanger === 'no' &amp;&amp; interview.safe === 'Yes'">
 			<fieldset>
 				<legend>
-					<span class="label">Tell us about the situation</span>
+					<span class="label">Who do you need protection from?</span>
 				</legend>
 				<p>
-					I am being abused
-					<span>
-						by
-						<select ng-model="interview.party" ng-change="interview.updateParties()">
-							<optgroup label="Who is abusing you?">
-								<option value="my partner">my {{ interview.party === 'my partner' ? '' : 'partner' }}</option>
-								<option value="my ex">my ex</option>
-								<option value="my partner’s ex">my partner’s ex</option>
-								<option value="my family">my {{ interview.party === 'my family' ? '' : 'family' }}</option>
-								<option value="my partner’s family">my partner’s {{ interview.party === 'my partner’s family' ? '' : 'family' }}</option>
-								<option value="my carer">my carer</option>
-								<option value="my boss">my boss</option>
-								<option value="my coworker">a coworker</option>
-								<option value="my stranger">a stranger</option>
-							</optgroup>
-						</select>
-					</span>
+					I am being abused by
+					<select ng-model="interview.party" ng-change="interview.updateParties()">
+						<optgroup label="Who is abusing you?">
+							<option value="my partner">my {{ interview.party === 'my partner' ? '' : 'partner' }}</option>
+							<option value="my ex">my ex</option>
+							<option value="my partner’s ex">my partner’s ex</option>
+							<option value="my family">my {{ interview.party === 'my family' ? '' : 'family' }}</option>
+							<option value="my partner’s family">my partner’s {{ interview.party === 'my partner’s family' ? '' : 'family' }}</option>
+							<option value="my carer">my carer</option>
+							<option value="my boss">my boss</option>
+							<option value="my coworker">a coworker</option>
+							<option value="my stranger">a stranger</option>
+						</optgroup>
+					</select>
 					<select ng-model="interview.partyIntimate" ng-show="interview.party === 'my partner' || interview.party === 'my ex' || interview.party === 'my partner’s ex' || interview.party === 'their ex' || interview.party === 'their partner'" ng-change="interview.updateParties()">
 						<option value=""></option>
 						<option value="husband">husband</option>
@@ -431,7 +427,7 @@
 			<fieldset>
 				<legend>
 					<span ng-if="interview.applicantIsAggrieved" class="label">What is your name?</span>
-					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship" class="label">What is your {{ interview.applicant.relationship }}’s name?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship" class="label">What is your {{ interview.applicant.relationship.aggrieved }}’s name?</span>
 					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship" class="label">What is the name of the person in need of protection?</span>
 				</legend>
 				<ol class="questions compact">
@@ -1363,9 +1359,15 @@
 <div class="status info">
 	<h2>Do you require urgent protection?</h2>
 	<p>The hearing of an application for a protection order will not be held immediately.
-	   A copy of the application must be served on the respondent before a protection order may be made.
+	   A copy of the application must be served on the respondent
+	   <span ng-if="interview.respondent.name.given">(given to {{ interview.respondent.name.given }})</span>
+	   before a protection order may be made.
 	   It may be a few weeks until your court date.</p>
-	<p>You can ask the clerk of the court to list this application (before {{ interview.respondent.name.short }} has been served) so the Magistrate can consider whether to make a temporary protection order.</p>
+	<p>What can you do about this delay?
+	You can ask the clerk of the court to arrange an earlier court date (before {{ interview.respondent.name.short }} has been served)
+	so the magistrate can consider whether to make a temporary protection order.</p>
+	<p>You will still need to go to court later (and {{ interview.respondent.name.short }} will need to go to court then too) for this application.
+	A temporary protection order will cover {{ interview.aggrieved.pronoun.you }} until then.</p>
 </p>
 </div>
 
@@ -1375,63 +1377,97 @@
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">Do you wish the court to consider making a Temporary Protection Order until the Application for a Protection Order is decided?</span>
-					<small class="hint">You need to explain to the court why it is necessary for you to be immediately protected from the domestic violence you have described.</small>
+					<span class="label">Has {{ interview.respondent.name.short }} hurt {{ interview.aggrieved.pronoun.you }} in the last few days?</span>
 				</legend>
 				<ul class="choices compact">
 					<li>
 						<input type="radio"
-						       name="interview-temporary-protection"
-						       id="interview-temporary-protection-false"
-						       ng-model="interview.temporaryProtection.requested"
-						       ng-value="false"
-						       ng-click="updateTemporaryProtection()">
-						<label for="interview-temporary-protection-false">No</label>
+						       name="interview-abuse-recent"
+						       id="interview-abuse-recent-false"
+						       ng-model="interview.abuse.recent"
+						       ng-value="false">
+						<label for="interview-abuse-recent-false">No</label>
 					</li>
 					<li>
 						<input type="radio"
-						       name="interview-temporary-protection"
-						       id="interview-temporary-protection-true"
-						       ng-model="interview.temporaryProtection.requested"
-						       ng-value="true"
-						       ng-click="updateTemporaryProtection()">
-						<label for="interview-temporary-protection-true">Yes</label>
+						       name="interview-abuse-recent"
+						       id="interview-abuse-recent-true"
+						       ng-model="interview.abuse.recent"
+						       ng-value="true">
+						<label for="interview-abuse-recent-true">Yes</label>
 					</li>
 				</ul>
 			</fieldset>
 		</li>
-		<li ng-if="interview.temporaryProtection.requested">
-			<label for="interview-tpo-description">
-				<span class="label">Tell us why a Temporary Protection Order is necessary</span>
-				<small class="hint">Describe domestic violence that has happened in the last few days and why you are concerned about {{ interview.applicantIsAggrieved ? 'your' : ( interview.applicant.relationship ? 'your ' + interview.applicant.relationship : interview.aggrieved.name.short ) + '’s' }} immediate safety.</small>
-			</label>
-			<textarea id="interview-tpo-description" ng-model="interview.temporaryProtection.description" cols="40" rows="10"></textarea>
-		</li>
-
-		<li ng-if="interview.temporaryProtection.requested">
+		<li>
 			<fieldset>
 				<legend>
-					<span class="label">Will you attach extra pages describing your request?</span>
+					<span class="label">Are you concerned {{ interview.aggrieved.pronoun.you }} will be harmed again before {{ interview.aggrieved.pronoun.your }} court date?</span>
+					<small class="hint">It could be a few weeks before the court will hear your application.</small>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-tpo-attachment" ng-model="interview.attachments.tpoDescription" ng-value="false" id="interview-tpo-attachment-no">
-						<label for="interview-tpo-attachment-no">No</label>
+						<input type="radio"
+						       name="interview-abuse-fear-immediate-future"
+						       id="interview-abuse-fear-immediate-future-false"
+						       ng-model="interview.abuse.immediateFear"
+						       ng-value="false"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-abuse-fear-immediate-future-false">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-tpo-attachment" ng-model="interview.attachments.tpoDescription" ng-value="true" id="interview-tpo-attachment-yes">
-						<label for="interview-tpo-attachment-yes">Yes</label>
+						<input type="radio"
+						       name="interview-abuse-fear-immediate-future"
+						       id="interview-abuse-fear-immediate-future-true"
+						       ng-model="interview.abuse.immediateFear"
+						       ng-value="true"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-abuse-fear-immediate-future-true">Yes</label>
 					</li>
 				</ul>
 			</fieldset>
 		</li>
-
-		<li ng-show="interview.attachments.tpoDescription">
+		<li ng-show="interview.abuse.recent === false &amp;&amp; interview.abuse.immediateFear === false">
 			<div class="status info">
-				<h2>Attaching evidence</h2>
-				<p>You can attach extra pages to this application describing why you need a temporary protection order.</p>
-				<p>Remember to bring all pages with you when to lodge this application at court.</p>
+				<h2>Is there another reason why urgent protection is required?</h2>
+				<p>It is your choice to apply for a temporary protection order.
+				However, you must have clear reasons for the magistrate to grant this
+				without giving {{ interview.respondent.name.short }} a chance to have {{ interview.respondent.pronoun.their }} say.</p>
 			</div>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want to apply for a temporary protection order?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-tpo-apply"
+						       id="interview-tpo-apply-false"
+						       ng-model="interview.tpo.apply"
+						       ng-value="false"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-tpo-apply-false">No</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-tpo-apply"
+						       id="interview-tpo-apply-true"
+						       ng-model="interview.tpo.apply"
+						       ng-value="true"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-tpo-apply-true">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.tpo.apply">
+			<label for="interview-tpo-description">
+				<span class="label">Tell us why a temporary protection order is necessary</span>
+				<small class="hint">Describe domestic violence that has happened in the last few days and why you are concerned about {{ interview.applicantIsAggrieved ? 'your' : ( interview.applicant.relationship ? 'your ' + interview.applicant.relationship : interview.aggrieved.name.short ) + '’s' }} immediate safety.</small>
+			</label>
+			<textarea id="interview-tpo-description" ng-model="interview.tpo.grounds" cols="40" rows="10"></textarea>
 		</li>
 
 		<li class="footer">

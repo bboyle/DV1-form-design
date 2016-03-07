@@ -40,7 +40,6 @@ angular.module( 'dv1' )
 
 
 	vm.updateParties = function() {
-		vm.applicantIsAggrieved = vm.applicant.relationship === 'me';
 		application.setGender( vm.aggrieved, vm.applicant.relationship );
 
 		if ( vm.party ) {
