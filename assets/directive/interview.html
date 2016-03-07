@@ -143,7 +143,6 @@
 			<fieldset>
 				<legend>
 					<span class="label">Do you need protection?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices">
 					<li>
@@ -151,7 +150,6 @@
 						       name="applicant-is-aggrieved"
 						       ng-model="interview.applicantIsAggrieved"
 						       ng-value="true"
-						       required
 						       id="applicant-is-aggrieved"
 						       ng-change="interview.checkApplicant()">
 						<label for="applicant-is-aggrieved">Yes</label>
@@ -161,7 +159,6 @@
 						       name="applicant-is-aggrieved"
 						       ng-model="interview.applicantIsAggrieved"
 						       ng-value="false"
-						       required
 						       id="applicant-is-not-aggrieved"
 						       ng-change="interview.checkApplicant()">
 						<label for="applicant-is-not-aggrieved">No, I am applying for someone else</label>
