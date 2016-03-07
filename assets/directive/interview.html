@@ -1348,6 +1348,31 @@
 
 <form class="form" name="formChildren" ng-submit="interview.continue( $event )">
 	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-children"
+						       id="interview-protect-children-true"
+						       ng-model="interview.conditions.nameChildren"
+						       ng-value="true">
+						<label for="interview-protect-children-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-children"
+						       id="interview-protect-children-false"
+						       ng-model="interview.conditions.nameChildren"
+						       ng-value="false">
+						<label for="interview-protect-children-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
 		<li class="group" ng-show="interview.conditions.nameChildren" ng-repeat="child in interview.aggrieved.children">
 			<fieldset>
 				<legend>
@@ -1611,6 +1636,34 @@
 						       ng-model="interview.conditions.nameChildren"
 						       ng-value="false">
 						<label for="interview-protect-children-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} need protection from {{ interview.respondent.name.short }}?</span>
+					<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
+					They are known as {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} <dfn>associates</dfn>.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-associates"
+						       id="interview-protect-associates-true"
+						       ng-model="interview.aggrieved.nameAssociates"
+						       ng-value="true">
+						<label for="interview-protect-associates-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-associates"
+						       id="interview-protect-associates-false"
+						       ng-model="interview.aggrieved.nameAssociates"
+						       ng-value="false">
+						<label for="interview-protect-associates-false">No</label>
 					</li>
 				</ul>
 			</fieldset>
