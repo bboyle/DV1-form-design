@@ -36,6 +36,7 @@ nav ol {
 nav ol button {
 	border: none;
 	background: transparent;
+	text-align: left;
 }
 nav ol button:hover,
 nav ol button:focus {
