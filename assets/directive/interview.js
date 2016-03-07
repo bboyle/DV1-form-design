@@ -17,22 +17,22 @@ angular.module( 'dv1' )
 		RESPONDENT: 4,
 		RELATIONSHIP: 5,
 		// what happened and what you want
-		GROUNDS: 5,
-		CONDITIONS: 6,
-		URGENT: 7,
+		GROUNDS: 6,
+		CONDITIONS: 7,
+		URGENT: 8,
 		// other details needed by court
 		// your details
-		AGGRIEVED2: 8,
-		CHILDREN: 9,
-		ASSOCIATES: 10,
+		AGGRIEVED2: 9,
+		CHILDREN: 10,
+		ASSOCIATES: 11,
 		// respondent details
-		RESPONDENT2: 11,
+		RESPONDENT2: 12,
 		// WEAPONS: 12,
 		// shared (aggrieved + respondent)
-		ORDERS: 12,
+		ORDERS: 13,
 		// applicant
-		APPLICANT: 13,
-		NEXT: 14
+		APPLICANT: 14,
+		NEXT: 15
 	};
 	vm.pageUnlocked = 0;
 

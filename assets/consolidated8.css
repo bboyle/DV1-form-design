@@ -7,10 +7,13 @@ body {
 ol.questions > li {
 	transform-origin: 0 0;
 }
+div.status.ng-hide,
 ol.questions > li.ng-hide {
 	transform: scaleY(0);
 	opacity: 0;
 }
+div.status.ng-hide-remove,
+div.status.ng-hide-remove-active,
 ol.questions > li.ng-hide-remove,
 ol.questions > li.ng-hide-remove-active {
 	will-change: opacity, transform;
