@@ -86,19 +86,18 @@
 			<fieldset>
 				<legend>
 					<span class="label">Is it safe for you to fill out this form?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices">
 					<li>
-						<input type="radio" ng-model="interview.safe" value="No" required id="interview-is-safe-no">
+						<input type="radio" ng-model="interview.safe" value="No" id="interview-is-safe-no">
 						<label for="interview-is-safe-no">No—someone I know could spy on my web use</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.safe" value="Not sure" required id="interview-is-safe-not-sure">
+						<input type="radio" ng-model="interview.safe" value="Not sure" id="interview-is-safe-not-sure">
 						<label for="interview-is-safe-not-sure">Not sure</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.safe" value="Yes" required id="interview-is-safe-yes">
+						<input type="radio" ng-model="interview.safe" value="Yes" id="interview-is-safe-yes">
 						<label for="interview-is-safe-yes">Yes—this computer is completely safe</label>
 					</li>
 				</ul>
@@ -152,20 +151,19 @@
 			<fieldset>
 				<legend>
 					<span class="label">Are you in danger right now?</span>
-					<abbr title="(required)" class="required">*</abbr>
 					<small class="hint">If someone could hurt you while you're completing this form you should call the police. Police can help you right now and apply for a protection order for you.</small>
 				</legend>
 				<ul class="choices">
 					<li>
-						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="yes" required id="applicant-danger-yes">
+						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="yes" id="applicant-danger-yes">
 						<label for="applicant-danger-yes">Yes</label>—call <a href="tel:000">000</a> and ask for police
 					</li>
 					<li>
-						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="maybe" required id="applicant-danger-dunno">
+						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="maybe" id="applicant-danger-dunno">
 						<label for="applicant-danger-dunno">I don't know</label>—contact DVConnect
 					</li>
 					<li>
-						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="no" required id="applicant-danger-no">
+						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="no" id="applicant-danger-no">
 						<label for="applicant-danger-no">It's safe for me to fill out this form (I know it could take 1 hour or longer)</label>
 					</li>
 				</ul>
@@ -180,16 +178,16 @@
 				</legend>
 				<ul class="choices">
 					<li>
-						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="yes" required id="legal-advice-yes">
+						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="yes" id="legal-advice-yes">
 						<label for="legal-advice-yes">No—I've already talked to a lawyer</label>
 					</li>
 					<li>
-						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="later" required id="legal-advice-later">
+						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="later" id="legal-advice-later">
 						<label for="legal-advice-later">I want to fill out this form now and talk to a lawyer later</label>
 						<small class="hint">You can take this form to a lawyer before you lodge it at a magistrates court.</small>
 					</li>
 					<li>
-						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="how" required id="legal-advice-how">
+						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="how" id="legal-advice-how">
 						<label for="legal-advice-how">Yes—how can I get legal advice?</label>
 					</li>
 				</ul>
@@ -240,7 +238,6 @@
 			<fieldset>
 				<legend>
 					<span class="label">Tell us about the abuse</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<p>
 					<select ng-model="interview.applicant.relationship" ng-change="interview.updateParties()">
@@ -351,11 +348,9 @@
 					<li>
 						<label for="aggrieved-name-given">
 							<span class="label">Given name</span>
-							<abbr class="required" title="(required)">*</abbr>
 						</label>
 						<input type="text" size="15"
 						       id="aggrieved-name-given"
-						       required
 						       ng-model="interview.aggrieved.name.given"
 						       ng-change="interview.saveAggrieved()"
 						>
@@ -363,11 +358,9 @@
 					<li>
 						<label for="aggrieved-name-family">
 							<span class="label">Family name</span>
-							<abbr class="required" title="(required)">*</abbr>
 						</label>
 						<input type="text" size="15"
 						       id="aggrieved-name-family"
-						       required
 						       ng-model="interview.aggrieved.name.family"
 						       ng-change="interview.saveAggrieved()"
 						>
@@ -390,9 +383,8 @@
 		<li>
 			<label for="interview-aggrieved-gender">
 				<span class="label">Gender</span>
-				<abbr class="required" title="(required)">*</abbr>
 			</label>
-			<select ng-model="interview.aggrieved.gender" id="interview-aggrieved-gender" ng-change="interview.saveAggrieved()" required>
+			<select ng-model="interview.aggrieved.gender" id="interview-aggrieved-gender" ng-change="interview.saveAggrieved()">
 				<option value=""></option>
 				<option value="Female">Female</option>
 				<option value="Male">Male</option>
@@ -450,15 +442,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Does the aggrieved require an interpreter?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-aggrieved-interpreter" ng-model="interview.aggrieved.requiresInterpreter" ng-value="false" required="required" id="aggrieved-interpreter-no">
+						<input type="radio" name="interview-aggrieved-interpreter" ng-model="interview.aggrieved.requiresInterpreter" ng-value="false" id="aggrieved-interpreter-no">
 						<label for="aggrieved-interpreter-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-aggrieved-interpreter" ng-model="interview.aggrieved.requiresInterpreter" ng-value="true" required="required" id="aggrieved-interpreter-yes">
+						<input type="radio" name="interview-aggrieved-interpreter" ng-model="interview.aggrieved.requiresInterpreter" ng-value="true" id="aggrieved-interpreter-yes">
 						<label for="aggrieved-interpreter-yes">Yes</label>
 					</li>
 				</ul>
@@ -467,16 +458,14 @@
 		<li ng-show="interview.aggrieved.requiresInterpreter">
 			<label for="aggrieved-language-dialect">
 				<span class="label">Language/Dialect</span>
-				<abbr title="(required)" class="required">*</abbr>
 			</label>
-			<input type="text" ng-model="interview.aggrieved.language" size="20" required="required" id="aggrieved-language-dialect">
+			<input type="text" ng-model="interview.aggrieved.language" size="20" id="aggrieved-language-dialect">
 		</li>
 
 		<li>
 			<fieldset>
 				<legend>
 					<span class="label">Does the aggrieved identify as</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices">
 					<li>
@@ -503,15 +492,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Does the aggrieved have a disability, illness or impairment where support and/or special arrangements are required?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-aggrieved-have-a-disability" ng-model="interview.aggrieved.hasDisability" ng-value="false" required="required" id="aggrieved-have-a-disability-no">
+						<input type="radio" name="interview-aggrieved-have-a-disability" ng-model="interview.aggrieved.hasDisability" ng-value="false" id="aggrieved-have-a-disability-no">
 						<label for="aggrieved-have-a-disability-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-aggrieved-have-a-disability" ng-model="interview.aggrieved.hasDisability" ng-value="true" required="required" id="aggrieved-have-a-disability-yes">
+						<input type="radio" name="interview-aggrieved-have-a-disability" ng-model="interview.aggrieved.hasDisability" ng-value="true" id="aggrieved-have-a-disability-yes">
 						<label for="aggrieved-have-a-disability-yes">Yes</label>
 					</li>
 				</ul>
@@ -520,7 +508,6 @@
 		<li ng-show="interview.aggrieved.hasDisability">
 			<label for="aggrieved-disability-details">
 				<span class="label">Please provide details about {{ interview.aggrieved.pronoun.your }} needs</span>
-				<abbr title="(required)" class="required">*</abbr>
 			</label>
 			<textarea ng-model="interview.aggrieved.disabilityNeeds" id="aggrieved-disability-details" rows="3" cols="40"></textarea>
 		</li>
@@ -529,15 +516,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Is the aggrieved under 18 years of age?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-aggrieved-under-18" ng-model="interview.aggrieved.under18" ng-value="false" required="required" id="aggrieved-under-18-no">
+						<input type="radio" name="interview-aggrieved-under-18" ng-model="interview.aggrieved.under18" ng-value="false" id="aggrieved-under-18-no">
 						<label for="aggrieved-under-18-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-aggrieved-under-18" ng-model="interview.aggrieved.under18" ng-value="true" required="required" id="aggrieved-under-18-yes">
+						<input type="radio" name="interview-aggrieved-under-18" ng-model="interview.aggrieved.under18" ng-value="true" id="aggrieved-under-18-yes">
 						<label for="aggrieved-under-18-yes">Yes</label>
 					</li>
 				</ul>
@@ -553,9 +539,8 @@
 					<li>
 						<label for="aggrieved-parent-name">
 							<span class="label">Parent's name</span>
-							<abbr class="required" title="(required)">*</abbr>
 						</label>
-						<input ng-model="interview.aggrieved.parent.name.full" size="30" required="required" type="text" id="aggrieved-parent-name">
+						<input ng-model="interview.aggrieved.parent.name.full" size="30" type="text" id="aggrieved-parent-name">
 					</li>
 					<li>
 						<label for="aggrieved-parent-address">
@@ -591,11 +576,9 @@
 					<li>
 						<label for="respondent-name-given">
 							<span class="label">Given name</span>
-							<abbr class="required" title="(required)">*</abbr>
 						</label>
 						<input type="text" size="15"
 						       id="respondent-name-given"
-						       required
 						       ng-model="interview.respondent.name.given"
 						       ng-change="interview.saveRespondent()"
 						>
@@ -603,11 +586,9 @@
 					<li>
 						<label for="respondent-name-family">
 							<span class="label">Family name</span>
-							<abbr class="required" title="(required)">*</abbr>
 						</label>
 						<input type="text" size="15"
 						       id="respondent-name-family"
-						       required
 						       ng-model="interview.respondent.name.family"
 						       ng-change="interview.saveRespondent()"
 						>
@@ -630,9 +611,8 @@
 		<li>
 			<label for="interview-respondent-gender">
 				<span class="label">Gender</span>
-				<abbr class="required" title="(required)">*</abbr>
 			</label>
-			<select ng-model="interview.respondent.gender" id="interview-respondent-gender" ng-change="interview.saveRespondent()" required>
+			<select ng-model="interview.respondent.gender" id="interview-respondent-gender" ng-change="interview.saveRespondent()">
 				<option value=""></option>
 				<option value="Female">Female</option>
 				<option value="Male">Male</option>
@@ -690,15 +670,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Does the respondent require an interpreter?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-respondent-interpreter" ng-model="interview.respondent.requiresInterpreter" ng-value="false" required="required" id="respondent-interpreter-no">
+						<input type="radio" name="interview-respondent-interpreter" ng-model="interview.respondent.requiresInterpreter" ng-value="false" id="respondent-interpreter-no">
 						<label for="respondent-interpreter-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-respondent-interpreter" ng-model="interview.respondent.requiresInterpreter" ng-value="true" required="required" id="respondent-interpreter-yes">
+						<input type="radio" name="interview-respondent-interpreter" ng-model="interview.respondent.requiresInterpreter" ng-value="true" id="respondent-interpreter-yes">
 						<label for="respondent-interpreter-yes">Yes</label>
 					</li>
 				</ul>
@@ -707,16 +686,14 @@
 		<li ng-show="interview.respondent.requiresInterpreter">
 			<label for="respondent-language-dialect">
 				<span class="label">Language/Dialect</span>
-				<abbr title="(required)" class="required">*</abbr>
 			</label>
-			<input type="text" ng-model="interview.respondent.language" size="20" required="required" id="respondent-language-dialect">
+			<input type="text" ng-model="interview.respondent.language" size="20" id="respondent-language-dialect">
 		</li>
 
 		<li>
 			<fieldset>
 				<legend>
 					<span class="label">Does the respondent identify as</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices">
 					<li>
@@ -743,15 +720,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Does the respondent have a disability, illness or impairment where support and/or special arrangements are required?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-respondent-have-a-disability" ng-model="interview.respondent.hasDisability" ng-value="false" required="required" id="respondent-have-a-disability-no">
+						<input type="radio" name="interview-respondent-have-a-disability" ng-model="interview.respondent.hasDisability" ng-value="false" id="respondent-have-a-disability-no">
 						<label for="respondent-have-a-disability-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-respondent-have-a-disability" ng-model="interview.respondent.hasDisability" ng-value="true" required="required" id="respondent-have-a-disability-yes">
+						<input type="radio" name="interview-respondent-have-a-disability" ng-model="interview.respondent.hasDisability" ng-value="true" id="respondent-have-a-disability-yes">
 						<label for="respondent-have-a-disability-yes">Yes</label>
 					</li>
 				</ul>
@@ -760,7 +736,6 @@
 		<li ng-show="interview.respondent.hasDisability">
 			<label for="respondent-disability-details">
 				<span class="label">Please provide details about {{ interview.respondent.name.short }}’s needs</span>
-				<abbr title="(required)" class="required">*</abbr>
 			</label>
 			<textarea ng-model="interview.respondent.disabilityNeeds" id="respondent-disability-details" rows="3" cols="40"></textarea>
 		</li>
@@ -790,15 +765,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Is the respondent under 18 years of age?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-respondent-under-18" ng-model="interview.respondent.under18" ng-value="false" required="required" id="respondent-under-18-no">
+						<input type="radio" name="interview-respondent-under-18" ng-model="interview.respondent.under18" ng-value="false" id="respondent-under-18-no">
 						<label for="respondent-under-18-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-respondent-under-18" ng-model="interview.respondent.under18" ng-value="true" required="required" id="respondent-under-18-yes">
+						<input type="radio" name="interview-respondent-under-18" ng-model="interview.respondent.under18" ng-value="true" id="respondent-under-18-yes">
 						<label for="respondent-under-18-yes">Yes</label>
 					</li>
 				</ul>
@@ -814,9 +788,8 @@
 					<li>
 						<label for="respondent-parent-name">
 							<span class="label">Parent's name</span>
-							<abbr class="required" title="(required)">*</abbr>
 						</label>
-						<input ng-model="interview.respondent.parent.name.full" size="30" required="required" type="text" id="respondent-parent-name">
+						<input ng-model="interview.respondent.parent.name.full" size="30" type="text" id="respondent-parent-name">
 					</li>
 					<li>
 						<label for="respondent-parent-address">
@@ -991,11 +964,11 @@
 					</legend>
 					<ul class="choices compact">
 						<li>
-							<input type="radio" name="interview-orders-exist" ng-model="interview.orders.exist" ng-value="false" required id="interview-orders-exist-no">
+							<input type="radio" name="interview-orders-exist" ng-model="interview.orders.exist" ng-value="false" id="interview-orders-exist-no">
 							<label for="interview-orders-exist-no">No</label>
 						</li>
 						<li>
-							<input type="radio" name="interview-orders-exist" ng-model="interview.orders.exist" ng-value="true" required id="interview-orders-exist-yes">
+							<input type="radio" name="interview-orders-exist" ng-model="interview.orders.exist" ng-value="true" id="interview-orders-exist-yes">
 							<label for="interview-orders-exist-yes">Yes</label>
 						</li>
 					</ul>
@@ -1010,35 +983,35 @@
 					</legend>
 					<ul class="choices">
 						<li>
-							<input type="checkbox" ng-model="interview.orders.childProtection" ng-value="true" required id="interview-orders-child-protection">
+							<input type="checkbox" ng-model="interview.orders.childProtection" ng-value="true" id="interview-orders-child-protection">
 							<label for="interview-orders-child-protection">Child Protection Order</label>
 						</li>
 						<li>
-							<input type="checkbox" ng-model="interview.orders.qldDVO" ng-value="true" required id="interview-orders-qld-dvo">
+							<input type="checkbox" ng-model="interview.orders.qldDVO" ng-value="true" id="interview-orders-qld-dvo">
 							<label for="interview-orders-qld-dvo">Queensland Domestic Violence Order</label>
 						</li>
 						<li>
-							<input type="checkbox" ng-model="interview.orders.policeProtection" ng-value="true" required id="interview-orders-police-protection">
+							<input type="checkbox" ng-model="interview.orders.policeProtection" ng-value="true" id="interview-orders-police-protection">
 							<label for="interview-orders-police-protection">Police Protection Notice</label>
 						</li>
 						<li>
-							<input type="checkbox" ng-model="interview.orders.voluntaryIntervention" ng-value="true" required id="interview-orders-voluntary-intervention">
+							<input type="checkbox" ng-model="interview.orders.voluntaryIntervention" ng-value="true" id="interview-orders-voluntary-intervention">
 							<label for="interview-orders-voluntary-intervention">Voluntary Intervention Order</label>
 						</li>
 						<li>
-							<input type="checkbox" ng-model="interview.orders.interstateDVO" ng-value="true" required id="interview-orders-interstate-dvo">
+							<input type="checkbox" ng-model="interview.orders.interstateDVO" ng-value="true" id="interview-orders-interstate-dvo">
 							<label for="interview-orders-interstate-dvo">Interstate Domestic Violence Order</label>
 						</li>
 						<li>
-							<input type="checkbox" ng-model="interview.orders.NZ_DVO" ng-value="true" required id="interview-orders-nz-dvo">
+							<input type="checkbox" ng-model="interview.orders.NZ_DVO" ng-value="true" id="interview-orders-nz-dvo">
 							<label for="interview-orders-nz-dvo">New Zealand Domestic Violence Order</label>
 						</li>
 						<li>
-							<input type="checkbox" ng-model="interview.orders.familyCourt" ng-value="true" required id="interview-orders-family-court">
+							<input type="checkbox" ng-model="interview.orders.familyCourt" ng-value="true" id="interview-orders-family-court">
 							<label for="interview-orders-family-court">Family Court Order</label>
 						</li>
 						<li>
-							<input type="checkbox" ng-model="interview.ordersOther" ng-value="true" required id="interview-orders-other">
+							<input type="checkbox" ng-model="interview.ordersOther" ng-value="true" id="interview-orders-other">
 							<label for="interview-orders-other">Other relevant court order</label>
 						</li>
 					</ul>
@@ -1058,11 +1031,11 @@
 					</legend>
 					<ul class="choices compact">
 						<li>
-							<input type="radio" name="interview-orders-protection-progress" ng-model="interview.orders.protectionInProgress" ng-value="false" required id="interview-orders-protection-progress-no">
+							<input type="radio" name="interview-orders-protection-progress" ng-model="interview.orders.protectionInProgress" ng-value="false" id="interview-orders-protection-progress-no">
 							<label for="interview-orders-protection-progress-no">No</label>
 						</li>
 						<li>
-							<input type="radio" name="interview-orders-protection-progress" ng-model="interview.orders.protectionInProgress" ng-value="true" required id="interview-orders-protection-progress-yes">
+							<input type="radio" name="interview-orders-protection-progress" ng-model="interview.orders.protectionInProgress" ng-value="true" id="interview-orders-protection-progress-yes">
 							<label for="interview-orders-protection-progress-yes">Yes</label>
 						</li>
 					</ul>
@@ -1077,11 +1050,11 @@
 					</legend>
 					<ul class="choices compact">
 						<li>
-							<input type="radio" name="interview-orders-cross-application" ng-model="interview.orders.crossApplication" ng-value="false" required id="interview-orders-cross-application-no">
+							<input type="radio" name="interview-orders-cross-application" ng-model="interview.orders.crossApplication" ng-value="false" id="interview-orders-cross-application-no">
 							<label for="interview-orders-cross-application-no">No</label>
 						</li>
 						<li>
-							<input type="radio" name="interview-orders-cross-application" ng-model="interview.orders.crossApplication" ng-value="true" required id="interview-orders-cross-application-yes">
+							<input type="radio" name="interview-orders-cross-application" ng-model="interview.orders.crossApplication" ng-value="true" id="interview-orders-cross-application-yes">
 							<label for="interview-orders-cross-application-yes">Yes</label>
 						</li>
 					</ul>
@@ -1221,11 +1194,11 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-abuse-at-residence" ng-model="interview.abuse.atResidence" ng-value="false" required id="interview-abuse-at-residence-no">
+						<input type="radio" name="interview-abuse-at-residence" ng-model="interview.abuse.atResidence" ng-value="false" id="interview-abuse-at-residence-no">
 						<label for="interview-abuse-at-residence-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-abuse-at-residence" ng-model="interview.abuse.atResidence" ng-value="true" required id="interview-abuse-at-residence-yes">
+						<input type="radio" name="interview-abuse-at-residence" ng-model="interview.abuse.atResidence" ng-value="true" id="interview-abuse-at-residence-yes">
 						<label for="interview-abuse-at-residence-yes">Yes</label>
 					</li>
 				</ul>
@@ -1254,11 +1227,11 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="false" required id="interview-abuse-description-attachment-no">
+						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="false" id="interview-abuse-description-attachment-no">
 						<label for="interview-abuse-description-attachment-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="true" required id="interview-abuse-description-attachment-yes">
+						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="true" id="interview-abuse-description-attachment-yes">
 						<label for="interview-abuse-description-attachment-yes">Yes</label>
 					</li>
 				</ul>
@@ -1310,8 +1283,7 @@
 						       id="interview-temporary-protection-false"
 						       ng-model="interview.temporaryProtection.requested"
 						       ng-value="false"
-						       ng-click="updateTemporaryProtection()"
-						       required>
+						       ng-click="updateTemporaryProtection()">
 						<label for="interview-temporary-protection-false">No</label>
 					</li>
 					<li>
@@ -1320,8 +1292,7 @@
 						       id="interview-temporary-protection-true"
 						       ng-model="interview.temporaryProtection.requested"
 						       ng-value="true"
-						       ng-click="updateTemporaryProtection()"
-						       required>
+						       ng-click="updateTemporaryProtection()">
 						<label for="interview-temporary-protection-true">Yes</label>
 					</li>
 				</ul>
@@ -1342,11 +1313,11 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-tpo-attachment" ng-model="interview.attachments.tpoDescription" ng-value="false" required id="interview-tpo-attachment-no">
+						<input type="radio" name="interview-tpo-attachment" ng-model="interview.attachments.tpoDescription" ng-value="false" id="interview-tpo-attachment-no">
 						<label for="interview-tpo-attachment-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-tpo-attachment" ng-model="interview.attachments.tpoDescription" ng-value="true" required id="interview-tpo-attachment-yes">
+						<input type="radio" name="interview-tpo-attachment" ng-model="interview.attachments.tpoDescription" ng-value="true" id="interview-tpo-attachment-yes">
 						<label for="interview-tpo-attachment-yes">Yes</label>
 					</li>
 				</ul>
@@ -1393,8 +1364,7 @@
 						       name="interview-protect-children"
 						       id="interview-protect-children-true"
 						       ng-model="interview.aggrieved.nameChildren"
-						       ng-value="true"
-						       required>
+						       ng-value="true">
 						<label for="interview-protect-children-true">Yes</label>
 					</li>
 					<li>
@@ -1402,8 +1372,7 @@
 						       name="interview-protect-children"
 						       id="interview-protect-children-false"
 						       ng-model="interview.aggrieved.nameChildren"
-						       ng-value="false"
-						       required>
+						       ng-value="false">
 						<label for="interview-protect-children-false">No</label>
 					</li>
 				</ul>
@@ -1518,8 +1487,7 @@
 						       name="interview-protect-associates"
 						       id="interview-protect-associates-true"
 						       ng-model="interview.aggrieved.nameAssociates"
-						       ng-value="true"
-						       required>
+						       ng-value="true">
 						<label for="interview-protect-associates-true">Yes</label>
 					</li>
 					<li>
@@ -1527,8 +1495,7 @@
 						       name="interview-protect-associates"
 						       id="interview-protect-associates-false"
 						       ng-model="interview.aggrieved.nameAssociates"
-						       ng-value="false"
-						       required>
+						       ng-value="false">
 						<label for="interview-protect-associates-false">No</label>
 					</li>
 				</ul>
@@ -1690,8 +1657,7 @@
 						       name="interview-protect-applicant"
 						       id="interview-protect-applicant-true"
 						       ng-model="interview.aggrieved.applicant"
-						       ng-value="true"
-						       required>
+						       ng-value="true">
 						<label for="interview-protect-applicant-true">Yes</label>
 					</li>
 					<li>
@@ -1699,8 +1665,7 @@
 						       name="interview-protect-applicant"
 						       id="interview-protect-applicant-false"
 						       ng-model="interview.aggrieved.applicant"
-						       ng-value="false"
-						       required>
+						       ng-value="false">
 						<label for="interview-protect-applicant-false">No</label>
 					</li>
 				</ul>
@@ -1870,15 +1835,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Does {{ interview.respondent.name.short }} have a weapon?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-weapon-access" ng-model="interview.respondent.weapon.access" ng-value="false" required id="interview-weapon-access-no">
+						<input type="radio" name="interview-weapon-access" ng-model="interview.respondent.weapon.access" ng-value="false" id="interview-weapon-access-no">
 						<label for="interview-weapon-access-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-weapon-access" ng-model="interview.respondent.weapon.access" ng-value="true" required id="interview-weapon-access-yes">
+						<input type="radio" name="interview-weapon-access" ng-model="interview.respondent.weapon.access" ng-value="true" id="interview-weapon-access-yes">
 						<label for="interview-weapon-access-yes">Yes</label>
 					</li>
 				</ul>
@@ -1895,15 +1859,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Did {{ interview.respondent.name.short }} use, or threaten to use, a weapon?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-weapon-threat" ng-model="interview.respondent.weapon.threat" ng-value="false" required id="interview-weapon-threat-no">
+						<input type="radio" name="interview-weapon-threat" ng-model="interview.respondent.weapon.threat" ng-value="false" id="interview-weapon-threat-no">
 						<label for="interview-weapon-threat-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-weapon-threat" ng-model="interview.respondent.weapon.threat" ng-value="true" required id="interview-weapon-threat-yes">
+						<input type="radio" name="interview-weapon-threat" ng-model="interview.respondent.weapon.threat" ng-value="true" id="interview-weapon-threat-yes">
 						<label for="interview-weapon-threat-yes">Yes</label>
 					</li>
 				</ul>
@@ -1913,16 +1876,15 @@
 			<fieldset>
 				<legend>
 					<span class="label">Did {{ interview.respondent.name.short }} use, or threaten to use, something else as a weapon?</span>
-					<abbr title="(required)" class="required">*</abbr>
 					<small class="hint">Example: sporting equipment (bats), appliances, tools (hammer), or other items.</small>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-weapon-threat2" ng-model="interview.respondent.weapon.threat2" ng-value="false" required id="interview-weapon-threat2-no">
+						<input type="radio" name="interview-weapon-threat2" ng-model="interview.respondent.weapon.threat2" ng-value="false" id="interview-weapon-threat2-no">
 						<label for="interview-weapon-threat2-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-weapon-threat2" ng-model="interview.respondent.weapon.threat2" ng-value="true" required id="interview-weapon-threat2-yes">
+						<input type="radio" name="interview-weapon-threat2" ng-model="interview.respondent.weapon.threat2" ng-value="true" id="interview-weapon-threat2-yes">
 						<label for="interview-weapon-threat2-yes">Yes</label>
 					</li>
 				</ul>
@@ -1939,15 +1901,14 @@
 			<fieldset>
 				<legend>
 					<span class="label">Does {{ interview.respondent.name.short }} have a weapons or firearms licence?</span>
-					<abbr title="(required)" class="required">*</abbr>
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-weapon-licence" ng-model="interview.respondent.weapon.licence" ng-value="false" required id="interview-weapon-licence-no">
+						<input type="radio" name="interview-weapon-licence" ng-model="interview.respondent.weapon.licence" ng-value="false" id="interview-weapon-licence-no">
 						<label for="interview-weapon-licence-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-weapon-licence" ng-model="interview.respondent.weapon.licence" ng-value="true" required id="interview-weapon-licence-yes">
+						<input type="radio" name="interview-weapon-licence" ng-model="interview.respondent.weapon.licence" ng-value="true" id="interview-weapon-licence-yes">
 						<label for="interview-weapon-licence-yes">Yes</label>
 					</li>
 				</ul>
@@ -2006,7 +1967,6 @@
 						       name="application-lodged-by"
 						       ng-model="interview.whoWillLodge"
 						       value="applicant"
-						       required
 						       id="application-lodged-by-applicant">
 						<label for="application-lodged-by-applicant">I will lodge the application</label>
 					</li>
@@ -2015,7 +1975,6 @@
 						       name="application-lodged-by"
 						       ng-model="interview.whoWillLodge"
 						       value="aggrieved"
-						       required
 						       id="application-lodged-by-aggrieved">
 						<label ng-if="interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">I will lodge it myself</label>
 						<label ng-if="! interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">{{ interview.aggrieved.name.short }} will lodge it</label>
@@ -2025,7 +1984,6 @@
 						       name="application-lodged-by"
 						       ng-model="interview.whoWillLodge"
 						       value="third party"
-						       required
 						       id="application-lodged-by-another">
 						<label for="application-lodged-by-another">Someone else</label>
 						<small class="hint">You will be asked for their details later.</small>
@@ -2035,46 +1993,194 @@
 						       name="application-lodged-by"
 						       ng-model="interview.whoWillLodge"
 						       value="unknown"
-						       required
 						       id="application-lodged-by-unknown">
 						<label for="application-lodged-by-unknown">Don't know</label>
 						<small class="hint">Leave the applicant details section blank on the form. You will need to complete it when the form is signed and witnessed, before you lodge at court.</small>
 					</li>
 				</ul>
 			</fieldset>
-<!--
-			<fieldset>
-				<legend>
-					<span class="label">What is your name?</span>
-				</legend>
-				<ol class="questions compact">
+		</li>
+
+		<li ng-hide="interview.whoWillLodge === 'aggrieved'">
+			<div class="status info">
+				<h2>This section only applies if a person other than {{ interview.aggrieved.name.short }} is making the application</h2>
+				<ol class="questions">
 					<li>
-						<label for="applicant-name-given">
-							<span class="label">Given name</span>
-							<abbr class="required" title="(required)">*</abbr>
-						</label>
-						<input type="text" size="15"
-						       id="applicant-name-given"
-						       ng-model="interview.applicant.name.given"
-						       ng-required="! interview.applicantIsAggrieved"
-						       ng-change="interview.saveApplicant()"
-						>
-					</li>
-					<li>
-						<label for="applicant-name-family">
-							<span class="label">Family name</span>
-							<abbr class="required" title="(required)">*</abbr>
-						</label>
-						<input type="text" size="15"
-						       id="applicant-name-family"
-						       ng-model="interview.applicant.name.family"
-						       ng-required="! interview.applicantIsAggrieved"
-						       ng-change="interview.saveApplicant()"
-						>
+						<fieldset>
+							<legend>
+								<span class="label">Which of the following describes {{ interview.whoWillLodge === 'applicant' ? 'you' : 'the applicant' }}?</span>
+								<small class="hint"></small>
+							</legend>
+							<ul class="choices">
+								<li>
+									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="A" id="applicant-part-a" />
+									<label for="applicant-part-a">A person being authorised by {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
+								</li>
+								<li>
+									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="B" id="applicant-part-b" />
+									<label for="applicant-part-b">A person acting under another Act for {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
+								</li>
+								<li>
+									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="C" id="applicant-part-c" />
+									<label for="applicant-part-c">A Police Officer</label>
+								</li>
+								<li>
+									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="D" id="applicant-part-d" />
+									<label for="applicant-part-d">A party to a child protection proceeding</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
 				</ol>
-			</fieldset>
--->
+			</div>
+		</li>
+
+		<li class="section" ng-hide="interview.whoWillLodge === 'aggrieved'">
+			<header ng-switch="interview.applicant.part">
+				<h3 ng-switch-when="A">PART A — A person being authorised by {{ interview.aggrieved.name.short }}</h3>
+				<h3 ng-switch-when="B">PART B — A person acting under another Act for the Aggrieved</h3>
+				<h3 ng-switch-when="C">PART C — A Police Officer</h3>
+				<h3 ng-switch-when="D">PART D — A party to a child protection proceeding</h3>
+			</header>
+			<ol class="questions">
+				<li class="atomic group">
+					<fieldset>
+						<legend>
+							<span class="label">Name</span>
+						</legend>
+						<ol class="questions compact">
+							<li>
+								<label for="applicant-name-given">
+									<span class="label">Given name</span>
+								</label>
+								<input ng-model="interview.applicant.name.given" size="15" type="text" id="applicant-name-given" />
+							</li>
+							<li>
+								<label for="applicant-name-family">
+									<span class="label">Family name</span>
+								</label>
+								<input ng-model="interview.applicant.name.family" size="15" type="text" id="applicant-name-family" />
+							</li>
+						</ol>
+					</fieldset>
+				</li>
+				<li>
+					<label for="interview-applicant-address">
+						<span class="label">Address</span>
+					</label>
+					<textarea id="interview-applicant-address" ng-model="interview.applicant.address" rows="3" cols="30"></textarea>
+				</li>
+				<li>
+					<label for="applicant-gender">
+						<span class="label">Gender</span>
+					</label>
+					<select ng-model="interview.applicant.gender" id="applicant-gender">
+						<option value=""></option>
+						<option value="Female">Female</option>
+						<option value="Male">Male</option>
+						<option value="Man">Man</option>
+						<option value="Woman">Woman</option>
+						<option value="Transgender">Transgender</option>
+						<option value="Transsexual">Transsexual</option>
+						<option value="Genderqueer">Genderqueer</option>
+						<option value="Non-gendered">Non-gendered</option>
+						<option value="Agender">Agender</option>
+						<option value="Genderless">Genderless</option>
+						<option value="Non-binary">Non-binary</option>
+						<option value="Trans Man">Trans Man</option>
+						<option value="Trans Woman">Trans Woman</option>
+						<option value="Third Gender">Third Gender</option>
+						<option value="Two-Spirit">Two-Spirit</option>
+						<option value="Bi-Gender">Bi-Gender</option>
+						<option value="Genderfluid">Genderfluid</option>
+						<option value="Transvestite">Transvestite</option>
+					</select>
+				</li>
+
+				<li ng-if="interview.applicant.part === 'A'">
+					<fieldset>
+						<legend>
+							<span class="label">Is the authorisation of the aggrieved in writing?</span>
+						</legend>
+						<ul class="choices compact">
+							<li>
+								<input type="radio" name="application-authorised" ng-model="interview.applicant.authorisation.written" ng-value="false" id="application-authorised-no" />
+								<label for="application-authorised-no">No</label>
+							</li>
+							<li>
+								<input type="radio" name="application-authorised" ng-model="interview.applicant.authorisation.written" ng-value="true" id="application-authorised-yes" />
+								<label for="application-authorised-yes">Yes</label>
+							</li>
+						</ul>
+					</fieldset>
+				</li>
+				<li ng-show="interview.applicant.authorisation.written === false">
+					<label for="application-authorisation-received">
+						<span class="label">How is authorisation communicated from {{ interview.aggrieved.name.short }}?</span>
+					</label>
+					<textarea ng-model="interview.applicant.authorisation.other" rows="2" cols="40" id="application-authorisation-received"></textarea>
+				</li>
+
+				<li ng-if="interview.applicant.part === 'B'">
+					<fieldset>
+						<legend>
+							<span class="label">{{ interview.whoWillLodge === 'applicant' ? 'I am' : 'The applicant is' }}:</span>
+						</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" name="applicant-acting" ng-model="interview.applicant.acting" value="A guardian" id="applicant-acting-a-guardian" />
+							<label for="applicant-acting-a-guardian">A guardian</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-acting" ng-model="interview.applicant.acting" value="Adult Guardian" id="applicant-acting-adult-guardian" />
+							<label for="applicant-acting-adult-guardian">Adult Guardian</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-acting" ng-model="interview.applicant.acting" value="Enduring power of attorney" id="applicant-acting-enduring-power-of-attorney" />
+							<label for="applicant-acting-enduring-power-of-attorney">Enduring power of attorney</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-acting" ng-model="interview.applicant.acting" value="Other" id="applicant-acting-other" />
+							<label for="applicant-acting-other">Other</label>
+						</li>
+					</ul>
+					</fieldset>
+				</li>
+				<li ng-show="interview.applicant.acting === 'Other'">
+					<label for="applicant-acting-other-specified">
+						<span class="label">Please specify</span>
+					</label>
+					<input type="text" ng-model="interview.applicant.acting.other" size="40" id="applicant-acting-other-specified" />
+				</li>
+
+	<!-- TODO Part C police officer -->
+
+				<li ng-if="interview.applicant.part === 'D'">
+					<fieldset>
+						<legend>
+							<span class="label">{{ interview.whoWillLodge === 'applicant' ? 'I am' : 'The applicant is' }}:</span>
+						</legend>
+						<ul class="choices">
+							<li>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
+								<label for="applicant-child-protection-party-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">a child for whom an order is sought in a child protection proceeding</label>
+							</li>
+							<li>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A separate legal representative for a child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
+								<label for="applicant-child-protection-party-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">a separate legal representative for a child for whom an order is sought in a child protection proceeding</label>
+							</li>
+							<li>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="An applicant in a child protection proceeding" id="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding" />
+								<label for="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding">an applicant in a child protection proceeding</label>
+							</li>
+							<li>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A respondent in a child protection proceeding" id="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding" />
+								<label for="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding">a respondent in a child protection proceeding</label>
+							</li>
+						</ul>
+					</fieldset>
+				</li>
+			</ol>
 		</li>
 
 		<li class="footer">
