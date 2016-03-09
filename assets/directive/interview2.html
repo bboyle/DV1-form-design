@@ -1,0 +1,2926 @@
+<nav>
+<h2>Prepare your application</h2>
+	<ol>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Before you begin</button></li>
+	</ol>
+
+<h3>What you need</h3>
+
+	<ol start="2">
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.STORY" ng-click="interview.goto( interview.PAGE.STORY )">Your situation</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.AGGRIEVED" ng-click="interview.goto( interview.PAGE.AGGRIEVED )">Who needs protection?</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.RESPONDENT" ng-click="interview.goto( interview.PAGE.RESPONDENT )">Who do they need protection from?</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.RELATIONSHIP" ng-click="interview.goto( interview.PAGE.RELATIONSHIP )">Relationship</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.GROUNDS" ng-click="interview.goto( interview.PAGE.GROUNDS )">Grounds</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.CONDITIONS" ng-click="interview.goto( interview.PAGE.CONDITIONS )">Conditions</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.URGENT" ng-click="interview.goto( interview.PAGE.URGENT )">Urgent applications</button></li>
+	</ol>
+
+<h3>What we need to know at court</h3>
+
+	<ol start="9">
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.AGGRIEVED2" ng-click="interview.goto( interview.PAGE.AGGRIEVED2 )">Aggrieved details</button>
+			<ol>
+				<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.CHILDREN" ng-click="interview.goto( interview.PAGE.CHILDREN )">Children</button></li>
+				<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.ASSOCIATES" ng-click="interview.goto( interview.PAGE.ASSOCIATES )">Relatives/associates</button></li>
+			</ol>
+		</li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.RESPONDENT2" ng-click="interview.goto( interview.PAGE.RESPONDENT2 )">Respondent details</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.ORDERS" ng-click="interview.goto( interview.PAGE.ORDERS )">Other orders</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto( interview.PAGE.APPLICANT )">Applicant details</button></li>
+	</ol>
+
+<h3>Preparing for court</h3>
+
+	<ol start="13">
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.NEXT" ng-click="interview.goto( interview.PAGE.NEXT )">Preparing for court</button></li>
+	</ol>
+</nav>
+
+<header>
+	<h1>Prepare your application for a protection order</h1>
+</header>
+
+<datalist id="placenames">
+	<option value="Home">
+	<option value="Work">
+</datalist>
+<datalist id="witnesses">
+	<option value="coworkers">
+	<option value="children">
+	<option value="partner">
+	<option value="parents">
+	<option value="a neighbour">
+</datalist>
+
+
+<section ng-show="interview.page === interview.PAGE.PREAMBLE">
+
+<div class="language-chooser"></div>
+
+
+<div>
+	<h2>Before you begin</h2>
+	<ul>
+		<li>This online form can take an hour or more to complete. You can apply yourself. You can also ask a friend or lawyer to apply on your behalf. In some situations, the police may apply for you.</li>
+		<li>You may find answering these questions difficult because we will ask questions about your situation—what happened and when—what protection you need.</li>
+		<li>At the end of this guide you will have the necessary forms  (possibly 2 or 3) to take to court.</li>
+		<li>Once you lodge the forms at court, the person you are wanting protection from will get a copy of your application.</li>
+	</ul>
+</div>
+
+<div>
+	<h2>Going to court</h2>
+	<ul>
+		<li>You need to lodge the forms and all attachments at a magistrates court. You can do this yourself, or you can ask a friend or family member to do so on your behalf.</li>
+		<li>You will be given a date to appear in court (usually in about 4 weeks time).</li>
+		<li>Your court date can be sooner if you also ask for an urgent temporary protection order. You have to explain why you need this.</li>
+		<li>The person you want to be protected from will have to appear in court at the same time.</li>
+	</ul>
+
+	<p>The nearest magistrates court is:<br>
+		Beaudesert Magistrates Court<br>
+		29 William Street<br>
+		Beaudesert Qld 4285
+		(<a href="https://maps.google.com.au/maps?f=d&amp;hl=en&amp;geocode=&amp;saddr=&amp;daddr=Beaudesert+Magistrates+Court,+29+William+Street,+Beaudesert,+Qld,+4285&amp;sll=-23.551772,145.287924&amp;sspn=0.017034,0.020578&amp;ie=UTF8&amp;ll=-27.990044,152.997108&amp;spn=0.016409,0.020578&amp;z=16" target="_blank">map</a>)<br>
+		<br>
+		<a href="tel:+61-7-5542-2055">(07) 5542 2055</a><br>
+		<a href="mailto:courthouse.beaudesert@justice.qld.gov.au">courthouse.beaudesert@justice.qld.gov.au</a><br>
+		<br>
+		It is open Monday–Friday from 8:30am–4:30pm.</p>
+
+		<!-- <p>You can file your application today.</p> -->
+		<!-- TODO opening hours, public holidays, closures -->
+		<p>You can lodge your application on Monday.</p>
+
+		<p><a href="http://www.qld.gov.au/law/court/courts/courthouse-locations/">Find another Magistrates Court</a></p>
+</div>
+
+<h2>Start preparing your application</h2>
+
+<form class="form" name="formPreamble" ng-submit="interview.completePreamble()">
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you need legal advice?</span>
+					<small class="hint">You should get legal advice before starting the process to get a protection order.</small>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="yes" id="legal-advice-yes">
+						<label for="legal-advice-yes">No—I've already talked to a lawyer</label>
+					</li>
+					<li>
+						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="later" id="legal-advice-later">
+						<label for="legal-advice-later">I want to fill out this form now and talk to a lawyer later</label>
+						<small class="hint">You can take this form to a lawyer before you lodge it at a magistrates court.</small>
+					</li>
+					<li>
+						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="how" id="legal-advice-how">
+						<label for="legal-advice-how">Yes—how can I get legal advice?</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-hide="interview.legalAdvice === 'how'">
+			<ul class="actions">
+				<li><strong><button>Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+
+<div class="status info" ng-show="interview.legalAdvice === 'how'">
+	<h2>How can I get legal advice?</h2>
+	<p>You can get legal advice from:</p>
+	<ul>
+		<li>Legal Aid Queensland – call <a href="tel:1300-65-11-88">1300 65 11 88</a> for free legal advice</li>
+		<li>a community legal centre – go to <a href="http://www.qails.org.au">www.qails.org.au</a> or <a href="http://www.legalaid.qld.gov.au">www.legalaid.qld.gov.au</a> or call <a href="tel:1300-65-11-88">1300 65 11 88</a> to check services in your area</li>
+		<li>a private solicitor – call the Queensland Law Society or visit <a href="http://www.qls.com.au">www.qls.com.au</a> for names of solicitors who can help.</li>
+	</ul>
+</div>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.STORY">
+<form class="form" name="formStory" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you need protection?</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio"
+						       name="applicant-is-aggrieved"
+						       ng-model="interview.applicantIsAggrieved"
+						       ng-value="true"
+						       id="applicant-is-aggrieved"
+						       ng-change="interview.checkApplicant()">
+						<label for="applicant-is-aggrieved">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="applicant-is-aggrieved"
+						       ng-model="interview.applicantIsAggrieved"
+						       ng-value="false"
+						       id="applicant-is-not-aggrieved"
+						       ng-change="interview.checkApplicant()">
+						<label for="applicant-is-not-aggrieved">No, I am applying for someone else</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.applicantIsAggrieved === false">
+			<fieldset>
+				<legend>
+					<span class="label">Who do they need protection from?</span>
+				</legend>
+				<p>
+					<select ng-model="interview.applicant.relationship.aggrieved" ng-change="interview.updateParties()">
+						<option value="boyfriend">My boyfriend</option>
+						<option value="girlfriend">My girlfriend</option>
+						<option value="daughter">My daughter</option>
+						<option value="son">My son</option>
+						<option value="mother">My mother</option>
+						<option value="father">My father</option>
+						<option value="friend">My friend</option>
+						<option value="neighbour">My neighbour</option>
+						<option value="coworker">My coworker</option>
+						<option value="someone">Someone I know</option>
+					</select>
+					is being abused
+					<span ng-show="interview.applicant.relationship.aggrieved"> by
+						<select ng-model="interview.party" ng-change="interview.updateParties()">
+							<optgroup label="Who is abusing them?">
+								<option value="their partner">{{ interview.aggrieved.pronoun.their }} {{ interview.party === 'their partner' ? '' : 'partner' }}</option>
+								<option value="their ex">{{ interview.aggrieved.pronoun.their }} ex</option>
+								<option value="my ex">my ex</option>
+								<option value="their family">{{ interview.aggrieved.pronoun.their }} {{ interview.party === 'their family' ? '' : 'family' }}</option>
+								<option value="my family">my {{ interview.party === 'my family' ? '' : 'family' }}</option>
+								<option value="their carer">{{ interview.aggrieved.pronoun.their }} carer</option>
+								<option value="their work">someone at work</option>
+								<option value="their stranger">a stranger</option>
+							</optgroup>
+						</select>
+					</span>
+					<select ng-model="interview.partyIntimate" ng-show="interview.party === 'my partner' || interview.party === 'my ex' || interview.party === 'my partner’s ex' || interview.party === 'their ex' || interview.party === 'their partner'" ng-change="interview.updateParties()">
+						<option value=""></option>
+						<option value="husband">husband</option>
+						<option value="wife">wife</option>
+						<option value="boyfriend">boyfriend</option>
+						<option value="girlfriend">girlfriend</option>
+					</select>
+					<select ng-model="interview.partyFamily" ng-show="interview.party === 'my family' || interview.party === 'my partner’s family' || interview.party === 'their family'" ng-change="interview.updateParties()">
+						<option value="">family</option>
+						<option value="husband">husband</option>
+						<option value="wife">wife</option>
+						<option value="mother">mother</option>
+						<option value="father">father</option>
+						<option value="grandmother">grandmother</option>
+						<option value="grandfather">grandfather</option>
+						<option value="aunt">aunt</option>
+						<option value="uncle">uncle</option>
+						<option value="son">son</option>
+						<option value="daughter">daughter</option>
+						<option value="grandson">grandson</option>
+						<option value="granddaughter">granddaughter</option>
+						<option value="nephew">nephew</option>
+						<option value="neice">neice</option>
+						<option value="cousin">cousin</option>
+						<!-- step family -->
+						<option value="stepbrother">stepbrother</option>
+						<option value="stepsister">stepsister</option>
+						<option value="stepfather">stepfather</option>
+						<option value="stepmother">stepmother</option>
+						<option value="stepson">stepson</option>
+						<option value="stepdaughter">stepdaughter</option>
+						<!-- in-laws -->
+						<option value="mother-in-law">mother-in-law</option>
+						<option value="father-in-law">father-in-law</option>
+						<option value="brother-in-law">brother-in-law</option>
+						<option value="sister-in-law">sister-in-law</option>
+					</select>
+				</p>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.applicantIsAggrieved">
+			<fieldset>
+				<legend>
+					<span class="label">Are you in danger right now?</span>
+					<small class="hint">If someone could hurt you while you're completing this form you should call the police. Police can help you right now and apply for a protection order for you.</small>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="yes" id="applicant-danger-yes">
+						<label for="applicant-danger-yes">Yes</label>—call <a href="tel:000">000</a> and ask for police
+					</li>
+					<li>
+						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="maybe" id="applicant-danger-dunno">
+						<label for="applicant-danger-dunno">I don't know</label>—contact DVConnect
+					</li>
+					<li>
+						<input type="radio" name="applicant-danger" ng-model="interview.applicantInDanger" value="no" id="applicant-danger-no">
+						<label for="applicant-danger-no">It's safe for me to fill out this form</label> (I know it could take 1 hour or longer)
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.applicantInDanger === 'yes'">
+			<div class="status warn">
+				<h2>What can I do if I need help urgently?</h2>
+				<p>Call <a href="tel:000">000</a> and ask for the <q>police</q></p>
+				<p>Read <a href="http://www.legalaid.qld.gov.au/Find-legal-information/Publications/Legal-information-guides/How-to-apply-for-a-domestic-violence-order/What-can-I-do-if-I-need-help-urgently">What can I do if I need help urgently?</a> (Legal Aid Queensland)</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.applicantInDanger === 'maybe'">
+			<div class="status warn">
+				<h2>What can I do if I need help urgently?</h2>
+				<p>Read <a href="http://www.legalaid.qld.gov.au/Find-legal-information/Publications/Legal-information-guides/How-to-apply-for-a-domestic-violence-order/What-can-I-do-if-I-need-help-urgently">What can I do if I need help urgently?</a> (Legal Aid Queensland)</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.applicantIsAggrieved &amp;&amp; interview.applicantInDanger !== undefined">
+			<fieldset>
+				<legend>
+					<span class="label">Is your web use private?</span>
+					<small class="hint">Someone you know may be able to tell you visited this web page.</small>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" ng-model="interview.safe" value="No" id="interview-is-safe-no">
+						<label for="interview-is-safe-no">No—someone I know could spy on my web use</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.safe" value="Not sure" id="interview-is-safe-not-sure">
+						<label for="interview-is-safe-not-sure">Not sure</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.safe" value="Yes" id="interview-is-safe-yes">
+						<label for="interview-is-safe-yes">Yes—this computer is safe to use</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.applicantIsAggrieved &amp;&amp; interview.safe === 'No'">
+			<div class="status warn">
+				<h2>Protect yourself online</h2>
+				<p>Learn about <a href="#">safe web use habits</a></p>
+				<p>Leave this web page and <a href="#">clear your web history</a></p>
+			</div>
+		</li>
+
+		<li ng-show="interview.applicantIsAggrieved &amp;&amp; interview.safe === 'Not sure'">
+			<div class="status info">
+				<h2>Different ways to apply for protection</h2>
+				<ul>
+					<li>contact Queensland Police</li>
+					<li>contact DVConnect</li>
+					<li>from a computer at a public library</li>
+					<li>from a computer or tablet at a someone else's place</li>
+					<li>in person, at a Queensland Magistrates Court</li>
+					<li>from a safe smartphone (e.g. <a href="http://wesnet.org.au/home2/projects/telstra-safe-connections-project/">Safe Connections</a></li>
+				</ul>
+
+				<h3>Continue applying</h3>
+				<ul>
+					<li>switch to a <a href="#">private web session</a></li>
+					<li>clear your web history</li>
+					<li>use the <em>Quick Exit</em> button on the side of the screen if you need to quickly exit this site.</li>
+				</ul>
+			<!--
+				<h3>Save and continue later</h3>
+				<ul>
+					<li>Would you like to setup save and continue later?</li>
+					<li>We can email your application to a trusted email address: your own, a friend, family or a service provider</li>
+					<li>We can save your responses on this computer which you can access again using a safe word</li>
+				</ul>
+			-->
+			</div>
+		</li>
+
+		<li ng-show="interview.applicantIsAggrieved &amp;&amp; interview.applicantInDanger === 'no' &amp;&amp; interview.safe === 'Yes'">
+			<fieldset>
+				<legend>
+					<span class="label">Who do you need protection from?</span>
+				</legend>
+				<p>
+					I am being abused by
+					<select ng-model="interview.party" ng-change="interview.updateParties()">
+						<optgroup label="Who is abusing you?">
+							<option value="my partner">my {{ interview.party === 'my partner' ? '' : 'partner' }}</option>
+							<option value="my ex">my ex</option>
+							<option value="my partner’s ex">my partner’s ex</option>
+							<option value="my family">my {{ interview.party === 'my family' ? '' : 'family' }}</option>
+							<option value="my partner’s family">my partner’s {{ interview.party === 'my partner’s family' ? '' : 'family' }}</option>
+							<option value="my carer">my carer</option>
+							<option value="my boss">my boss</option>
+							<option value="my coworker">a coworker</option>
+							<option value="my stranger">a stranger</option>
+						</optgroup>
+					</select>
+					<select ng-model="interview.partyIntimate" ng-show="interview.party === 'my partner' || interview.party === 'my ex' || interview.party === 'my partner’s ex' || interview.party === 'their ex' || interview.party === 'their partner'" ng-change="interview.updateParties()">
+						<option value=""></option>
+						<option value="husband">husband</option>
+						<option value="wife">wife</option>
+						<option value="boyfriend">boyfriend</option>
+						<option value="girlfriend">girlfriend</option>
+					</select>
+					<select ng-model="interview.partyFamily" ng-show="interview.party === 'my family' || interview.party === 'my partner’s family' || interview.party === 'their family'" ng-change="interview.updateParties()">
+						<option value="">family</option>
+						<option value="husband">husband</option>
+						<option value="wife">wife</option>
+						<option value="mother">mother</option>
+						<option value="father">father</option>
+						<option value="grandmother">grandmother</option>
+						<option value="grandfather">grandfather</option>
+						<option value="aunt">aunt</option>
+						<option value="uncle">uncle</option>
+						<option value="son">son</option>
+						<option value="daughter">daughter</option>
+						<option value="grandson">grandson</option>
+						<option value="granddaughter">granddaughter</option>
+						<option value="nephew">nephew</option>
+						<option value="neice">neice</option>
+						<option value="cousin">cousin</option>
+						<!-- step family -->
+						<option value="stepbrother">stepbrother</option>
+						<option value="stepsister">stepsister</option>
+						<option value="stepfather">stepfather</option>
+						<option value="stepmother">stepmother</option>
+						<option value="stepson">stepson</option>
+						<option value="stepdaughter">stepdaughter</option>
+						<!-- in-laws -->
+						<option value="mother-in-law">mother-in-law</option>
+						<option value="father-in-law">father-in-law</option>
+						<option value="brother-in-law">brother-in-law</option>
+						<option value="sister-in-law">sister-in-law</option>
+					</select>
+				</p>
+			</fieldset>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.AGGRIEVED">
+<h2>Aggrieved’s details – (person in need of protection)</h2>
+<form class="form" name="formAggrieved" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li class="group atomic">
+			<fieldset>
+				<legend>
+					<span ng-if="interview.applicantIsAggrieved" class="label">What is your name?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship.aggrieved" class="label">What is your {{ interview.applicant.relationship.aggrieved }}’s name?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship.aggrieved" class="label">What is the name of the person in need of protection?</span>
+				</legend>
+				<ol class="questions compact">
+					<li>
+						<label for="aggrieved-name-given">
+							<span class="label">Given name</span>
+						</label>
+						<input type="text" size="15"
+						       id="aggrieved-name-given"
+						       ng-model="interview.aggrieved.name.given"
+						       ng-change="interview.saveAggrieved()"
+						>
+					</li>
+					<li>
+						<label for="aggrieved-name-family">
+							<span class="label">Family name</span>
+						</label>
+						<input type="text" size="15"
+						       id="aggrieved-name-family"
+						       ng-model="interview.aggrieved.name.family"
+						       ng-change="interview.saveAggrieved()"
+						>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li>
+			<label for="interview-aggrieved-date-birth">
+				<span class="label">Date of birth</span>
+			</label>
+			<input type="text" id="interview-aggrieved-date-birth" ng-model="interview.aggrieved.dateBirth">
+		</li>
+		<li>
+			<label for="interview-aggrieved-gender">
+				<span class="label">Gender</span>
+			</label>
+			<select ng-model="interview.aggrieved.gender" id="interview-aggrieved-gender" ng-change="interview.saveAggrieved()">
+				<option value=""></option>
+				<option value="Female">Female</option>
+				<option value="Male">Male</option>
+				<option value="Man">Man</option>
+				<option value="Woman">Woman</option>
+				<option value="Transgender">Transgender</option>
+				<option value="Transsexual">Transsexual</option>
+				<option value="Genderqueer">Genderqueer</option>
+				<option value="Non-gendered">Non-gendered</option>
+				<option value="Agender">Agender</option>
+				<option value="Genderless">Genderless</option>
+				<option value="Non-binary">Non-binary</option>
+				<option value="Trans Man">Trans Man</option>
+				<option value="Trans Woman">Trans Woman</option>
+				<option value="Third Gender">Third Gender</option>
+				<option value="Two-Spirit">Two-Spirit</option>
+				<option value="Bi-Gender">Bi-Gender</option>
+				<option value="Genderfluid">Genderfluid</option>
+				<option value="Transvestite">Transvestite</option>
+			</select>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+<section ng-show="interview.page === interview.PAGE.AGGRIEVED2">
+<h2>Aggrieved’s details – (person in need of protection)</h2>
+<form class="form" name="formAggrieved2" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li class="group atomic">
+			<fieldset>
+				<legend>
+					<span ng-if="interview.applicantIsAggrieved" class="label">What is your name?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship.aggrieved" class="label">What is your {{ interview.applicant.relationship.aggrieved }}’s name?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship.aggrieved" class="label">What is the name of the person in need of protection?</span>
+				</legend>
+				<ol class="questions compact">
+					<li>
+						<label for="aggrieved-name-given">
+							<span class="label">Given name</span>
+						</label>
+						<input type="text" size="15"
+						       id="aggrieved-name-given"
+						       ng-model="interview.aggrieved.name.given"
+						       ng-change="interview.saveAggrieved()"
+						>
+					</li>
+					<li>
+						<label for="aggrieved-name-family">
+							<span class="label">Family name</span>
+						</label>
+						<input type="text" size="15"
+						       id="aggrieved-name-family"
+						       ng-model="interview.aggrieved.name.family"
+						       ng-change="interview.saveAggrieved()"
+						>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li>
+			<label for="interview-aggrieved-address">
+				<span class="label">Address</span>
+			</label>
+			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30"></textarea>
+		</li>
+		<li>
+			<label for="interview-aggrieved-date-birth">
+				<span class="label">Date of birth</span>
+			</label>
+			<input type="text" id="interview-aggrieved-date-birth" ng-model="interview.aggrieved.dateBirth">
+		</li>
+		<li>
+			<label for="interview-aggrieved-gender">
+				<span class="label">Gender</span>
+			</label>
+			<select ng-model="interview.aggrieved.gender" id="interview-aggrieved-gender" ng-change="interview.saveAggrieved()">
+				<option value=""></option>
+				<option value="Female">Female</option>
+				<option value="Male">Male</option>
+				<option value="Man">Man</option>
+				<option value="Woman">Woman</option>
+				<option value="Transgender">Transgender</option>
+				<option value="Transsexual">Transsexual</option>
+				<option value="Genderqueer">Genderqueer</option>
+				<option value="Non-gendered">Non-gendered</option>
+				<option value="Agender">Agender</option>
+				<option value="Genderless">Genderless</option>
+				<option value="Non-binary">Non-binary</option>
+				<option value="Trans Man">Trans Man</option>
+				<option value="Trans Woman">Trans Woman</option>
+				<option value="Third Gender">Third Gender</option>
+				<option value="Two-Spirit">Two-Spirit</option>
+				<option value="Bi-Gender">Bi-Gender</option>
+				<option value="Genderfluid">Genderfluid</option>
+				<option value="Transvestite">Transvestite</option>
+			</select>
+		</li>
+		<li>
+			<label for="interview-aggrieved-phone-home">
+				<span class="label">Home phone</span>
+			</label>
+			<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20">
+		</li>
+		<li>
+			<label for="interview-aggrieved-phone-mobile">
+				<span class="label">Mobile</span>
+			</label>
+			<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20">
+		</li>
+		<li>
+			<label for="interview-aggrieved-phone-work">
+				<span class="label">Work phone</span>
+			</label>
+			<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20">
+		</li>
+		<li>
+			<label for="interview-aggrieved-email">
+				<span class="label">Email</span>
+			</label>
+			<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30">
+		</li>
+		<li>
+			<label for="interview-aggrieved-idNumber">
+				<span class="label">ID number (optional)</span>
+				<small class="hint">Example: Drivers licence, 18+ card</small>
+			</label>
+			<input type="tel" id="interview-aggrieved-idNumber" ng-model="interview.aggrieved.idNumber" size="20">
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} require an interpreter?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-aggrieved-interpreter" ng-model="interview.aggrieved.requiresInterpreter" ng-value="false" id="aggrieved-interpreter-no">
+						<label for="aggrieved-interpreter-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-interpreter" ng-model="interview.aggrieved.requiresInterpreter" ng-value="true" id="aggrieved-interpreter-yes">
+						<label for="aggrieved-interpreter-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.aggrieved.requiresInterpreter">
+			<label for="aggrieved-language-dialect">
+				<span class="label">Language/Dialect</span>
+			</label>
+			<input type="text" ng-model="interview.aggrieved.language" size="20" id="aggrieved-language-dialect">
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} identify as</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="interview-aggrieved-identify-as" ng-model="interview.aggrieved.identifyAs" value="Aboriginal" id="aggrieved-identify-as-aboriginal">
+						<label for="aggrieved-identify-as-aboriginal">Aboriginal</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-identify-as" ng-model="interview.aggrieved.identifyAs" value="Torres Strait Islander" id="aggrieved-identify-as-torres-strait-islander">
+						<label for="aggrieved-identify-as-torres-strait-islander">Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-identify-as" ng-model="interview.aggrieved.identifyAs" value="Aboriginal and Torres Strait Islander" id="aggrieved-identify-as-aboriginal-and-torres-strait-islander">
+						<label for="aggrieved-identify-as-aboriginal-and-torres-strait-islander">Aboriginal and Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-identify-as" ng-model="interview.aggrieved.identifyAs" value="N/A" id="aggrieved-identify-as-na">
+						<label for="aggrieved-identify-as-na">None of the above</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have a disability, illness or impairment where support and/or special arrangements are required?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-aggrieved-have-a-disability" ng-model="interview.aggrieved.hasDisability" ng-value="false" id="aggrieved-have-a-disability-no">
+						<label for="aggrieved-have-a-disability-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-have-a-disability" ng-model="interview.aggrieved.hasDisability" ng-value="true" id="aggrieved-have-a-disability-yes">
+						<label for="aggrieved-have-a-disability-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.aggrieved.hasDisability">
+			<label for="aggrieved-disability-details">
+				<span class="label">Please provide details about {{ interview.aggrieved.pronoun.your }} needs</span>
+			</label>
+			<textarea ng-model="interview.aggrieved.disabilityNeeds" id="aggrieved-disability-details" rows="3" cols="40"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Are you' : 'Is ' + interview.aggrieved.name.short }} under 18 years of age?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-aggrieved-under-18" ng-model="interview.aggrieved.under18" ng-value="false" id="aggrieved-under-18-no">
+						<label for="aggrieved-under-18-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-under-18" ng-model="interview.aggrieved.under18" ng-value="true" id="aggrieved-under-18-yes">
+						<label for="aggrieved-under-18-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li class="section" ng-show="interview.aggrieved.under18">
+			<fieldset>
+				<legend>
+					<span class="h2">Parent's details</span>
+					<p>All documents must be given to a parent unless the court orders otherwise.</p>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="aggrieved-parent-name">
+							<span class="label">Parent's name</span>
+						</label>
+						<input ng-model="interview.aggrieved.parent.name.full" size="30" type="text" id="aggrieved-parent-name">
+					</li>
+					<li>
+						<label for="aggrieved-parent-address">
+							<span class="label">Parent's address</span>
+						</label>
+						<textarea ng-model="interview.aggrieved.parent.address" id="aggrieved-parent-address" rows="3" cols="4"></textarea>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+<section ng-show="interview.page === interview.PAGE.RESPONDENT">
+<h2>Respondent’s Details (person the aggrieved is seeking protection from)</h2>
+<form class="form" name="formRespondent" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li class="group atomic">
+			<fieldset>
+				<legend>
+					<span ng-if="interview.applicantIsAggrieved" class="label">Who do you need protection from?</span>
+					<span ng-if="! interview.applicantIsAggrieved" class="label">Who does {{ interview.aggrieved.name.short }} need protection from?</span>
+				</legend>
+				<ol class="questions compact">
+					<li>
+						<label for="respondent-name-given">
+							<span class="label">Given name</span>
+						</label>
+						<input type="text" size="15"
+						       id="respondent-name-given"
+						       ng-model="interview.respondent.name.given"
+						       ng-change="interview.saveRespondent()"
+						>
+					</li>
+					<li>
+						<label for="respondent-name-family">
+							<span class="label">Family name</span>
+						</label>
+						<input type="text" size="15"
+						       id="respondent-name-family"
+						       ng-model="interview.respondent.name.family"
+						       ng-change="interview.saveRespondent()"
+						>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li>
+			<label for="interview-respondent-date-birth">
+				<span class="label">Date of birth</span>
+			</label>
+			<input type="text" id="interview-respondent-date-birth" ng-model="interview.respondent.dateBirth">
+		</li>
+		<li>
+			<label for="interview-respondent-gender">
+				<span class="label">Gender</span>
+			</label>
+			<select ng-model="interview.respondent.gender" id="interview-respondent-gender" ng-change="interview.saveRespondent()">
+				<option value=""></option>
+				<option value="Female">Female</option>
+				<option value="Male">Male</option>
+				<option value="Man">Man</option>
+				<option value="Woman">Woman</option>
+				<option value="Transgender">Transgender</option>
+				<option value="Transsexual">Transsexual</option>
+				<option value="Genderqueer">Genderqueer</option>
+				<option value="Non-gendered">Non-gendered</option>
+				<option value="Agender">Agender</option>
+				<option value="Genderless">Genderless</option>
+				<option value="Non-binary">Non-binary</option>
+				<option value="Trans Man">Trans Man</option>
+				<option value="Trans Woman">Trans Woman</option>
+				<option value="Third Gender">Third Gender</option>
+				<option value="Two-Spirit">Two-Spirit</option>
+				<option value="Bi-Gender">Bi-Gender</option>
+				<option value="Genderfluid">Genderfluid</option>
+				<option value="Transvestite">Transvestite</option>
+			</select>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+<section ng-show="interview.page === interview.PAGE.RELATIONSHIP">
+<div class="status info" ng-if="interview.aggrieved.name.given &amp;&amp; interview.respondent.name.given">
+	<h2>{{ interview.applicantIsAggrieved ? 'You want' : interview.aggrieved.name.given + ' wants' }} protection from {{ interview.respondent.name.given }}</h2>
+	<ul>
+		<li>{{ interview.applicantIsAggrieved ? 'You are' : interview.aggrieved.name.given + ' is' }} the <dfn>aggrieved</dfn> (the person wanting protection).</li>
+		<li ng-if="interview.applicantIsAggrieved">You are also the <dfn>applicant</dfn> (the person applying for a protection order)</li>
+		<li>{{ interview.respondent.name.given }} is the <dfn>respondent</dfn> (the person {{ interview.applicantIsAggrieved ? 'you want' : interview.aggrieved.name.given + ' wants' }} protection from).</li>
+		<li ng-if="! interview.applicantIsAggrieved">You are the <dfn>applicant</dfn> (the person applying for a protection order).</li>
+	</ul>
+</div>
+
+<form class="form" name="formRelationship" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">What is {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} relationship to {{ interview.respondent.name.short }}?</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Intimate personal" id="interview-relationship-intimate-personal">
+						<label for="interview-relationship-intimate-personal">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} have (or had) an intimate personal relationship</label>
+						<small class="hint">Example: are/were married or in a registered relationship, have/had a child together, are/were dating, are/were a couple.</small>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Family" id="interview-relationship-family">
+						<label ng-if="interview.applicantIsAggrieved" for="interview-relationship-family">we are related</label>
+						<label ng-if="! interview.applicantIsAggrieved" for="interview-relationship-family">{{ interview.aggrieved.name.short }} is related to {{ interview.respondent.name.short }}</label>
+						<small class="hint">Includes {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} immediate and extended family, in-laws, step- or foster family.</small>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Informal care" id="interview-relationship-informal-care">
+						<label for="interview-relationship-informal-care">{{ interview.respondent.name.short }} helps care for {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
+						<small class="hint">Examples of <dfn>informal care</dfn>: dressing or other personal grooming; preparing meals or helping with eating; shopping for groceries; or calling a specialist to make a medical appointment.</small>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.category" value="Commercial care" id="interview-relationship-commercial-care">
+						<label for="interview-relationship-commercial-care">{{ interview.respondent.name.short }} is {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} paid carer</label>
+						<small class="hint">Example: <dfn>commercial care</dfn> by a nurse.</small>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.aggrieved.relationship.category === 'Commercial care'">
+			<div class="status warn">
+				<h2>You need to lodge a complaint with the service provider</h2>
+				<p>A domestic violence provention order only applies to domestic relationships. The magistrate cannot give you a protection order naming a carer who is paid.</p>
+				<p>You should seek legal advice.</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal'">
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }}:</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Married" id="interview-relationship-married">
+						<label for="interview-relationship-married">are married</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Spouse" id="interview-relationship-former-spouse">
+						<label for="interview-relationship-former-spouse">were married</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="De Facto" id="interview-relationship-de-facto">
+						<label for="interview-relationship-de-facto">are in a <dfn>de facto</dfn> relationship</label>
+						<small class="hint">2 people living together as a couple who are not married or related</small>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="former De Facto" id="interview-relationship-former-de-facto">
+						<label for="interview-relationship-former-de-facto">were in a <dfn>de facto</dfn> relationship</label>
+						<small class="hint">2 people who lived together as a couple who were not married or related</small>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Registered Relationship" id="interview-relationship-registered-relationship">
+						<label for="interview-relationship-registered-relationship">are in a civil partnership/registered relationship</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Previous Registered Relationship" id="interview-relationship-registered-relationship-past">
+						<label for="interview-relationship-registered-relationship-past">were in a civil partnership/registered relationship</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent of a Child" id="interview-relationship-parent-of-a-child">
+						<label for="interview-relationship-parent-of-a-child">are parents of the same child</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Parent of a Child" id="interview-relationship-former-parent-of-a-child">
+						<label for="interview-relationship-former-parent-of-a-child">were parents of the same child</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Engaged" id="interview-relationship-engaged">
+						<label for="interview-relationship-engaged">are engaged</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Were Engaged" id="interview-relationship-were-engaged">
+						<label for="interview-relationship-were-engaged">were engaged</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Couple" id="interview-relationship-couple">
+						<label for="interview-relationship-couple">are a couple</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Past Couple" id="interview-relationship-couple-past">
+						<label for="interview-relationship-couple-past">were a couple</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.aggrieved.relationship.category === 'Family'">
+			<label for="interview-family-relationship">
+				<span class="label" ng-if="interview.applicantIsAggrieved">How are you related to {{ interview.respondent.name.short }}?</span>
+				<span class="label" ng-if="! interview.applicantIsAggrieved">How are {{ interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} related?</span>
+			</label>
+			<input for="interview-family-relationship" type="text" ng-model="interview.partyFamily" size="20" ng-change="interview.updateParties()">
+		</li>
+
+		<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; ( interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Past Couple' )">
+			<label for="interview-relationship-couple">
+				<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} {{ interview.aggrieved.relationship.type === 'Couple' ? 'are' : 'were' }} a couple</span>
+				<small class="hint">Describe {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short +'’s' }} level of dependence on each other, whether financial or otherwise; how long you've been in a relationship; how often you have contact and {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.their }} degree of intimacy (if any).</small>
+			</label>
+			<textarea cols="40" rows="2"
+			       id="interview-relationship-couple"
+			       ng-model="interview.aggrieved.relationship.couple"
+			></textarea>
+		</li>
+
+		<li ng-show="interview.aggrieved.relationship.category === 'Informal care'">
+			<label for="interview-relationship-family-informal-care-specify">
+				<span class="label">Describe the relationship {{ interview.applicantIsAggrieved ? 'you have with' : 'between ' + interview.aggrieved.name.short + ' and' }} {{ interview.respondent.name.short }}</span>
+			</label>
+			<textarea cols="40" rows="2"
+			       id="interview-relationship-family-informal-care-specify"
+			       ng-model="interview.aggrieved.relationship.informalCare"
+			></textarea>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.ORDERS">
+	<h2>Details of any other orders</h2>
+
+	<form class="form" name="formOrders" ng-submit="interview.continue( $event )">
+		<ol class="questions">
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Have {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} been involved in other court proceedings where an order has been made?</span>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="interview-orders-exist" ng-model="interview.orders.exist" ng-value="false" id="interview-orders-exist-no">
+							<label for="interview-orders-exist-no">No</label>
+						</li>
+						<li>
+							<input type="radio" name="interview-orders-exist" ng-model="interview.orders.exist" ng-value="true" id="interview-orders-exist-yes">
+							<label for="interview-orders-exist-yes">Yes</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li ng-show="interview.orders.exist">
+				<fieldset>
+					<legend>
+						<span class="label">Please tick the box next to the type of order</span>
+						<small class="hint">Attach copies to each order to inform the court when the order was made and whether it is still current</small>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input type="checkbox" ng-model="interview.orders.childProtection" ng-value="true" id="interview-orders-child-protection">
+							<label for="interview-orders-child-protection">Child Protection Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.qldDVO" ng-value="true" id="interview-orders-qld-dvo">
+							<label for="interview-orders-qld-dvo">Queensland Domestic Violence Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.policeProtection" ng-value="true" id="interview-orders-police-protection">
+							<label for="interview-orders-police-protection">Police Protection Notice</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.voluntaryIntervention" ng-value="true" id="interview-orders-voluntary-intervention">
+							<label for="interview-orders-voluntary-intervention">Voluntary Intervention Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.interstateDVO" ng-value="true" id="interview-orders-interstate-dvo">
+							<label for="interview-orders-interstate-dvo">Interstate Domestic Violence Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.NZ_DVO" ng-value="true" id="interview-orders-nz-dvo">
+							<label for="interview-orders-nz-dvo">New Zealand Domestic Violence Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.orders.familyCourt" ng-value="true" id="interview-orders-family-court">
+							<label for="interview-orders-family-court">Family Court Order</label>
+						</li>
+						<li>
+							<input type="checkbox" ng-model="interview.ordersOther" ng-value="true" id="interview-orders-other">
+							<label for="interview-orders-other">Other relevant court order</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+			<li ng-show="interview.ordersOther">
+				<label for="interview-orders-other-type">
+					<span class="label">Type of order</span>
+				</label>
+				<input type="text" id="interview-orders-other-type" ng-model="interview.orders.other">
+			</li>
+
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Is there a current Protection Order application, between {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} that has not yet been decided by the court?</span>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="interview-orders-protection-progress" ng-model="interview.orders.protectionInProgress" ng-value="false" id="interview-orders-protection-progress-no">
+							<label for="interview-orders-protection-progress-no">No</label>
+						</li>
+						<li>
+							<input type="radio" name="interview-orders-protection-progress" ng-model="interview.orders.protectionInProgress" ng-value="true" id="interview-orders-protection-progress-yes">
+							<label for="interview-orders-protection-progress-yes">Yes</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">Is there another application for a protection order before a court, where {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} named as the respondent, and {{ interview.respondent.name.short}} is named as the aggrieved?</span>
+						<small class="hint">This is known as a <dfn>cross application</dfn>. You must tell the court about the cross application. The court must consider whether it is appropriate for both applications to be heard together.</small>
+					</legend>
+					<ul class="choices compact">
+						<li>
+							<input type="radio" name="interview-orders-cross-application" ng-model="interview.orders.crossApplication" ng-value="false" id="interview-orders-cross-application-no">
+							<label for="interview-orders-cross-application-no">No</label>
+						</li>
+						<li>
+							<input type="radio" name="interview-orders-cross-application" ng-model="interview.orders.crossApplication" ng-value="true" id="interview-orders-cross-application-yes">
+							<label for="interview-orders-cross-application-yes">Yes</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+			<li ng-show="interview.orders.crossApplication">
+				<div class="status info">
+					<h2>Attach a copy of the cross application</h2>
+					<p>The court must consider whether it is appropriate for both applications to be heard together.</p>
+				</div>
+			</li>
+		</ol>
+
+		<ol class="questions">
+			<li class="footer">
+				<ul class="actions">
+					<li><strong><button type="submit">Continue</button></strong></li>
+				</ul>
+			</li>
+		</ol>
+	</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.GROUNDS">
+<h2>Why {{ interview.applicantIsAggrieved ? 'do you' : 'does ' + interview.aggrieved.name.short }} need protection?</h2>
+<form class="form" name="formGrounds" ng-submit="interview.continue( $event )">
+	<div class="status info">
+		<h2>What has {{ interview.respondent.name.short }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</h2>
+		<p>
+			Domestic and family violence is when one
+			person in a relationship uses violence or
+			abuse to have power and control over
+			the other person. Abuse is not always
+			physical—it can be emotional, verbal,
+			sexual, financial or other controlling
+			behaviours that cause the person being
+			abused to live in fear.
+		</p>
+	</div>
+
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="h3">Has {{ interview.respondent.name.short }} behaved in a way that is</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-physical"
+						       ng-model="interview.abuse.physical"
+						       ng-value="true">
+						<label for="interview-abuse-physical">physically abusive</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-sexual"
+						       ng-model="interview.abuse.sexual"
+						       ng-value="true">
+						<label for="interview-abuse-sexual">sexually abusive</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-emotional"
+						       ng-model="interview.abuse.emotional"
+						       ng-value="true">
+						<label for="interview-abuse-emotional">emotionally or psychologially abusive</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-threat"
+						       ng-model="interview.abuse.threat"
+						       ng-value="true">
+						<label for="interview-abuse-threat">threatening</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-coercive"
+						       ng-model="interview.abuse.coercive"
+						       ng-value="true">
+						<label for="interview-abuse-coercive">coercive</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="h3">Has {{ interview.respondent.name.short }}</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-injury"
+						       ng-model="interview.abuse.injury"
+						       ng-value="true">
+						<label for="interview-abuse-injury">caused personal injury to {{ interview.aggrieved.pronoun.you }} or threatened to do so</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-coercedSexually"
+						       ng-model="interview.abuse.coercedSexually"
+						       ng-value="true">
+						<label for="interview-abuse-coercedSexually">coerced {{ interview.aggrieved.pronoun.you }} into sexual activity or attempted to do so</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-propertyDamage"
+						       ng-model="interview.abuse.propertyDamage"
+						       ng-value="true">
+						<label for="interview-abuse-propertyDamage">damaged {{ interview.aggrieved.pronoun.your }} property or threatened to do so</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-liberty"
+						       ng-model="interview.abuse.liberty"
+						       ng-value="true">
+						<label for="interview-abuse-liberty">deprived {{ interview.aggrieved.pronoun.you }} of {{ interview.aggrieved.pronoun.your }} liberty or threatened to do so</label>
+					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-selfHarm"
+						       ng-model="interview.abuse.selfHarm"
+						       ng-value="true">
+						<label for="interview-abuse-selfHarm">threatened to harm {{ interview.respondent.pronoun.them }}self or suicide to intimidate {{ interview.aggrieved.pronoun.you }} or someone else</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Did any of the domestic and family violence happen where {{ interview.applicantIsAggrieved ? 'you live' : interview.aggrieved.name.short + ' lives' }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-abuse-at-residence" ng-model="interview.abuse.atResidence" ng-value="false" id="interview-abuse-at-residence-no">
+						<label for="interview-abuse-at-residence-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-abuse-at-residence" ng-model="interview.abuse.atResidence" ng-value="true" id="interview-abuse-at-residence-yes">
+						<label for="interview-abuse-at-residence-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li>
+			<div class="status info">
+				<h2>Explaining what has happened</h2>
+				<p>Now please expand upon the domestic violence you have indicated above, including the date or the approximate dates, (e.g. March - April 2015) of specific incidents.</p>
+				<p>Please include all major incidents of domestic or family violence.</p>
+			</div>
+
+			<fieldset>
+				<legend>
+					<span class="label">Describe how {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="interview-grounds-most-recent-description">
+							<span class="label">What did {{ interview.respondent.pronoun.they }} do?</span>
+							<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.pronoun.they }} said and did. Don't exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
+						</label>
+						<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10"></textarea>
+					</li>
+					<li>
+						<label for="interview-grounds-most-recent-feel">
+							<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
+							<small class="hint">Examples: threatened, fearful or scared?</small>
+						</label>
+						<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3"></textarea>
+					</li>
+					<li>
+						<label for="interview-grounds-most-recent-when">
+							<span class="label">When did this happen?</span>
+							<small class="hint">Give a specific date and time</small>
+						</label>
+						<input type="text" id="interview-grounds-most-recent-when" ng-model="interview.grounds.mostRecent.when" size="15">
+					</li>
+					<li>
+						<label for="interview-grounds-most-recent-where">
+							<span class="label">Where did this happen?</span>
+							<small class="hint">Example: at home, work, an address or describe the place</small>
+						</label>
+						<input type="text" id="interview-grounds-most-recent-where" ng-model="interview.grounds.mostRecent.where" size="30" list="placenames">
+					</li>
+					<li>
+						<label for="interview-grounds-most-recent-witness">
+							<span class="label">Who else witnessed this?</span>
+							<small class="hint">Example: partners, children, parents, friends, neighbours.</small>
+						</label>
+						<input type="text" id="interview-grounds-most-recent-witness" ng-model="interview.grounds.mostRecent.witness" size="30" list="witnesses">
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Has {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} more than once?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="false" id="interview-grounds-multiple-no">
+						<label for="interview-grounds-multiple-no">No</label>
+					</li>
+					<li>
+						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="true" id="interview-grounds-multiple-yes">
+						<label for="interview-grounds-multiple-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Did {{ interview.respondent.name.short }} use, or threaten to use, a weapon?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-weapon-threat" ng-model="interview.respondent.weapon.threat" ng-value="false" id="interview-weapon-threat-no">
+						<label for="interview-weapon-threat-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-weapon-threat" ng-model="interview.respondent.weapon.threat" ng-value="true" id="interview-weapon-threat-yes">
+						<label for="interview-weapon-threat-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.respondent.weapon.threat === false">
+			<fieldset>
+				<legend>
+					<span class="label">Did {{ interview.respondent.name.short }} use, or threaten to use, something else as a weapon?</span>
+					<small class="hint">Example: sporting equipment (bats), appliances, tools (hammer), or other items.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-weapon-threat2" ng-model="interview.respondent.weapon.threat2" ng-value="false" id="interview-weapon-threat2-no">
+						<label for="interview-weapon-threat2-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-weapon-threat2" ng-model="interview.respondent.weapon.threat2" ng-value="true" id="interview-weapon-threat2-yes">
+						<label for="interview-weapon-threat2-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.respondent.weapon.threat || interview.respondent.weapon.threat2">
+			<label for="interview-weapon-threat-details">
+				<span class="label">Provide details of what {{ interview.respondent.pronoun.they }} did</span>
+			</label>
+			<textarea id="interview-weapon-threat-details" ng-model="interview.respondent.weapon.threatDetails" cols="40" rows="10"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Will you attach extra pages describing the domestic violence?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="false" id="interview-abuse-description-attachment-no">
+						<label for="interview-abuse-description-attachment-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="true" id="interview-abuse-description-attachment-yes">
+						<label for="interview-abuse-description-attachment-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.grounds.multipleIncidents || interview.attachments.abuseDescription">
+			<div class="status info">
+				<h2>Attaching evidence</h2>
+				<p>You can attach extra pages to this application describing the domestic violence. This can include your own words describing events, but also reports from police or medical staff and photos.</p>
+				<p>Remember to bring all pages with you when to lodge this application at court.</p>
+			</div>
+		</li>
+
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+<section ng-show="interview.page === interview.PAGE.URGENT">
+
+<div class="status info">
+	<h2>Do you require urgent protection?</h2>
+	<p>The hearing of an application for a protection order will not be held immediately.
+	   A copy of the application must be served on the respondent
+	   <span ng-if="interview.respondent.name.given">(given to {{ interview.respondent.name.given }})</span>
+	   before a protection order may be made.
+	   It may be a few weeks until your court date.</p>
+	<p>What can you do about this delay?
+	You can ask the clerk of the court to arrange an earlier court date (before {{ interview.respondent.name.short }} has been served)
+	so the magistrate can consider whether to make a temporary protection order.</p>
+	<p>You will still need to go to court later (and {{ interview.respondent.name.short }} will need to go to court then too) for this application.
+	A temporary protection order will cover {{ interview.aggrieved.pronoun.you }} until then.</p>
+</p>
+</div>
+
+
+<form class="form" name="formUrgent" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Has {{ interview.respondent.name.short }} hurt {{ interview.aggrieved.pronoun.you }} in the last few days?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-abuse-recent"
+						       id="interview-abuse-recent-false"
+						       ng-model="interview.abuse.recent"
+						       ng-value="false">
+						<label for="interview-abuse-recent-false">No</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-abuse-recent"
+						       id="interview-abuse-recent-true"
+						       ng-model="interview.abuse.recent"
+						       ng-value="true">
+						<label for="interview-abuse-recent-true">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Are you concerned {{ interview.aggrieved.pronoun.you }} will be harmed again before {{ interview.aggrieved.pronoun.your }} court date?</span>
+					<small class="hint">It could be a few weeks before the court will hear your application.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-abuse-fear-immediate-future"
+						       id="interview-abuse-fear-immediate-future-false"
+						       ng-model="interview.abuse.immediateFear"
+						       ng-value="false"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-abuse-fear-immediate-future-false">No</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-abuse-fear-immediate-future"
+						       id="interview-abuse-fear-immediate-future-true"
+						       ng-model="interview.abuse.immediateFear"
+						       ng-value="true"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-abuse-fear-immediate-future-true">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.abuse.recent === false &amp;&amp; interview.abuse.immediateFear === false">
+			<div class="status info">
+				<h2>Is there another reason why urgent protection is required?</h2>
+				<p>It is your choice to apply for a temporary protection order.
+				However, you must have clear reasons for the magistrate to grant this
+				without giving {{ interview.respondent.name.short }} a chance to have {{ interview.respondent.pronoun.their }} say.</p>
+			</div>
+		</li>
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want to apply for a temporary protection order?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-tpo-apply"
+						       id="interview-tpo-apply-false"
+						       ng-model="interview.tpo.apply"
+						       ng-value="false"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-tpo-apply-false">No</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-tpo-apply"
+						       id="interview-tpo-apply-true"
+						       ng-model="interview.tpo.apply"
+						       ng-value="true"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-tpo-apply-true">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.tpo.apply">
+			<label for="interview-tpo-description">
+				<span class="label">Tell us why a temporary protection order is necessary</span>
+				<small class="hint">Describe domestic violence that has happened in the last few days and why you are concerned about {{ interview.applicantIsAggrieved ? 'your' : ( interview.applicant.relationship.category ? 'your ' + interview.applicant.relationship.category : interview.aggrieved.name.short ) + '’s' }} immediate safety.</small>
+			</label>
+			<textarea id="interview-tpo-description" ng-model="interview.tpo.grounds" cols="40" rows="10"></textarea>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+
+<section ng-show="interview.page === interview.PAGE.CHILDREN">
+<div class="status info">
+	<h2>Are there children who live or spend time with {{ interview.aggrieved.pronoun.you }} who need protection?</h2>
+	<p>If {{ interview.applicantIsAggrieved ? 'you have' : interview.aggrieved.pronoun.you + ' has' }} a child who lives with {{ interview.applicantIsAggrieved ? interview.aggrieved.pronoun.you : interview.aggrieved.pronoun.them }}, or spends time at {{ interview.applicantIsAggrieved ? interview.aggrieved.pronoun.your : interview.aggrieved.pronoun.their }} house on a regular basis, they can be included in this application. If the court is satisfied it is appropriate, the court can include a child on the order to ensure that {{ interview.respondent.name.short }} must also be of good behaviour towards the child, and not to expose the child to domestic violence.</p>
+	<p>If you do not want {{ interview.respondent.name.short }} to know the address details of the child, please provide an alternate address (e.g. of a friend or relative or a post office box).</p>
+</div>
+
+<form class="form" name="formChildren" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-children2"
+						       id="interview-protect-children2-true"
+						       ng-model="interview.conditions.nameChildren"
+						       ng-value="true">
+						<label for="interview-protect-children2-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-children2"
+						       id="interview-protect-children2-false"
+						       ng-model="interview.conditions.nameChildren"
+						       ng-value="false">
+						<label for="interview-protect-children2-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li class="group" ng-show="interview.conditions.nameChildren" ng-repeat="child in interview.children">
+			<fieldset>
+				<legend>
+					<span class="label">Child {{ $index + 1 }}</span>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="interview-child{{$index}}-name">
+							<span class="label">Full name</span>
+						</label>
+						<input type="text" id="interview-child{{$index}}-name" ng-model="child.name.full" size="30">
+					</li>
+					<li>
+						<label for="interview-child{{$index}}-gender">
+							<span class="label">Gender</span>
+						</label>
+						<select ng-model="child.gender" id="interview-child{{$index}}-gender">
+							<option value=""></option>
+							<option value="Female">Female</option>
+							<option value="Male">Male</option>
+							<option value="Man">Man</option>
+							<option value="Woman">Woman</option>
+							<option value="Transgender">Transgender</option>
+							<option value="Transsexual">Transsexual</option>
+							<option value="Genderqueer">Genderqueer</option>
+							<option value="Non-gendered">Non-gendered</option>
+							<option value="Agender">Agender</option>
+							<option value="Genderless">Genderless</option>
+							<option value="Non-binary">Non-binary</option>
+							<option value="Trans Man">Trans Man</option>
+							<option value="Trans Woman">Trans Woman</option>
+							<option value="Third Gender">Third Gender</option>
+							<option value="Two-Spirit">Two-Spirit</option>
+							<option value="Bi-Gender">Bi-Gender</option>
+							<option value="Genderfluid">Genderfluid</option>
+							<option value="Transvestite">Transvestite</option>
+						</select>
+					</li>
+					<li>
+						<label for="interview-child{{$index}}-date-birth">
+							<span class="label">Date of birth</span>
+						</label>
+						<input type="text" id="interview-child{{$index}}-date-birth" ng-model="child.dateBirth">
+					</li>
+					<li>
+						<label for="interview-child{{$index}}-address">
+							<span class="label">Address</span>
+						</label>
+						<textarea id="interview-child{{$index}}-address" ng-model="child.address" rows="3" cols="30"></textarea>
+					</li>
+					<li class="footer">
+						<ul class="actions">
+							<li ng-if="$index"><button type="button" class="del" ng-click="interview.removeChild( $index )">Remove child {{ $index + 1 }}</button></li>
+							<li><button type="button" class="add" ng-click="interview.addChild( $index )">Add another child</button></li>
+						</ul>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.ASSOCIATES">
+<div class="status info">
+	<h2>Do relatives or associates need protection?</h2>
+	<p>If you are concerned about the safety of {{ interview.applicantIsAggrieved ? 'your' : interview.applicant.name.short + '’s' }} relatives or associates, you can include them on the application for protection.</p>
+	<p>A relative refers to someone who is connected to you by a family relationship.
+	As associate can be a person who is your current spouse, a person that works with you, lives at the same address or provides you with support.</p>
+</div>
+
+<form class="form" name="formAssociates" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} need protection from {{ interview.respondent.name.short }}?</span>
+					<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
+					They are known as {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} <dfn>associates</dfn>.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-associates2"
+						       id="interview-protect-associates2-true"
+						       ng-model="interview.conditions.nameAssociates"
+						       ng-value="true">
+						<label for="interview-protect-associates2-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-associates2"
+						       id="interview-protect-associates2-false"
+						       ng-model="interview.conditions.nameAssociates"
+						       ng-value="false">
+						<label for="interview-protect-associates2-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li class="group" ng-show="interview.conditions.nameAssociates" ng-repeat="associate in interview.associates">
+			<fieldset>
+				<legend>
+					<span class="label">Associate {{ $index + 1 }}</span>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="interview-associate{{$index}}-name">
+							<span class="label">Full name</span>
+						</label>
+						<input type="text" id="interview-associate{{$index}}-name" ng-model="associate.name.full" size="30">
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-gender">
+							<span class="label">Gender</span>
+						</label>
+						<select ng-model="associate.gender" id="interview-associate{{$index}}-gender">
+							<option value=""></option>
+							<option value="Female">Female</option>
+							<option value="Male">Male</option>
+							<option value="Man">Man</option>
+							<option value="Woman">Woman</option>
+							<option value="Transgender">Transgender</option>
+							<option value="Transsexual">Transsexual</option>
+							<option value="Genderqueer">Genderqueer</option>
+							<option value="Non-gendered">Non-gendered</option>
+							<option value="Agender">Agender</option>
+							<option value="Genderless">Genderless</option>
+							<option value="Non-binary">Non-binary</option>
+							<option value="Trans Man">Trans Man</option>
+							<option value="Trans Woman">Trans Woman</option>
+							<option value="Third Gender">Third Gender</option>
+							<option value="Two-Spirit">Two-Spirit</option>
+							<option value="Bi-Gender">Bi-Gender</option>
+							<option value="Genderfluid">Genderfluid</option>
+							<option value="Transvestite">Transvestite</option>
+						</select>
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-date-birth">
+							<span class="label">Date of birth</span>
+						</label>
+						<input type="text" id="interview-associate{{$index}}-date-birth" ng-model="associate.dateBirth">
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-address">
+							<span class="label">Address</span>
+						</label>
+						<textarea id="interview-associate{{$index}}-address" ng-model="associate.address" rows="3" cols="30"></textarea>
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-phone">
+							<span class="label">Phone</span>
+						</label>
+						<input type="tel" id="interview-associate{{$index}}-phone" ng-model="associate.contact.phone" size="20">
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-email">
+							<span class="label">Email</span>
+						</label>
+						<input type="email" id="interview-associate{{$index}}-email" ng-model="associate.contact.email" size="30">
+					</li>
+					<li>
+						<label for="interview-associate{{$index}}-idNumber">
+							<span class="label">ID number (optional)</span>
+							<small class="hint">Example: Drivers licence, 18+ card</small>
+						</label>
+						<input type="tel" id="interview-associate{{$index}}-idNumber" ng-model="associate.idNumber" size="20">
+					</li>
+					<li class="footer">
+						<ul class="actions">
+							<li ng-if="$index"><button type="button" class="del" ng-click="interview.removeAssociate( $index )">Remove associate {{ $index + 1 }}</button></li>
+							<li><button type="button" class="add" ng-click="interview.addAssociate( $index )">Add another associate</button></li>
+						</ul>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.CONDITIONS">
+<div class="status info">
+	<h2>What conditions are on a protecion order?</h2>
+	<p>All protection orders have two compulsory conditions which say that:</p>
+	<ol>
+		<li>The respondent must be of good behaviour towards the aggrieved and not commit domestic violence</li>
+		<li>The respondent must be of good behaviour towards any named person and not commit associated domestic violence against the named person.</li>
+	</ol>
+	<p>You can ask the court to include in extra conditions.</p>
+</div>
+<form class="form" name="formConditions" ng-submit="interview.continue( $event )">
+
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-children"
+						       id="interview-protect-children-true"
+						       ng-model="interview.conditions.nameChildren"
+						       ng-value="true">
+						<label for="interview-protect-children-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-children"
+						       id="interview-protect-children-false"
+						       ng-model="interview.conditions.nameChildren"
+						       ng-value="false">
+						<label for="interview-protect-children-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.nameChildren">
+			<div class="status info">
+				<h2>You must provide clear reasons why the {{ interview.aggrieved.children.length > 1 ? 'children' : 'child' }} should be named on the order</h2>
+				<p>A child may be included on an order if the court is satisfied that naming the child on the order is necessary or desirable to protect the child from associated domestic violence, or being exposed to domestic violence committed by the respondent. Associated domestic violence is where domestic violence is committed against a child, relative or associate of an aggrieved.</p>
+			</div>
+			<label for="interview-children-grounds">
+				<span class="label">Please provide details about of specific incidents where {{ interview.respondent.name.short }} has committed domestic violence towards a child or exposed a child to domestic violence</span>
+				<small class="hint">Include date or approximate dates</small>
+			</label>
+			<textarea id="interview-children-grounds" ng-model="interview.grounds.children" cols="30" rows="10"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} need protection from {{ interview.respondent.name.short }}?</span>
+					<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
+					They are known as {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} <dfn>associates</dfn>.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-associates"
+						       id="interview-protect-associates-true"
+						       ng-model="interview.conditions.nameAssociates"
+						       ng-value="true">
+						<label for="interview-protect-associates-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-associates"
+						       id="interview-protect-associates-false"
+						       ng-model="interview.conditions.nameAssociates"
+						       ng-value="false">
+						<label for="interview-protect-associates-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<!-- TODO nicer UX for naming the applicant as an associate (opt-in) -->
+		<li ng-if="! interview.applicantIsAggrieved">
+			<fieldset>
+				<legend>
+					<span class="label">Do you need protection from {{ interview.respondent.name.short }} too?</span>
+					<small class="hint">{{ interview.respondent.name.short }} will know you applied for this protection order.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-protect-applicant"
+						       id="interview-protect-applicant-true"
+						       ng-model="interview.conditions.nameApplicant"
+						       ng-value="true">
+						<label for="interview-protect-applicant-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-protect-applicant"
+						       id="interview-protect-applicant-false"
+						       ng-model="interview.conditions.nameApplicant"
+						       ng-value="false">
+						<label for="interview-protect-applicant-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.conditions.nameAssociates || interview.conditions.nameApplicant">
+			<div class="status info">
+				<h2>You must explain why you wish the {{ interview.aggrieved.associates.length > 1 ? 'associates' : 'associate' }} to be named on the order</h2>
+				<p>You need to provide clear reasons why it is necessary or desirable to protect your relative or associate from associated domestic violence.</p>
+			</div>
+			<label for="interview-associates-grounds">
+				<span class="label">Please provide details of specific incidents where {{ interview.respondent.name.short }} has committed associated domestic violence or exposed the relative or associate to domestic violence</span>
+				<small class="hint">Include date or approximate dates</small>
+			</label>
+			<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="10"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to leave {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} home?</span>
+					<small class="hint">The court must consider whether to make an order that {{ interview.respondent.name.short }} must leave a named house or dwelling (this is also known as an <dfn>ouster order</dfn>). The court must take {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} wishes into account.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-ousters"
+						       id="interview-conditions-ousters-true"
+						       ng-model="interview.conditions.ouster.requested"
+						       ng-value="true">
+						<label for="interview-conditions-ousters-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-ousters"
+						       id="interview-conditions-ousters-false"
+						       ng-model="interview.conditions.ouster.requested"
+						       ng-value="false">
+						<label for="interview-conditions-ousters-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.ouster.requested">
+			<label for="interview-conditions-ouster-grounds">
+				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must leave specified premises</span>
+			</label>
+			<textarea id="interview-conditions-ouster-grounds" ng-model="interview.conditions.ouster.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} home</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-aggrieved-home"
+						       id="interview-conditions-distance-aggrieved-home-true"
+						       ng-model="interview.conditions.distance.aggrieved.home.requested"
+						       ng-value="true">
+						<label for="interview-conditions-distance-aggrieved-home-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-aggrieved-home"
+						       id="interview-conditions-distance-aggrieved-home-false"
+						       ng-model="interview.conditions.distance.aggrieved.home.requested"
+						       ng-value="false">
+						<label for="interview-conditions-distance-aggrieved-home-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.distance.aggrieved.home.requested">
+			<label for="interview-conditions-distance-aggrieved-home-grounds">
+				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} home</span>
+			</label>
+			<textarea id="interview-conditions-distance-aggrieved-home-grounds" ng-model="interview.conditions.distance.aggrieved.home.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from {{ interview.aggrieved.pronoun.you }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-aggrieved"
+						       id="interview-conditions-distance-aggrieved-true"
+						       ng-model="interview.conditions.distance.aggrieved.requested"
+						       ng-value="true">
+						<label for="interview-conditions-distance-aggrieved-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-aggrieved"
+						       id="interview-conditions-distance-aggrieved-false"
+						       ng-model="interview.conditions.distance.aggrieved.requested"
+						       ng-value="false">
+						<label for="interview-conditions-distance-aggrieved-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.distance.aggrieved.requested">
+			<label for="interview-conditions-distance-aggrieved-grounds">
+				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.aggrieved.pronoun.you }}</span>
+			</label>
+			<textarea id="interview-conditions-distance-aggrieved-grounds" ng-model="interview.conditions.distance.aggrieved.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li ng-show="interview.conditions.nameChildren">
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} kids?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-children"
+						       id="interview-conditions-distance-children-true"
+						       ng-model="interview.conditions.distance.children.requested"
+						       ng-value="true">
+						<label for="interview-conditions-distance-children-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-children"
+						       id="interview-conditions-distance-children-false"
+						       ng-model="interview.conditions.distance.children.requested"
+						       ng-value="false">
+						<label for="interview-conditions-distance-children-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.distance.children.requested">
+			<label for="interview-conditions-distance-children-grounds">
+				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} kids</span>
+			</label>
+			<textarea id="interview-conditions-distance-children-grounds" ng-model="interview.conditions.distance.children.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li ng-show="interview.conditions.nameChildren">
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to to stay away from the kids’ school/daycare/etc?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-children-places"
+						       id="interview-conditions-distance-children-places-true"
+						       ng-model="interview.conditions.distance.children.places.requested"
+						       ng-value="true">
+						<label for="interview-conditions-distance-children-places-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-children-places"
+						       id="interview-conditions-distance-children-places-false"
+						       ng-model="interview.conditions.distance.children.places.requested"
+						       ng-value="false">
+						<label for="interview-conditions-distance-children-places-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.distance.children.places.requested">
+			<label for="interview-conditions-distance-children-places-grounds">
+				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from the kids’ school/daycare/etc</span>
+			</label>
+			<textarea id="interview-conditions-distance-children-places-grounds" ng-model="interview.conditions.distance.children.places.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li ng-show="interview.conditions.nameAssociates">
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-associates"
+						       id="interview-conditions-distance-associates-true"
+						       ng-model="interview.conditions.distance.associates.requested"
+						       ng-value="true">
+						<label for="interview-conditions-distance-associates-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-associates"
+						       id="interview-conditions-distance-associates-false"
+						       ng-model="interview.conditions.distance.associates.requested"
+						       ng-value="false">
+						<label for="interview-conditions-distance-associates-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.distance.associates.requested">
+			<label for="interview-conditions-distance-associates-grounds">
+				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates</span>
+			</label>
+			<textarea id="interview-conditions-distance-associates-grounds" ng-model="interview.conditions.distance.associates.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li ng-show="interview.conditions.nameAssociates">
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates’ homes?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-associate-home"
+						       id="interview-conditions-distance-associate-home-true"
+						       ng-model="interview.conditions.distance.associate.home.requested"
+						       ng-value="true">
+						<label for="interview-conditions-distance-associate-home-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-associate-home"
+						       id="interview-conditions-distance-associate-home-false"
+						       ng-model="interview.conditions.distance.associate.home.requested"
+						       ng-value="false">
+						<label for="interview-conditions-distance-associate-home-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.distance.associate.home.requested">
+			<label for="interview-conditions-distance-associate-home-grounds">
+				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates’ homes</span>
+			</label>
+			<textarea id="interview-conditions-distance-associate-home-grounds" ng-model="interview.conditions.distance.associate.home.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from the place where {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} currently staying?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-aggrieved-staying"
+						       id="interview-conditions-distance-aggrieved-staying-true"
+						       ng-model="interview.conditions.distance.aggrieved.staying.requested"
+						       ng-value="true">
+						<label for="interview-conditions-distance-aggrieved-staying-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-distance-aggrieved-staying"
+						       id="interview-conditions-distance-aggrieved-staying-false"
+						       ng-model="interview.conditions.distance.aggrieved.staying.requested"
+						       ng-value="false">
+						<label for="interview-conditions-distance-aggrieved-staying-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.distance.aggrieved.staying.requested">
+			<label for="interview-conditions-distance-aggrieved-staying-grounds">
+				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stay away from the place where {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} currently staying</span>
+			</label>
+			<textarea id="interview-conditions-distance-aggrieved-staying-grounds" ng-model="interview.conditions.distance.aggrieved.staying.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to stop contacting {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</span>
+					<small class="hint">{{ interview.respondent.name.short }} won't be allowed to ask anyone else to contact {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} either.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-aggrieved-stop-contact"
+						       id="interview-conditions-aggrieved-stop-contact-true"
+						       ng-model="interview.conditions.aggrieved.noContact.requested"
+						       ng-value="true">
+						<label for="interview-conditions-aggrieved-stop-contact-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-aggrieved-stop-contact"
+						       id="interview-conditions-aggrieved-stop-contact-false"
+						       ng-model="interview.conditions.aggrieved.noContact.requested"
+						       ng-value="false">
+						<label for="interview-conditions-aggrieved-stop-contact-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.aggrieved.noContact.requested">
+			<label for="interview-conditions-aggrieved-stop-contact-grounds">
+				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop trying to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
+			</label>
+			<textarea id="interview-conditions-aggrieved-stop-contact-grounds" ng-model="interview.conditions.aggrieved.noContact.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to stop publishing anything online that mentions {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</span>
+					<small class="hint">Includes posts in any social media platforms (e.g. Facebook, YouTube, Twitter)</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-social-media"
+						       id="interview-conditions-social-media-true"
+						       ng-model="interview.conditions.socialMedia.requested"
+						       ng-value="true">
+						<label for="interview-conditions-social-media-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-social-media"
+						       id="interview-conditions-social-media-false"
+						       ng-model="interview.conditions.socialMedia.requested"
+						       ng-value="false">
+						<label for="interview-conditions-social-media-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.socialMedia.requested">
+			<label for="interview-conditions-social-media-grounds">
+				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop publishing anything online that mentions {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
+			</label>
+			<textarea id="interview-conditions-social-media-grounds" ng-model="interview.conditions.socialMedia.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to stop trying to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-aggrieved-locate"
+						       id="interview-conditions-aggrieved-locate-true"
+						       ng-model="interview.conditions.aggrieved.locate.requested"
+						       ng-value="true">
+						<label for="interview-conditions-aggrieved-locate-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-aggrieved-locate"
+						       id="interview-conditions-aggrieved-locate-false"
+						       ng-model="interview.conditions.aggrieved.locate.requested"
+						       ng-value="false">
+						<label for="interview-conditions-aggrieved-locate-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.aggrieved.locate.requested">
+			<label for="interview-conditions-aggrieved-locate-grounds">
+				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop trying to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
+			</label>
+			<textarea id="interview-conditions-aggrieved-locate-grounds" ng-model="interview.conditions.aggrieved.locate.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to return {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} property?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-property"
+						       id="interview-conditions-property-true"
+						       ng-model="interview.conditions.property.requested"
+						       ng-value="true">
+						<label for="interview-conditions-property-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-property"
+						       id="interview-conditions-property-false"
+						       ng-model="interview.conditions.property.requested"
+						       ng-value="false">
+						<label for="interview-conditions-property-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.property.requested">
+			<label for="interview-conditions-property-grounds">
+				<span class="label">Please list the property you want returned</span>
+			</label>
+			<textarea id="interview-conditions-property-grounds" ng-model="interview.conditions.property.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to behave differently?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-conditions-behaviour"
+						       id="interview-conditions-behaviour-true"
+						       ng-model="interview.conditions.behaviour.requested"
+						       ng-value="true">
+						<label for="interview-conditions-behaviour-true">Yes</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-conditions-behaviour"
+						       id="interview-conditions-behaviour-false"
+						       ng-model="interview.conditions.behaviour.requested"
+						       ng-value="false">
+						<label for="interview-conditions-behaviour-false">No</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.conditions.behaviour.requested">
+			<label for="interview-conditions-behaviour-grounds">
+				<span class="label">Please explain how you want {{ interview.respondent.name.short }} to behave differently</span>
+			</label>
+			<textarea id="interview-conditions-behaviour-grounds" ng-model="interview.conditions.behaviour.grounds" rows="3" cols="30"></textarea>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.RESPONDENT2">
+<h2>Respondent’s Details (person the aggrieved is seeking protection from)</h2>
+<form class="form" name="formRespondent2" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li class="group atomic">
+			<fieldset>
+				<legend>
+					<span ng-if="interview.applicantIsAggrieved" class="label">Who do you need protection from?</span>
+					<span ng-if="! interview.applicantIsAggrieved" class="label">Who does {{ interview.aggrieved.name.short }} need protection from?</span>
+				</legend>
+				<ol class="questions compact">
+					<li>
+						<label for="respondent-name-given">
+							<span class="label">Given name</span>
+						</label>
+						<input type="text" size="15"
+						       id="respondent-name-given"
+						       ng-model="interview.respondent.name.given"
+						       ng-change="interview.saveRespondent()"
+						>
+					</li>
+					<li>
+						<label for="respondent-name-family">
+							<span class="label">Family name</span>
+						</label>
+						<input type="text" size="15"
+						       id="respondent-name-family"
+						       ng-model="interview.respondent.name.family"
+						       ng-change="interview.saveRespondent()"
+						>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+		<li>
+			<label for="interview-respondent-address">
+				<span class="label">Address</span>
+			</label>
+			<textarea id="interview-respondent-address" ng-model="interview.respondent.address" rows="3" cols="30"></textarea>
+		</li>
+		<li>
+			<label for="interview-respondent-date-birth">
+				<span class="label">Date of birth</span>
+			</label>
+			<input type="text" id="interview-respondent-date-birth" ng-model="interview.respondent.dateBirth">
+		</li>
+		<li>
+			<label for="interview-respondent-gender">
+				<span class="label">Gender</span>
+			</label>
+			<select ng-model="interview.respondent.gender" id="interview-respondent-gender" ng-change="interview.saveRespondent()">
+				<option value=""></option>
+				<option value="Female">Female</option>
+				<option value="Male">Male</option>
+				<option value="Man">Man</option>
+				<option value="Woman">Woman</option>
+				<option value="Transgender">Transgender</option>
+				<option value="Transsexual">Transsexual</option>
+				<option value="Genderqueer">Genderqueer</option>
+				<option value="Non-gendered">Non-gendered</option>
+				<option value="Agender">Agender</option>
+				<option value="Genderless">Genderless</option>
+				<option value="Non-binary">Non-binary</option>
+				<option value="Trans Man">Trans Man</option>
+				<option value="Trans Woman">Trans Woman</option>
+				<option value="Third Gender">Third Gender</option>
+				<option value="Two-Spirit">Two-Spirit</option>
+				<option value="Bi-Gender">Bi-Gender</option>
+				<option value="Genderfluid">Genderfluid</option>
+				<option value="Transvestite">Transvestite</option>
+			</select>
+		</li>
+		<li>
+			<label for="interview-respondent-phone-home">
+				<span class="label">Home phone</span>
+			</label>
+			<input type="tel" id="interview-respondent-phone-home" ng-model="interview.respondent.contact.phone.home" size="20">
+		</li>
+		<li>
+			<label for="interview-respondent-phone-mobile">
+				<span class="label">Mobile</span>
+			</label>
+			<input type="tel" id="interview-respondent-phone-mobile" ng-model="interview.respondent.contact.phone.mobile" size="20">
+		</li>
+		<li>
+			<label for="interview-respondent-phone-work">
+				<span class="label">Work phone</span>
+			</label>
+			<input type="tel" id="interview-respondent-phone-work" ng-model="interview.respondent.contact.phone.work" size="20">
+		</li>
+		<li>
+			<label for="interview-respondent-email">
+				<span class="label">Email</span>
+			</label>
+			<input type="email" id="interview-respondent-email" ng-model="interview.respondent.contact.email" size="30">
+		</li>
+		<li>
+			<label for="interview-respondent-idNumber">
+				<span class="label">ID number (optional)</span>
+				<small class="hint">Example: Drivers licence, 18+ card</small>
+			</label>
+			<input type="tel" id="interview-respondent-idNumber" ng-model="interview.respondent.idNumber" size="20">
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does {{ interview.respondent.name.short }} require an interpreter?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-respondent-interpreter" ng-model="interview.respondent.requiresInterpreter" ng-value="false" id="respondent-interpreter-no">
+						<label for="respondent-interpreter-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-interpreter" ng-model="interview.respondent.requiresInterpreter" ng-value="true" id="respondent-interpreter-yes">
+						<label for="respondent-interpreter-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.respondent.requiresInterpreter">
+			<label for="respondent-language-dialect">
+				<span class="label">Language/Dialect</span>
+			</label>
+			<input type="text" ng-model="interview.respondent.language" size="20" id="respondent-language-dialect">
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does {{ interview.respondent.name.short }} identify as</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="interview-respondent-identify-as" ng-model="interview.respondent.identifyAs" value="Aboriginal" id="respondent-identify-as-aboriginal">
+						<label for="respondent-identify-as-aboriginal">Aboriginal</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-identify-as" ng-model="interview.respondent.identifyAs" value="Torres Strait Islander" id="respondent-identify-as-torres-strait-islander">
+						<label for="respondent-identify-as-torres-strait-islander">Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-identify-as" ng-model="interview.respondent.identifyAs" value="Aboriginal and Torres Strait Islander" id="respondent-identify-as-aboriginal-and-torres-strait-islander">
+						<label for="respondent-identify-as-aboriginal-and-torres-strait-islander">Aboriginal and Torres Strait Islander</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-identify-as" ng-model="interview.respondent.identifyAs" value="N/A" id="respondent-identify-as-na">
+						<label for="respondent-identify-as-na">None of the above</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does {{ interview.respondent.name.short }} have a disability, illness or impairment where support and/or special arrangements are required?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-respondent-have-a-disability" ng-model="interview.respondent.hasDisability" ng-value="false" id="respondent-have-a-disability-no">
+						<label for="respondent-have-a-disability-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-have-a-disability" ng-model="interview.respondent.hasDisability" ng-value="true" id="respondent-have-a-disability-yes">
+						<label for="respondent-have-a-disability-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.respondent.hasDisability">
+			<label for="respondent-disability-details">
+				<span class="label">Please provide details about {{ interview.respondent.name.short }}’s needs</span>
+			</label>
+			<textarea ng-model="interview.respondent.disabilityNeeds" id="respondent-disability-details" rows="3" cols="40"></textarea>
+		</li>
+
+		<li>
+			<label for="interview-respondent-employment">
+				<span class="label">Current place of employment</span>
+			</label>
+			<textarea id="interview-respondent-employment" ng-model="interview.respondent.employment.address" rows="3" cols="30"></textarea>
+		</li>
+
+		<li>
+			<label for="interview-respondent-vehicle-model">
+				<span class="label">Vehicle model</span>
+			</label>
+			<input type="text" id="interview-respondent-vehicle-model" ng-model="interview.respondent.vehicle.model" size="30">
+		</li>
+		<li>
+			<label for="interview-respondent-vehicle-registration">
+				<span class="label">Vehicle registration</span>
+			</label>
+			<input type="text" id="interview-respondent-vehicle-registration" ng-model="interview.respondent.vehicle.registration" size="30">
+		</li>
+
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Is {{ interview.respondent.name.short }} under 18 years of age?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-respondent-under-18" ng-model="interview.respondent.under18" ng-value="false" id="respondent-under-18-no">
+						<label for="respondent-under-18-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-respondent-under-18" ng-model="interview.respondent.under18" ng-value="true" id="respondent-under-18-yes">
+						<label for="respondent-under-18-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li class="section" ng-show="interview.respondent.under18">
+			<fieldset>
+				<legend>
+					<span class="h2">Parent's details</span>
+					<p>All documents must be given to a parent unless the court orders otherwise.</p>
+				</legend>
+				<ol class="questions">
+					<li>
+						<label for="respondent-parent-name">
+							<span class="label">Parent's name</span>
+						</label>
+						<input ng-model="interview.respondent.parent.name.full" size="30" type="text" id="respondent-parent-name">
+					</li>
+					<li>
+						<label for="respondent-parent-address">
+							<span class="label">Parent's address</span>
+						</label>
+						<textarea ng-model="interview.respondent.parent.address" id="respondent-parent-address" rows="3" cols="4"></textarea>
+					</li>
+				</ol>
+			</fieldset>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does {{ interview.respondent.name.short }} have a weapon?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-weapon-access" ng-model="interview.respondent.weapon.access" ng-value="false" id="interview-weapon-access-no">
+						<label for="interview-weapon-access-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-weapon-access" ng-model="interview.respondent.weapon.access" ng-value="true" id="interview-weapon-access-yes">
+						<label for="interview-weapon-access-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.respondent.weapon.access">
+			<label for="interview-weapon-access-details">
+				<span class="label">Please state the number of weapons, the type of weapons and all possible places where they may be found</span>
+			</label>
+			<textarea id="interview-weapon-access-details" ng-model="interview.respondent.weapon.accessDetails" cols="40" rows="10"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Does {{ interview.respondent.name.short }} have a weapons or firearms licence?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-weapon-licence" ng-model="interview.respondent.weapon.licence" ng-value="false" id="interview-weapon-licence-no">
+						<label for="interview-weapon-licence-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-weapon-licence" ng-model="interview.respondent.weapon.licence" ng-value="true" id="interview-weapon-licence-yes">
+						<label for="interview-weapon-licence-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.respondent.weapon.licence">
+			<div class="status warn">
+				<h2>Access to licensed weapon storage</h2>
+				<p><strong>DO NOT</strong> accept the key to any secure weapons storage from {{ interview.respondent.name.short }}. It is against the law to have a key to weapons unless you have a licence and permit.</p>
+				<p>Contact <a href="https://www.police.qld.gov.au/forms/wlb.asp" target="_blank">Weapons Licensing (Queensland Police)</a> as soon as possible for advice.</p>
+			</div>
+		</li>
+		<li ng-show="interview.respondent.weapon.licence">
+			<label for="interview-weapon-licence-details">
+				<span class="label">Please provide details of any weapons {{ interview.respondent.name.short }} has access to and where they are located</span>
+			</label>
+			<textarea id="interview-weapon-licence-details" ng-model="interview.respondent.weapon.licenceDetails" cols="40" rows="10"></textarea>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+<section ng-show="interview.page === interview.PAGE.APPLICANT">
+<h2>Is this application being made on someone else’s behalf?</h2>
+
+<div class="status info" ng-show="! interview.applicantIsAggrieved">
+	<h2>Will you be lodging this application for your {{ interview.applicant.relationship.aggrieved }}?</h2>
+	<p>To lodge an application on behalf of your {{ interview.applicant.relationship.aggrieved }} you need their authorisation (preferably in writing).</p>
+	<p>Or you can prepare these documents for them—they can lodge them at the magistrates court.</p>
+	<p>If you are lodging the application, your details will be included on the form. Remember that {{ interview.respondent.name.short }} receives a copy!</p>
+</div>
+<div class="status info" ng-show="interview.applicantIsAggrieved">
+	<h2>Will you be lodging the application at the court?</h2>
+	<p>You can authorise someone else (preferably in writing) to lodge the application on your behalf. This person is called the <dfn>applicant</dfn>.</p>
+	<p>You will need to include their details on the form. Remember that {{ interview.respondent.name.short }} receives a copy!</p>
+</div>
+
+<form class="form" name="formApplicant" ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li class="group atomic">
+			<!-- TODO customer may not be applicant! -->
+			<fieldset>
+				<legend>
+					<span class="label">Who will lodge the application at the magistrates court?</span>
+				</legend>
+				<ul class="choices">
+					<li ng-if="! interview.applicantIsAggrieved">
+						<input type="radio"
+						       name="application-lodged-by"
+						       ng-model="interview.whoWillLodge"
+						       value="applicant"
+						       id="application-lodged-by-applicant">
+						<label for="application-lodged-by-applicant">I will lodge the application</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="application-lodged-by"
+						       ng-model="interview.whoWillLodge"
+						       value="aggrieved"
+						       id="application-lodged-by-aggrieved">
+						<label ng-if="interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">I will lodge it myself</label>
+						<label ng-if="! interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">{{ interview.aggrieved.name.short }} will lodge it</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="application-lodged-by"
+						       ng-model="interview.whoWillLodge"
+						       value="third party"
+						       id="application-lodged-by-another">
+						<label for="application-lodged-by-another">Someone else</label>
+						<small class="hint">You will be asked for their details later.</small>
+					</li>
+					<li>
+						<input type="radio"
+						       name="application-lodged-by"
+						       ng-model="interview.whoWillLodge"
+						       value="unknown"
+						       id="application-lodged-by-unknown">
+						<label for="application-lodged-by-unknown">Don't know</label>
+						<small class="hint">Leave the applicant details section blank on the form. You will need to complete it when the form is signed and witnessed, before you lodge at court.</small>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.whoWillLodge === 'third party' || interview.whoWillLodge === 'applicant'">
+			<div class="status info">
+				<h2>This section only applies if a person other than {{ interview.aggrieved.name.short }} is making the application</h2>
+				<ol class="questions">
+					<li>
+						<fieldset>
+							<legend>
+								<span class="label">Which of the following describes {{ interview.whoWillLodge === 'applicant' ? 'you' : 'the applicant' }}?</span>
+								<small class="hint"></small>
+							</legend>
+							<ul class="choices">
+								<li>
+									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="A" id="applicant-part-a" />
+									<label for="applicant-part-a">A person being authorised by {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
+								</li>
+								<li>
+									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="B" id="applicant-part-b" />
+									<label for="applicant-part-b">A person acting under another Act for {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
+								</li>
+								<li>
+									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="C" id="applicant-part-c" />
+									<label for="applicant-part-c">A Police Officer</label>
+								</li>
+								<li>
+									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="D" id="applicant-part-d" />
+									<label for="applicant-part-d">A party to a child protection proceeding</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+				</ol>
+			</div>
+		</li>
+
+		<li class="section" ng-show="interview.whoWillLodge === 'third party' || interview.whoWillLodge === 'applicant'">
+			<header ng-switch="interview.applicant.part">
+				<h3 ng-switch-when="A">PART A — A person being authorised by {{ interview.aggrieved.name.short }}</h3>
+				<h3 ng-switch-when="B">PART B — A person acting under another Act for the Aggrieved</h3>
+				<h3 ng-switch-when="C">PART C — A Police Officer</h3>
+				<h3 ng-switch-when="D">PART D — A party to a child protection proceeding</h3>
+			</header>
+			<ol class="questions">
+				<li class="atomic group">
+					<fieldset>
+						<legend>
+							<span class="label">Name</span>
+						</legend>
+						<ol class="questions compact">
+							<li>
+								<label for="applicant-name-given">
+									<span class="label">Given name</span>
+								</label>
+								<input ng-model="interview.applicant.name.given" size="15" type="text" id="applicant-name-given" />
+							</li>
+							<li>
+								<label for="applicant-name-family">
+									<span class="label">Family name</span>
+								</label>
+								<input ng-model="interview.applicant.name.family" size="15" type="text" id="applicant-name-family" />
+							</li>
+						</ol>
+					</fieldset>
+				</li>
+				<li>
+					<label for="interview-applicant-address">
+						<span class="label">Address</span>
+					</label>
+					<textarea id="interview-applicant-address" ng-model="interview.applicant.address" rows="3" cols="30"></textarea>
+				</li>
+				<li>
+					<label for="applicant-gender">
+						<span class="label">Gender</span>
+					</label>
+					<select ng-model="interview.applicant.gender" id="applicant-gender">
+						<option value=""></option>
+						<option value="Female">Female</option>
+						<option value="Male">Male</option>
+						<option value="Man">Man</option>
+						<option value="Woman">Woman</option>
+						<option value="Transgender">Transgender</option>
+						<option value="Transsexual">Transsexual</option>
+						<option value="Genderqueer">Genderqueer</option>
+						<option value="Non-gendered">Non-gendered</option>
+						<option value="Agender">Agender</option>
+						<option value="Genderless">Genderless</option>
+						<option value="Non-binary">Non-binary</option>
+						<option value="Trans Man">Trans Man</option>
+						<option value="Trans Woman">Trans Woman</option>
+						<option value="Third Gender">Third Gender</option>
+						<option value="Two-Spirit">Two-Spirit</option>
+						<option value="Bi-Gender">Bi-Gender</option>
+						<option value="Genderfluid">Genderfluid</option>
+						<option value="Transvestite">Transvestite</option>
+					</select>
+				</li>
+
+				<li ng-if="interview.applicant.part === 'A'">
+					<fieldset>
+						<legend>
+							<span class="label">Is the authorisation of the aggrieved in writing?</span>
+						</legend>
+						<ul class="choices compact">
+							<li>
+								<input type="radio" name="application-authorised" ng-model="interview.applicant.authorisation.written" ng-value="false" id="application-authorised-no" />
+								<label for="application-authorised-no">No</label>
+							</li>
+							<li>
+								<input type="radio" name="application-authorised" ng-model="interview.applicant.authorisation.written" ng-value="true" id="application-authorised-yes" />
+								<label for="application-authorised-yes">Yes</label>
+							</li>
+						</ul>
+					</fieldset>
+				</li>
+				<li ng-show="interview.applicant.authorisation.written === false">
+					<label for="application-authorisation-received">
+						<span class="label">How is authorisation communicated from {{ interview.aggrieved.name.short }}?</span>
+					</label>
+					<textarea ng-model="interview.applicant.authorisation.other" rows="2" cols="40" id="application-authorisation-received"></textarea>
+				</li>
+
+				<li ng-if="interview.applicant.part === 'B'">
+					<fieldset>
+						<legend>
+							<span class="label">{{ interview.whoWillLodge === 'applicant' ? 'I am' : 'The applicant is' }}:</span>
+						</legend>
+					<ul class="choices">
+						<li>
+							<input type="radio" name="applicant-acting" ng-model="interview.applicant.acting" value="A guardian" id="applicant-acting-a-guardian" />
+							<label for="applicant-acting-a-guardian">A guardian</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-acting" ng-model="interview.applicant.acting" value="Adult Guardian" id="applicant-acting-adult-guardian" />
+							<label for="applicant-acting-adult-guardian">Adult Guardian</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-acting" ng-model="interview.applicant.acting" value="Enduring power of attorney" id="applicant-acting-enduring-power-of-attorney" />
+							<label for="applicant-acting-enduring-power-of-attorney">Enduring power of attorney</label>
+						</li>
+						<li>
+							<input type="radio" name="applicant-acting" ng-model="interview.applicant.acting" value="Other" id="applicant-acting-other" />
+							<label for="applicant-acting-other">Other</label>
+						</li>
+					</ul>
+					</fieldset>
+				</li>
+				<li ng-show="interview.applicant.acting === 'Other'">
+					<label for="applicant-acting-other-specified">
+						<span class="label">Please specify</span>
+					</label>
+					<input type="text" ng-model="interview.applicant.acting.other" size="40" id="applicant-acting-other-specified" />
+				</li>
+
+	<!-- TODO Part C police officer -->
+
+				<li ng-if="interview.applicant.part === 'D'">
+					<fieldset>
+						<legend>
+							<span class="label">{{ interview.whoWillLodge === 'applicant' ? 'I am' : 'The applicant is' }}:</span>
+						</legend>
+						<ul class="choices">
+							<li>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
+								<label for="applicant-child-protection-party-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">a child for whom an order is sought in a child protection proceeding</label>
+							</li>
+							<li>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A separate legal representative for a child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
+								<label for="applicant-child-protection-party-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">a separate legal representative for a child for whom an order is sought in a child protection proceeding</label>
+							</li>
+							<li>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="An applicant in a child protection proceeding" id="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding" />
+								<label for="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding">an applicant in a child protection proceeding</label>
+							</li>
+							<li>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A respondent in a child protection proceeding" id="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding" />
+								<label for="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding">a respondent in a child protection proceeding</label>
+							</li>
+						</ul>
+					</fieldset>
+				</li>
+			</ol>
+		</li>
+
+		<li class="footer">
+			<ul class="actions">
+				<li><strong><button type="submit">Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
+</section>
+
+
+
+<section ng-show="interview.page === interview.PAGE.NEXT">
+
+<div class="status info">
+	<h2>What to do next?</h2>
+	<form>
+		<ol class="questions">
+			<li>
+				<fieldset>
+					<legend>
+						<span class="label">How to get a domestic violence order</span>
+					</legend>
+					<ul class="choices">
+						<li>
+							<input  id="checklist-prepare" type="checkbox" checked>
+							<label for="checklist-prepare">Prepare your application</label>
+							<small class="hint">You just did this!</small>
+						</li>
+						<li>
+							<input  id="checklist-advice" type="checkbox">
+							<label for="checklist-advice">Get legal advice</label>
+						</li>
+						<li>
+							<input  id="checklist-print" type="checkbox">
+							<label for="checklist-print">Print application</label>
+						</li>
+						<li>
+							<input  id="checklist-attach" type="checkbox">
+							<label for="checklist-attach">Attach supporting documentation<br>
+							                       <small>(Details of abuse, copies of related orders.)</small></label>
+						</li>
+						<li>
+							<input  id="checklist-sign" type="checkbox">
+							<label for="checklist-sign">Sign the application form<br>
+							                     <small>(must be witnessed by a Justice of the Peace, Commissioner for Declaration or a Solicitor)</small></label>
+						</li>
+						<li>
+							<input  id="checklist-lodge" type="checkbox">
+							<label for="checklist-lodge">Lodge at a Magistrates Court</label>
+							<small class="hint">Find your nearest <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court</a></small>
+						</li>
+						<li>
+							<input  id="checklist-mention" type="checkbox">
+							<label for="checklist-mention">Attend court on the date of the mention and any additional court hearings</label>
+						</li>
+					</ul>
+				</fieldset>
+			</li>
+
+		</ol>
+	</form>
+</div>
+
+
+<h2>Serving the application</h2>
+<p>Court registry staff will give a copy to the Queensland Police Service and they will make sure {{ interview.respondent.name.short }} is served. {{ interview.respondent.name.short }} <strong>must</strong> be served with a copy of the application.</p>
+
+
+<h2>What happens at court?</h2>
+<p>The court will make an order if it accepts:</p>
+<ul>
+	<li>there has been an act of domestic violence, and</li>
+	<li>you and the respondent are in one of the relationships covered by the law, and</li>
+	<li>the court thinks a domestic violence order is necessary or desirable in your situation.</li>
+</ul>
+
+<form method="POST" action="#">
+	<ol class="questions">
+		<li class="footer">
+			<input type="hidden" name="aggrievedNameGiven" ng-value="interview.aggrieved.name.given">
+			<input type="hidden" name="aggrievedNameFamily" ng-value="interview.aggrieved.name.family">
+			<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.gender">
+			<input type="hidden" name="aggrievedAddress" ng-value="interview.aggrieved.address">
+
+			<input type="hidden" name="respondentNameGiven" ng-value="interview.respondent.name.given">
+			<input type="hidden" name="respondentNameFamily" ng-value="interview.respondent.name.family">
+			<input type="hidden" name="respondentGender" ng-value="interview.respondent.gender">
+			<input type="hidden" name="respondentAddress" ng-value="interview.respondent.address">
+
+			<input type="hidden" name="relationshipCategory" ng-value="interview.aggrieved.relationship.category">
+			<input type="hidden" name="relationshipType" ng-value="interview.aggrieved.relationship.type">
+
+			<!-- urgent protection -->
+			<input type="hidden" name="tpoApply" ng-value="interview.tpo.apply">
+			<input type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
+
+			<!-- repeat for children -->
+			<input type="hidden" name="nameChildren" ng-value="interview.conditions.nameChildren">
+			<input type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
+			<span ng-repeat="child in interview.children">
+				<input type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
+				<input type="hidden" name="child{{$index + 1}}Gender" ng-value="child.gender">
+				<input type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
+				<input type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
+			</span>
+
+			<ul class="actions">
+				<li><strong><button>Download your prepared application forms</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
