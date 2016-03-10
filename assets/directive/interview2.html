@@ -2911,6 +2911,7 @@
 			<!-- repeat for children -->
 			<input type="hidden" name="nameChildren" ng-value="interview.conditions.nameChildren">
 			<input type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
+			<input type="hidden" name="nameChildrenCount" ng-value="interview.conditions.nameChildren ? interview.children.length : 0">
 			<span ng-repeat="child in interview.children">
 				<input type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
 				<input type="hidden" name="child{{$index + 1}}Gender" ng-value="child.gender">
