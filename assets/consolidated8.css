@@ -40,9 +40,15 @@ nav ol button {
 	border: none;
 	background: transparent;
 	text-align: left;
+	padding: 0;
+	color: inherit;
+	font-weight: normal;
 }
 nav ol button:hover,
 nav ol button:focus {
+	outline: none;
+	border: none;
+	background: transparent;
 	color: rebeccapurple;
 	text-decoration: underline;
 }
@@ -70,7 +76,6 @@ a[href^="tel:"]::before {
 
 /* add/del buttons */
 .add, .del {
-	padding-top: .5em;
-	padding-bottom: .5em;
+	padding: .7em;
 	font-size: 80%;
 }

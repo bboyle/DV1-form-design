@@ -34,7 +34,16 @@
 
 	<ol start="13">
 		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.NEXT" ng-click="interview.goto( interview.PAGE.NEXT )">Preparing for court</button></li>
+		<li><button type="button" ng-click="interview.downloadPrepared()">Download your application</button></li>
 	</ol>
+
+<form ng-submit="interview.prefill()">
+	<em><button>
+		Simpsons Cheat!
+		<small class="hint">Prefills the form</small>
+	</button></em>
+</form>
+
 </nav>
 
 <header>
@@ -410,7 +419,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -489,7 +498,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -716,7 +725,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -793,7 +802,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -944,7 +953,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -1073,7 +1082,7 @@
 		<ol class="questions">
 			<li class="footer">
 				<ul class="actions">
-					<li><strong><button type="submit">Continue</button></strong></li>
+					<li><strong><button>Continue</button></strong></li>
 				</ul>
 			</li>
 		</ol>
@@ -1346,7 +1355,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -1472,7 +1481,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -1568,8 +1577,8 @@
 					</li>
 					<li class="footer">
 						<ul class="actions">
-							<li ng-if="$index"><button type="button" class="del" ng-click="interview.removeChild( $index )">Remove child {{ $index + 1 }}</button></li>
-							<li><button type="button" class="add" ng-click="interview.addChild( $index )">Add another child</button></li>
+							<li><em><button type="button" class="add" ng-click="interview.addChild( $index )"><i class="fa fa-plus-square"></i> Add another child</button></em></li>
+							<li ng-if="$index"><em><button type="button" class="del" ng-click="interview.removeChild( $index )"><i class="fa fa-minus-square"></i> Remove child {{ $index + 1 }}</button></em></li>
 						</ul>
 					</li>
 				</ol>
@@ -1578,7 +1587,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -1696,8 +1705,8 @@
 					</li>
 					<li class="footer">
 						<ul class="actions">
-							<li ng-if="$index"><button type="button" class="del" ng-click="interview.removeAssociate( $index )">Remove associate {{ $index + 1 }}</button></li>
-							<li><button type="button" class="add" ng-click="interview.addAssociate( $index )">Add another associate</button></li>
+							<li><em><button type="button" class="add" ng-click="interview.addAssociate( $index )"><i class="fa fa-plus-square"></i> Add another associate</button></em></li>
+							<li ng-if="$index"><em><button type="button" class="del" ng-click="interview.removeAssociate( $index )"><i class="fa fa-minus-square"></i> Remove associate {{ $index + 1 }}</button></em></li>
 						</ul>
 					</li>
 				</ol>
@@ -1706,7 +1715,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -2254,7 +2263,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -2559,7 +2568,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -2814,7 +2823,7 @@
 
 		<li class="footer">
 			<ul class="actions">
-				<li><strong><button type="submit">Continue</button></strong></li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -2888,41 +2897,62 @@
 	<li>the court thinks a domestic violence order is necessary or desirable in your situation.</li>
 </ul>
 
-<form method="POST" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
 	<ol class="questions">
 		<li class="footer">
-			<input type="hidden" name="aggrievedNameGiven" ng-value="interview.aggrieved.name.given">
-			<input type="hidden" name="aggrievedNameFamily" ng-value="interview.aggrieved.name.family">
-			<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.gender">
-			<input type="hidden" name="aggrievedDateBirth" ng-value="interview.aggrieved.dateBirth">
-			<input type="hidden" name="aggrievedAddress" ng-value="interview.aggrieved.address">
-
-			<input type="hidden" name="respondentNameGiven" ng-value="interview.respondent.name.given">
-			<input type="hidden" name="respondentNameFamily" ng-value="interview.respondent.name.family">
-			<input type="hidden" name="respondentGender" ng-value="interview.respondent.gender">
-			<input type="hidden" name="respondentDateBirth" ng-value="interview.respondent.dateBirth">
-			<input type="hidden" name="respondentAddress" ng-value="interview.respondent.address">
-
-			<input type="hidden" name="relationshipCategory" ng-value="interview.aggrieved.relationship.category">
-			<input type="hidden" name="relationshipType" ng-value="interview.aggrieved.relationship.type">
-
-			<!-- urgent protection -->
-			<input type="hidden" name="tpoApply" ng-value="interview.tpo.apply">
-			<input type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
-
-			<!-- repeat for children -->
-			<input type="hidden" name="nameChildren" ng-value="interview.conditions.nameChildren">
-			<input type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
-			<input type="hidden" name="nameChildrenCount" ng-value="interview.conditions.nameChildren ? interview.children.length : 0">
-			<span ng-repeat="child in interview.children">
-				<input type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
-				<input type="hidden" name="child{{$index + 1}}Gender" ng-value="child.gender">
-				<input type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
-				<input type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
-			</span>
 
 			<ul class="actions">
-				<li><strong><button>Download your prepared application forms</button></strong></li>
+				<li>
+					<form method="POST" id="download-prepared" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
+						<input type="hidden" name="aggrievedNameGiven" ng-value="interview.aggrieved.name.given">
+						<input type="hidden" name="aggrievedNameFamily" ng-value="interview.aggrieved.name.family">
+						<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.gender">
+						<input type="hidden" name="aggrievedDateBirth" ng-value="interview.aggrieved.dateBirth">
+						<input type="hidden" name="aggrievedAddress" ng-value="interview.aggrieved.address">
+
+						<input type="hidden" name="respondentNameGiven" ng-value="interview.respondent.name.given">
+						<input type="hidden" name="respondentNameFamily" ng-value="interview.respondent.name.family">
+						<input type="hidden" name="respondentGender" ng-value="interview.respondent.gender">
+						<input type="hidden" name="respondentDateBirth" ng-value="interview.respondent.dateBirth">
+						<input type="hidden" name="respondentAddress" ng-value="interview.respondent.address">
+
+						<input type="hidden" name="relationshipCategory" ng-value="interview.aggrieved.relationship.category">
+						<input type="hidden" name="relationshipType" ng-value="interview.aggrieved.relationship.type">
+
+						<!-- urgent protection -->
+						<input type="hidden" name="tpoApply" ng-value="interview.tpo.apply">
+						<input type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
+
+						<!-- repeat for children -->
+						<input type="hidden" name="nameChildren" ng-value="interview.conditions.nameChildren">
+						<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
+						<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenCount" ng-value="interview.conditions.nameChildren ? interview.children.length : 0">
+						<input ng-if="interview.conditions.nameChildren" ng-repeat-start="child in interview.children" type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
+						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Gender" ng-value="child.gender">
+						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
+						<input ng-if="interview.conditions.nameChildren" ng-repeat-end type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
+
+						<strong><button>
+							Download your application
+							<small class="hint">PDF: ready to edit, print, sign and lodge</small>
+						</button></strong>
+					</form>
+				</li>
+				<li>
+					<form method="POST" id="download-blank" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
+						<button>
+							Download blank forms
+							<small class="hint">PDF forms to fill out later</small>
+						</button>
+					</form>
+				</li>
+				<li>
+					<form>
+						<button ng-click="interview.reset()">
+							Start new application
+							<small class="hint">Erase all data and start again</small>
+						</button>
+					</form>
+				</li>
 			</ul>
 		</li>
 	</ol>

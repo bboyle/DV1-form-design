@@ -138,6 +138,75 @@ angular.module( 'dv1' )
 		vm.goto( vm.page + 1 );
 	};
 
+	vm.reset = function() {
+		// wipe all application data
+		vm.aggrieved  = { name: { short: 'the aggrieved' }};
+		vm.applicant  = { name: { short: 'the applicant' }};
+		vm.respondent = { name: { short: 'the respondent' }};
+		vm.children = [ {} ];
+		vm.associates = [ {} ];
+		vm.grounds = {};
+		vm.conditions = {};
+		vm.pageUnlocked = 1;
+		vm.goto( 1 );
+	};
+
+	vm.downloadPrepared = function() {
+		// activate download form
+		$('#download-prepared').submit();
+	};
+
+
+	vm.prefill = function() {
+		vm.aggrieved = {
+			name: {
+				given: 'Marjorie',
+				family: 'Simpson'
+			},
+			gender: 'Female',
+			address: '742 Evergreen Terrace, Springfield QLD 4300',
+			dateBirth: '19 March 1980',
+			relationship: {
+				category: 'Intimate personal',
+				type: 'Past Couple',
+				couple: 'We dated in high school and went to prom.'
+			}
+		};
+		vm.applicantIsAggrieved = true;
+		vm.saveAggrieved();
+		vm.aggrieved.name.short = 'Marge';
+
+		vm.respondent = {
+			name: {
+				given: 'Artie',
+				family: 'Ziff'
+			},
+			gender: 'Male',
+			address: '5 Helicopter Boulevard, Springfield 4300',
+			dateBirth: '5 May 1980'
+		};
+		vm.saveRespondent();
+
+		vm.conditions = { nameChildren: true };
+		vm.grounds = { children: 'Artie put a hidden camera inside our home.' };
+		vm.children = [{
+			name: { full: 'Bartholomew J Simpson' },
+			gender: 'Male',
+			dateBirth: '1 April 2006',
+			address: vm.aggrieved.address
+		}, {
+			name: { full: 'Lisa Marie Simpson' },
+			gender: 'Female',
+			dateBirth: '9 May 2006',
+			address: vm.aggrieved.address
+		}, {
+			name: { full: 'Margaret Simpson' },
+			gender: 'Female',
+			dateBirth: '29 February 2015',
+			address: vm.aggrieved.address
+		}];
+	};
+
 	// init
 	angular.merge( vm, application.getData() );
 	vm.children = [ {} ];
