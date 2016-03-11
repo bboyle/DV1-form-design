@@ -543,7 +543,7 @@
 			<label for="interview-aggrieved-address">
 				<span class="label">Address</span>
 			</label>
-			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30"></textarea>
+			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 		<li>
 			<label for="interview-aggrieved-date-birth">
@@ -680,7 +680,7 @@
 			<label for="aggrieved-disability-details">
 				<span class="label">Please provide details about {{ interview.aggrieved.pronoun.your }} needs</span>
 			</label>
-			<textarea ng-model="interview.aggrieved.disabilityNeeds" id="aggrieved-disability-details" rows="3" cols="40"></textarea>
+			<textarea ng-model="interview.aggrieved.disabilityNeeds" id="aggrieved-disability-details" rows="3" cols="40" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -717,7 +717,7 @@
 						<label for="aggrieved-parent-address">
 							<span class="label">Parent's address</span>
 						</label>
-						<textarea ng-model="interview.aggrieved.parent.address" id="aggrieved-parent-address" rows="3" cols="4"></textarea>
+						<textarea ng-model="interview.aggrieved.parent.address" id="aggrieved-parent-address" rows="3" cols="4" spellcheck="true"></textarea>
 					</li>
 				</ol>
 			</fieldset>
@@ -938,7 +938,7 @@
 			<textarea cols="40" rows="2"
 			       id="interview-relationship-couple"
 			       ng-model="interview.aggrieved.relationship.couple"
-			></textarea>
+			 spellcheck="true"></textarea>
 		</li>
 
 		<li ng-show="interview.aggrieved.relationship.category === 'Informal care'">
@@ -948,7 +948,7 @@
 			<textarea cols="40" rows="2"
 			       id="interview-relationship-family-informal-care-specify"
 			       ng-model="interview.aggrieved.relationship.informalCare"
-			></textarea>
+			       spellcheck="true"></textarea>
 		</li>
 
 		<li class="footer">
@@ -1232,14 +1232,14 @@
 							<span class="label">What did {{ interview.respondent.pronoun.they }} do?</span>
 							<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.pronoun.they }} said and did. Don't exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
 						</label>
-						<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10"></textarea>
+						<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10" spellcheck="true"></textarea>
 					</li>
 					<li>
 						<label for="interview-grounds-most-recent-feel">
 							<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
 							<small class="hint">Examples: threatened, fearful or scared?</small>
 						</label>
-						<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3"></textarea>
+						<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3" spellcheck="true"></textarea>
 					</li>
 					<li>
 						<label for="interview-grounds-most-recent-when">
@@ -1323,7 +1323,7 @@
 			<label for="interview-weapon-threat-details">
 				<span class="label">Provide details of what {{ interview.respondent.pronoun.they }} did</span>
 			</label>
-			<textarea id="interview-weapon-threat-details" ng-model="interview.respondent.weapon.threatDetails" cols="40" rows="10"></textarea>
+			<textarea id="interview-weapon-threat-details" ng-model="interview.respondent.weapon.threatDetails" cols="40" rows="10" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -1476,7 +1476,7 @@
 				<span class="label">Tell us why a temporary protection order is necessary</span>
 				<small class="hint">Describe domestic violence that has happened in the last few days and why you are concerned about {{ interview.applicantIsAggrieved ? 'your' : ( interview.applicant.relationship.category ? 'your ' + interview.applicant.relationship.category : interview.aggrieved.name.short ) + '’s' }} immediate safety.</small>
 			</label>
-			<textarea id="interview-tpo-description" ng-model="interview.tpo.grounds" cols="40" rows="10"></textarea>
+			<textarea id="interview-tpo-description" ng-model="interview.tpo.grounds" cols="40" rows="10" spellcheck="true"></textarea>
 		</li>
 
 		<li class="footer">
@@ -1573,7 +1573,7 @@
 						<label for="interview-child{{$index}}-address">
 							<span class="label">Address</span>
 						</label>
-						<textarea id="interview-child{{$index}}-address" ng-model="child.address" rows="3" cols="30"></textarea>
+						<textarea id="interview-child{{$index}}-address" ng-model="child.address" rows="3" cols="30" spellcheck="true"></textarea>
 					</li>
 					<li class="footer">
 						<ul class="actions">
@@ -1682,7 +1682,7 @@
 						<label for="interview-associate{{$index}}-address">
 							<span class="label">Address</span>
 						</label>
-						<textarea id="interview-associate{{$index}}-address" ng-model="associate.address" rows="3" cols="30"></textarea>
+						<textarea id="interview-associate{{$index}}-address" ng-model="associate.address" rows="3" cols="30" spellcheck="true"></textarea>
 					</li>
 					<li>
 						<label for="interview-associate{{$index}}-phone">
@@ -1771,7 +1771,7 @@
 				<span class="label">Please provide details about of specific incidents where {{ interview.respondent.name.short }} has committed domestic violence towards a child or exposed a child to domestic violence</span>
 				<small class="hint">Include date or approximate dates</small>
 			</label>
-			<textarea id="interview-children-grounds" ng-model="interview.grounds.children" cols="30" rows="10"></textarea>
+			<textarea id="interview-children-grounds" ng-model="interview.grounds.children" cols="30" rows="10" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -1839,7 +1839,7 @@
 				<span class="label">Please provide details of specific incidents where {{ interview.respondent.name.short }} has committed associated domestic violence or exposed the relative or associate to domestic violence</span>
 				<small class="hint">Include date or approximate dates</small>
 			</label>
-			<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="10"></textarea>
+			<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="10" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -1872,7 +1872,7 @@
 			<label for="interview-conditions-ouster-grounds">
 				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must leave specified premises</span>
 			</label>
-			<textarea id="interview-conditions-ouster-grounds" ng-model="interview.conditions.ouster.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-ouster-grounds" ng-model="interview.conditions.ouster.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -1904,7 +1904,7 @@
 			<label for="interview-conditions-distance-aggrieved-home-grounds">
 				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} home</span>
 			</label>
-			<textarea id="interview-conditions-distance-aggrieved-home-grounds" ng-model="interview.conditions.distance.aggrieved.home.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-distance-aggrieved-home-grounds" ng-model="interview.conditions.distance.aggrieved.home.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -1936,7 +1936,7 @@
 			<label for="interview-conditions-distance-aggrieved-grounds">
 				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.aggrieved.pronoun.you }}</span>
 			</label>
-			<textarea id="interview-conditions-distance-aggrieved-grounds" ng-model="interview.conditions.distance.aggrieved.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-distance-aggrieved-grounds" ng-model="interview.conditions.distance.aggrieved.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li ng-show="interview.conditions.nameChildren">
@@ -1968,7 +1968,7 @@
 			<label for="interview-conditions-distance-children-grounds">
 				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} kids</span>
 			</label>
-			<textarea id="interview-conditions-distance-children-grounds" ng-model="interview.conditions.distance.children.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-distance-children-grounds" ng-model="interview.conditions.distance.children.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li ng-show="interview.conditions.nameChildren">
@@ -2000,7 +2000,7 @@
 			<label for="interview-conditions-distance-children-places-grounds">
 				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from the kids’ school/daycare/etc</span>
 			</label>
-			<textarea id="interview-conditions-distance-children-places-grounds" ng-model="interview.conditions.distance.children.places.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-distance-children-places-grounds" ng-model="interview.conditions.distance.children.places.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li ng-show="interview.conditions.nameAssociates">
@@ -2032,7 +2032,7 @@
 			<label for="interview-conditions-distance-associates-grounds">
 				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates</span>
 			</label>
-			<textarea id="interview-conditions-distance-associates-grounds" ng-model="interview.conditions.distance.associates.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-distance-associates-grounds" ng-model="interview.conditions.distance.associates.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li ng-show="interview.conditions.nameAssociates">
@@ -2064,7 +2064,7 @@
 			<label for="interview-conditions-distance-associate-home-grounds">
 				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates’ homes</span>
 			</label>
-			<textarea id="interview-conditions-distance-associate-home-grounds" ng-model="interview.conditions.distance.associate.home.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-distance-associate-home-grounds" ng-model="interview.conditions.distance.associate.home.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -2096,7 +2096,7 @@
 			<label for="interview-conditions-distance-aggrieved-staying-grounds">
 				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stay away from the place where {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} currently staying</span>
 			</label>
-			<textarea id="interview-conditions-distance-aggrieved-staying-grounds" ng-model="interview.conditions.distance.aggrieved.staying.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-distance-aggrieved-staying-grounds" ng-model="interview.conditions.distance.aggrieved.staying.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -2129,7 +2129,7 @@
 			<label for="interview-conditions-aggrieved-stop-contact-grounds">
 				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop trying to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
 			</label>
-			<textarea id="interview-conditions-aggrieved-stop-contact-grounds" ng-model="interview.conditions.aggrieved.noContact.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-aggrieved-stop-contact-grounds" ng-model="interview.conditions.aggrieved.noContact.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -2162,7 +2162,7 @@
 			<label for="interview-conditions-social-media-grounds">
 				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop publishing anything online that mentions {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
 			</label>
-			<textarea id="interview-conditions-social-media-grounds" ng-model="interview.conditions.socialMedia.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-social-media-grounds" ng-model="interview.conditions.socialMedia.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -2194,7 +2194,7 @@
 			<label for="interview-conditions-aggrieved-locate-grounds">
 				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop trying to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
 			</label>
-			<textarea id="interview-conditions-aggrieved-locate-grounds" ng-model="interview.conditions.aggrieved.locate.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-aggrieved-locate-grounds" ng-model="interview.conditions.aggrieved.locate.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -2226,7 +2226,7 @@
 			<label for="interview-conditions-property-grounds">
 				<span class="label">Please list the property you want returned</span>
 			</label>
-			<textarea id="interview-conditions-property-grounds" ng-model="interview.conditions.property.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-property-grounds" ng-model="interview.conditions.property.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -2258,7 +2258,7 @@
 			<label for="interview-conditions-behaviour-grounds">
 				<span class="label">Please explain how you want {{ interview.respondent.name.short }} to behave differently</span>
 			</label>
-			<textarea id="interview-conditions-behaviour-grounds" ng-model="interview.conditions.behaviour.grounds" rows="3" cols="30"></textarea>
+			<textarea id="interview-conditions-behaviour-grounds" ng-model="interview.conditions.behaviour.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li class="footer">
@@ -2310,7 +2310,7 @@
 			<label for="interview-respondent-address">
 				<span class="label">Address</span>
 			</label>
-			<textarea id="interview-respondent-address" ng-model="interview.respondent.address" rows="3" cols="30"></textarea>
+			<textarea id="interview-respondent-address" ng-model="interview.respondent.address" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 		<li>
 			<label for="interview-respondent-date-birth">
@@ -2447,14 +2447,14 @@
 			<label for="respondent-disability-details">
 				<span class="label">Please provide details about {{ interview.respondent.name.short }}’s needs</span>
 			</label>
-			<textarea ng-model="interview.respondent.disabilityNeeds" id="respondent-disability-details" rows="3" cols="40"></textarea>
+			<textarea ng-model="interview.respondent.disabilityNeeds" id="respondent-disability-details" rows="3" cols="40" spellcheck="true"></textarea>
 		</li>
 
 		<li>
 			<label for="interview-respondent-employment">
 				<span class="label">Current place of employment</span>
 			</label>
-			<textarea id="interview-respondent-employment" ng-model="interview.respondent.employment.address" rows="3" cols="30"></textarea>
+			<textarea id="interview-respondent-employment" ng-model="interview.respondent.employment.address" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -2505,7 +2505,7 @@
 						<label for="respondent-parent-address">
 							<span class="label">Parent's address</span>
 						</label>
-						<textarea ng-model="interview.respondent.parent.address" id="respondent-parent-address" rows="3" cols="4"></textarea>
+						<textarea ng-model="interview.respondent.parent.address" id="respondent-parent-address" rows="3" cols="4" spellcheck="true"></textarea>
 					</li>
 				</ol>
 			</fieldset>
@@ -2532,7 +2532,7 @@
 			<label for="interview-weapon-access-details">
 				<span class="label">Please state the number of weapons, the type of weapons and all likely places where they may be found</span>
 			</label>
-			<textarea id="interview-weapon-access-details" ng-model="interview.respondent.weapon.accessDetails" cols="40" rows="10"></textarea>
+			<textarea id="interview-weapon-access-details" ng-model="interview.respondent.weapon.accessDetails" cols="40" rows="10" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -2563,7 +2563,7 @@
 			<label for="interview-weapon-licence-details">
 				<span class="label">Please provide details of any weapons {{ interview.respondent.name.short }} has access to and where they are located</span>
 			</label>
-			<textarea id="interview-weapon-licence-details" ng-model="interview.respondent.weapon.licenceDetails" cols="40" rows="10"></textarea>
+			<textarea id="interview-weapon-licence-details" ng-model="interview.respondent.weapon.licenceDetails" cols="40" rows="10" spellcheck="true"></textarea>
 		</li>
 
 		<li class="footer">
@@ -2706,7 +2706,7 @@
 					<label for="interview-applicant-address">
 						<span class="label">Address</span>
 					</label>
-					<textarea id="interview-applicant-address" ng-model="interview.applicant.address" rows="3" cols="30"></textarea>
+					<textarea id="interview-applicant-address" ng-model="interview.applicant.address" rows="3" cols="30" spellcheck="true"></textarea>
 				</li>
 				<li>
 					<label for="applicant-gender">
@@ -2756,7 +2756,7 @@
 					<label for="application-authorisation-received">
 						<span class="label">How is authorisation communicated from {{ interview.aggrieved.name.short }}?</span>
 					</label>
-					<textarea ng-model="interview.applicant.authorisation.other" rows="2" cols="40" id="application-authorisation-received"></textarea>
+					<textarea ng-model="interview.applicant.authorisation.other" rows="2" cols="40" id="application-authorisation-received" spellcheck="true"></textarea>
 				</li>
 
 				<li ng-if="interview.applicant.part === 'B'">
