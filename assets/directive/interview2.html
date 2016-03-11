@@ -61,6 +61,26 @@
 	<option value="parents">
 	<option value="a neighbour">
 </datalist>
+<datalist id="datalist-gender">
+	<option value="Female">
+	<option value="Male">
+	<option value="Man">
+	<option value="Woman">
+	<option value="Transgender">
+	<option value="Transsexual">
+	<option value="Genderqueer">
+	<option value="Non-gendered">
+	<option value="Agender">
+	<option value="Genderless">
+	<option value="Non-binary">
+	<option value="Trans Man">
+	<option value="Trans Woman">
+	<option value="Third Gender">
+	<option value="Two-Spirit">
+	<option value="Bi-Gender">
+	<option value="Genderfluid">
+	<option value="Transvestite">
+</datalist>
 
 
 <section ng-show="interview.page === interview.PAGE.PREAMBLE">
@@ -448,6 +468,7 @@
 						       id="aggrieved-name-given"
 						       ng-model="interview.aggrieved.name.given"
 						       ng-change="interview.saveAggrieved()"
+						       autocomplete="given-name"
 						>
 					</li>
 					<li>
@@ -458,6 +479,7 @@
 						       id="aggrieved-name-family"
 						       ng-model="interview.aggrieved.name.family"
 						       ng-change="interview.saveAggrieved()"
+						       autocomplete="family-name"
 						>
 					</li>
 				</ol>
@@ -467,33 +489,13 @@
 			<label for="interview-aggrieved-date-birth">
 				<span class="label">Date of birth</span>
 			</label>
-			<input type="text" id="interview-aggrieved-date-birth" ng-model="interview.aggrieved.dateBirth">
+			<input type="text" id="interview-aggrieved-date-birth" ng-model="interview.aggrieved.dateBirth" autocomplete="bday">
 		</li>
 		<li>
 			<label for="interview-aggrieved-gender">
 				<span class="label">Gender</span>
 			</label>
-			<select ng-model="interview.aggrieved.gender" id="interview-aggrieved-gender" ng-change="interview.saveAggrieved()">
-				<option value=""></option>
-				<option value="Female">Female</option>
-				<option value="Male">Male</option>
-				<option value="Man">Man</option>
-				<option value="Woman">Woman</option>
-				<option value="Transgender">Transgender</option>
-				<option value="Transsexual">Transsexual</option>
-				<option value="Genderqueer">Genderqueer</option>
-				<option value="Non-gendered">Non-gendered</option>
-				<option value="Agender">Agender</option>
-				<option value="Genderless">Genderless</option>
-				<option value="Non-binary">Non-binary</option>
-				<option value="Trans Man">Trans Man</option>
-				<option value="Trans Woman">Trans Woman</option>
-				<option value="Third Gender">Third Gender</option>
-				<option value="Two-Spirit">Two-Spirit</option>
-				<option value="Bi-Gender">Bi-Gender</option>
-				<option value="Genderfluid">Genderfluid</option>
-				<option value="Transvestite">Transvestite</option>
-			</select>
+			<input type="text" ng-model="interview.aggrieved.genderIdentity" id="interview-aggrieved-gender" ng-blur="interview.saveAggrieved()" autocomplete="sex" list="datalist-gender">
 		</li>
 
 		<li class="footer">
@@ -524,6 +526,7 @@
 						       id="aggrieved-name-given"
 						       ng-model="interview.aggrieved.name.given"
 						       ng-change="interview.saveAggrieved()"
+						       autocomplete="given-name"
 						>
 					</li>
 					<li>
@@ -534,6 +537,7 @@
 						       id="aggrieved-name-family"
 						       ng-model="interview.aggrieved.name.family"
 						       ng-change="interview.saveAggrieved()"
+						       autocomplete="family-name"
 						>
 					</li>
 				</ol>
@@ -543,63 +547,43 @@
 			<label for="interview-aggrieved-address">
 				<span class="label">Address</span>
 			</label>
-			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" spellcheck="true"></textarea>
+			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
 		</li>
 		<li>
 			<label for="interview-aggrieved-date-birth">
 				<span class="label">Date of birth</span>
 			</label>
-			<input type="text" id="interview-aggrieved-date-birth" ng-model="interview.aggrieved.dateBirth">
+			<input type="text" id="interview-aggrieved-date-birth" ng-model="interview.aggrieved.dateBirth" autocomplete="bday">
 		</li>
 		<li>
 			<label for="interview-aggrieved-gender">
 				<span class="label">Gender</span>
 			</label>
-			<select ng-model="interview.aggrieved.gender" id="interview-aggrieved-gender" ng-change="interview.saveAggrieved()">
-				<option value=""></option>
-				<option value="Female">Female</option>
-				<option value="Male">Male</option>
-				<option value="Man">Man</option>
-				<option value="Woman">Woman</option>
-				<option value="Transgender">Transgender</option>
-				<option value="Transsexual">Transsexual</option>
-				<option value="Genderqueer">Genderqueer</option>
-				<option value="Non-gendered">Non-gendered</option>
-				<option value="Agender">Agender</option>
-				<option value="Genderless">Genderless</option>
-				<option value="Non-binary">Non-binary</option>
-				<option value="Trans Man">Trans Man</option>
-				<option value="Trans Woman">Trans Woman</option>
-				<option value="Third Gender">Third Gender</option>
-				<option value="Two-Spirit">Two-Spirit</option>
-				<option value="Bi-Gender">Bi-Gender</option>
-				<option value="Genderfluid">Genderfluid</option>
-				<option value="Transvestite">Transvestite</option>
-			</select>
+			<input type="text" ng-model="interview.aggrieved.genderIdentity" id="interview-aggrieved-gender" ng-blur="interview.saveAggrieved()" autocomplete="sex" list="datalist-gender">
 		</li>
 		<li>
 			<label for="interview-aggrieved-phone-home">
 				<span class="label">Home phone</span>
 			</label>
-			<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20">
+			<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20" autocomplete="tel">
 		</li>
 		<li>
 			<label for="interview-aggrieved-phone-mobile">
 				<span class="label">Mobile</span>
 			</label>
-			<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20">
+			<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20" autocomplete="tel">
 		</li>
 		<li>
 			<label for="interview-aggrieved-phone-work">
 				<span class="label">Work phone</span>
 			</label>
-			<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20">
+			<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20" autocomplete="tel">
 		</li>
 		<li>
 			<label for="interview-aggrieved-email">
 				<span class="label">Email</span>
 			</label>
-			<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30">
+			<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30" autocomplete="email">
 		</li>
 		<li>
 			<label for="interview-aggrieved-idNumber">
@@ -630,7 +614,7 @@
 			<label for="aggrieved-language-dialect">
 				<span class="label">Language/Dialect</span>
 			</label>
-			<input type="text" ng-model="interview.aggrieved.language" size="20" id="aggrieved-language-dialect">
+			<input type="text" ng-model="interview.aggrieved.language" size="20" id="aggrieved-language-dialect" autocomplete="language">
 		</li>
 
 		<li>
@@ -735,7 +719,7 @@
 
 <section ng-show="interview.page === interview.PAGE.RESPONDENT">
 <h2>Respondent’s Details (person the aggrieved is seeking protection from)</h2>
-<form class="form" name="formRespondent" ng-submit="interview.continue( $event )">
+<form class="form" name="formRespondent" autocomplete="off" ng-submit="interview.continue( $event )">
 	<ol class="questions">
 		<li class="group atomic">
 			<fieldset>
@@ -777,27 +761,7 @@
 			<label for="interview-respondent-gender">
 				<span class="label">Gender</span>
 			</label>
-			<select ng-model="interview.respondent.gender" id="interview-respondent-gender" ng-change="interview.saveRespondent()">
-				<option value=""></option>
-				<option value="Female">Female</option>
-				<option value="Male">Male</option>
-				<option value="Man">Man</option>
-				<option value="Woman">Woman</option>
-				<option value="Transgender">Transgender</option>
-				<option value="Transsexual">Transsexual</option>
-				<option value="Genderqueer">Genderqueer</option>
-				<option value="Non-gendered">Non-gendered</option>
-				<option value="Agender">Agender</option>
-				<option value="Genderless">Genderless</option>
-				<option value="Non-binary">Non-binary</option>
-				<option value="Trans Man">Trans Man</option>
-				<option value="Trans Woman">Trans Woman</option>
-				<option value="Third Gender">Third Gender</option>
-				<option value="Two-Spirit">Two-Spirit</option>
-				<option value="Bi-Gender">Bi-Gender</option>
-				<option value="Genderfluid">Genderfluid</option>
-				<option value="Transvestite">Transvestite</option>
-			</select>
+			<input type="text" ng-model="interview.respondent.genderIdentity" id="interview-respondent-gender" ng-blur="interview.saveRespondent()" list="datalist-gender">
 		</li>
 
 		<li class="footer">
@@ -1498,7 +1462,7 @@
 	<p>If you do not want {{ interview.respondent.name.short }} to know the address details of the child, please provide an alternate address (e.g. of a friend or relative or a post office box).</p>
 </div>
 
-<form class="form" name="formChildren" ng-submit="interview.continue( $event )">
+<form class="form" name="formChildren" autocomplete="off" ng-submit="interview.continue( $event )">
 	<ol class="questions">
 		<li>
 			<fieldset>
@@ -1541,27 +1505,7 @@
 						<label for="interview-child{{$index}}-gender">
 							<span class="label">Gender</span>
 						</label>
-						<select ng-model="child.gender" id="interview-child{{$index}}-gender">
-							<option value=""></option>
-							<option value="Female">Female</option>
-							<option value="Male">Male</option>
-							<option value="Man">Man</option>
-							<option value="Woman">Woman</option>
-							<option value="Transgender">Transgender</option>
-							<option value="Transsexual">Transsexual</option>
-							<option value="Genderqueer">Genderqueer</option>
-							<option value="Non-gendered">Non-gendered</option>
-							<option value="Agender">Agender</option>
-							<option value="Genderless">Genderless</option>
-							<option value="Non-binary">Non-binary</option>
-							<option value="Trans Man">Trans Man</option>
-							<option value="Trans Woman">Trans Woman</option>
-							<option value="Third Gender">Third Gender</option>
-							<option value="Two-Spirit">Two-Spirit</option>
-							<option value="Bi-Gender">Bi-Gender</option>
-							<option value="Genderfluid">Genderfluid</option>
-							<option value="Transvestite">Transvestite</option>
-						</select>
+						<input type="text" ng-model="child.genderIdentity" id="interview-child{{$index}}-gender" list="datalist-gender">
 					</li>
 					<li>
 						<label for="interview-child{{$index}}-date-birth">
@@ -1604,7 +1548,7 @@
 	As associate can be a person who is your current spouse, a person that works with you, lives at the same address or provides you with support.</p>
 </div>
 
-<form class="form" name="formAssociates" ng-submit="interview.continue( $event )">
+<form class="form" name="formAssociates" autocomplete="off" ng-submit="interview.continue( $event )">
 	<ol class="questions">
 		<li>
 			<fieldset>
@@ -1650,27 +1594,7 @@
 						<label for="interview-associate{{$index}}-gender">
 							<span class="label">Gender</span>
 						</label>
-						<select ng-model="associate.gender" id="interview-associate{{$index}}-gender">
-							<option value=""></option>
-							<option value="Female">Female</option>
-							<option value="Male">Male</option>
-							<option value="Man">Man</option>
-							<option value="Woman">Woman</option>
-							<option value="Transgender">Transgender</option>
-							<option value="Transsexual">Transsexual</option>
-							<option value="Genderqueer">Genderqueer</option>
-							<option value="Non-gendered">Non-gendered</option>
-							<option value="Agender">Agender</option>
-							<option value="Genderless">Genderless</option>
-							<option value="Non-binary">Non-binary</option>
-							<option value="Trans Man">Trans Man</option>
-							<option value="Trans Woman">Trans Woman</option>
-							<option value="Third Gender">Third Gender</option>
-							<option value="Two-Spirit">Two-Spirit</option>
-							<option value="Bi-Gender">Bi-Gender</option>
-							<option value="Genderfluid">Genderfluid</option>
-							<option value="Transvestite">Transvestite</option>
-						</select>
+						<input type="text" ng-model="associate.genderIdentity" id="interview-associate{{$index}}-gender" list="datalist-gender">
 					</li>
 					<li>
 						<label for="interview-associate{{$index}}-date-birth">
@@ -2274,7 +2198,7 @@
 
 <section ng-show="interview.page === interview.PAGE.RESPONDENT2">
 <h2>Respondent’s Details (person the aggrieved is seeking protection from)</h2>
-<form class="form" name="formRespondent2" ng-submit="interview.continue( $event )">
+<form class="form" name="formRespondent2" autocomplete="off" ng-submit="interview.continue( $event )">
 	<ol class="questions">
 		<li class="group atomic">
 			<fieldset>
@@ -2322,27 +2246,7 @@
 			<label for="interview-respondent-gender">
 				<span class="label">Gender</span>
 			</label>
-			<select ng-model="interview.respondent.gender" id="interview-respondent-gender" ng-change="interview.saveRespondent()">
-				<option value=""></option>
-				<option value="Female">Female</option>
-				<option value="Male">Male</option>
-				<option value="Man">Man</option>
-				<option value="Woman">Woman</option>
-				<option value="Transgender">Transgender</option>
-				<option value="Transsexual">Transsexual</option>
-				<option value="Genderqueer">Genderqueer</option>
-				<option value="Non-gendered">Non-gendered</option>
-				<option value="Agender">Agender</option>
-				<option value="Genderless">Genderless</option>
-				<option value="Non-binary">Non-binary</option>
-				<option value="Trans Man">Trans Man</option>
-				<option value="Trans Woman">Trans Woman</option>
-				<option value="Third Gender">Third Gender</option>
-				<option value="Two-Spirit">Two-Spirit</option>
-				<option value="Bi-Gender">Bi-Gender</option>
-				<option value="Genderfluid">Genderfluid</option>
-				<option value="Transvestite">Transvestite</option>
-			</select>
+			<input type="text" ng-model="interview.respondent.genderIdentity" id="interview-respondent-gender" list="datalist-gender">
 		</li>
 		<li>
 			<label for="interview-respondent-phone-home">
@@ -2691,13 +2595,13 @@
 								<label for="applicant-name-given">
 									<span class="label">Given name</span>
 								</label>
-								<input ng-model="interview.applicant.name.given" size="15" type="text" id="applicant-name-given" />
+								<input ng-model="interview.applicant.name.given" size="15" type="text" id="applicant-name-given" autocomplete="given-name" />
 							</li>
 							<li>
 								<label for="applicant-name-family">
 									<span class="label">Family name</span>
 								</label>
-								<input ng-model="interview.applicant.name.family" size="15" type="text" id="applicant-name-family" />
+								<input ng-model="interview.applicant.name.family" size="15" type="text" id="applicant-name-family" autocomplete="family-name" />
 							</li>
 						</ol>
 					</fieldset>
@@ -2706,33 +2610,13 @@
 					<label for="interview-applicant-address">
 						<span class="label">Address</span>
 					</label>
-					<textarea id="interview-applicant-address" ng-model="interview.applicant.address" rows="3" cols="30" spellcheck="true"></textarea>
+					<textarea id="interview-applicant-address" ng-model="interview.applicant.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
 				</li>
 				<li>
 					<label for="applicant-gender">
 						<span class="label">Gender</span>
 					</label>
-					<select ng-model="interview.applicant.gender" id="applicant-gender">
-						<option value=""></option>
-						<option value="Female">Female</option>
-						<option value="Male">Male</option>
-						<option value="Man">Man</option>
-						<option value="Woman">Woman</option>
-						<option value="Transgender">Transgender</option>
-						<option value="Transsexual">Transsexual</option>
-						<option value="Genderqueer">Genderqueer</option>
-						<option value="Non-gendered">Non-gendered</option>
-						<option value="Agender">Agender</option>
-						<option value="Genderless">Genderless</option>
-						<option value="Non-binary">Non-binary</option>
-						<option value="Trans Man">Trans Man</option>
-						<option value="Trans Woman">Trans Woman</option>
-						<option value="Third Gender">Third Gender</option>
-						<option value="Two-Spirit">Two-Spirit</option>
-						<option value="Bi-Gender">Bi-Gender</option>
-						<option value="Genderfluid">Genderfluid</option>
-						<option value="Transvestite">Transvestite</option>
-					</select>
+					<input type="text" ng-model="interview.applicant.genderIdentity" id="interview-applicant-gender" autocomplete="sex" list="datalist-gender">
 				</li>
 
 				<li ng-if="interview.applicant.part === 'A'">
@@ -2905,13 +2789,13 @@
 					<form method="POST" id="download-prepared" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
 						<input type="hidden" name="aggrievedNameGiven" ng-value="interview.aggrieved.name.given">
 						<input type="hidden" name="aggrievedNameFamily" ng-value="interview.aggrieved.name.family">
-						<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.gender">
+						<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.genderIdentity">
 						<input type="hidden" name="aggrievedDateBirth" ng-value="interview.aggrieved.dateBirth">
 						<input type="hidden" name="aggrievedAddress" ng-value="interview.aggrieved.address">
 
 						<input type="hidden" name="respondentNameGiven" ng-value="interview.respondent.name.given">
 						<input type="hidden" name="respondentNameFamily" ng-value="interview.respondent.name.family">
-						<input type="hidden" name="respondentGender" ng-value="interview.respondent.gender">
+						<input type="hidden" name="respondentGender" ng-value="interview.respondent.genderIdentity">
 						<input type="hidden" name="respondentDateBirth" ng-value="interview.respondent.dateBirth">
 						<input type="hidden" name="respondentAddress" ng-value="interview.respondent.address">
 
@@ -2927,7 +2811,7 @@
 						<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
 						<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenCount" ng-value="interview.conditions.nameChildren ? interview.children.length : 0">
 						<input ng-if="interview.conditions.nameChildren" ng-repeat-start="child in interview.children" type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
-						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Gender" ng-value="child.gender">
+						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Gender" ng-value="child.genderIdentity">
 						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
 						<input ng-if="interview.conditions.nameChildren" ng-repeat-end type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
 

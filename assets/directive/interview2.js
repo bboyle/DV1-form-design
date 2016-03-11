@@ -65,7 +65,7 @@ angular.module( 'dv1' )
 	};
 
 	vm.saveAggrieved = function() {
-		application.setGender( vm.aggrieved );
+		application.setGender( vm.aggrieved, vm.aggrieved.genderIdentity );
 		application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
 		if ( vm.applicantIsAggrieved ) {
 			vm.applicant = vm.aggrieved;
@@ -75,12 +75,12 @@ angular.module( 'dv1' )
 		if ( vm.applicantIsAggrieved ) {
 			application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
 		} else {
-			application.setGender( vm.applicant );
+			application.setGender( vm.applicant, vm.applicant.genderIdentity );
 			application.saveApplicant( vm.applicant );
 		}
 	};
 	vm.saveRespondent = function() {
-		application.setGender( vm.respondent );
+		application.setGender( vm.respondent, vm.respondent.genderIdentity );
 		application.saveRespondent( vm.respondent );
 	};
 
@@ -141,8 +141,14 @@ angular.module( 'dv1' )
 	vm.reset = function() {
 		// wipe all application data
 		vm.aggrieved  = { name: { short: 'the aggrieved' }};
+		vm.saveAggrieved();
+
 		vm.applicant  = { name: { short: 'the applicant' }};
+		vm.saveApplicant();
+
 		vm.respondent = { name: { short: 'the respondent' }};
+		vm.saveRespondent();
+
 		vm.children = [ {} ];
 		vm.associates = [ {} ];
 		vm.grounds = {};
@@ -163,7 +169,7 @@ angular.module( 'dv1' )
 				given: 'Marjorie',
 				family: 'Simpson'
 			},
-			gender: 'Female',
+			genderIdentity: 'Female',
 			address: '742 Evergreen Terrace, Springfield QLD 4300',
 			dateBirth: '19 March 1980',
 			relationship: {
@@ -181,7 +187,7 @@ angular.module( 'dv1' )
 				given: 'Artie',
 				family: 'Ziff'
 			},
-			gender: 'Male',
+			genderIdentity: 'Male',
 			address: '5 Helicopter Boulevard, Springfield 4300',
 			dateBirth: '5 May 1980'
 		};
@@ -191,17 +197,17 @@ angular.module( 'dv1' )
 		vm.grounds = { children: 'Artie put a hidden camera inside our home.' };
 		vm.children = [{
 			name: { full: 'Bartholomew J Simpson' },
-			gender: 'Male',
+			genderIdentity: 'Male',
 			dateBirth: '1 April 2006',
 			address: vm.aggrieved.address
 		}, {
 			name: { full: 'Lisa Marie Simpson' },
-			gender: 'Female',
+			genderIdentity: 'Female',
 			dateBirth: '9 May 2006',
 			address: vm.aggrieved.address
 		}, {
 			name: { full: 'Margaret Simpson' },
-			gender: 'Female',
+			genderIdentity: 'Female',
 			dateBirth: '29 February 2015',
 			address: vm.aggrieved.address
 		}];
