@@ -920,7 +920,7 @@
 						<small class="hint">2 people living together as a couple who are not married or related</small>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="former De Facto" id="interview-relationship-former-de-facto">
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former De Facto" id="interview-relationship-former-de-facto">
 						<label for="interview-relationship-former-de-facto">were in a <dfn>de facto</dfn> relationship</label>
 						<small class="hint">2 people who lived together as a couple who were not married or related</small>
 					</li>
@@ -929,7 +929,7 @@
 						<label for="interview-relationship-registered-relationship">are in a civil partnership/registered relationship</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Previous Registered Relationship" id="interview-relationship-registered-relationship-past">
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Registered Relationship" id="interview-relationship-registered-relationship-past">
 						<label for="interview-relationship-registered-relationship-past">were in a civil partnership/registered relationship</label>
 					</li>
 					<li>
@@ -953,7 +953,7 @@
 						<label for="interview-relationship-couple">are a couple</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Past Couple" id="interview-relationship-couple-past">
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Couple" id="interview-relationship-couple-past">
 						<label for="interview-relationship-couple-past">were a couple</label>
 					</li>
 				</ul>
@@ -968,7 +968,7 @@
 			<input for="interview-family-relationship" type="text" ng-model="interview.partyFamily" size="20" ng-change="interview.updateParties()">
 		</li>
 
-		<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; ( interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Past Couple' )">
+		<li ng-show="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; ( interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple' )">
 			<label for="interview-relationship-couple">
 				<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} {{ interview.aggrieved.relationship.type === 'Couple' ? 'are' : 'were' }} a couple</span>
 				<small class="hint">Describe {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short +'’s' }} level of dependence on each other, whether financial or otherwise; how long you've been in a relationship; how often you have contact and {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.their }} degree of intimacy (if any).</small>
@@ -2998,11 +2998,11 @@
 						<input type="hidden" name="aggrievedNameGiven" ng-value="interview.aggrieved.name.given">
 						<input type="hidden" name="aggrievedNameFamily" ng-value="interview.aggrieved.name.family">
 						<input type="hidden" name="aggrievedDateBirth" ng-value="interview.aggrieved.dateBirth">
-						<input type="hidden" name="aggrievedConfidentialAddress" ng-value="interview.aggrieved.confidential.address">
+						<input type="hidden" name="aggrievedAddressConfidential" ng-value="interview.aggrieved.confidential.address">
 						<input type="hidden" name="aggrievedAddress" ng-value="interview.aggrieved.address">
 						<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.genderIdentity">
 
-						<input type="hidden" name="aggrievedConfidentialContact" ng-value="interview.aggrieved.confidential">
+						<input type="hidden" name="aggrievedContactConfidential" ng-value="interview.aggrieved.confidential">
 						<input type="hidden" name="aggrievedPhoneHome" ng-value="interview.aggrieved.contact.phone.home">
 						<input type="hidden" name="aggrievedPhoneMobile" ng-value="interview.aggrieved.contact.phone.work">
 						<input type="hidden" name="aggrievedPhoneWork" ng-value="interview.aggrieved.contact.phone.work">
@@ -3020,7 +3020,7 @@
 
 						<input type="hidden" name="aggrievedUnder18" ng-value="interview.aggrieved.under18">
 						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentName" ng-value="interview.aggrieved.parent.name.full">
-						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedConfidentialParentAddress" ng-value="interview.aggrieved.confidential.parentAddress">
+						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentAddressConfidential" ng-value="interview.aggrieved.confidential.parentAddress">
 						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentAddress" ng-value="interview.aggrieved.parent.address">
 
 
@@ -3062,7 +3062,7 @@
 							<input type="hidden" name="applicantNameGiven" ng-value="interview.applicant.name.given">
 							<input type="hidden" name="applicantNameFamily" ng-value="interview.applicant.name.family">
 							<input type="hidden" name="applicantGender" ng-value="interview.applicant.genderIdentity">
-							<input type="hidden" name="applicantConfidentialAddress" ng-value="inteinterview.applicant.confidential.address">
+							<input type="hidden" name="applicantAddressConfidential" ng-value="inteinterview.applicant.confidential.address">
 							<input type="hidden" name="applicantAddress" ng-value="interview.applicant.address">
 
 							<!-- PART A -->
@@ -3098,24 +3098,25 @@
 						<input ng-if="interview.tpo.apply" type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
 
 
-						<input type="hidden" name="relationshipPersonal" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalMarried" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalFormerSpouse" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalDeFacto" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalRegistered" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalParent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalEngaged" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalWereEngaged" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalCouple" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipPersonalDescription" ng-value=""> <!-- text -->
+						<input type="hidden" name="relationshipPersonal" ng-value="interview.aggrieved.relationship.category === 'Intimate personal'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalMarried" ng-value="interview.aggrieved.relationship.type === 'Married'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalFormerSpouse" ng-value="interview.aggrieved.relationship.type === 'Former Spouse'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalDeFacto" ng-value="interview.aggrieved.relationship.type === 'De Facto' || interview.aggrieved.relationship.type === 'Former De Facto'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalRegistered" ng-value="interview.aggrieved.relationship.type === 'Registered Relationship' || interview.aggrieved.relationship.type === 'Former Registered Relationship'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalParent" ng-value="interview.aggrieved.relationship.type === 'Parent of a Child' || interview.aggrieved.relationship.type === 'Former Parent of a Child'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalEngaged" ng-value="interview.aggrieved.relationship.type === 'Engaged'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalWereEngaged" ng-value="interview.aggrieved.relationship.type === 'Were Engaged'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalCouple" ng-value="interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; (interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple')" type="hidden" name="relationshipPersonalDescription" ng-value="interview.aggrieved.relationship.couple"> <!-- text -->
 
-						<input type="hidden" name="relationshipFamily" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipFamilyDescription" ng-value=""> <!-- text -->
+						<input type="hidden" name="relationshipFamily" ng-value="interview.aggrieved.relationship.category === 'Family'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Family'" type="hidden" name="relationshipFamilyDescription" ng-value="interview.partyFamily"> <!-- text -->
 
-						<input type="hidden" name="relationshipCare" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="relationshipCareDescription" ng-value=""> <!-- text -->
+						<input type="hidden" name="relationshipCare" ng-value="interview.aggrieved.relationship.category === 'Informal care'"> <!-- true/false -->
+						<input ng-if="interview.aggrieved.relationship.category === 'Informal care'" type="hidden" name="relationshipCareDescription" ng-value="interview.aggrieved.relationship.informalCare"> <!-- text -->
 
 
+						<!-- TODO construct grounds -->
 						<input type="hidden" name="grounds" ng-value=""> <!-- text -->
 
 
