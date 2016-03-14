@@ -2530,7 +2530,7 @@
 			<label for="interview-respondent-employment">
 				<span class="label">Current place of employment</span>
 			</label>
-			<textarea id="interview-respondent-employment" ng-model="interview.respondent.employment.address" rows="3" cols="30" spellcheck="true"></textarea>
+			<textarea id="interview-respondent-employment" ng-model="interview.respondent.employment" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -3009,17 +3009,17 @@
 						<input type="hidden" name="aggrievedSPI" ng-value="">
 
 						<input type="hidden" name="aggrievedInterpreter" ng-value="interview.aggrieved.requiresInterpreter">
-						<input type="hidden" name="aggrievedLanguage" ng-value="interview.aggrieved.language">
+						<input ng-if="interview.aggrieved.requiresInterpreter" type="hidden" name="aggrievedLanguage" ng-value="interview.aggrieved.language">
 
 						<input type="hidden" name="aggrievedIdentifiesAsAboriginal" ng-value="interview.identifyAs( 'aggrieved', 'Aboriginal' )">
 						<input type="hidden" name="aggrievedIdentifiesAsTorresStraitIslander" ng-value="interview.identifyAs( 'aggrieved', 'Torres Strait islander' )">
 						<input type="hidden" name="aggrievedDisability" ng-value="interview.aggrieved.hasDisability">
-						<input type="hidden" name="aggrievedDisabilityDescription" ng-value="interview.aggrieved.disabilityNeeds">
+						<input ng-if="interview.aggrieved.hasDisability" type="hidden" name="aggrievedDisabilityDescription" ng-value="interview.aggrieved.disabilityNeeds">
 
 						<input type="hidden" name="aggrievedUnder18" ng-value="interview.aggrieved.under18">
-						<input type="hidden" name="aggrievedParentName" ng-value="interview.aggrieved.parent.name.full">
-						<input type="hidden" name="aggrievedConfidentialParentAddress" ng-value="interview.aggrieved.confidential.parentAddress">
-						<input type="hidden" name="aggrievedParentAddress" ng-value="interview.aggrieved.parent.address">
+						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentName" ng-value="interview.aggrieved.parent.name.full">
+						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedConfidentialParentAddress" ng-value="interview.aggrieved.confidential.parentAddress">
+						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentAddress" ng-value="interview.aggrieved.parent.address">
 
 
 						<input type="hidden" name="respondentNameGiven" ng-value="interview.respondent.name.given">
@@ -3028,28 +3028,28 @@
 						<input type="hidden" name="respondentAddress" ng-value="interview.respondent.address">
 						<input type="hidden" name="respondentGender" ng-value="interview.respondent.genderIdentity">
 
-						<input type="hidden" name="respondentPhoneHome" ng-value="interview.respondent.todo">
-						<input type="hidden" name="respondentPhoneMobile" ng-value="interview.respondent.todo">
-						<input type="hidden" name="respondentPhoneWork" ng-value="interview.respondent.todo">
-						<input type="hidden" name="respondentEmail" ng-value="interview.respondent.todo">
+						<input type="hidden" name="respondentPhoneHome" ng-value="interview.respondent.contact.phone.home">
+						<input type="hidden" name="respondentPhoneMobile" ng-value="interview.respondent.contact.phone.mobile">
+						<input type="hidden" name="respondentPhoneWork" ng-value="interview.respondent.contact.phone.work">
+						<input type="hidden" name="respondentEmail" ng-value="interview.respondent.contact.email">
 
 						<input type="hidden" name="respondentSPI" ng-value="">
 
-						<input type="hidden" name="respondentInterpreter" ng-value="">
-						<input type="hidden" name="respondentLanguage" ng-value="">
+						<input type="hidden" name="respondentInterpreter" ng-value="interview.respondent.requiresInterpreter">
+						<input ng-if="interview.respondent.requiresInterpreter" type="hidden" name="respondentLanguage" ng-value="interview.respondent.language">
 
-						<input type="hidden" name="respondentIdentifiesAsAboriginal" ng-value="">
-						<input type="hidden" name="respondentIdentifiesAsTorresStraitIslander" ng-value="">
-						<input type="hidden" name="respondentDisability" ng-value="">
-						<input type="hidden" name="respondentDisabilityDescription" ng-value="">
+						<input type="hidden" name="respondentIdentifiesAsAboriginal" ng-value="interview.identifyAs( 'respondent', 'Aboriginal' )">
+						<input type="hidden" name="respondentIdentifiesAsTorresStraitIslander" ng-value="interview.identifyAs( 'respondent', 'Torres Strait islander' )">
+						<input type="hidden" name="respondentDisability" ng-value="interview.respondent.hasDisability">
+						<input ng-if="interview.respondent.hasDisability" type="hidden" name="respondentDisabilityDescription" ng-value="interview.respondent.disabilityNeeds">
 
-						<input type="hidden" name="respondentEmploymentPlace" ng-value="">
-						<input type="hidden" name="respondentVehicleModel" ng-value="">
-						<input type="hidden" name="respondentVehicleRegistration" ng-value="">
+						<input type="hidden" name="respondentEmploymentPlace" ng-value="interview.respondent.employment">
+						<input type="hidden" name="respondentVehicleModel" ng-value="interview.respondent.vehicleModel">
+						<input type="hidden" name="respondentVehicleRegistration" ng-value="interview.respondent.vehicleRegistration">
 
-						<input type="hidden" name="respondentUnder18" ng-value="">
-						<input type="hidden" name="respondentParentName" ng-value="">
-						<input type="hidden" name="respondentParentAddress" ng-value="">
+						<input type="hidden" name="respondentUnder18" ng-value="interview.respondent.under18">
+						<input ng-if="interview.respondent.under18" type="hidden" name="respondentParentName" ng-value="interview.respondent.parent.name.full">
+						<input ng-if="interview.respondent.under18" type="hidden" name="respondentParentAddress" ng-value="interview.respondent.parent.address">
 
 
 						<!-- applicant part  -->
