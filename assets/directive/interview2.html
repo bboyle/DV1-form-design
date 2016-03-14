@@ -2789,31 +2789,203 @@
 					<form method="POST" id="download-prepared" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
 						<input type="hidden" name="aggrievedNameGiven" ng-value="interview.aggrieved.name.given">
 						<input type="hidden" name="aggrievedNameFamily" ng-value="interview.aggrieved.name.family">
-						<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.genderIdentity">
 						<input type="hidden" name="aggrievedDateBirth" ng-value="interview.aggrieved.dateBirth">
 						<input type="hidden" name="aggrievedAddress" ng-value="interview.aggrieved.address">
+						<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.genderIdentity">
+
+						<input type="hidden" name="aggrievedPhoneHome" ng-value="interview.aggrieved.todo">
+						<input type="hidden" name="aggrievedPhoneMobile" ng-value="interview.aggrieved.todo">
+						<input type="hidden" name="aggrievedPhoneWork" ng-value="interview.aggrieved.todo">
+						<input type="hidden" name="aggrievedEmail" ng-value="interview.aggrieved.todo">
+
+						<input type="hidden" name="aggrievedSPI" ng-value="">
+
+						<input type="hidden" name="aggrievedInterpreter" ng-value="">
+						<input type="hidden" name="aggrievedLanguage" ng-value="">
+
+						<input type="hidden" name="aggrievedIdentifiesAsAboriginal" ng-value="">
+						<input type="hidden" name="aggrievedIdentifiesAsTorresStraitIslander" ng-value="">
+						<input type="hidden" name="aggrievedDisability" ng-value="">
+						<input type="hidden" name="aggrievedDisabilityDescription" ng-value="">
+
+						<input type="hidden" name="aggrievedUnder18" ng-value="">
+						<input type="hidden" name="aggrievedParentName" ng-value="">
+						<input type="hidden" name="aggrievedParentAddress" ng-value="">
+
 
 						<input type="hidden" name="respondentNameGiven" ng-value="interview.respondent.name.given">
 						<input type="hidden" name="respondentNameFamily" ng-value="interview.respondent.name.family">
-						<input type="hidden" name="respondentGender" ng-value="interview.respondent.genderIdentity">
 						<input type="hidden" name="respondentDateBirth" ng-value="interview.respondent.dateBirth">
 						<input type="hidden" name="respondentAddress" ng-value="interview.respondent.address">
+						<input type="hidden" name="respondentGender" ng-value="interview.respondent.genderIdentity">
 
-						<input type="hidden" name="relationshipCategory" ng-value="interview.aggrieved.relationship.category">
-						<input type="hidden" name="relationshipType" ng-value="interview.aggrieved.relationship.type">
+						<input type="hidden" name="respondentPhoneHome" ng-value="interview.respondent.todo">
+						<input type="hidden" name="respondentPhoneMobile" ng-value="interview.respondent.todo">
+						<input type="hidden" name="respondentPhoneWork" ng-value="interview.respondent.todo">
+						<input type="hidden" name="respondentEmail" ng-value="interview.respondent.todo">
+
+						<input type="hidden" name="respondentSPI" ng-value="">
+
+						<input type="hidden" name="respondentInterpreter" ng-value="">
+						<input type="hidden" name="respondentLanguage" ng-value="">
+
+						<input type="hidden" name="respondentIdentifiesAsAboriginal" ng-value="">
+						<input type="hidden" name="respondentIdentifiesAsTorresStraitIslander" ng-value="">
+						<input type="hidden" name="respondentDisability" ng-value="">
+						<input type="hidden" name="respondentDisabilityDescription" ng-value="">
+
+						<input type="hidden" name="respondentEmploymentPlace" ng-value="">
+						<input type="hidden" name="respondentVehicleModel" ng-value="">
+						<input type="hidden" name="respondentVehicleRegistration" ng-value="">
+
+						<input type="hidden" name="respondentUnder18" ng-value="">
+						<input type="hidden" name="respondentParentName" ng-value="">
+						<input type="hidden" name="respondentParentAddress" ng-value="">
+
+
+						<!-- applicant part  -->
+						<input type="hidden" name="applicantPart" ng-value="A"> <!-- A or B or C or D -->
+
+						<!-- shared by A, B and D -->
+						<input type="hidden" name="applicantNameGiven" ng-value="interview.applicant.name.given">
+						<input type="hidden" name="applicantNameFamily" ng-value="interview.applicant.name.family">
+						<input type="hidden" name="applicantGender" ng-value="interview.applicant.genderIdentity">
+						<input type="hidden" name="applicantAddress" ng-value="interview.applicant.address">
+
+						<!-- PART A -->
+						<input type="hidden" name="applicantAuthorisedInWriting" ng-value="true">
+						<input type="hidden" name="applicantAuthorisedDescription" ng-value="">
+
+						<!-- PART B -->
+						<input type="hidden" name="applicantActingAs" ng-value=""> <!-- Guardian OR Adult Guardian OR Enduring power of attorney OR Other -->
+						<input type="hidden" name="applicantActingAsDescription" ng-value="">
+
+						<!-- PART C -->
+						<input type="hidden" name="applicantPoliceNameRank" ng-value="">
+						<input type="hidden" name="applicantPoliceRegistration" ng-value="">
+						<input type="hidden" name="applicantPoliceStation" ng-value="">
+						<input type="hidden" name="applicantPoliceOccurrence" ng-value="">
+						<input type="hidden" name="applicantPoliceAdvisedAggrieved" ng-value="">
+						<input type="hidden" name="applicantPoliceRespondentDetained" ng-value="">
+						<input type="hidden" name="applicantPoliceUrgentProtectionSection130" ng-value="">
+						<input type="hidden" name="applicantPoliceDVOExists" ng-value="">
+						<input type="hidden" name="applicantPoliceDVOCourtFileNumber" ng-value="">
+
+						<!-- PART D -->
+						<input type="hidden" name="applicantChildProtectionPartyChild" ng-value="">
+						<input type="hidden" name="applicantChildProtectionPartyLegalRepresentative" ng-value="">
+						<input type="hidden" name="applicantChildProtectionPartyApplicant" ng-value="">
+						<input type="hidden" name="applicantChildProtectionPartyRespondent" ng-value="">
+
 
 						<!-- urgent protection -->
 						<input type="hidden" name="tpoApply" ng-value="interview.tpo.apply">
 						<input type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
 
+
+						<input type="hidden" name="relationshipPersonal" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalMarried" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalFormerSpouse" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalDeFacto" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalRegistered" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalParent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalEngaged" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalWereEngaged" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalCouple" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipPersonalDescription" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="relationshipFamily" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipFamilyDescription" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="relationshipCare" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="relationshipCareDescription" ng-value=""> <!-- text -->
+
+
+						<input type="hidden" name="grounds" ng-value=""> <!-- text -->
+
+
 						<!-- repeat for children -->
-						<input type="hidden" name="nameChildren" ng-value="interview.conditions.nameChildren">
 						<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
-						<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenCount" ng-value="interview.conditions.nameChildren ? interview.children.length : 0">
 						<input ng-if="interview.conditions.nameChildren" ng-repeat-start="child in interview.children" type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
 						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Gender" ng-value="child.genderIdentity">
 						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
-						<input ng-if="interview.conditions.nameChildren" ng-repeat-end type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
+						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
+						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}AddressConfidential" ng-value="false"> <!-- optional, default: true -->
+						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Named" ng-value="false"> <!-- optional, default: true -->
+						<input ng-if="interview.conditions.nameChildren" ng-repeat-end type="hidden" name="child{{$index + 1}}SPI" ng-value="">
+
+
+						<!-- repeat for associates -->
+						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="nameAssociatesGrounds" ng-value="interview.grounds.associates">
+						<input ng-if="interview.conditions.nameAssociates" ng-repeat-start="associate in interview.associates" type="hidden" name="associate{{$index + 1}}Name" ng-value="associate.name.full">
+						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}Gender" ng-value="associate.genderIdentity">
+						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}DateBirth" ng-value="associate.dateBirth">
+						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}Address" ng-value="associate.address">
+						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}AddressConfidential" ng-value="false"> <!-- optional, default: true -->
+						<input ng-if="interview.conditions.nameAssociates" ng-repeat-end type="hidden" name="associate{{$index + 1}}SPI" ng-value="">
+
+
+						<input type="hidden" name="respondentWeaponsAccess" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="respondentWeaponsAccessDescription" ng-value=""> <!-- text -->
+						<input type="hidden" name="respondentWeaponsUsed" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="respondentWeaponsUsedDescription" ng-value=""> <!-- text -->
+						<input type="hidden" name="respondentWeaponsLicence" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="respondentWeaponsResidenceDescription" ng-value=""> <!-- text -->
+
+
+						<input type="hidden" name="ordersChildrensCourtCurrent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersChildrensCourtPast" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersQldDVOCurrent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersQldDVOPast" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersPoliceProtectionCurrent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersPoliceProtectionPast" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersVoluntaryInterventionCurrent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersVoluntaryInterventionPast" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersInterstateDVOCurrent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersInterstateDVOPast" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersNZDVOCurrent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersNZDVOPast" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersFamilyCourtCurrent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersFamilyCourtPast" ng-value=""> <!-- true/false -->
+
+						<input type="hidden" name="ordersOtherTitle" ng-value=""> <!-- text -->
+						<input type="hidden" name="ordersOtherCurrent" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersOtherPast" ng-value=""> <!-- true/false -->
+
+						<input type="hidden" name="ordersProtectionOrderInProgress" ng-value=""> <!-- true/false -->
+
+
+						<input type="hidden" name="conditionOuster" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionOusterGrounds" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="conditionProhibitEntryResidence" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitEntryEmployment" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitEntryStaying" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitEntryAssociates" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitEntryOther" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitEntryOtherTitle" ng-value=""> <!-- text -->
+						<input type="hidden" name="conditionProhibitEntryGrounds" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="conditionProhibitApproach" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitApproachAssociates" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitApproachGrounds" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="conditionProhibitContact" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitContactAssociates" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitContactGrounds" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="conditionProhibitChildLocations" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitChildLocationsGrounds" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="conditionProhibitLocating" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitLocatingGrounds" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="conditionRecoverProperty" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionRecoverPropertyDescription" ng-value=""> <!-- text -->
+
+						<input type="hidden" name="conditionProhibitConduct" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitConductGrounds" ng-value=""> <!-- text -->
+
 
 						<strong><button>
 							Download your application
