@@ -110,6 +110,15 @@ angular.module( 'dv1' )
 		return value && value.toLowerCase().indexOf( identity.toLowerCase() ) > -1;
 	};
 
+	vm.getApplicantRelationship = function() {
+		switch ( vm.applicant.part ) {
+			case 'A': return 'Authorised';
+			case 'B': return 'Acting';
+			case 'C': return 'Police';
+			case 'D': return 'Child Protection';
+		}
+	};
+
 
 	// temporary protection orders
 	vm.updateTemporaryProtection = function() {

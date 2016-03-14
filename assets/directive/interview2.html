@@ -2738,11 +2738,13 @@
 									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="B" id="applicant-part-b" />
 									<label for="applicant-part-b">A person acting under another Act for {{ interview.applicantIsAggrieved ? 'me' : interview.aggrieved.name.short }}</label>
 								</li>
+<!--
 								<li>
 									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="C" id="applicant-part-c" />
 									<label for="applicant-part-c">A Police Officer</label>
 								</li>
-								<li>
+ -->
+ 								<li>
 									<input type="radio" name="applicant-part" ng-model="interview.applicant.part" value="D" id="applicant-part-d" />
 									<label for="applicant-part-d">A party to a child protection proceeding</label>
 								</li>
@@ -2755,10 +2757,10 @@
 
 		<li class="section" ng-show="interview.whoWillLodge === 'third party' || interview.whoWillLodge === 'applicant'">
 			<header ng-switch="interview.applicant.part">
-				<h3 ng-switch-when="A">PART A — A person being authorised by {{ interview.aggrieved.name.short }}</h3>
-				<h3 ng-switch-when="B">PART B — A person acting under another Act for the Aggrieved</h3>
-				<h3 ng-switch-when="C">PART C — A Police Officer</h3>
-				<h3 ng-switch-when="D">PART D — A party to a child protection proceeding</h3>
+				<h3 ng-switch-when="A">A person being authorised by {{ interview.aggrieved.name.short }}</h3>
+				<h3 ng-switch-when="B">A person acting under another Act for the Aggrieved</h3>
+				<h3 ng-switch-when="C">A Police Officer</h3>
+				<h3 ng-switch-when="D">A party to a child protection proceeding</h3>
 			</header>
 			<ol class="questions">
 				<li class="atomic group">
@@ -2842,7 +2844,7 @@
 						</ul>
 					</fieldset>
 				</li>
-				<li ng-show="interview.applicant.authorisation.written === false">
+				<li ng-show="interview.applicant.part === 'A' &amp;&amp; interview.applicant.authorisation.written === false">
 					<label for="application-authorisation-received">
 						<span class="label">How is authorisation communicated from {{ interview.aggrieved.name.short }}?</span>
 					</label>
@@ -2874,7 +2876,7 @@
 					</ul>
 					</fieldset>
 				</li>
-				<li ng-show="interview.applicant.acting === 'Other'">
+				<li ng-show="interview.applicant.part === 'B' &amp;&amp; interview.applicant.acting === 'Other'">
 					<label for="applicant-acting-other-specified">
 						<span class="label">Please specify</span>
 					</label>
@@ -2890,19 +2892,19 @@
 						</legend>
 						<ul class="choices">
 							<li>
-								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-child" />
+								<input type="radio" name="applicant-child-protection-party" ng-model="interview.applicant.childProtectionParty" value="Child" id="applicant-child-protection-party-child" />
 								<label for="applicant-child-protection-party-child">a child for whom an order is sought in a child protection proceeding</label>
 							</li>
 							<li>
-								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A separate legal representative for a child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-legal-representative" />
+								<input type="radio" name="applicant-child-protection-party" ng-model="interview.applicant.childProtectionParty" value="Legal representative" id="applicant-child-protection-party-legal-representative" />
 								<label for="applicant-child-protection-party-legal-representative">a separate legal representative for a child for whom an order is sought in a child protection proceeding</label>
 							</li>
 							<li>
-								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="An applicant in a child protection proceeding" id="applicant-child-protection-party-applicant" />
+								<input type="radio" name="applicant-child-protection-party" ng-model="interview.applicant.childProtectionParty" value="Applicant" id="applicant-child-protection-party-applicant" />
 								<label for="applicant-child-protection-party-applicant">an applicant in a child protection proceeding</label>
 							</li>
 							<li>
-								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A respondent in a child protection proceeding" id="applicant-child-protection-party-respondent" />
+								<input type="radio" name="applicant-child-protection-party" ng-model="interview.applicant.childProtectionParty" value="Respondent" id="applicant-child-protection-party-respondent" />
 								<label for="applicant-child-protection-party-respondent">a respondent in a child protection proceeding</label>
 							</li>
 						</ul>
@@ -3053,38 +3055,42 @@
 
 
 						<!-- applicant part  -->
-						<input type="hidden" name="applicantPart" ng-value="A"> <!-- A or B or C or D -->
+						<div ng-if="! interview.applicantIsAggrieved">
+							<input type="hidden" name="applicantRelationship" ng-value="interview.getApplicantRelationship()">
 
-						<!-- shared by A, B and D -->
-						<input type="hidden" name="applicantNameGiven" ng-value="interview.applicant.name.given">
-						<input type="hidden" name="applicantNameFamily" ng-value="interview.applicant.name.family">
-						<input type="hidden" name="applicantGender" ng-value="interview.applicant.genderIdentity">
-						<input type="hidden" name="applicantAddress" ng-value="interview.applicant.address">
+							<!-- shared by A, B and D -->
+							<input type="hidden" name="applicantNameGiven" ng-value="interview.applicant.name.given">
+							<input type="hidden" name="applicantNameFamily" ng-value="interview.applicant.name.family">
+							<input type="hidden" name="applicantGender" ng-value="interview.applicant.genderIdentity">
+							<input type="hidden" name="applicantConfidentialAddress" ng-value="inteinterview.applicant.confidential.address">
+							<input type="hidden" name="applicantAddress" ng-value="interview.applicant.address">
 
-						<!-- PART A -->
-						<input type="hidden" name="applicantAuthorisedInWriting" ng-value="true">
-						<input type="hidden" name="applicantAuthorisedDescription" ng-value="">
+							<!-- PART A -->
+							<input ng-if="interview.applicant.part === 'A'" type="hidden" name="applicantAuthorisedInWriting" ng-value="interview.applicant.authorisation.written">
+							<input ng-if="interview.applicant.part === 'A' &amp;&amp; ! interview.applicant.authorisation.written" type="hidden" name="applicantAuthorisedDescription" ng-value="interview.applicant.authorisation.other">
 
-						<!-- PART B -->
-						<input type="hidden" name="applicantActingAs" ng-value=""> <!-- Guardian OR Adult Guardian OR Enduring power of attorney OR Other -->
-						<input type="hidden" name="applicantActingAsDescription" ng-value="">
+							<!-- PART B -->
+							<input ng-if="interview.applicant.part === 'B'" type="hidden" name="applicantActingAs" ng-value="interview.applicant.acting"> <!-- Guardian OR Adult Guardian OR Enduring power of attorney OR Other -->
+							<input ng-if="interview.applicant.part === 'B' &amp;&amp; interview.applicant.acting === 'Other'" type="hidden" name="applicantActingAsDescription" ng-value="interview.applicant.acting.other">
 
-						<!-- PART C -->
-						<input type="hidden" name="applicantPoliceNameRank" ng-value="">
-						<input type="hidden" name="applicantPoliceRegistration" ng-value="">
-						<input type="hidden" name="applicantPoliceStation" ng-value="">
-						<input type="hidden" name="applicantPoliceOccurrence" ng-value="">
-						<input type="hidden" name="applicantPoliceAdvisedAggrieved" ng-value="">
-						<input type="hidden" name="applicantPoliceRespondentDetained" ng-value="">
-						<input type="hidden" name="applicantPoliceUrgentProtectionSection130" ng-value="">
-						<input type="hidden" name="applicantPoliceDVOExists" ng-value="">
-						<input type="hidden" name="applicantPoliceDVOCourtFileNumber" ng-value="">
+							<!-- PART C
+							<input type="hidden" name="applicantPoliceNameRank" ng-value="">
+							<input type="hidden" name="applicantPoliceRegistration" ng-value="">
+							<input type="hidden" name="applicantPoliceStation" ng-value="">
+							<input type="hidden" name="applicantPoliceOccurrence" ng-value="">
+							<input type="hidden" name="applicantPoliceAdvisedAggrieved" ng-value="">
+							<input type="hidden" name="applicantPoliceRespondentDetained" ng-value="">
+							<input type="hidden" name="applicantPoliceUrgentProtectionSection130" ng-value="">
+							<input type="hidden" name="applicantPoliceDVOExists" ng-value="">
+							<input type="hidden" name="applicantPoliceDVOCourtFileNumber" ng-value="">
+							-->
 
-						<!-- PART D -->
-						<input type="hidden" name="applicantChildProtectionPartyChild" ng-value="">
-						<input type="hidden" name="applicantChildProtectionPartyLegalRepresentative" ng-value="">
-						<input type="hidden" name="applicantChildProtectionPartyApplicant" ng-value="">
-						<input type="hidden" name="applicantChildProtectionPartyRespondent" ng-value="">
+							<!-- PART D -->
+							<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyChild" ng-value="interview.applicant.childProtectionParty === 'Child'">
+							<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyLegalRepresentative" ng-value="interview.applicant.childProtectionParty === 'Legal representative'">
+							<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyApplicant" ng-value="interview.applicant.childProtectionParty === 'Applicant'">
+							<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyRespondent" ng-value="interview.applicant.childProtectionParty === 'Respondent'">
+						</div>
 
 
 						<!-- urgent protection -->
