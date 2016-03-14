@@ -104,6 +104,13 @@ angular.module( 'dv1' )
 	};
 
 
+	// check if party identifies as
+	vm.identifyAs = function( party, identity ) {
+		var value = vm[ party ].identifyAs;
+		return value && value.toLowerCase().indexOf( identity.toLowerCase() ) > -1;
+	};
+
+
 	// temporary protection orders
 	vm.updateTemporaryProtection = function() {
 		application.saveTemporaryProtection( vm.temporaryProtection );
