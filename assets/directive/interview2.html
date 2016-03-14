@@ -543,9 +543,30 @@
 				</ol>
 			</fieldset>
 		</li>
+
 		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Keep {{ interview.aggrieved.pronoun.my }} address secret from {{ interview.respondent.name.short }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-aggrieved-confidential-address" ng-model="interview.aggrieved.confidential.address" ng-value="false" id="aggrieved-confidential-address-no">
+						<label for="aggrieved-confidential-address-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-confidential-address" ng-model="interview.aggrieved.confidential.address" ng-value="true" id="aggrieved-confidential-address-yes">
+						<label for="aggrieved-confidential-address-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-class="{confidential: interview.aggrieved.confidential.address}">
 			<label for="interview-aggrieved-address">
 				<span class="label">Address</span>
+				<small class="hint" ng-if="interview.aggrieved.confidential.address">CONFIDENTIAL (not included on the document sent to {{ interview.respondent.name.short }})</small>
+				<small class="hint">Give an address where court documents can be sent. A <abbr title="post office box">PO box</abbr> is fine.</small>
 			</label>
 			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
 		</li>
@@ -561,36 +582,49 @@
 			</label>
 			<input type="text" ng-model="interview.aggrieved.genderIdentity" id="interview-aggrieved-gender" ng-blur="interview.saveAggrieved()" autocomplete="sex" list="datalist-gender">
 		</li>
-		<li>
+
+
+		<li ng-show="interview.aggrieved.relationship.addressSharing">
+			<fieldset>
+				<legend>
+					<span class="label">Keep {{ interview.aggrieved.pronoun.your }} phone numbers and email secret from {{ interview.respondent.name.short }}?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-aggrieved-confidential-contact" ng-model="interview.aggrieved.confidential.contact" ng-value="false" id="aggrieved-confidential-contact-no">
+						<label for="aggrieved-confidential-contact-no">No</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-aggrieved-confidential-contact" ng-model="interview.aggrieved.confidential.contact" ng-value="true" id="aggrieved-confidential-contact-yes">
+						<label for="aggrieved-confidential-contact-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-home">
 				<span class="label">Home phone</span>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20" autocomplete="tel">
 		</li>
-		<li>
+		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-mobile">
 				<span class="label">Mobile</span>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20" autocomplete="tel">
 		</li>
-		<li>
+		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-work">
 				<span class="label">Work phone</span>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20" autocomplete="tel">
 		</li>
-		<li>
+		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-email">
 				<span class="label">Email</span>
 			</label>
 			<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30" autocomplete="email">
-		</li>
-		<li>
-			<label for="interview-aggrieved-idNumber">
-				<span class="label">ID number (optional)</span>
-				<small class="hint">Example: Drivers licence, 18+ card</small>
-			</label>
-			<input type="tel" id="interview-aggrieved-idNumber" ng-model="interview.aggrieved.idNumber" size="20">
 		</li>
 
 		<li>
@@ -913,6 +947,30 @@
 			       id="interview-relationship-family-informal-care-specify"
 			       ng-model="interview.aggrieved.relationship.informalCare"
 			       spellcheck="true"></textarea>
+		</li>
+
+		<li>
+			<fieldset>
+				<legend>
+					<span ng-if="interview.applicantIsAggrieved" class="label">Do you share a home?</span>
+					<span ng-if="! interview.applicantIsAggrieved" class="label">Do {{ interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} share a home?</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input type="radio" name="interview-relationship-home" ng-model="interview.relationship.home" value="shared" id="interview-relationship-home-together">
+						<label ng-if="interview.applicantIsAggrieved" for="interview-relationship-home-together">we live together</label>
+						<label ng-if="! interview.applicantIsAggrieved" for="interview-relationship-home-together">they live together</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-relationship-home" ng-model="interview.relationship.home" value="known" id="interview-relationship-home-known">
+						<label for="interview-relationship-home-known">{{ interview.respondent.name.short }} knows where {{ interview.applicantIsAggrieved ? 'I live' : interview.aggrieved.pronoun.they === 'they' ? 'they live' : interview.aggrieved.pronoun.they + ' lives' }}</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-relationship-home" ng-model="interview.relationship.home" value="private" id="interview-relationship-home-private">
+						<label for="interview-relationship-home-private">{{ interview.respondent.name.short }} does <strong>not know</strong> {{ interview.aggrieved.pronoun.my }} home address</label>
+					</li>
+				</ul>
+			</fieldset>
 		</li>
 
 		<li class="footer">
@@ -1608,25 +1666,6 @@
 						</label>
 						<textarea id="interview-associate{{$index}}-address" ng-model="associate.address" rows="3" cols="30" spellcheck="true"></textarea>
 					</li>
-					<li>
-						<label for="interview-associate{{$index}}-phone">
-							<span class="label">Phone</span>
-						</label>
-						<input type="tel" id="interview-associate{{$index}}-phone" ng-model="associate.contact.phone" size="20">
-					</li>
-					<li>
-						<label for="interview-associate{{$index}}-email">
-							<span class="label">Email</span>
-						</label>
-						<input type="email" id="interview-associate{{$index}}-email" ng-model="associate.contact.email" size="30">
-					</li>
-					<li>
-						<label for="interview-associate{{$index}}-idNumber">
-							<span class="label">ID number (optional)</span>
-							<small class="hint">Example: Drivers licence, 18+ card</small>
-						</label>
-						<input type="tel" id="interview-associate{{$index}}-idNumber" ng-model="associate.idNumber" size="20">
-					</li>
 					<li class="footer">
 						<ul class="actions">
 							<li><em><button type="button" class="add" ng-click="interview.addAssociate( $index )"><i class="fa fa-plus-square"></i> Add another associate</button></em></li>
@@ -1766,11 +1805,11 @@
 			<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="10" spellcheck="true"></textarea>
 		</li>
 
-		<li>
+		<li ng-if="interview.relationship.home !== 'private'">
 			<fieldset>
 				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to leave {{ interview.applicantIsAggrieved ? 'my' : interview.aggrieved.name.short + '’s' }} home?</span>
-					<small class="hint">The court must consider whether to make an order that {{ interview.respondent.name.short }} must leave a named house or dwelling (this is also known as an <dfn>ouster order</dfn>). The court must take {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} wishes into account.</small>
+					<span class="label">Do you want {{ interview.respondent.name.short }} to leave {{ interview.aggrieved.pronoun.your }} home?</span>
+					<small class="hint">The court must consider whether to make an order that {{ interview.respondent.name.short }} must leave a named house or dwelling (this is also known as an <dfn>ouster order</dfn>). The court must take {{ interview.aggrieved.pronoun.your }} wishes into account.</small>
 				</legend>
 				<ul class="choices compact">
 					<li>
@@ -1792,7 +1831,7 @@
 				</ul>
 			</fieldset>
 		</li>
-		<li ng-show="interview.conditions.ouster.requested">
+		<li ng-show="interview.relationship.home !== 'private' &amp;&amp; interview.conditions.ouster.requested">
 			<label for="interview-conditions-ouster-grounds">
 				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must leave specified premises</span>
 			</label>
@@ -2271,13 +2310,6 @@
 				<span class="label">Email</span>
 			</label>
 			<input type="email" id="interview-respondent-email" ng-model="interview.respondent.contact.email" size="30">
-		</li>
-		<li>
-			<label for="interview-respondent-idNumber">
-				<span class="label">ID number (optional)</span>
-				<small class="hint">Example: Drivers licence, 18+ card</small>
-			</label>
-			<input type="tel" id="interview-respondent-idNumber" ng-model="interview.respondent.idNumber" size="20">
 		</li>
 
 		<li>

@@ -79,3 +79,19 @@ a[href^="tel:"]::before {
 	padding: .7em;
 	font-size: 80%;
 }
+
+
+/* confidential fields */
+li.confidential {
+	background: #444;
+	color: #fff;
+}
+li.confidential::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 100%;
+	height: 100%;
+	width: 5%;
+	background: inherit;
+}

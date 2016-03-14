@@ -34,8 +34,8 @@ angular.module( 'dv1' )
 		GENERIC: 'G',
 		MALE: 'M',
 		// regexes
-		FEMALE_RELATIONSHIPS: /Woman|Female|mother|daughter|sister|neice|aunt|wife|girl/,
-		MALE_RELATIONSHIPS: /Man|Male|father|son|brother|nephew|uncle|husband|boy/,
+		FEMININE: /Woman|Female|mother|daughter|sister|neice|aunt|wife|girl/,
+		MASCULINE: /Man|Male|father|son|brother|nephew|uncle|husband|boy/,
 	};
 
 
@@ -52,6 +52,7 @@ angular.module( 'dv1' )
 		associates: [ {} ]
 	};
 	data.aggrieved.pronoun.you = data.aggrieved.name.short;
+	data.aggrieved.pronoun.your = data.aggrieved.pronoun.my = data.aggrieved.name.short + '’s';
 	data.applicant  = {
 		name: { short: 'the applicant' },
 		pronoun: angular.copy( PRONOUN.G )
@@ -60,13 +61,13 @@ angular.module( 'dv1' )
 
 	// set gender based on "idenfied as"
 	// example: setGender( vm.aggrieved, 'their wife' );
-	// wife is in GENDER.FEMALE_RELATIONSHIPS so will set them as female.
+	// wife is in GENDER.FEMININE so will set them as female.
 	this.setGender = function( party, relationship ) {
 		relationship = relationship || party.gender;
 		var gender = GENDER.GENERIC;
-		if ( GENDER.FEMALE_RELATIONSHIPS.test( relationship )) {
+		if ( GENDER.FEMININE.test( relationship )) {
 			gender = GENDER.FEMALE;
-		} else if ( GENDER.MALE_RELATIONSHIPS.test( relationship )) {
+		} else if ( GENDER.MASCULINE.test( relationship )) {
 			gender = GENDER.MALE;
 		}
 
@@ -83,9 +84,14 @@ angular.module( 'dv1' )
 			this.saveApplicant( aggrievedData );
 			data.aggrieved.pronoun.you = 'you';
 			data.aggrieved.pronoun.your = 'your';
+			data.aggrieved.pronoun.my = 'my';
 		} else {
 			data.aggrieved.pronoun.you = data.aggrieved.name.short;
-			data.aggrieved.pronoun.your = angular.copy( PRONOUN[ GENDER[ data.aggrieved.gender ] || GENDER.GENERIC ].your );
+			data.aggrieved.pronoun.your = angular.copy( PRONOUN[ GENDER[ data.aggrieved.gender.toUpperCase() ] || GENDER.GENERIC ].your );
+			data.aggrieved.pronoun.my = data.aggrieved.pronoun.your;
+			if ( data.aggrieved.name.given ) {
+				data.aggrieved.pronoun.your = data.aggrieved.name.given + '’s';
+			}
 		}
 	};
 	this.saveApplicant = function( applicantData ) {
