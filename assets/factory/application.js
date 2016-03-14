@@ -85,10 +85,12 @@ angular.module( 'dv1' )
 			data.aggrieved.pronoun.you = 'you';
 			data.aggrieved.pronoun.your = 'your';
 			data.aggrieved.pronoun.my = 'my';
+			data.aggrieved.pronoun.me = 'me';
 		} else {
 			data.aggrieved.pronoun.you = data.aggrieved.name.short;
 			data.aggrieved.pronoun.your = angular.copy( PRONOUN[ GENDER[ data.aggrieved.gender.toUpperCase() ] || GENDER.GENERIC ].your );
 			data.aggrieved.pronoun.my = data.aggrieved.pronoun.your;
+			data.aggrieved.pronoun.me = data.aggrieved.name.short;
 			if ( data.aggrieved.name.given ) {
 				data.aggrieved.pronoun.your = data.aggrieved.name.given + '’s';
 			}

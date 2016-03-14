@@ -551,11 +551,21 @@
 				</legend>
 				<ul class="choices compact">
 					<li>
-						<input type="radio" name="interview-aggrieved-confidential-address" ng-model="interview.aggrieved.confidential.address" ng-value="false" id="aggrieved-confidential-address-no">
+						<input type="radio"
+						       name="interview-aggrieved-confidential-address"
+						       ng-model="interview.aggrieved.confidential.address"
+						       ng-value="false"
+						       ng-change="interview.updateConfidentiality( 'aggrieved' )"
+						       id="aggrieved-confidential-address-no">
 						<label for="aggrieved-confidential-address-no">No</label>
 					</li>
 					<li>
-						<input type="radio" name="interview-aggrieved-confidential-address" ng-model="interview.aggrieved.confidential.address" ng-value="true" id="aggrieved-confidential-address-yes">
+						<input type="radio"
+						       name="interview-aggrieved-confidential-address"
+						       ng-model="interview.aggrieved.confidential.address"
+						       ng-value="true"
+						       ng-change="interview.updateConfidentiality( 'aggrieved' )"
+						       id="aggrieved-confidential-address-yes">
 						<label for="aggrieved-confidential-address-yes">Yes</label>
 					</li>
 				</ul>
@@ -565,7 +575,7 @@
 		<li ng-class="{confidential: interview.aggrieved.confidential.address}">
 			<label for="interview-aggrieved-address">
 				<span class="label">Address</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.address">CONFIDENTIAL (court use only)</small>
+				<small class="hint" ng-if="interview.aggrieved.confidential.address">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
 				<small class="hint">Give an address where court documents can be sent. A <abbr title="post office box">PO box</abbr> is fine.</small>
 			</label>
 			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
@@ -605,28 +615,28 @@
 		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-home">
 				<span class="label">Home phone</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (court use only)</small>
+				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20" autocomplete="tel">
 		</li>
 		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-mobile">
 				<span class="label">Mobile</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (court use only)</small>
+				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20" autocomplete="tel">
 		</li>
 		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-work">
 				<span class="label">Work phone</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (court use only)</small>
+				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20" autocomplete="tel">
 		</li>
 		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-email">
 				<span class="label">Email</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (court use only)</small>
+				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
 			</label>
 			<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30" autocomplete="email">
 		</li>
@@ -1575,7 +1585,68 @@
 						</label>
 						<input type="text" id="interview-child{{$index}}-date-birth" ng-model="child.dateBirth">
 					</li>
-					<li>
+					<li ng-class="{confidential: child.confidential.address}">
+						<fieldset>
+							<legend>
+								<span class="label">Where do they live?</span>
+								<small class="hint" ng-if="child.confidential.address">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
+							</legend>
+							<ul class="choices">
+								<li>
+									<input type="radio"
+									       name="interview-child{{$index}}-lives-with"
+									       ng-model="child.livesWith"
+									       ng-change="interview.childLivesWith(child)"
+									       value="aggrieved"
+									       id="child{{$index}}-lives-with-aggrieved">
+									<label for="child{{$index}}-lives-with-aggrieved">
+										with {{ interview.aggrieved.pronoun.me }}
+										<em ng-if="interview.aggrieved.confidential.address">(CONFIDENTIAL)</em>
+										<span ng-if="interview.aggrieved.address"><br />
+										<small>{{ interview.aggrieved.address }}</small></span>
+									</label>
+								</li>
+								<li ng-if="! interview.applicantIsAggrieved">
+									<input type="radio"
+									       name="interview-child{{$index}}-lives-with"
+									       ng-model="child.livesWith"
+									       ng-change="interview.childLivesWith(child)"
+									       value="applicant"
+									       id="child{{$index}}-lives-with-applicant">
+									<label for="child{{$index}}-lives-with-applicant">
+										with me
+										<em ng-if="interview.applicant.confidential.address">(CONFIDENTIAL)</em>
+										<span ng-if="interview.applicant.address"><br />
+										<small>{{ interview.applicant.address }}</small></span>
+									</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-child{{$index}}-lives-with"
+									       ng-model="child.livesWith"
+									       ng-change="interview.childLivesWith(child)"
+									       value="respondent"
+									       id="child{{$index}}-lives-with-respondent">
+									<label for="child{{$index}}-lives-with-respondent">
+										with {{ interview.respondent.name.short }}
+										<span ng-if="interview.respondent.address"><br />
+										<small>{{ interview.respondent.address }}</small></span>
+									</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-child{{$index}}-lives-with"
+									       ng-model="child.livesWith"
+									       ng-change="interview.childLivesWith(child)"
+									       value="other"
+									       id="child{{$index}}-lives-with-other">
+									<label for="child{{$index}}-lives-with-other">another address</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+
+					<li ng-show="child.livesWith === 'other'">
 						<fieldset>
 							<legend>
 								<span class="label">Keep address secret from {{ interview.respondent.name.short }}?</span>
@@ -1593,10 +1664,10 @@
 						</fieldset>
 					</li>
 
-					<li ng-class="{confidential: child.confidential.address}">
+					<li ng-show="child.livesWith === 'other'" ng-class="{confidential: child.confidential.address}">
 						<label for="interview-child{{$index}}-address">
 							<span class="label">Address</span>
-							<small class="hint" ng-if="child.confidential.address">CONFIDENTIAL (court use only)</small>
+							<small class="hint" ng-if="child.confidential.address">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
 						</label>
 						<textarea id="interview-child{{$index}}-address" ng-model="child.address" rows="3" cols="30" spellcheck="true"></textarea>
 					</li>
@@ -1705,7 +1776,7 @@
 					<li ng-class="{confidential: associate.confidential.address}">
 						<label for="interview-associate{{$index}}-address">
 							<span class="label">Address</span>
-							<small class="hint" ng-if="associate.confidential.address">CONFIDENTIAL (court use only)</small>
+							<small class="hint" ng-if="associate.confidential.address">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
 						</label>
 						<textarea id="interview-associate{{$index}}-address" ng-model="associate.address" rows="3" cols="30" spellcheck="true"></textarea>
 					</li>
@@ -2583,6 +2654,7 @@
 						<input type="radio"
 						       name="application-lodged-by"
 						       ng-model="interview.whoWillLodge"
+						       ng-change="interview.checkLodger()"
 						       value="applicant"
 						       id="application-lodged-by-applicant">
 						<label for="application-lodged-by-applicant">I will lodge the application</label>
@@ -2591,6 +2663,7 @@
 						<input type="radio"
 						       name="application-lodged-by"
 						       ng-model="interview.whoWillLodge"
+						       ng-change="interview.checkLodger()"
 						       value="aggrieved"
 						       id="application-lodged-by-aggrieved">
 						<label ng-if="interview.applicantIsAggrieved" for="application-lodged-by-aggrieved">I will lodge it myself</label>
@@ -2600,6 +2673,7 @@
 						<input type="radio"
 						       name="application-lodged-by"
 						       ng-model="interview.whoWillLodge"
+						       ng-change="interview.checkLodger()"
 						       value="third party"
 						       id="application-lodged-by-another">
 						<label for="application-lodged-by-another">Someone else</label>
@@ -2609,6 +2683,7 @@
 						<input type="radio"
 						       name="application-lodged-by"
 						       ng-model="interview.whoWillLodge"
+						       ng-change="interview.checkLodger()"
 						       value="unknown"
 						       id="application-lodged-by-unknown">
 						<label for="application-lodged-by-unknown">Don't know</label>
@@ -2685,15 +2760,25 @@
 				<li>
 					<fieldset>
 						<legend>
-							<span class="label">Keep your address secret from {{ interview.respondent.name.short }}?</span>
+							<span class="label">Keep address secret from {{ interview.respondent.name.short }}?</span>
 						</legend>
 						<ul class="choices compact">
 							<li>
-								<input type="radio" name="interview-applicant-confidential-address" ng-model="interview.applicant.confidential.address" ng-value="false" id="applicant-confidential-address-no">
+								<input type="radio"
+								       name="interview-applicant-confidential-address"
+								       ng-model="interview.applicant.confidential.address"
+								       ng-value="false"
+								       ng-change="interview.updateConfidentiality( 'applicant' )"
+								       id="applicant-confidential-address-no">
 								<label for="applicant-confidential-address-no">No</label>
 							</li>
 							<li>
-								<input type="radio" name="interview-applicant-confidential-address" ng-model="interview.applicant.confidential.address" ng-value="true" id="applicant-confidential-address-yes">
+								<input type="radio"
+								       name="interview-applicant-confidential-address"
+								       ng-model="interview.applicant.confidential.address"
+								       ng-value="true"
+								       ng-change="interview.updateConfidentiality( 'applicant' )"
+								       id="applicant-confidential-address-yes">
 								<label for="applicant-confidential-address-yes">Yes</label>
 							</li>
 						</ul>
@@ -2703,7 +2788,7 @@
 				<li ng-class="{confidential: interview.applicant.confidential.address}">
 					<label for="interview-applicant-address">
 						<span class="label">Address</span>
-						<small class="hint" ng-if="interview.applicant.confidential.address">CONFIDENTIAL (court use only)</small>
+						<small class="hint" ng-if="interview.applicant.confidential.address">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
 					</label>
 					<textarea id="interview-applicant-address" ng-model="interview.applicant.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
 				<li>

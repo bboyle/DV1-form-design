@@ -96,3 +96,6 @@ li.confidential::before {
 	width: 5%;
 	background: inherit;
 }
+li.confidential input:checked + label {
+	color: #78BA00;
+}

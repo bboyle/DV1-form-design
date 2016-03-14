@@ -36,7 +36,7 @@ angular.module( 'dv1' )
 	};
 	vm.pageUnlocked = 0;
 
-	var backupAggrieved;
+	var backupApplicant;
 
 
 	vm.updateParties = function() {
@@ -88,13 +88,19 @@ angular.module( 'dv1' )
 	// applicant is aggrieved?
 	vm.checkApplicant = function() {
 		if ( vm.applicantIsAggrieved ) {
-			backupAggrieved = vm.aggrieved;
-			vm.aggrieved = vm.applicant;
-		} else if ( backupAggrieved ) {
-			vm.aggrieved = backupAggrieved;
+			backupApplicant = angular.copy( vm.applicant );
+			vm.applicant = vm.aggrieved;
+		} else if ( backupApplicant ) {
+			vm.applicant = backupApplicant;
+		} else {
+			vm.applicant = { name: { short: 'the applicant' }};
 		}
 
 		vm.saveAggrieved();
+	};
+	vm.checkLodger = function() {
+		vm.applicantIsAggrieved = vm.whoWillLodge === 'aggrieved';
+		vm.checkApplicant();
 	};
 
 
@@ -115,6 +121,22 @@ angular.module( 'dv1' )
 	};
 	vm.removeAssociate = function( i ) {
 		vm.associates.splice( i, 1 );
+	};
+
+
+	vm.childLivesWith = function( child ) {
+		if ( /^(aggrieved|applicant|respondent)$/.test( child.livesWith ) && typeof vm[ child.livesWith ] === 'object') {
+			child.address = vm[ child.livesWith ].address;
+			child.confidential = vm[ child.livesWith ].confidential;
+		}
+	};
+
+	vm.updateConfidentiality = function( party ) {
+		$.each( vm.children, function( i, child ) {
+			if ( child.livesWith === party ) {
+				child.confidential = vm[ party ].confidential;
+			}
+		});
 	};
 
 
@@ -140,7 +162,10 @@ angular.module( 'dv1' )
 
 	vm.reset = function() {
 		// wipe all application data
-		vm.aggrieved  = { name: { short: 'the aggrieved' }};
+		vm.aggrieved  = {
+			name: { short: 'the aggrieved' },
+			relationship: {}
+		};
 		vm.saveAggrieved();
 
 		vm.applicant  = { name: { short: 'the applicant' }};
