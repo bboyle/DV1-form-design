@@ -3141,12 +3141,12 @@
 						<input ng-if="interview.conditions.nameAssociates" ng-repeat-end type="hidden" name="associate{{$index + 1}}SPI" ng-value="">
 
 
-						<input type="hidden" name="respondentWeaponsAccess" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="respondentWeaponsAccessDescription" ng-value=""> <!-- text -->
-						<input type="hidden" name="respondentWeaponsUsed" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="respondentWeaponsUsedDescription" ng-value=""> <!-- text -->
-						<input type="hidden" name="respondentWeaponsLicence" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="respondentWeaponsResidenceDescription" ng-value=""> <!-- text -->
+						<input type="hidden" name="respondentWeaponsAccess" ng-value="interview.respondent.weapon.access"> <!-- true/false -->
+						<input ng-if="interview.respondent.weapon.access" type="hidden" name="respondentWeaponsAccessDescription" ng-value="interview.respondent.weapon.accessDetails"> <!-- text -->
+						<input type="hidden" name="respondentWeaponsUsed" ng-value="interview.respondent.weapon.threat || interview.respondent.weapon.threat2"> <!-- true/false -->
+						<input ng-if="interview.respondent.weapon.threat || interview.respondent.weapon.threat2" type="hidden" name="respondentWeaponsUsedDescription" ng-value="interview.respondent.weapon.threatDetails"> <!-- text -->
+						<input type="hidden" name="respondentWeaponsLicence" ng-value="interview.respondent.weapon.licence"> <!-- true/false -->
+						<input ng-if="interview.respondent.weapon.licence" type="hidden" name="respondentWeaponsLicenceDescription" ng-value="interview.respondent.weapon.licenceDetails"> <!-- text -->
 
 
 						<input type="hidden" name="ordersChildrensCourtCurrent" ng-value=""> <!-- true/false -->
