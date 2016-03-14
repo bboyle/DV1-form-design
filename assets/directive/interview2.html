@@ -1053,43 +1053,108 @@
 						<span class="label">Please tick the box next to the type of order</span>
 						<small class="hint">Attach copies to each order to inform the court when the order was made and whether it is still current</small>
 					</legend>
-					<ul class="choices">
-						<li>
-							<input type="checkbox" ng-model="interview.orders.childProtection" ng-value="true" id="interview-orders-child-protection">
-							<label for="interview-orders-child-protection">Child Protection Order</label>
-						</li>
-						<li>
-							<input type="checkbox" ng-model="interview.orders.qldDVO" ng-value="true" id="interview-orders-qld-dvo">
-							<label for="interview-orders-qld-dvo">Queensland Domestic Violence Order</label>
-						</li>
-						<li>
-							<input type="checkbox" ng-model="interview.orders.policeProtection" ng-value="true" id="interview-orders-police-protection">
-							<label for="interview-orders-police-protection">Police Protection Notice</label>
-						</li>
-						<li>
-							<input type="checkbox" ng-model="interview.orders.voluntaryIntervention" ng-value="true" id="interview-orders-voluntary-intervention">
-							<label for="interview-orders-voluntary-intervention">Voluntary Intervention Order</label>
-						</li>
-						<li>
-							<input type="checkbox" ng-model="interview.orders.interstateDVO" ng-value="true" id="interview-orders-interstate-dvo">
-							<label for="interview-orders-interstate-dvo">Interstate Domestic Violence Order</label>
-						</li>
-						<li>
-							<input type="checkbox" ng-model="interview.orders.NZ_DVO" ng-value="true" id="interview-orders-nz-dvo">
-							<label for="interview-orders-nz-dvo">New Zealand Domestic Violence Order</label>
-						</li>
-						<li>
-							<input type="checkbox" ng-model="interview.orders.familyCourt" ng-value="true" id="interview-orders-family-court">
-							<label for="interview-orders-family-court">Family Court Order</label>
-						</li>
-						<li>
-							<input type="checkbox" ng-model="interview.ordersOther" ng-value="true" id="interview-orders-other">
-							<label for="interview-orders-other">Other relevant court order</label>
-						</li>
-					</ul>
+					<table class="matrix">
+						<thead>
+							<tr>
+								<th>Type of order</th>
+								<th>Current</th>
+								<th>Not current</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>Child Protection Order</th>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.childProtection" ng-value="true" id="interview-orders-child-protection">
+									<label for="interview-orders-child-protection">Current</label>
+								</td>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.childProtectionPast" ng-value="true" id="interview-orders-child-protection-past">
+									<label for="interview-orders-child-protection-past">Not current</label>
+								</td>
+							</tr>
+							<tr>
+								<th>Queensland Domestic Violence Order</th>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.qldDVO" ng-value="true" id="interview-orders-qld-dvo">
+									<label for="interview-orders-qld-dvo"> Current</label>
+								</td>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.qldDVOPast" ng-value="true" id="interview-orders-qld-dvo-past">
+									<label for="interview-orders-qld-dvo-past"> Not current</label>
+								</td>
+							</tr>
+							<tr>
+								<th>Police Protection Notice</th>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.policeProtection" ng-value="true" id="interview-orders-police-protection">
+									<label for="interview-orders-police-protection">Current</label>
+								</td>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.policeProtectionPast" ng-value="true" id="interview-orders-police-protection-past">
+									<label for="interview-orders-police-protection-past">Not current</label>
+								</td>
+							</tr>
+							<tr>
+								<th>Voluntary Intervention Order</th>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.voluntaryIntervention" ng-value="true" id="interview-orders-voluntary-intervention">
+									<label for="interview-orders-voluntary-intervention">Current</label>
+								</td>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.voluntaryInterventionPast" ng-value="true" id="interview-orders-voluntary-intervention-past">
+									<label for="interview-orders-voluntary-intervention-past">Not current</label>
+								</td>
+							</tr>
+							<tr>
+								<th>Interstate Domestic Violence Order</th>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.interstateDVO" ng-value="true" id="interview-orders-interstate-dvo">
+									<label for="interview-orders-interstate-dvo"> Current</label>
+								</td>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.interstateDVOPast" ng-value="true" id="interview-orders-interstate-dvo-past">
+									<label for="interview-orders-interstate-dvo-past"> Not current</label>
+								</td>
+							</tr>
+							<tr>
+								<th>New Zealand Domestic Violence Order</th>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.NZ_DVO" ng-value="true" id="interview-orders-nz-dvo">
+									<label for="interview-orders-nz-dvo">Current</label>
+								</td>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.NZ_DVOPast" ng-value="true" id="interview-orders-nz-dvo-past">
+									<label for="interview-orders-nz-dvo-past">Not current</label>
+								</td>
+							</tr>
+							<tr>
+								<th>Family Court Order</th>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.familyCourt" ng-value="true" id="interview-orders-family-court">
+									<label for="interview-orders-family-court">Current</label>
+								</td>
+								<td>
+									<input type="checkbox" ng-model="interview.orders.familyCourtPast" ng-value="true" id="interview-orders-family-court-past">
+									<label for="interview-orders-family-court-past">Not current</label>
+								</td>
+							</tr>
+							<tr>
+								<th>Other relevant court order</th>
+								<td>
+									<input type="checkbox" ng-model="interview.ordersOther" ng-value="true" id="interview-orders-other">
+									<label for="interview-orders-other">Current</label>
+								</td>
+								<td>
+									<input type="checkbox" ng-model="interview.ordersOtherPast" ng-value="true" id="interview-orders-other-past">
+									<label for="interview-orders-other-past">Not current</label>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</fieldset>
 			</li>
-			<li ng-show="interview.ordersOther">
+			<li ng-show="interview.orders.exist &amp;&amp; (interview.ordersOther || interview.ordersOtherPast)">
 				<label for="interview-orders-other-type">
 					<span class="label">Type of order</span>
 				</label>
@@ -3149,26 +3214,27 @@
 						<input ng-if="interview.respondent.weapon.licence" type="hidden" name="respondentWeaponsLicenceDescription" ng-value="interview.respondent.weapon.licenceDetails"> <!-- text -->
 
 
-						<input type="hidden" name="ordersChildrensCourtCurrent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersChildrensCourtPast" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersQldDVOCurrent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersQldDVOPast" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersPoliceProtectionCurrent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersPoliceProtectionPast" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersVoluntaryInterventionCurrent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersVoluntaryInterventionPast" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersInterstateDVOCurrent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersInterstateDVOPast" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersNZDVOCurrent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersNZDVOPast" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersFamilyCourtCurrent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersFamilyCourtPast" ng-value=""> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersChildrensCourtCurrent" ng-value="interview.orders.childProtection"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersChildrensCourtPast" ng-value="interview.orders.childProtectionPast"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersQldDVOCurrent" ng-value="interview.orders.qldDVO"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersQldDVOPast" ng-value="interview.orders.qldDVOPast"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersPoliceProtectionCurrent" ng-value="interview.orders.policeProtection"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersPoliceProtectionPast" ng-value="interview.orders.policeProtectionPast"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersVoluntaryInterventionCurrent" ng-value="interview.orders.voluntaryIntervention"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersVoluntaryInterventionPast" ng-value="interview.orders.voluntaryInterventionPast"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersInterstateDVOCurrent" ng-value="interview.orders.interstateDVO"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersInterstateDVOPast" ng-value="interview.orders.interstateDVOPast"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersNZDVOCurrent" ng-value="interview.orders.NZ_DVO"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersNZDVOPast" ng-value="interview.orders.NZ_DVOPast"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersFamilyCourtCurrent" ng-value="interview.orders.familyCourt"> <!-- true/false -->
+						<input ng-if="interview.orders.exist" type="hidden" name="ordersFamilyCourtPast" ng-value="interview.orders.familyCourtPast"> <!-- true/false -->
 
-						<input type="hidden" name="ordersOtherTitle" ng-value=""> <!-- text -->
-						<input type="hidden" name="ordersOtherCurrent" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="ordersOtherPast" ng-value=""> <!-- true/false -->
+						<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherTitle" ng-value="interview.orders.other"> <!-- text -->
+						<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherCurrent" ng-value=""> <!-- true/false -->
+						<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherPast" ng-value=""> <!-- true/false -->
 
-						<input type="hidden" name="ordersProtectionOrderInProgress" ng-value=""> <!-- true/false -->
+						<input type="hidden" name="ordersProtectionOrderInProgress" ng-value="interview.orders.protectionInProgress"> <!-- true/false -->
+						<input type="hidden" name="ordersCrossApplicationInProgress" ng-value="interview.orders.crossApplication"> <!-- true/false -->
 
 
 						<input type="hidden" name="conditionOuster" ng-value=""> <!-- true/false -->
