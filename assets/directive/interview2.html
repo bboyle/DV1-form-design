@@ -3095,7 +3095,7 @@
 
 						<!-- urgent protection -->
 						<input type="hidden" name="tpoApply" ng-value="interview.tpo.apply">
-						<input type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
+						<input ng-if="interview.tpo.apply" type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
 
 
 						<input type="hidden" name="relationshipPersonal" ng-value=""> <!-- true/false -->
