@@ -565,7 +565,7 @@
 		<li ng-class="{confidential: interview.aggrieved.confidential.address}">
 			<label for="interview-aggrieved-address">
 				<span class="label">Address</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.address">CONFIDENTIAL (not included on the document sent to {{ interview.respondent.name.short }})</small>
+				<small class="hint" ng-if="interview.aggrieved.confidential.address">CONFIDENTIAL (court use only)</small>
 				<small class="hint">Give an address where court documents can be sent. A <abbr title="post office box">PO box</abbr> is fine.</small>
 			</label>
 			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
@@ -584,7 +584,7 @@
 		</li>
 
 
-		<li ng-show="interview.aggrieved.relationship.addressSharing">
+		<li>
 			<fieldset>
 				<legend>
 					<span class="label">Keep {{ interview.aggrieved.pronoun.your }} phone numbers and email secret from {{ interview.respondent.name.short }}?</span>
@@ -605,24 +605,28 @@
 		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-home">
 				<span class="label">Home phone</span>
+				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (court use only)</small>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20" autocomplete="tel">
 		</li>
 		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-mobile">
 				<span class="label">Mobile</span>
+				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (court use only)</small>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20" autocomplete="tel">
 		</li>
 		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-phone-work">
 				<span class="label">Work phone</span>
+				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (court use only)</small>
 			</label>
 			<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20" autocomplete="tel">
 		</li>
 		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
 			<label for="interview-aggrieved-email">
 				<span class="label">Email</span>
+				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (court use only)</small>
 			</label>
 			<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30" autocomplete="email">
 		</li>
@@ -1572,8 +1576,27 @@
 						<input type="text" id="interview-child{{$index}}-date-birth" ng-model="child.dateBirth">
 					</li>
 					<li>
+						<fieldset>
+							<legend>
+								<span class="label">Keep address secret from {{ interview.respondent.name.short }}?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio" name="interview-child{{$index}}-confidential-address" ng-model="child.confidential.address" ng-value="false" id="child{{$index}}-confidential-address-no">
+									<label for="child{{$index}}-confidential-address-no">No</label>
+								</li>
+								<li>
+									<input type="radio" name="interview-child{{$index}}-confidential-address" ng-model="child.confidential.address" ng-value="true" id="child{{$index}}-confidential-address-yes">
+									<label for="child{{$index}}-confidential-address-yes">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+
+					<li ng-class="{confidential: child.confidential.address}">
 						<label for="interview-child{{$index}}-address">
 							<span class="label">Address</span>
+							<small class="hint" ng-if="child.confidential.address">CONFIDENTIAL (court use only)</small>
 						</label>
 						<textarea id="interview-child{{$index}}-address" ng-model="child.address" rows="3" cols="30" spellcheck="true"></textarea>
 					</li>
@@ -1660,9 +1683,29 @@
 						</label>
 						<input type="text" id="interview-associate{{$index}}-date-birth" ng-model="associate.dateBirth">
 					</li>
+
 					<li>
+						<fieldset>
+							<legend>
+								<span class="label">Keep address secret from {{ interview.respondent.name.short }}?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio" name="interview-associate{{$index}}-confidential-address" ng-model="associate.confidential.address" ng-value="false" id="associate{{$index}}-confidential-address-no">
+									<label for="associate{{$index}}-confidential-address-no">No</label>
+								</li>
+								<li>
+									<input type="radio" name="interview-associate{{$index}}-confidential-address" ng-model="associate.confidential.address" ng-value="true" id="associate{{$index}}-confidential-address-yes">
+									<label for="associate{{$index}}-confidential-address-yes">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+
+					<li ng-class="{confidential: associate.confidential.address}">
 						<label for="interview-associate{{$index}}-address">
 							<span class="label">Address</span>
+							<small class="hint" ng-if="associate.confidential.address">CONFIDENTIAL (court use only)</small>
 						</label>
 						<textarea id="interview-associate{{$index}}-address" ng-model="associate.address" rows="3" cols="30" spellcheck="true"></textarea>
 					</li>
@@ -2638,12 +2681,32 @@
 						</ol>
 					</fieldset>
 				</li>
+
 				<li>
+					<fieldset>
+						<legend>
+							<span class="label">Keep your address secret from {{ interview.respondent.name.short }}?</span>
+						</legend>
+						<ul class="choices compact">
+							<li>
+								<input type="radio" name="interview-applicant-confidential-address" ng-model="interview.applicant.confidential.address" ng-value="false" id="applicant-confidential-address-no">
+								<label for="applicant-confidential-address-no">No</label>
+							</li>
+							<li>
+								<input type="radio" name="interview-applicant-confidential-address" ng-model="interview.applicant.confidential.address" ng-value="true" id="applicant-confidential-address-yes">
+								<label for="applicant-confidential-address-yes">Yes</label>
+							</li>
+						</ul>
+					</fieldset>
+				</li>
+
+				<li ng-class="{confidential: interview.applicant.confidential.address}">
 					<label for="interview-applicant-address">
 						<span class="label">Address</span>
+						<small class="hint" ng-if="interview.applicant.confidential.address">CONFIDENTIAL (court use only)</small>
 					</label>
 					<textarea id="interview-applicant-address" ng-model="interview.applicant.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
-				</li>
+				<li>
 				<li>
 					<label for="applicant-gender">
 						<span class="label">Gender</span>
@@ -2716,20 +2779,20 @@
 						</legend>
 						<ul class="choices">
 							<li>
-								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
-								<label for="applicant-child-protection-party-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">a child for whom an order is sought in a child protection proceeding</label>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-child" />
+								<label for="applicant-child-protection-party-child">a child for whom an order is sought in a child protection proceeding</label>
 							</li>
 							<li>
-								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A separate legal representative for a child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding" />
-								<label for="applicant-child-protection-party-a-separate-legal-representative-for-a-child-for-whom-an-order-is-sought-in-a-child-protection-proceeding">a separate legal representative for a child for whom an order is sought in a child protection proceeding</label>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A separate legal representative for a child for whom an order is sought in a child protection proceeding" id="applicant-child-protection-party-legal-representative" />
+								<label for="applicant-child-protection-party-legal-representative">a separate legal representative for a child for whom an order is sought in a child protection proceeding</label>
 							</li>
 							<li>
-								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="An applicant in a child protection proceeding" id="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding" />
-								<label for="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding">an applicant in a child protection proceeding</label>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="An applicant in a child protection proceeding" id="applicant-child-protection-party-applicant" />
+								<label for="applicant-child-protection-party-applicant">an applicant in a child protection proceeding</label>
 							</li>
 							<li>
-								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A respondent in a child protection proceeding" id="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding" />
-								<label for="applicant-child-protection-party-an-applicant-or-respondent-in-a-child-protection-proceeding">a respondent in a child protection proceeding</label>
+								<input type="radio" name="applicant-child-protection-party" ng-model="applicant.childProtectionParty" value="A respondent in a child protection proceeding" id="applicant-child-protection-party-respondent" />
+								<label for="applicant-child-protection-party-respondent">a respondent in a child protection proceeding</label>
 							</li>
 						</ul>
 					</fieldset>

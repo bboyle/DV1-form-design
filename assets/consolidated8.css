@@ -82,6 +82,7 @@ a[href^="tel:"]::before {
 
 
 /* confidential fields */
+.group > fieldset > .questions > li.confidential,
 li.confidential {
 	background: #444;
 	color: #fff;
