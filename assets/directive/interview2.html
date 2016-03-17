@@ -229,7 +229,7 @@
 						<option value="coworker">My coworker</option>
 						<option value="someone">Someone I know</option>
 					</select>
-					is being abused
+					needs protection from
 					<span ng-show="interview.applicant.relationship.aggrieved"> by
 						<select ng-model="interview.party" ng-change="interview.updateParties()">
 							<optgroup label="Who is abusing them?">
@@ -389,7 +389,7 @@
 					<span class="label">Who do you need protection from?</span>
 				</legend>
 				<p>
-					I am being abused by
+					I need protection from
 					<select ng-model="interview.party" ng-change="interview.updateParties()">
 						<optgroup label="Who is abusing you?">
 							<option value="my partner">my {{ interview.party === 'my partner' ? '' : 'partner' }}</option>
@@ -2274,70 +2274,159 @@
 			<textarea id="interview-conditions-distance-aggrieved-staying-grounds" ng-model="interview.conditions.distance.aggrieved.staying.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
-		<li>
+		<li class="section">
 			<fieldset>
 				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to stop contacting {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</span>
-					<small class="hint">{{ interview.respondent.name.short }} won't be allowed to ask anyone else to contact {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} either.</small>
+					<span class="h3">Prohibit {{ interview.respondent.name.short }} from contacting {{ interview.aggrieved.pronoun.you }}</span>
 				</legend>
-				<ul class="choices compact">
+				<ol class="questions">
 					<li>
-						<input type="radio"
-						       name="interview-conditions-aggrieved-stop-contact"
-						       id="interview-conditions-aggrieved-stop-contact-true"
-						       ng-model="interview.conditions.aggrieved.noContact.requested"
-						       ng-value="true">
-						<label for="interview-conditions-aggrieved-stop-contact-true">Yes</label>
+						<fieldset>
+							<legend>
+								<span class="label">Has {{ interview.respondent.name.short }} been contacting {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} in a way that is threatening, abusive or unwelcome?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-respondent-contact-aggrieved"
+									       id="interview-conditions-respondent-contact-aggrieved-true"
+									       ng-model="interview.conditions.respondent.hasContactedAggrieved"
+									       ng-value="true">
+									<label for="interview-conditions-respondent-contact-aggrieved-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-respondent-contact-aggrieved"
+									       id="interview-conditions-respondent-contact-aggrieved-false"
+									       ng-model="interview.conditions.respondent.hasContactedAggrieved"
+									       ng-value="false">
+									<label for="interview-conditions-respondent-contact-aggrieved-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-					<li>
-						<input type="radio"
-						       name="interview-conditions-aggrieved-stop-contact"
-						       id="interview-conditions-aggrieved-stop-contact-false"
-						       ng-model="interview.conditions.aggrieved.noContact.requested"
-						       ng-value="false">
-						<label for="interview-conditions-aggrieved-stop-contact-false">No</label>
+					<li ng-if="interview.conditions.respondent.hasContactedAggrieved">
+						<fieldset>
+							<legend>
+								<span class="label" ng-if="interview.applicantIsAggrieved">I want {{ interview.respondent.name.short }} to stop contacting me</span>
+								<span class="label" ng-if="! interview.applicantIsAggrieved">{{ interview.respondent.name.short }} should be prohibited from contacting {{ interview.aggrieved.pronoun.them }}</span>
+								<small class="hint">{{ interview.respondent.pronoun.they }} won't be allowed to ask anyone else to contact {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} either.</small>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-aggrieved-stop-contact"
+									       id="interview-conditions-aggrieved-stop-contact-true"
+									       ng-model="interview.conditions.aggrieved.noContact.requested"
+									       ng-value="true">
+									<label for="interview-conditions-aggrieved-stop-contact-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-aggrieved-stop-contact"
+									       id="interview-conditions-aggrieved-stop-contact-false"
+									       ng-model="interview.conditions.aggrieved.noContact.requested"
+									       ng-value="false">
+									<label for="interview-conditions-aggrieved-stop-contact-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-				</ul>
-			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.aggrieved.noContact.requested">
-			<label for="interview-conditions-aggrieved-stop-contact-grounds">
-				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop trying to find {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
-			</label>
-			<textarea id="interview-conditions-aggrieved-stop-contact-grounds" ng-model="interview.conditions.aggrieved.noContact.grounds" rows="3" cols="30" spellcheck="true"></textarea>
-		</li>
+					<li ng-show="interview.conditions.aggrieved.noContact.requested">
+						<fieldset>
+							<legend>
+								<span class="label">Has {{ interview.respondent.name.short }} been contacting {{ interview.aggrieved.pronoun.your }} friends or family in way that is threatening or abusive?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-respondent-contact-associates"
+									       id="interview-conditions-respondent-contact-associates-true"
+									       ng-model="interview.respondent.hasContactedAssociates"
+									       ng-value="true">
+									<label for="interview-conditions-respondent-contact-associates-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-respondent-contact-associates"
+									       id="interview-conditions-respondent-contact-associates-false"
+									       ng-model="interview.respondent.hasContactedAssociates"
+									       ng-value="false">
+									<label for="interview-conditions-respondent-contact-associates-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li ng-show="interview.conditions.aggrieved.noContact.requested &amp;&amp; interview.respondent.hasContactedAssociates">
+						<fieldset>
+							<legend>
+								<span class="label">Do you want {{ interview.respondent.pronoun.them }} to stop that contact?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-associates-stop-contact"
+									       id="interview-conditions-associates-stop-contact-true"
+									       ng-model="interview.conditions.associates.noContact.requested"
+									       ng-value="true">
+									<label for="interview-conditions-associates-stop-contact-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-associates-stop-contact"
+									       id="interview-conditions-associates-stop-contact-false"
+									       ng-model="interview.conditions.associates.noContact.requested"
+									       ng-value="false">
+									<label for="interview-conditions-associates-stop-contact-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li ng-show="interview.conditions.aggrieved.noContact.requested">
+						<label for="interview-conditions-aggrieved-stop-contact-grounds">
+							<span class="label">
+								Please explain why you want {{ interview.respondent.name.short }} to stop contacting
+								{{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}<span ng-if="interview.respondent.hasContactedAssociates &amp;&amp; interview.conditions.associates.noContact.requested">, {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} friends and family</span>
+							</span>
+							<small class="hint" ng-if="interview.respondent.hasContactedAssociates &amp;&amp; interview.conditions.associates.noContact.requested">You need to include the names of family and friends later in this application.</small>
+						</label>
+						<textarea id="interview-conditions-aggrieved-stop-contact-grounds" ng-model="interview.conditions.aggrieved.noContact.grounds" rows="3" cols="30" spellcheck="true"></textarea>
+					</li>
 
-		<li>
-			<fieldset>
-				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to stop publishing anything online that mentions {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</span>
-					<small class="hint">Includes posts in any social media platforms (e.g. Facebook, YouTube, Twitter)</small>
-				</legend>
-				<ul class="choices compact">
 					<li>
-						<input type="radio"
-						       name="interview-conditions-social-media"
-						       id="interview-conditions-social-media-true"
-						       ng-model="interview.conditions.socialMedia.requested"
-						       ng-value="true">
-						<label for="interview-conditions-social-media-true">Yes</label>
+						<fieldset>
+							<legend>
+								<span class="label">Do you want {{ interview.respondent.name.short }} to stop publishing anything online that mentions {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</span>
+								<small class="hint">Includes posts in any social media platforms (e.g. Facebook, YouTube, Twitter)</small>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-social-media"
+									       id="interview-conditions-social-media-true"
+									       ng-model="interview.conditions.socialMedia.requested"
+									       ng-value="true">
+									<label for="interview-conditions-social-media-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-social-media"
+									       id="interview-conditions-social-media-false"
+									       ng-model="interview.conditions.socialMedia.requested"
+									       ng-value="false">
+									<label for="interview-conditions-social-media-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-					<li>
-						<input type="radio"
-						       name="interview-conditions-social-media"
-						       id="interview-conditions-social-media-false"
-						       ng-model="interview.conditions.socialMedia.requested"
-						       ng-value="false">
-						<label for="interview-conditions-social-media-false">No</label>
+					<li ng-show="interview.conditions.socialMedia.requested">
+						<label for="interview-conditions-social-media-grounds">
+							<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop publishing anything online that mentions {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
+						</label>
+						<textarea id="interview-conditions-social-media-grounds" ng-model="interview.conditions.socialMedia.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 					</li>
-				</ul>
+				</ol>
 			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.socialMedia.requested">
-			<label for="interview-conditions-social-media-grounds">
-				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stop publishing anything online that mentions {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
-			</label>
-			<textarea id="interview-conditions-social-media-grounds" ng-model="interview.conditions.socialMedia.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -3267,36 +3356,41 @@
 					<input type="hidden" name="ordersCrossApplicationInProgress" ng-value="interview.orders.crossApplication"> <!-- true/false -->
 
 
-					<input type="hidden" name="conditionOuster" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionOusterGrounds" ng-value=""> <!-- text -->
+					<input type="hidden" name="conditionOuster" ng-value="interview.conditions.ouster.requested"> <!-- true/false -->
+					<input type="hidden" name="conditionOusterGrounds" ng-value="interview.conditions.ouster.grounds"> <!-- text -->
 
-					<input type="hidden" name="conditionProhibitEntryResidence" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitEntryResidence" ng-value="interview.conditions.distance.aggrieved.home.requested"> <!-- true/false -->
 					<input type="hidden" name="conditionProhibitEntryEmployment" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitEntryStaying" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitEntryStaying" ng-value="interview.conditions.distance.aggrieved.staying.requested"> <!-- true/false -->
 					<input type="hidden" name="conditionProhibitEntryAssociates" ng-value=""> <!-- true/false -->
 					<input type="hidden" name="conditionProhibitEntryOther" ng-value=""> <!-- true/false -->
 					<input type="hidden" name="conditionProhibitEntryOtherTitle" ng-value=""> <!-- text -->
 					<input type="hidden" name="conditionProhibitEntryGrounds" ng-value=""> <!-- text -->
+					<!--
+interview.conditions.distance.aggrieved.home.grounds
+interview.conditions.distance.aggrieved.staying.grounds
 
-					<input type="hidden" name="conditionProhibitApproach" ng-value=""> <!-- true/false -->
+					 -->
+
+					<input type="hidden" name="conditionProhibitApproach" ng-value="interview.conditions.distance.aggrieved.requested"> <!-- true/false -->
 					<input type="hidden" name="conditionProhibitApproachAssociates" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitApproachGrounds" ng-value=""> <!-- text -->
+					<input type="hidden" name="conditionProhibitApproachGrounds" ng-value="interview.conditions.distance.aggrieved.grounds"> <!-- text -->
 
-					<input type="hidden" name="conditionProhibitContact" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitContactAssociates" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitContactGrounds" ng-value=""> <!-- text -->
+					<input ng-if="interview.conditions.respondent.hasContactedAggrieved" type="hidden" name="conditionProhibitContact" ng-value="interview.conditions.aggrieved.noContact.requested"> <!-- true/false -->
+					<input ng-if="interview.conditions.respondent.hasContactedAggrieved &amp;&amp; interview.conditions.aggrieved.noContact.requested &amp;&amp; interview.respondent.hasContactedAssociates" type="hidden" name="conditionProhibitContactAssociates" ng-value="interview.conditions.associates.noContact.requested"> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitContactGrounds" ng-value="interview.conditions.aggrieved.noContact.grounds"> <!-- text -->
 
-					<input type="hidden" name="conditionProhibitChildLocations" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitChildLocationsGrounds" ng-value=""> <!-- text -->
+					<input type="hidden" name="conditionProhibitChildLocations" ng-value="interview.conditions.distance.children.places.requested"> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitChildLocationsGrounds" ng-value="interview.conditions.aggrieved.locate.grounds"> <!-- text -->
 
-					<input type="hidden" name="conditionProhibitLocating" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitLocatingGrounds" ng-value=""> <!-- text -->
+					<input type="hidden" name="conditionProhibitLocating" ng-value="interview.conditions.aggrieved.locate.requested"> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitLocatingGrounds" ng-value="interview.conditions.aggrieved.locate.grounds"> <!-- text -->
 
-					<input type="hidden" name="conditionRecoverProperty" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionRecoverPropertyDescription" ng-value=""> <!-- text -->
+					<input type="hidden" name="conditionRecoverProperty" ng-value="interview.conditions.property.requested"> <!-- true/false -->
+					<input type="hidden" name="conditionRecoverPropertyDescription" ng-value="interview.conditions.property.grounds"> <!-- text -->
 
-					<input type="hidden" name="conditionProhibitConduct" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitConductGrounds" ng-value=""> <!-- text -->
+					<input type="hidden" name="conditionProhibitConduct" ng-value="interview.conditions.behaviour.requested"> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitConductGrounds" ng-value="interview.conditions.behaviour.grounds"> <!-- text -->
 
 
 					<strong><button>
