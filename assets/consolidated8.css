@@ -26,6 +26,7 @@ ol.questions > li.ng-hide-remove-active {
 /* process nav */
 nav {
 	position: fixed;
+	top: 0;
 	left: 0;
 	padding: 2em;
 	max-width: 25%;
@@ -58,6 +59,9 @@ nav ol button[disabled] {
 	cursor: text;
 	color: #aaa;
 	text-decoration: none;
+}
+nav form {
+	margin: 1em 0;
 }
 
 /* telephone links */
@@ -109,4 +113,9 @@ table.matrix th,
 table.matrix td {
 	font-size: 100%;
 	font-weight: normal;
+}
+
+
+p::first-letter {
+	text-transform: uppercase;
 }

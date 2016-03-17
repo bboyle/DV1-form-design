@@ -32,7 +32,9 @@ angular.module( 'dv1' )
 		ORDERS: 13,
 		// applicant
 		APPLICANT: 14,
-		NEXT: 15
+		// next steps
+		COURT: 15,
+		DOWNLOAD: 16
 	};
 	vm.pageUnlocked = 0;
 
@@ -196,6 +198,13 @@ angular.module( 'dv1' )
 		vm.conditions = {};
 		vm.pageUnlocked = 1;
 		vm.goto( 1 );
+	};
+
+	vm.quickExit = function() {
+		var exitButton = $( '#quick-exit a' );
+		if ( exitButton.length ) {
+			exitButton[0].click();
+		}
 	};
 
 	vm.downloadPrepared = function() {

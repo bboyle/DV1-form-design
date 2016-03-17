@@ -30,18 +30,25 @@
 		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.APPLICANT" ng-click="interview.goto( interview.PAGE.APPLICANT )">Applicant details</button></li>
 	</ol>
 
-<h3>Preparing for court</h3>
+<h3>Applying for a protection order</h3>
 
 	<ol start="13">
-		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.NEXT" ng-click="interview.goto( interview.PAGE.NEXT )">Preparing for court</button></li>
-		<li><button type="button" ng-click="interview.downloadPrepared()">Download your application</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.COURT" ng-click="interview.goto( interview.PAGE.COURT )">Preparing for court</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.DOWNLOAD" ng-click="interview.goto( interview.PAGE.DOWNLOAD )">Download your application</button></li>
 	</ol>
 
-<form ng-submit="interview.prefill()">
+<form ng-submit="interview.downloadPrepared()">
 	<em><button>
+		Download PDF
+		<small class="hint">Preview your application</small>
+	</button></em>
+</form>
+
+<form ng-submit="interview.prefill()">
+	<button>
 		Simpsons Cheat!
 		<small class="hint">Prefills the form</small>
-	</button></em>
+	</button>
 </form>
 
 </nav>
@@ -137,7 +144,7 @@
 				</legend>
 				<ul class="choices">
 					<li>
-						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="yes" id="legal-advice-yes">
+						<input type="radio" name="legal-advice" ng-model="interview.legalAdvice" value="done" id="legal-advice-yes">
 						<label for="legal-advice-yes">No—I've already talked to a lawyer</label>
 					</li>
 					<li>
@@ -2442,6 +2449,8 @@
 
 <section ng-show="interview.page === interview.PAGE.RESPONDENT2">
 <h2>Respondent’s Details (person the aggrieved is seeking protection from)</h2>
+<p>The more information you provide about where {{ interview.respondent.name.short }} lives or spends {{ interview.respondent.pronoun.their }} time the easier and quicker it will be for police to serve the application.</p>
+
 <form class="form" name="formRespondent2" autocomplete="off" ng-submit="interview.continue( $event )">
 	<ol class="questions">
 		<li class="group atomic">
@@ -2490,7 +2499,7 @@
 			<label for="interview-respondent-gender">
 				<span class="label">Gender</span>
 			</label>
-			<input type="text" ng-model="interview.respondent.genderIdentity" id="interview-respondent-gender" list="datalist-gender">
+			<input type="text" ng-model="interview.respondent.genderIdentity" id="interview-respondent-gender" ng-blur="interview.saveRespondent()" list="datalist-gender">
 		</li>
 		<li>
 			<label for="interview-respondent-phone-home">
@@ -2721,8 +2730,8 @@
 <h2>Is this application being made on someone else’s behalf?</h2>
 
 <div class="status info" ng-show="! interview.applicantIsAggrieved">
-	<h2>Will you be lodging this application for your {{ interview.applicant.relationship.aggrieved }}?</h2>
-	<p>To lodge an application on behalf of your {{ interview.applicant.relationship.aggrieved }} you need their authorisation (preferably in writing).</p>
+	<h2>Will you be lodging this application for {{ interview.applicant.relationship.aggrieved ? 'your ' + interview.applicant.relationship.aggrieved : interview.aggrieved.name.short }}?</h2>
+	<p>To lodge an application on behalf of {{ interview.applicant.relationship.aggrieved ? 'your ' + interview.applicant.relationship.aggrieved : interview.aggrieved.name.short }} you need their authorisation (preferably in writing).</p>
 	<p>Or you can prepare these documents for them—they can lodge them at the magistrates court.</p>
 	<p>If you are lodging the application, your details will be included on the form. Remember that {{ interview.respondent.name.short }} receives a copy!</p>
 </div>
@@ -2989,309 +2998,422 @@
 
 
 
-<section ng-show="interview.page === interview.PAGE.NEXT">
+<section ng-show="interview.page === interview.PAGE.COURT">
+	<div class="status info">
+		<h2>Preparing for court</h2>
 
-<div class="status info">
-	<h2>What to do next?</h2>
-	<form>
-		<ol class="questions">
-			<li>
-				<fieldset>
-					<legend>
-						<span class="label">How to get a domestic violence order</span>
-					</legend>
-					<ul class="choices">
-						<li>
-							<input  id="checklist-prepare" type="checkbox" checked>
-							<label for="checklist-prepare">Prepare your application</label>
-							<small class="hint">You just did this!</small>
-						</li>
-						<li>
-							<input  id="checklist-advice" type="checkbox">
-							<label for="checklist-advice">Get legal advice</label>
-						</li>
-						<li>
-							<input  id="checklist-print" type="checkbox">
-							<label for="checklist-print">Print application</label>
-						</li>
-						<li>
-							<input  id="checklist-attach" type="checkbox">
-							<label for="checklist-attach">Attach supporting documentation<br>
-							                       <small>(Details of abuse, copies of related orders.)</small></label>
-						</li>
-						<li>
-							<input  id="checklist-sign" type="checkbox">
-							<label for="checklist-sign">Sign the application form<br>
-							                     <small>(must be witnessed by a Justice of the Peace, Commissioner for Declaration or a Solicitor)</small></label>
-						</li>
-						<li>
-							<input  id="checklist-lodge" type="checkbox">
-							<label for="checklist-lodge">Lodge at a Magistrates Court</label>
-							<small class="hint">Find your nearest <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court</a></small>
-						</li>
-						<li>
-							<input  id="checklist-mention" type="checkbox">
-							<label for="checklist-mention">Attend court on the date of the mention and any additional court hearings</label>
-						</li>
-					</ul>
-				</fieldset>
-			</li>
-
-		</ol>
-	</form>
-</div>
+		<p>{{ interview.aggrieved.pronoun.you }} will need to go to court at the same time as {{ interview.respondent.name.short }}.</p>
+		<p>Courthouses have safety measures in place such as safe rooms (or other rooms or areas where {{ interview.aggrieved.pronoun.you }} can wait separately).
+		   Most courthouses also have security officers and security cameras.</p>
+		<p>Court staff follow domestic violence protocols which place safety as top priority for all people seeking protection from domestic violence.</p>
+	</div>
 
 
-<h2>Serving the application</h2>
-<p>Court registry staff will give a copy to the Queensland Police Service and they will make sure {{ interview.respondent.name.short }} is served. {{ interview.respondent.name.short }} <strong>must</strong> be served with a copy of the application.</p>
-
-
-<h2>What happens at court?</h2>
-<p>The court will make an order if it accepts:</p>
-<ul>
-	<li>there has been an act of domestic violence, and</li>
-	<li>you and the respondent are in one of the relationships covered by the law, and</li>
-	<li>the court thinks a domestic violence order is necessary or desirable in your situation.</li>
-</ul>
-
+<form class="form" name="formCourt" ng-submit="interview.continue( $event )">
 	<ol class="questions">
+		<li class="group">
+			<fieldset>
+				<legend>
+					<span class="label">Are you concerned that {{ interview.aggrieved.pronoun.you }} may be in danger when going to court?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-aggrieved-court-safety-concern"
+						       ng-model="interview.aggrieved.courtSafetyConcern"
+						       ng-value="false"
+						       id="aggrieved-court-safety-concern-no">
+						<label for="aggrieved-court-safety-concern-no">No</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-aggrieved-court-safety-concern"
+						       ng-model="interview.aggrieved.courtSafetyConcern"
+						       ng-value="true"
+						       id="aggrieved-court-safety-concern-yes">
+						<label for="aggrieved-court-safety-concern-yes">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.aggrieved.courtSafetyConcern">
+			<div class="status info">
+				<h2>Complete a court safety form</h2>
+				<p>Give this form to court staff when you lodge the application.</p>
+				<p>The court staff will copy the form and give it to the security officer, domestic violence protection worker,
+				   registrar and any other relevant court staff to arrange for your safety.
+				   It will also be placed on your court file, but will not be part of the application.</p>
+				<p>{{ interview.respondent.name.short }} and will not see this form.</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.aggrieved.courtSafetyConcern" class="confidential">
+			<label for="interview-court-safety-attending">
+				<span class="label">Are you concerned that {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.pronoun.they }} may be in danger while attending court?</span>
+				<small class="hint">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
+			</label>
+			<textarea id="interview-court-safety-attending" ng-model="interview.aggrieved.courtSafety.attending" spellcheck="true" cols="40" rows="10"></textarea>
+		</li>
+		<li ng-show="interview.aggrieved.courtSafetyConcern" class="confidential">
+			<label for="interview-court-safety-leaving">
+				<span class="label">Are you concerned about {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} safety when leaving the court building?</span>
+				<small class="hint">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
+			</label>
+			<textarea id="interview-court-safety-leaving" ng-model="interview.aggrieved.courtSafety.leaving" spellcheck="true" cols="40" rows="10"></textarea>
+		</li>
+
 		<li class="footer">
-
+			<p>If your safety concerns change for future court dates, you should complete another safety form for court staff.</p>
 			<ul class="actions">
-				<li>
-					<form method="POST" id="download-prepared" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
-						<input type="hidden" name="aggrievedNameGiven" ng-value="interview.aggrieved.name.given">
-						<input type="hidden" name="aggrievedNameFamily" ng-value="interview.aggrieved.name.family">
-						<input type="hidden" name="aggrievedDateBirth" ng-value="interview.aggrieved.dateBirth">
-						<input type="hidden" name="aggrievedAddressConfidential" ng-value="interview.aggrieved.confidential.address">
-						<input type="hidden" name="aggrievedAddress" ng-value="interview.aggrieved.address">
-						<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.genderIdentity">
-
-						<input type="hidden" name="aggrievedContactConfidential" ng-value="interview.aggrieved.confidential">
-						<input type="hidden" name="aggrievedPhoneHome" ng-value="interview.aggrieved.contact.phone.home">
-						<input type="hidden" name="aggrievedPhoneMobile" ng-value="interview.aggrieved.contact.phone.work">
-						<input type="hidden" name="aggrievedPhoneWork" ng-value="interview.aggrieved.contact.phone.work">
-						<input type="hidden" name="aggrievedEmail" ng-value="interview.aggrieved.contact.email">
-
-						<input type="hidden" name="aggrievedSPI" ng-value="">
-
-						<input type="hidden" name="aggrievedInterpreter" ng-value="interview.aggrieved.requiresInterpreter">
-						<input ng-if="interview.aggrieved.requiresInterpreter" type="hidden" name="aggrievedLanguage" ng-value="interview.aggrieved.language">
-
-						<input type="hidden" name="aggrievedIdentifiesAsAboriginal" ng-value="interview.identifyAs( 'aggrieved', 'Aboriginal' )">
-						<input type="hidden" name="aggrievedIdentifiesAsTorresStraitIslander" ng-value="interview.identifyAs( 'aggrieved', 'Torres Strait islander' )">
-						<input type="hidden" name="aggrievedDisability" ng-value="interview.aggrieved.hasDisability">
-						<input ng-if="interview.aggrieved.hasDisability" type="hidden" name="aggrievedDisabilityDescription" ng-value="interview.aggrieved.disabilityNeeds">
-
-						<input type="hidden" name="aggrievedUnder18" ng-value="interview.aggrieved.under18">
-						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentName" ng-value="interview.aggrieved.parent.name.full">
-						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentAddressConfidential" ng-value="interview.aggrieved.confidential.parentAddress">
-						<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentAddress" ng-value="interview.aggrieved.parent.address">
-
-
-						<input type="hidden" name="respondentNameGiven" ng-value="interview.respondent.name.given">
-						<input type="hidden" name="respondentNameFamily" ng-value="interview.respondent.name.family">
-						<input type="hidden" name="respondentDateBirth" ng-value="interview.respondent.dateBirth">
-						<input type="hidden" name="respondentAddress" ng-value="interview.respondent.address">
-						<input type="hidden" name="respondentGender" ng-value="interview.respondent.genderIdentity">
-
-						<input type="hidden" name="respondentPhoneHome" ng-value="interview.respondent.contact.phone.home">
-						<input type="hidden" name="respondentPhoneMobile" ng-value="interview.respondent.contact.phone.mobile">
-						<input type="hidden" name="respondentPhoneWork" ng-value="interview.respondent.contact.phone.work">
-						<input type="hidden" name="respondentEmail" ng-value="interview.respondent.contact.email">
-
-						<input type="hidden" name="respondentSPI" ng-value="">
-
-						<input type="hidden" name="respondentInterpreter" ng-value="interview.respondent.requiresInterpreter">
-						<input ng-if="interview.respondent.requiresInterpreter" type="hidden" name="respondentLanguage" ng-value="interview.respondent.language">
-
-						<input type="hidden" name="respondentIdentifiesAsAboriginal" ng-value="interview.identifyAs( 'respondent', 'Aboriginal' )">
-						<input type="hidden" name="respondentIdentifiesAsTorresStraitIslander" ng-value="interview.identifyAs( 'respondent', 'Torres Strait islander' )">
-						<input type="hidden" name="respondentDisability" ng-value="interview.respondent.hasDisability">
-						<input ng-if="interview.respondent.hasDisability" type="hidden" name="respondentDisabilityDescription" ng-value="interview.respondent.disabilityNeeds">
-
-						<input type="hidden" name="respondentEmploymentPlace" ng-value="interview.respondent.employment">
-						<input type="hidden" name="respondentVehicleModel" ng-value="interview.respondent.vehicleModel">
-						<input type="hidden" name="respondentVehicleRegistration" ng-value="interview.respondent.vehicleRegistration">
-
-						<input type="hidden" name="respondentUnder18" ng-value="interview.respondent.under18">
-						<input ng-if="interview.respondent.under18" type="hidden" name="respondentParentName" ng-value="interview.respondent.parent.name.full">
-						<input ng-if="interview.respondent.under18" type="hidden" name="respondentParentAddress" ng-value="interview.respondent.parent.address">
-
-
-						<!-- applicant part  -->
-						<div ng-if="! interview.applicantIsAggrieved">
-							<input type="hidden" name="applicantRelationship" ng-value="interview.getApplicantRelationship()">
-
-							<!-- shared by A, B and D -->
-							<input type="hidden" name="applicantNameGiven" ng-value="interview.applicant.name.given">
-							<input type="hidden" name="applicantNameFamily" ng-value="interview.applicant.name.family">
-							<input type="hidden" name="applicantGender" ng-value="interview.applicant.genderIdentity">
-							<input type="hidden" name="applicantAddressConfidential" ng-value="inteinterview.applicant.confidential.address">
-							<input type="hidden" name="applicantAddress" ng-value="interview.applicant.address">
-
-							<!-- PART A -->
-							<input ng-if="interview.applicant.part === 'A'" type="hidden" name="applicantAuthorisedInWriting" ng-value="interview.applicant.authorisation.written">
-							<input ng-if="interview.applicant.part === 'A' &amp;&amp; ! interview.applicant.authorisation.written" type="hidden" name="applicantAuthorisedDescription" ng-value="interview.applicant.authorisation.other">
-
-							<!-- PART B -->
-							<input ng-if="interview.applicant.part === 'B'" type="hidden" name="applicantActingAs" ng-value="interview.applicant.acting"> <!-- Guardian OR Adult Guardian OR Enduring power of attorney OR Other -->
-							<input ng-if="interview.applicant.part === 'B' &amp;&amp; interview.applicant.acting === 'Other'" type="hidden" name="applicantActingAsDescription" ng-value="interview.applicant.acting.other">
-
-							<!-- PART C
-							<input type="hidden" name="applicantPoliceNameRank" ng-value="">
-							<input type="hidden" name="applicantPoliceRegistration" ng-value="">
-							<input type="hidden" name="applicantPoliceStation" ng-value="">
-							<input type="hidden" name="applicantPoliceOccurrence" ng-value="">
-							<input type="hidden" name="applicantPoliceAdvisedAggrieved" ng-value="">
-							<input type="hidden" name="applicantPoliceRespondentDetained" ng-value="">
-							<input type="hidden" name="applicantPoliceUrgentProtectionSection130" ng-value="">
-							<input type="hidden" name="applicantPoliceDVOExists" ng-value="">
-							<input type="hidden" name="applicantPoliceDVOCourtFileNumber" ng-value="">
-							-->
-
-							<!-- PART D -->
-							<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyChild" ng-value="interview.applicant.childProtectionParty === 'Child'">
-							<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyLegalRepresentative" ng-value="interview.applicant.childProtectionParty === 'Legal representative'">
-							<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyApplicant" ng-value="interview.applicant.childProtectionParty === 'Applicant'">
-							<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyRespondent" ng-value="interview.applicant.childProtectionParty === 'Respondent'">
-						</div>
-
-
-						<!-- urgent protection -->
-						<input type="hidden" name="tpoApply" ng-value="interview.tpo.apply">
-						<input ng-if="interview.tpo.apply" type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
-
-
-						<input type="hidden" name="relationshipPersonal" ng-value="interview.aggrieved.relationship.category === 'Intimate personal'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalMarried" ng-value="interview.aggrieved.relationship.type === 'Married'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalFormerSpouse" ng-value="interview.aggrieved.relationship.type === 'Former Spouse'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalDeFacto" ng-value="interview.aggrieved.relationship.type === 'De Facto' || interview.aggrieved.relationship.type === 'Former De Facto'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalRegistered" ng-value="interview.aggrieved.relationship.type === 'Registered Relationship' || interview.aggrieved.relationship.type === 'Former Registered Relationship'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalParent" ng-value="interview.aggrieved.relationship.type === 'Parent of a Child' || interview.aggrieved.relationship.type === 'Former Parent of a Child'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalEngaged" ng-value="interview.aggrieved.relationship.type === 'Engaged'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalWereEngaged" ng-value="interview.aggrieved.relationship.type === 'Were Engaged'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalCouple" ng-value="interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; (interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple')" type="hidden" name="relationshipPersonalDescription" ng-value="interview.aggrieved.relationship.couple"> <!-- text -->
-
-						<input type="hidden" name="relationshipFamily" ng-value="interview.aggrieved.relationship.category === 'Family'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Family'" type="hidden" name="relationshipFamilyDescription" ng-value="interview.partyFamily"> <!-- text -->
-
-						<input type="hidden" name="relationshipCare" ng-value="interview.aggrieved.relationship.category === 'Informal care'"> <!-- true/false -->
-						<input ng-if="interview.aggrieved.relationship.category === 'Informal care'" type="hidden" name="relationshipCareDescription" ng-value="interview.aggrieved.relationship.informalCare"> <!-- text -->
-
-
-						<!-- TODO construct grounds -->
-						<input type="hidden" name="grounds" ng-value=""> <!-- text -->
-
-
-						<!-- repeat for children -->
-						<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
-						<input ng-if="interview.conditions.nameChildren" ng-repeat-start="child in interview.children" type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
-						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Gender" ng-value="child.genderIdentity">
-						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
-						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
-						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}AddressConfidential" ng-value="false"> <!-- optional, default: true -->
-						<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Named" ng-value="false"> <!-- optional, default: true -->
-						<input ng-if="interview.conditions.nameChildren" ng-repeat-end type="hidden" name="child{{$index + 1}}SPI" ng-value="">
-
-
-						<!-- repeat for associates -->
-						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="nameAssociatesGrounds" ng-value="interview.grounds.associates">
-						<input ng-if="interview.conditions.nameAssociates" ng-repeat-start="associate in interview.associates" type="hidden" name="associate{{$index + 1}}Name" ng-value="associate.name.full">
-						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}Gender" ng-value="associate.genderIdentity">
-						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}DateBirth" ng-value="associate.dateBirth">
-						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}Address" ng-value="associate.address">
-						<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}AddressConfidential" ng-value="false"> <!-- optional, default: true -->
-						<input ng-if="interview.conditions.nameAssociates" ng-repeat-end type="hidden" name="associate{{$index + 1}}SPI" ng-value="">
-
-
-						<input type="hidden" name="respondentWeaponsAccess" ng-value="interview.respondent.weapon.access"> <!-- true/false -->
-						<input ng-if="interview.respondent.weapon.access" type="hidden" name="respondentWeaponsAccessDescription" ng-value="interview.respondent.weapon.accessDetails"> <!-- text -->
-						<input type="hidden" name="respondentWeaponsUsed" ng-value="interview.respondent.weapon.threat || interview.respondent.weapon.threat2"> <!-- true/false -->
-						<input ng-if="interview.respondent.weapon.threat || interview.respondent.weapon.threat2" type="hidden" name="respondentWeaponsUsedDescription" ng-value="interview.respondent.weapon.threatDetails"> <!-- text -->
-						<input type="hidden" name="respondentWeaponsLicence" ng-value="interview.respondent.weapon.licence"> <!-- true/false -->
-						<input ng-if="interview.respondent.weapon.licence" type="hidden" name="respondentWeaponsLicenceDescription" ng-value="interview.respondent.weapon.licenceDetails"> <!-- text -->
-
-
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersChildrensCourtCurrent" ng-value="interview.orders.childProtection"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersChildrensCourtPast" ng-value="interview.orders.childProtectionPast"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersQldDVOCurrent" ng-value="interview.orders.qldDVO"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersQldDVOPast" ng-value="interview.orders.qldDVOPast"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersPoliceProtectionCurrent" ng-value="interview.orders.policeProtection"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersPoliceProtectionPast" ng-value="interview.orders.policeProtectionPast"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersVoluntaryInterventionCurrent" ng-value="interview.orders.voluntaryIntervention"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersVoluntaryInterventionPast" ng-value="interview.orders.voluntaryInterventionPast"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersInterstateDVOCurrent" ng-value="interview.orders.interstateDVO"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersInterstateDVOPast" ng-value="interview.orders.interstateDVOPast"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersNZDVOCurrent" ng-value="interview.orders.NZ_DVO"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersNZDVOPast" ng-value="interview.orders.NZ_DVOPast"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersFamilyCourtCurrent" ng-value="interview.orders.familyCourt"> <!-- true/false -->
-						<input ng-if="interview.orders.exist" type="hidden" name="ordersFamilyCourtPast" ng-value="interview.orders.familyCourtPast"> <!-- true/false -->
-
-						<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherTitle" ng-value="interview.orders.other"> <!-- text -->
-						<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherCurrent" ng-value=""> <!-- true/false -->
-						<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherPast" ng-value=""> <!-- true/false -->
-
-						<input type="hidden" name="ordersProtectionOrderInProgress" ng-value="interview.orders.protectionInProgress"> <!-- true/false -->
-						<input type="hidden" name="ordersCrossApplicationInProgress" ng-value="interview.orders.crossApplication"> <!-- true/false -->
-
-
-						<input type="hidden" name="conditionOuster" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionOusterGrounds" ng-value=""> <!-- text -->
-
-						<input type="hidden" name="conditionProhibitEntryResidence" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitEntryEmployment" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitEntryStaying" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitEntryAssociates" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitEntryOther" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitEntryOtherTitle" ng-value=""> <!-- text -->
-						<input type="hidden" name="conditionProhibitEntryGrounds" ng-value=""> <!-- text -->
-
-						<input type="hidden" name="conditionProhibitApproach" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitApproachAssociates" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitApproachGrounds" ng-value=""> <!-- text -->
-
-						<input type="hidden" name="conditionProhibitContact" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitContactAssociates" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitContactGrounds" ng-value=""> <!-- text -->
-
-						<input type="hidden" name="conditionProhibitChildLocations" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitChildLocationsGrounds" ng-value=""> <!-- text -->
-
-						<input type="hidden" name="conditionProhibitLocating" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitLocatingGrounds" ng-value=""> <!-- text -->
-
-						<input type="hidden" name="conditionRecoverProperty" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionRecoverPropertyDescription" ng-value=""> <!-- text -->
-
-						<input type="hidden" name="conditionProhibitConduct" ng-value=""> <!-- true/false -->
-						<input type="hidden" name="conditionProhibitConductGrounds" ng-value=""> <!-- text -->
-
-
-						<strong><button>
-							Download your application
-							<small class="hint">PDF: ready to edit, print, sign and lodge</small>
-						</button></strong>
-					</form>
-				</li>
-				<li>
-					<form method="POST" id="download-blank" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
-						<button>
-							Download blank forms
-							<small class="hint">PDF forms to fill out later</small>
-						</button>
-					</form>
-				</li>
-				<li>
-					<form>
-						<button ng-click="interview.reset()">
-							Start new application
-							<small class="hint">Erase all data and start again</small>
-						</button>
-					</form>
-				</li>
+				<li><strong><button>Continue</button></strong></li>
 			</ul>
 		</li>
 	</ol>
 </form>
+</section>
+
+
+<section ng-show="interview.page === interview.PAGE.DOWNLOAD">
+
+<div class="status success">
+	<h2>Download your application</h2>
+	<p>You will need to sign it in front of a lawyer or JP, then bring it to a magistrates court to lodge your application.</p>
+</div>
+
+<ol class="questions">
+	<li class="footer">
+
+		<ul class="actions">
+			<li>
+				<form method="POST" id="download-prepared" target="_blank" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
+					<input type="hidden" name="aggrievedNameGiven" ng-value="interview.aggrieved.name.given">
+					<input type="hidden" name="aggrievedNameFamily" ng-value="interview.aggrieved.name.family">
+					<input type="hidden" name="aggrievedDateBirth" ng-value="interview.aggrieved.dateBirth">
+					<input type="hidden" name="aggrievedAddressConfidential" ng-value="interview.aggrieved.confidential.address">
+					<input type="hidden" name="aggrievedAddress" ng-value="interview.aggrieved.address">
+					<input type="hidden" name="aggrievedGender" ng-value="interview.aggrieved.genderIdentity">
+
+					<input type="hidden" name="aggrievedContactConfidential" ng-value="interview.aggrieved.confidential">
+					<input type="hidden" name="aggrievedPhoneHome" ng-value="interview.aggrieved.contact.phone.home">
+					<input type="hidden" name="aggrievedPhoneMobile" ng-value="interview.aggrieved.contact.phone.work">
+					<input type="hidden" name="aggrievedPhoneWork" ng-value="interview.aggrieved.contact.phone.work">
+					<input type="hidden" name="aggrievedEmail" ng-value="interview.aggrieved.contact.email">
+
+					<input type="hidden" name="aggrievedSPI" ng-value="">
+
+					<input type="hidden" name="aggrievedInterpreter" ng-value="interview.aggrieved.requiresInterpreter">
+					<input ng-if="interview.aggrieved.requiresInterpreter" type="hidden" name="aggrievedLanguage" ng-value="interview.aggrieved.language">
+
+					<input type="hidden" name="aggrievedIdentifiesAsAboriginal" ng-value="interview.identifyAs( 'aggrieved', 'Aboriginal' )">
+					<input type="hidden" name="aggrievedIdentifiesAsTorresStraitIslander" ng-value="interview.identifyAs( 'aggrieved', 'Torres Strait islander' )">
+					<input type="hidden" name="aggrievedDisability" ng-value="interview.aggrieved.hasDisability">
+					<input ng-if="interview.aggrieved.hasDisability" type="hidden" name="aggrievedDisabilityDescription" ng-value="interview.aggrieved.disabilityNeeds">
+
+					<input type="hidden" name="aggrievedUnder18" ng-value="interview.aggrieved.under18">
+					<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentName" ng-value="interview.aggrieved.parent.name.full">
+					<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentAddressConfidential" ng-value="interview.aggrieved.confidential.parentAddress">
+					<input ng-if="interview.aggrieved.under18" type="hidden" name="aggrievedParentAddress" ng-value="interview.aggrieved.parent.address">
+
+					<input ng-if="interview.aggrieved.courtSafetyConcern" type="hidden" name="aggrievedCourtSafetyAttending" ng-value="interview.aggrieved.courtSafety.attending">
+					<input ng-if="interview.aggrieved.courtSafetyConcern" type="hidden" name="aggrievedCourtSafetyLeaving" ng-value="interview.aggrieved.courtSafety.leaving">
+
+
+					<input type="hidden" name="respondentNameGiven" ng-value="interview.respondent.name.given">
+					<input type="hidden" name="respondentNameFamily" ng-value="interview.respondent.name.family">
+					<input type="hidden" name="respondentDateBirth" ng-value="interview.respondent.dateBirth">
+					<input type="hidden" name="respondentAddress" ng-value="interview.respondent.address">
+					<input type="hidden" name="respondentGender" ng-value="interview.respondent.genderIdentity">
+
+					<input type="hidden" name="respondentPhoneHome" ng-value="interview.respondent.contact.phone.home">
+					<input type="hidden" name="respondentPhoneMobile" ng-value="interview.respondent.contact.phone.mobile">
+					<input type="hidden" name="respondentPhoneWork" ng-value="interview.respondent.contact.phone.work">
+					<input type="hidden" name="respondentEmail" ng-value="interview.respondent.contact.email">
+
+					<input type="hidden" name="respondentSPI" ng-value="">
+
+					<input type="hidden" name="respondentInterpreter" ng-value="interview.respondent.requiresInterpreter">
+					<input ng-if="interview.respondent.requiresInterpreter" type="hidden" name="respondentLanguage" ng-value="interview.respondent.language">
+
+					<input type="hidden" name="respondentIdentifiesAsAboriginal" ng-value="interview.identifyAs( 'respondent', 'Aboriginal' )">
+					<input type="hidden" name="respondentIdentifiesAsTorresStraitIslander" ng-value="interview.identifyAs( 'respondent', 'Torres Strait islander' )">
+					<input type="hidden" name="respondentDisability" ng-value="interview.respondent.hasDisability">
+					<input ng-if="interview.respondent.hasDisability" type="hidden" name="respondentDisabilityDescription" ng-value="interview.respondent.disabilityNeeds">
+
+					<input type="hidden" name="respondentEmploymentPlace" ng-value="interview.respondent.employment">
+					<input type="hidden" name="respondentVehicleModel" ng-value="interview.respondent.vehicleModel">
+					<input type="hidden" name="respondentVehicleRegistration" ng-value="interview.respondent.vehicleRegistration">
+
+					<input type="hidden" name="respondentUnder18" ng-value="interview.respondent.under18">
+					<input ng-if="interview.respondent.under18" type="hidden" name="respondentParentName" ng-value="interview.respondent.parent.name.full">
+					<input ng-if="interview.respondent.under18" type="hidden" name="respondentParentAddress" ng-value="interview.respondent.parent.address">
+
+
+					<!-- applicant part  -->
+					<div ng-if="! interview.applicantIsAggrieved">
+						<input type="hidden" name="applicantRelationship" ng-value="interview.getApplicantRelationship()">
+
+						<!-- shared by A, B and D -->
+						<input type="hidden" name="applicantNameGiven" ng-value="interview.applicant.name.given">
+						<input type="hidden" name="applicantNameFamily" ng-value="interview.applicant.name.family">
+						<input type="hidden" name="applicantGender" ng-value="interview.applicant.genderIdentity">
+						<input type="hidden" name="applicantAddressConfidential" ng-value="inteinterview.applicant.confidential.address">
+						<input type="hidden" name="applicantAddress" ng-value="interview.applicant.address">
+
+						<!-- PART A -->
+						<input ng-if="interview.applicant.part === 'A'" type="hidden" name="applicantAuthorisedInWriting" ng-value="interview.applicant.authorisation.written">
+						<input ng-if="interview.applicant.part === 'A' &amp;&amp; ! interview.applicant.authorisation.written" type="hidden" name="applicantAuthorisedDescription" ng-value="interview.applicant.authorisation.other">
+
+						<!-- PART B -->
+						<input ng-if="interview.applicant.part === 'B'" type="hidden" name="applicantActingAs" ng-value="interview.applicant.acting"> <!-- Guardian OR Adult Guardian OR Enduring power of attorney OR Other -->
+						<input ng-if="interview.applicant.part === 'B' &amp;&amp; interview.applicant.acting === 'Other'" type="hidden" name="applicantActingAsDescription" ng-value="interview.applicant.acting.other">
+
+						<!-- PART C
+						<input type="hidden" name="applicantPoliceNameRank" ng-value="">
+						<input type="hidden" name="applicantPoliceRegistration" ng-value="">
+						<input type="hidden" name="applicantPoliceStation" ng-value="">
+						<input type="hidden" name="applicantPoliceOccurrence" ng-value="">
+						<input type="hidden" name="applicantPoliceAdvisedAggrieved" ng-value="">
+						<input type="hidden" name="applicantPoliceRespondentDetained" ng-value="">
+						<input type="hidden" name="applicantPoliceUrgentProtectionSection130" ng-value="">
+						<input type="hidden" name="applicantPoliceDVOExists" ng-value="">
+						<input type="hidden" name="applicantPoliceDVOCourtFileNumber" ng-value="">
+						-->
+
+						<!-- PART D -->
+						<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyChild" ng-value="interview.applicant.childProtectionParty === 'Child'">
+						<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyLegalRepresentative" ng-value="interview.applicant.childProtectionParty === 'Legal representative'">
+						<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyApplicant" ng-value="interview.applicant.childProtectionParty === 'Applicant'">
+						<input ng-if="interview.applicant.part === 'D'" type="hidden" name="applicantChildProtectionPartyRespondent" ng-value="interview.applicant.childProtectionParty === 'Respondent'">
+					</div>
+
+
+					<!-- urgent protection -->
+					<input type="hidden" name="tpoApply" ng-value="interview.tpo.apply">
+					<input ng-if="interview.tpo.apply" type="hidden" name="tpoGrounds" ng-value="interview.tpo.grounds">
+
+
+					<input type="hidden" name="relationshipPersonal" ng-value="interview.aggrieved.relationship.category === 'Intimate personal'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalMarried" ng-value="interview.aggrieved.relationship.type === 'Married'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalFormerSpouse" ng-value="interview.aggrieved.relationship.type === 'Former Spouse'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalDeFacto" ng-value="interview.aggrieved.relationship.type === 'De Facto' || interview.aggrieved.relationship.type === 'Former De Facto'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalRegistered" ng-value="interview.aggrieved.relationship.type === 'Registered Relationship' || interview.aggrieved.relationship.type === 'Former Registered Relationship'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalParent" ng-value="interview.aggrieved.relationship.type === 'Parent of a Child' || interview.aggrieved.relationship.type === 'Former Parent of a Child'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalEngaged" ng-value="interview.aggrieved.relationship.type === 'Engaged'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalWereEngaged" ng-value="interview.aggrieved.relationship.type === 'Were Engaged'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal'" type="hidden" name="relationshipPersonalCouple" ng-value="interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Intimate personal' &amp;&amp; (interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple')" type="hidden" name="relationshipPersonalDescription" ng-value="interview.aggrieved.relationship.couple"> <!-- text -->
+
+					<input type="hidden" name="relationshipFamily" ng-value="interview.aggrieved.relationship.category === 'Family'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Family'" type="hidden" name="relationshipFamilyDescription" ng-value="interview.partyFamily"> <!-- text -->
+
+					<input type="hidden" name="relationshipCare" ng-value="interview.aggrieved.relationship.category === 'Informal care'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.category === 'Informal care'" type="hidden" name="relationshipCareDescription" ng-value="interview.aggrieved.relationship.informalCare"> <!-- text -->
+
+
+					<!-- TODO construct grounds -->
+					<input type="hidden" name="grounds" ng-value=""> <!-- text -->
+
+
+					<!-- repeat for children -->
+					<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
+					<input ng-if="interview.conditions.nameChildren" ng-repeat-start="child in interview.children" type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
+					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Gender" ng-value="child.genderIdentity">
+					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
+					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
+					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}AddressConfidential" ng-value="false"> <!-- optional, default: true -->
+					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Named" ng-value="false"> <!-- optional, default: true -->
+					<input ng-if="interview.conditions.nameChildren" ng-repeat-end type="hidden" name="child{{$index + 1}}SPI" ng-value="">
+
+
+					<!-- repeat for associates -->
+					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="nameAssociatesGrounds" ng-value="interview.grounds.associates">
+					<input ng-if="interview.conditions.nameAssociates" ng-repeat-start="associate in interview.associates" type="hidden" name="associate{{$index + 1}}Name" ng-value="associate.name.full">
+					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}Gender" ng-value="associate.genderIdentity">
+					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}DateBirth" ng-value="associate.dateBirth">
+					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}Address" ng-value="associate.address">
+					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}AddressConfidential" ng-value="false"> <!-- optional, default: true -->
+					<input ng-if="interview.conditions.nameAssociates" ng-repeat-end type="hidden" name="associate{{$index + 1}}SPI" ng-value="">
+
+
+					<input type="hidden" name="respondentWeaponsAccess" ng-value="interview.respondent.weapon.access"> <!-- true/false -->
+					<input ng-if="interview.respondent.weapon.access" type="hidden" name="respondentWeaponsAccessDescription" ng-value="interview.respondent.weapon.accessDetails"> <!-- text -->
+					<input type="hidden" name="respondentWeaponsUsed" ng-value="interview.respondent.weapon.threat || interview.respondent.weapon.threat2"> <!-- true/false -->
+					<input ng-if="interview.respondent.weapon.threat || interview.respondent.weapon.threat2" type="hidden" name="respondentWeaponsUsedDescription" ng-value="interview.respondent.weapon.threatDetails"> <!-- text -->
+					<input type="hidden" name="respondentWeaponsLicence" ng-value="interview.respondent.weapon.licence"> <!-- true/false -->
+					<input ng-if="interview.respondent.weapon.licence" type="hidden" name="respondentWeaponsLicenceDescription" ng-value="interview.respondent.weapon.licenceDetails"> <!-- text -->
+
+
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersChildrensCourtCurrent" ng-value="interview.orders.childProtection"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersChildrensCourtPast" ng-value="interview.orders.childProtectionPast"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersQldDVOCurrent" ng-value="interview.orders.qldDVO"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersQldDVOPast" ng-value="interview.orders.qldDVOPast"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersPoliceProtectionCurrent" ng-value="interview.orders.policeProtection"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersPoliceProtectionPast" ng-value="interview.orders.policeProtectionPast"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersVoluntaryInterventionCurrent" ng-value="interview.orders.voluntaryIntervention"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersVoluntaryInterventionPast" ng-value="interview.orders.voluntaryInterventionPast"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersInterstateDVOCurrent" ng-value="interview.orders.interstateDVO"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersInterstateDVOPast" ng-value="interview.orders.interstateDVOPast"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersNZDVOCurrent" ng-value="interview.orders.NZ_DVO"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersNZDVOPast" ng-value="interview.orders.NZ_DVOPast"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersFamilyCourtCurrent" ng-value="interview.orders.familyCourt"> <!-- true/false -->
+					<input ng-if="interview.orders.exist" type="hidden" name="ordersFamilyCourtPast" ng-value="interview.orders.familyCourtPast"> <!-- true/false -->
+
+					<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherTitle" ng-value="interview.orders.other"> <!-- text -->
+					<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherCurrent" ng-value=""> <!-- true/false -->
+					<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherPast" ng-value=""> <!-- true/false -->
+
+					<input type="hidden" name="ordersProtectionOrderInProgress" ng-value="interview.orders.protectionInProgress"> <!-- true/false -->
+					<input type="hidden" name="ordersCrossApplicationInProgress" ng-value="interview.orders.crossApplication"> <!-- true/false -->
+
+
+					<input type="hidden" name="conditionOuster" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionOusterGrounds" ng-value=""> <!-- text -->
+
+					<input type="hidden" name="conditionProhibitEntryResidence" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitEntryEmployment" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitEntryStaying" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitEntryAssociates" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitEntryOther" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitEntryOtherTitle" ng-value=""> <!-- text -->
+					<input type="hidden" name="conditionProhibitEntryGrounds" ng-value=""> <!-- text -->
+
+					<input type="hidden" name="conditionProhibitApproach" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitApproachAssociates" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitApproachGrounds" ng-value=""> <!-- text -->
+
+					<input type="hidden" name="conditionProhibitContact" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitContactAssociates" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitContactGrounds" ng-value=""> <!-- text -->
+
+					<input type="hidden" name="conditionProhibitChildLocations" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitChildLocationsGrounds" ng-value=""> <!-- text -->
+
+					<input type="hidden" name="conditionProhibitLocating" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitLocatingGrounds" ng-value=""> <!-- text -->
+
+					<input type="hidden" name="conditionRecoverProperty" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionRecoverPropertyDescription" ng-value=""> <!-- text -->
+
+					<input type="hidden" name="conditionProhibitConduct" ng-value=""> <!-- true/false -->
+					<input type="hidden" name="conditionProhibitConductGrounds" ng-value=""> <!-- text -->
+
+
+					<strong><button>
+						Download your application
+						<small class="hint">PDF: ready to edit, print, sign and lodge</small>
+					</button></strong>
+				</form>
+			</li>
+			<li>
+				<form method="POST" id="download-blank" target="_blank" action="https://test.smartservice.qld.gov.au/services/submissions/pdf/yrcl/prepared1">
+					<button>
+						Download blank forms
+						<small class="hint">PDF forms to fill out later</small>
+					</button>
+				</form>
+			</li>
+		</ul>
+	</li>
+</ol>
+
+
+<h2>Lodging your application</h2>
+<form>
+	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Next steps for the applicant</span>
+				</legend>
+				<ul class="choices">
+					<li>
+						<input  id="checklist-prepare" type="checkbox" checked>
+						<label for="checklist-prepare">Prepare your application</label>
+						<small class="hint">You just did this!</small>
+					</li>
+					<li>
+						<input  id="checklist-advice" type="checkbox" ng-checked="interview.legalAdvice === 'done'">
+						<label ng-if="interview.applicantIsAggrieved" for="checklist-advice">Get legal advice</label>
+						<label ng-if="! interview.applicantIsAggrieved" for="checklist-advice">Help {{ interview.aggrieved.name.short }} get legal advice</label>
+						<small ng-if="interview.legalAdvice !== 'done'" class="hint">In some areas there are programs to help people apply for a domestic violence order — these include domestic violence prevention programs, application assistance programs or domestic violence services. You can ask at the magistrates court about these programs.</small>
+						<small ng-if="interview.legalAdvice === 'done'" class="hint">Check with your lawyer if you have any more questions now that you have completed the form.</small>
+					</li>
+					<li>
+						<input  id="checklist-print" type="checkbox">
+						<label for="checklist-print">Print application</label>
+						<small class="hint">You must print the application before you bring it to court.
+						If you are not comfortable printing at home, ask a trusted friend, or try a public library or local business.</small>
+					</li>
+					<li>
+						<input  id="checklist-attach" type="checkbox">
+						<label for="checklist-attach">Gather evidence and attach to the form<br>
+						<small>Examples: photos of injuries, statements from witnesses, diary enties, doctors' reports, reports from counsellors, text/voicemail messages, emails, letters or social media entries printed with dates.</small></label>
+					</li>
+					<li>
+						<input  id="checklist-attach" type="checkbox">
+						<label for="checklist-attach">Attach copies of other court orders<br>
+						<small>If you have any court orders, like family law orders about your children, Childrens Court orders or any old or current domestic violence orders, you must attach a copy to your domestic violence order application.</small></label>
+					</li>
+					<li>
+						<input  id="checklist-sign" type="checkbox">
+						<label for="checklist-sign">Sign the declaration<br>
+	                    <small>Must be witnessed by a Justice of the Peace, Commissioner for Declaration or a Solicitor.
+	                    All magistrates courts have a Justice of the Peace, but you should check what day and time they are available.
+						<a href="//www.qld.gov.au/law/legal-mediation-and-justice-of-the-peace/about-justice-of-the-peace/search-for-your-nearest-jp-or-cdec/" target="_blank">Find a JP</a> that is convenient for you.
+	                    </small></label>
+					</li>
+					<li>
+						<input  id="checklist-lodge" type="checkbox">
+						<label for="checklist-lodge">Lodge at a Magistrates Court</label>
+						<small class="hint">Find your nearest <a href="https://www.qld.gov.au/law/court/courts/courthouse-locations/" target="_blank">Magistrates Court</a></small>
+						<small ng-if="interview.aggrieved.courtSafetyConcern" class="hint">Give the court safety form to the court staff.</small>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+	</ol>
+</form>
+
+<h2>What happens after you lodge the application?</h2>
+<p ng-if="interview.tpo.apply">You will be given a court date (as soon as possible), depending on the court’s availability, to ask for a temporary protection order.</p>
+<p ng-if="! interview.tpo.apply">You will be given a a date to appear at court (usually in about four weeks time).</p>
+
+<h3>Serving of the application</h3>
+<p>Once the application has been lodged, {{ interview.respondent.name.short }} has a right to get a copy of it so that {{ interview.respondent.pronoun.they }} know what has been said and can respond in court. Police will serve the respondent with a copy of the application.</p>
+
+
+<div id="what-next" class="section">
+	<h2>What can I read or do next?</h2>
+	<ul>
+		<li><a href="http://www.courts.qld.gov.au/courts/magistrates-court/domestic-and-family-violence/how-to-get-protection-from-domestic-violence/court-process-for-applicants">Court process for applicants</a></li>
+		<li><a href="//www.qld.gov.au/law/court/going-to-court/">Going to court</a></li>
+		<li><a href="//www.qld.gov.au/law/court/supporting-someone-going-through-court/">Supporting someone going through court</a></li>
+		<li><a href="//www.qld.gov.au/law/legal-mediation-and-justice-of-the-peace/about-justice-of-the-peace/search-for-your-nearest-jp-or-cdec/">Search for your nearest JP or Cdec</a></li>
+		<li><a href="http://www.courts.qld.gov.au/court-calendars">Court calendars</a></li>
+		<li><a href="http://www.legalaid.qld.gov.au/Find-legal-information/Publications/Legal-information-guides/How-to-apply-for-a-domestic-violence-order">How to apply for a domestic violence order (Legal Aid Queensland)</a></li>
+	</ul>
+</div>
+
+<form>
+<ol class="questions">
+	<li class="footer">
+		<ul class="actions">
+			<li>
+				<button type="button" ng-click="interview.reset()">
+					Start new application
+					<small class="hint">Erase all data and start again</small>
+				</button>
+			</li>
+			<li>
+				<button type="button" ng-click="interview.quickExit()">
+					Exit this site
+					<small class="hint">Clear your browser history after</small>
+				</button>
+			</li>
+		</ul>
+	</li>
+</ol>
+</form>
+
+</section>
