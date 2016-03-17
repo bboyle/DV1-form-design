@@ -116,6 +116,11 @@ table.matrix td {
 }
 
 
+.label::first-letter,
+.hint::first-letter,
+.h2::first-letter,
+.h3::first-letter,
+h2::first-letter,
 p::first-letter {
 	text-transform: uppercase;
 }
