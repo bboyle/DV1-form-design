@@ -1385,48 +1385,55 @@
 
 <form class="form" name="formGrounds" ng-submit="interview.continue( $event )">
 	<ol class="questions">
-		<li>
+		<li class="group" ng-repeat="event in interview.event">
 			<fieldset>
 				<legend>
-					<span class="label">Describe in detail how {{ interview.respondent.name.short }} has behaved in violent, abusive or controlling ways</span>
-					<small class="hint">Please include all major incidents of domestic or family violence.</small>
+					<span class="h3">Event {{ $index + 1 }} details</span>
+					<small class="hint">Describe in detail how {{ interview.respondent.name.short }} has behaved in violent, abusive or controlling ways.</small>
 				</legend>
 				<ol class="questions">
 					<li>
-						<label for="interview-grounds-most-recent-description">
+						<label for="interview-grounds-event{{$index}}-description">
 							<span class="label">What did {{ interview.respondent.pronoun.they }} do?</span>
 							<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.pronoun.they }} said and did. Don't exaggerate or be too general. Don't tone down, explain or apologise for the behaviour.</small>
 						</label>
-						<textarea id="interview-grounds-most-recent-description" ng-model="interview.grounds.mostRecent.description" cols="40" rows="10" spellcheck="true"></textarea>
+						<textarea id="interview-grounds-event{{$index}}-description" ng-model="event.description" cols="40" rows="10" spellcheck="true"></textarea>
 					</li>
 					<li>
-						<label for="interview-grounds-most-recent-feel">
+						<label for="interview-grounds-event{{$index}}-feel">
 							<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
 							<small class="hint">Examples: threatened, fearful or scared?</small>
 						</label>
-						<textarea id="interview-grounds-most-recent-feel" ng-model="interview.grounds.mostRecent.feel" cols="40" rows="3" spellcheck="true"></textarea>
+						<textarea id="interview-grounds-event{{$index}}-feel" ng-model="event.feel" cols="40" rows="3" spellcheck="true"></textarea>
 					</li>
 					<li>
-						<label for="interview-grounds-most-recent-when">
+						<label for="interview-grounds-event{{$index}}-when">
 							<span class="label">When did this happen?</span>
 							<small class="hint">An approximate date is fine</small>
 						</label>
-						<input type="text" id="interview-grounds-most-recent-when" ng-model="interview.grounds.mostRecent.when" size="15">
+						<input type="text" id="interview-grounds-event{{$index}}-when" ng-model="event.when" size="15">
 					</li>
 					<li>
-						<label for="interview-grounds-most-recent-where">
+						<label for="interview-grounds-event{{$index}}-where">
 							<span class="label">Where did this happen?</span>
 							<small class="hint">Example: at home, work, an address or describe the place</small>
 						</label>
-						<input type="text" id="interview-grounds-most-recent-where" ng-model="interview.grounds.mostRecent.where" size="30" list="placenames">
+						<input type="text" id="interview-grounds-event{{$index}}-where" ng-model="event.where" size="30" list="placenames">
 					</li>
 					<li>
-						<label for="interview-grounds-most-recent-witness">
+						<label for="interview-grounds-event{{$index}}-witness">
 							<span class="label">Who else witnessed this?</span>
 							<small class="hint">Example: partners, children, parents, friends, neighbours.</small>
 						</label>
-						<input type="text" id="interview-grounds-most-recent-witness" ng-model="interview.grounds.mostRecent.witness" size="30" list="witnesses">
+						<input type="text" id="interview-grounds-event{{$index}}-witness" ng-model="event.witness" size="30" list="witnesses">
 					</li>
+					<li class="footer">
+						<ul class="actions">
+							<li><em><button type="button" class="add" ng-click="interview.addEvent( $index )"><i class="fa fa-plus-square"></i> Add another event</button></em></li>
+							<li ng-if="$index"><em><button type="button" class="del" ng-click="interview.removeEvent( $index )"><i class="fa fa-minus-square"></i> Remove event {{ $index + 1 }}</button></em></li>
+						</ul>
+					</li>
+
 				</ol>
 			</fieldset>
 		</li>

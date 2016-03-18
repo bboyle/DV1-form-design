@@ -136,9 +136,15 @@ angular.module( 'dv1' )
 	};
 	vm.addAssociate = function( i ) {
 		vm.associates.splice( i + 1, 0, {} );
-	};
+	};``
 	vm.removeAssociate = function( i ) {
 		vm.associates.splice( i, 1 );
+	};
+	vm.addEvent = function( i ) {
+		vm.event.splice( i + 1, 0, {} );
+	};
+	vm.removeEvent = function( i ) {
+		vm.event.splice( i, 1 );
 	};
 
 
@@ -194,6 +200,7 @@ angular.module( 'dv1' )
 
 		vm.children = [ {} ];
 		vm.associates = [ {} ];
+		vm.event = [ {} ];
 		vm.grounds = {};
 		vm.conditions = {};
 		vm.pageUnlocked = 1;
@@ -267,6 +274,7 @@ angular.module( 'dv1' )
 	angular.merge( vm, application.getData() );
 	vm.children = [ {} ];
 	vm.associates = [ {} ];
+	vm.event = [ {} ];
 
 	vm.goto( 1 );
 
