@@ -1293,6 +1293,13 @@
 						       ng-value="true">
 						<label for="interview-abuse-coercive">coercive</label>
 					</li>
+					<li>
+						<input type="checkbox"
+						       id="interview-abuse-other"
+						       ng-model="interview.abuse.other"
+						       ng-value="true">
+						<label for="interview-abuse-other">controlling {{ interview.aggrieved.pronoun.you }} and causes {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.pronoun.them }} to fear for {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }}  safety or wellbeing</label>
+					</li>
 				</ul>
 			</fieldset>
 		</li>
@@ -1339,10 +1346,17 @@
 					</li>
 					<li>
 						<input type="checkbox"
+						       id="interview-abuse-threatenAnimal"
+						       ng-model="interview.abuse.threatenAnimal"
+						       ng-value="true">
+						<label for="interview-abuse-threatenAnimal">caused or threatened to harm or kill an animal</label>
+					</li>
+					<li>
+						<input type="checkbox"
 						       id="interview-abuse-stalking"
 						       ng-model="interview.abuse.stalking"
 						       ng-value="true">
-						<label for="interview-abuse-stalking">been stalking {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}, or someone {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.pronoun.they }} know</label>
+						<label for="interview-abuse-stalking">stalked {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} or undertaken surveillance (including social media, telephone, email etc.) without {{ interview.applicant.isAggrieved ? 'your' : interview.aggrieved.pronoun.their }} permission.</label>
 					</li>
 				</ul>
 			</fieldset>
