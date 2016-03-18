@@ -220,54 +220,160 @@ angular.module( 'dv1' )
 	};
 
 
-	vm.prefill = function() {
-		vm.aggrieved = {
-			name: {
-				given: 'Marjorie',
-				family: 'Simpson'
-			},
-			genderIdentity: 'Female',
-			address: '742 Evergreen Terrace, Springfield QLD 4300',
-			dateBirth: '19 March 1980',
-			relationship: {
-				category: 'Intimate personal',
-				type: 'Past Couple',
-				couple: 'We dated in high school and went to prom.'
-			}
-		};
-		vm.applicantIsAggrieved = true;
-		vm.saveAggrieved();
-		vm.aggrieved.name.short = 'Marge';
+	vm.prefill = function(situation) {
+		if (situation === 'Lannister') {
+			vm.legalAdvice = 'later';
 
-		vm.respondent = {
-			name: {
-				given: 'Artie',
-				family: 'Ziff'
-			},
-			genderIdentity: 'Male',
-			address: '5 Helicopter Boulevard, Springfield 4300',
-			dateBirth: '5 May 1980'
-		};
-		vm.saveRespondent();
+			vm.aggrieved = {
+				name: {
+					given: 'Jamie',
+					family: 'Lannister'
+				},
+				genderIdentity: 'Man',
+				address: 'Casterly Rock, Lannisport, Westeros',
+				dateBirth: '11 June 1974',
+				under18: false,
+				identifyAs: 'N/A',
+				requiresInterpreter: false,
+				hasDisability: true,
+				disabilityNeeds: 'Jamie has lost his right hand and has difficulty signing documents.',
+				relationship: {
+					family: true,
+					intimate: true,
+					type: 'Former Couple',
+					partyFamily: 'She is my sister',
+					couple: 'They have been a secret couple since they were teenagers. Jamie is the biological father of Joffrey, Myrcella and Tommen.'
+				}
+			};
+			vm.party = 'their family';
+			vm.partyFamily = 'sister';
+			vm.saveAggrieved();
+			vm.applicantIsAggrieved = false;
 
-		vm.conditions = { nameChildren: true };
-		vm.grounds = { children: 'Artie put a hidden camera inside our home.' };
-		vm.children = [{
-			name: { full: 'Bartholomew J Simpson' },
-			genderIdentity: 'Male',
-			dateBirth: '1 April 2006',
-			address: vm.aggrieved.address
-		}, {
-			name: { full: 'Lisa Marie Simpson' },
-			genderIdentity: 'Female',
-			dateBirth: '9 May 2006',
-			address: vm.aggrieved.address
-		}, {
-			name: { full: 'Margaret Simpson' },
-			genderIdentity: 'Female',
-			dateBirth: '29 February 2015',
-			address: vm.aggrieved.address
-		}];
+			vm.applicant = {
+				name: {
+					given: 'Tyrion',
+					family: 'Lannister',
+				},
+				confidential: {
+					address: true
+				},
+				genderIdentity: 'Man',
+				dateBirth: '28 September 1978',
+				address: 'Meereen, Slaver\'s Bay, Essos',
+				relationship: {
+					aggrieved: 'brother'
+				}
+			};
+
+			vm.respondent = {
+				name: {
+					given: 'Cersei',
+					family: 'Lannister'
+				},
+				genderIdentity: 'Woman',
+				address: 'King\'s Landing, Westeros',
+				dateBirth: '11 June 1974',
+				under18: false,
+				identifyAs: 'N/A',
+				requiresInterpreter: false,
+				hasDisability: false,
+				employment: 'Queen Regent',
+				weapon: {
+					access: false,
+					licence: false
+				}
+			};
+			vm.saveRespondent();
+
+			vm.relationship = {
+				home: 'known'
+			};
+
+			vm.abuse = {
+				emotional: true,
+				threat: true,
+				coercive: true,
+				liberty: true,
+				threatenPerson: true,
+				selfHarm: true,
+				stalking: true,
+			};
+
+			vm.conditions = { nameChildren: true };
+			vm.grounds = { children: 'Cersei uses her children as pawns in political games.' };
+			vm.children = [
+			// deceased
+			// {
+			// 	name: { full: 'Joffrey Baratheon' },
+			// 	genderIdentity: 'Boy',
+			// 	dateBirth: '1 April 2006',
+			// 	address: vm.aggrieved.address
+			// },
+			{
+				name: { full: 'Myrcella Baratheon' },
+				genderIdentity: 'Girl',
+				dateBirth: '9 May 2006',
+				livesWith: 'other',
+				confidential: { address: true },
+				address: 'Sunspear, Dorne, Westeros'
+			}, {
+				name: { full: 'Tommon Baratheon' },
+				genderIdentity: 'Boy',
+				dateBirth: '29 February 2015',
+				livesWith: 'respondent',
+				address: vm.respondent.address
+			}];
+
+		} else {
+			vm.aggrieved = {
+				name: {
+					given: 'Marjorie',
+					family: 'Simpson'
+				},
+				genderIdentity: 'Female',
+				address: '742 Evergreen Terrace, Springfield QLD 4300',
+				dateBirth: '19 March 1980',
+				relationship: {
+					intimate: true,
+					type: 'Past Couple',
+					couple: 'We dated in high school and went to prom.'
+				}
+			};
+			vm.applicantIsAggrieved = true;
+			vm.saveAggrieved();
+			vm.aggrieved.name.short = 'Marge';
+
+			vm.respondent = {
+				name: {
+					given: 'Artie',
+					family: 'Ziff'
+				},
+				genderIdentity: 'Male',
+				address: '5 Helicopter Boulevard, Springfield 4300',
+				dateBirth: '5 May 1980'
+			};
+			vm.saveRespondent();
+
+			vm.conditions = { nameChildren: true };
+			vm.grounds = { children: 'Artie put a hidden camera inside our home.' };
+			vm.children = [{
+				name: { full: 'Bartholomew J Simpson' },
+				genderIdentity: 'Male',
+				dateBirth: '1 April 2006',
+				address: vm.aggrieved.address
+			}, {
+				name: { full: 'Lisa Marie Simpson' },
+				genderIdentity: 'Female',
+				dateBirth: '9 May 2006',
+				address: vm.aggrieved.address
+			}, {
+				name: { full: 'Margaret Simpson' },
+				genderIdentity: 'Female',
+				dateBirth: '29 February 2015',
+				address: vm.aggrieved.address
+			}];
+		}
 	};
 
 	// init
