@@ -1502,11 +1502,8 @@
 
 <div class="status info">
 	<h2>Do you require urgent protection?</h2>
-	<p>The hearing of an application for a protection order will not be held immediately.
-	   A copy of the application must be served on the respondent
-	   <span ng-if="interview.respondent.name.given">(given to {{ interview.respondent.name.given }})</span>
-	   before a protection order may be made.
-	   It may be a few weeks until your court date.</p>
+	<p>The hearing of an application for a protection order will not be held immediately. It may be a few weeks until your court date.</p>
+	<p>{{ interview.respondent.name.short }} has a right to get a copy of the application so that {{ interview.respondent.pronoun.they }} know what has been said and can respond in court. Police will serve the respondent with a copy of the application.</p>
 	<p>You can ask the clerk of the court to arrange an earlier court date (before {{ interview.respondent.name.short }} has been served)
 	so the magistrate can consider whether to make a temporary protection order.</p>
 	<p>You will still need to go to court later (and {{ interview.respondent.name.short }} will need to go to court then too) for this application.
