@@ -34,8 +34,8 @@ angular.module( 'dv1' )
 		GENERIC: 'G',
 		MALE: 'M',
 		// regexes
-		FEMININE: /Woman|Female|mother|daughter|sister|neice|aunt|wife|girl/,
-		MASCULINE: /Man|Male|father|son|brother|nephew|uncle|husband|boy/,
+		FEMININE: /Woman|Female|mother|daughter|sister|neice|aunt|wife|girl/i,
+		MASCULINE: /Man|Male|father|son|brother|nephew|uncle|husband|boy/i,
 	};
 
 
