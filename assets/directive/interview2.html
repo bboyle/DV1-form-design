@@ -1228,7 +1228,7 @@
 
 <section ng-show="interview.page === interview.PAGE.GROUNDS">
 <h2>Why {{ interview.applicantIsAggrieved ? 'do you' : 'does ' + interview.aggrieved.name.short }} need protection?</h2>
-<form class="form" name="formGrounds" ng-submit="interview.continue( $event )">
+<form class="form" name="formGrounds1">
 	<div class="status info">
 		<h2>What has {{ interview.respondent.name.short }} done to {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}?</h2>
 		<p>
@@ -1364,17 +1364,32 @@
 				</ul>
 			</fieldset>
 		</li>
+	</ol>
+</form>
 
+
+<div class="status info">
+	<h2>Explaining what has happened</h2>
+	<p>Now please expand upon the domestic violence you have indicated above, including the date or the approximate dates, (e.g. March–April 2015) of specific incidents.</p>
+
+	<p>We understand it may be difficult for {{ interview.aggrieved.pronoun.you }} to relive these events.
+	If at any time {{ interview.aggrieved.pronoun.they }} need{{ interview.aggrieved.pronoun.they === 'she' ? 's' : interview.aggrieved.pronoun.they === 'he' ? 's' : '' }} someone to talk to, you can call a support service such as DVConnect:</p>
+	<ul>
+		<li ng-if="interview.aggrieved.gender === 'Male'"><a href="tel:1800.600.636">1800 600 636 (Mensline)</a></li>
+		<li><a href="tel:1800.811.811">1800 811 811 (Womensline)</a></li>
+		<li ng-if="interview.aggrieved.gender !== 'Male'"><a href="tel:1800.600.636">1800 600 636 (Mensline)</a></li>
+	</ul>
+	<p>1800 numbers are free to call and do not show up on phone bills.</p>
+	</p>
+</div>
+
+<form class="form" name="formGrounds" ng-submit="interview.continue( $event )">
+	<ol class="questions">
 		<li>
-			<div class="status info">
-				<h2>Explaining what has happened</h2>
-				<p>Now please expand upon the domestic violence you have indicated above, including the date or the approximate dates, (e.g. March - April 2015) of specific incidents.</p>
-				<p>Please include all major incidents of domestic or family violence.</p>
-			</div>
-
 			<fieldset>
 				<legend>
-					<span class="label">Describe how {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }}</span>
+					<span class="label">Describe in detail how {{ interview.respondent.name.short }} has behaved in violent, abusive or controlling ways</span>
+					<small class="hint">Please include all major incidents of domestic or family violence.</small>
 				</legend>
 				<ol class="questions">
 					<li>
