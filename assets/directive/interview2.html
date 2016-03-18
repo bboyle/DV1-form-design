@@ -1273,6 +1273,14 @@
 					</li>
 					<li>
 						<input type="checkbox"
+						       id="interview-abuse-financial"
+						       ng-model="interview.abuse.financial"
+						       ng-value="true">
+						<label for="interview-abuse-financial">financially abusive</label>
+						<small class="hint">Examples: controlling access to money and bank accounts, making {{ interview.aggrieved.name.short }} borrow money for {{ interview.respondent.pronoun.them }}.</small>
+					</li>
+					<li>
+						<input type="checkbox"
 						       id="interview-abuse-threat"
 						       ng-model="interview.abuse.threat"
 						       ng-value="true">
