@@ -83,6 +83,7 @@ angular.module( 'dv1' )
 		if ( isApplicant ) {
 			this.saveApplicant( aggrievedData );
 			data.aggrieved.pronoun.you = 'you';
+			data.aggrieved.pronoun.they = 'you';
 			data.aggrieved.pronoun.your = 'your';
 			data.aggrieved.pronoun.my = 'my';
 			data.aggrieved.pronoun.me = 'me';
