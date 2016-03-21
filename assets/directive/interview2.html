@@ -462,6 +462,86 @@
 			</fieldset>
 		</li>
 
+		<li>
+			<fieldset>
+				<legend>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship.aggrieved" class="label">Does your {{ interview.applicant.relationship.aggrieved }} already have a protection order?</span>
+					<span ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship.aggrieved" class="label">Does {{ interview.aggrieved.name.short }} already have a protection order?</span>
+					<span ng-if="interview.applicantIsAggrieved" class="label">Do you already have a protection order?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="existing-protection-order"
+						       ng-model="interview.existingProtection"
+						       ng-value="false"
+						       id="existing-protection-order-false"
+						       ng-change="interview.existingProtectionOrders()">
+						<label for="existing-protection-order-false">No</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="existing-protection-order"
+						       ng-model="interview.existingProtection"
+						       ng-value="true"
+						       id="existing-protection-order-true"
+						       ng-change="interview.existingProtectionOrders()">
+						<label for="existing-protection-order-true">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+
+		<li ng-show="interview.existingProtection">
+			<label for="existing-protection-order-from">
+				<span class="label">Where was the protection order granted?</span>
+			</legend>
+			<select ng-model="interview.existingProtectionFrom" id="existing-protection-order-from" ng-change="interview.existingProtectionOrders()">
+				<option value="ACT">Australian Capital Territory</option>
+				<option value="NSW">New South Wales</option>
+				<option value="NT">Northern Territory</option>
+				<option value="QLD">Queensland</option>
+				<option value="SA">South Australia</option>
+				<option value="Tas">Tasmania</option>
+				<option value="Vic">Victoria</option>
+				<option value="WA">Western Australia</option>
+
+				<option value="NZ">New Zealand</option>
+				<option value="Other">Other country</option>
+			</select>
+		</li>
+
+		<li ng-show="interview.existingProtection &amp;&amp; interview.existingProtectionFrom === 'QLD'">
+			<div class="status info">
+				<h2 ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship.aggrieved" class="label">Your {{ interview.applicant.relationship.aggrieved }} can vary the existing protection order</h2>
+				<h2 ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship.aggrieved" class="label">{{ interview.aggrieved.name.short }} can vary the existing protection order</h2>
+				<h2 ng-if="interview.applicantIsAggrieved" class="label">You can vary the existing protection order</h2>
+				<p>Visit the <a href="http://www.courts.qld.gov.au/about/forms?root=131921">Queensland Courts website</a> and use:</p>
+				<ul>
+					<li>Form DV04 - Application to vary a domestic violence order</li>
+				</ul>
+				<p>You do not have to complete this form.</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.existingProtection &amp;&amp; interview.existingProtectionFrom &amp;&amp; interview.existingProtectionFrom !== 'QLD' &amp;&amp; interview.existingProtectionFrom !== 'Other'">
+			<div class="status info">
+				<h2 ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.applicant.relationship.aggrieved" class="label">Your {{ interview.applicant.relationship.aggrieved }} can register {{ interview.aggrieved.pronoun.their }} protection order in Queensland</h2>
+				<h2 ng-if="! interview.applicantIsAggrieved &amp;&amp; ! interview.applicant.relationship.aggrieved" class="label">{{ interview.aggrieved.name.short }} can register {{ interview.aggrieved.pronoun.their }} protection order in Queensland</h2>
+				<h2 ng-if="interview.applicantIsAggrieved" class="label">You can register your protection order in Queensland</h2>
+				<p>Visit the <a href="http://www.courts.qld.gov.au/about/forms?root=131921">Queensland Courts website</a> and use:</p>
+				<ul>
+					<li>Form DV14 - Application for registration in Queensland of an interstate domestic violence order</li>
+					<li>Form DV16 - Application to vary or cancel a registered interstate order</li>
+				</ul>
+				<p>You do not have to complete this form.</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.existingProtection &amp;&amp; interview.existingProtectionFrom === 'Other'">
+			<p>Attach a copy of the existing protection order when you lodge this application.</p>
+		</li>
+
 		<li class="footer">
 			<ul class="actions">
 				<li><strong><button>Continue</button></strong></li>

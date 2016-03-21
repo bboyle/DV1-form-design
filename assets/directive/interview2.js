@@ -42,7 +42,7 @@ angular.module( 'dv1' )
 
 
 	vm.updateParties = function() {
-		application.setGender( vm.aggrieved, vm.applicant.relationship );
+		application.setGender( vm.aggrieved, vm.applicant.relationship.aggrieved );
 
 		if ( vm.party ) {
 			if ( vm.party.indexOf( 'family' ) !== -1 ) {
@@ -173,6 +173,14 @@ angular.module( 'dv1' )
 	};
 
 
+	vm.existingProtectionOrders = function() {
+		vm.orders.exist = vm.orders.exist || vm.existingProtection;
+		vm.orders.interstateDVO = /^(ACT|NSW|NT|Sa|Tas|Vic|WA)$/.test( vm.existingProtectionFrom );
+		vm.orders.NZ_DVO = vm.existingProtectionFrom === 'NZ';
+		vm.ordersOther = vm.existingProtectionFrom === 'Other';
+	};
+
+
 	// page navigation
 	vm.goto = function( dest, event ) {
 		if (event && $scope[event.target.name].$invalid) {
@@ -240,6 +248,7 @@ angular.module( 'dv1' )
 		vm.event = [ {} ];
 		vm.grounds = {};
 		vm.conditions = {};
+		vm.orders = {};
 		vm.pageUnlocked = 1;
 		vm.goto( 1 );
 	};

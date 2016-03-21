@@ -116,6 +116,13 @@ table.matrix td {
 }
 
 
+/* SWE overrides */
+.status ul > li {
+	list-style: disc !important;
+}
+
+
+/* sentences begin with capital letters */
 .label::first-letter,
 .hint::first-letter,
 .h2::first-letter,
