@@ -241,7 +241,7 @@
 					needs protection from
 					<span ng-show="interview.applicant.relationship.aggrieved">
 						<select ng-model="interview.party" ng-change="interview.updateParties()">
-							<optgroup label="Who is abusing them?">
+							<optgroup label="Who do they need protection from?">
 								<option value="their partner">{{ interview.aggrieved.pronoun.their }} {{ interview.party === 'their partner' ? '' : 'partner' }}</option>
 								<option value="their ex">{{ interview.aggrieved.pronoun.their }} ex</option>
 								<!-- <option value="my ex">my ex</option> -->
@@ -405,7 +405,7 @@
 				<p>
 					I need protection from
 					<select ng-model="interview.party" ng-change="interview.updateParties()">
-						<optgroup label="Who is abusing you?">
+						<optgroup label="Who do you need protection from?">
 							<option value="my partner">my {{ interview.party === 'my partner' ? '' : 'partner' }}</option>
 							<option value="my ex">my ex</option>
 							<option value="my partner’s ex">my partner’s ex</option>
