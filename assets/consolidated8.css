@@ -121,6 +121,7 @@ table.matrix td {
 .h2::first-letter,
 .h3::first-letter,
 h2::first-letter,
+li::first-letter,
 p::first-letter {
 	text-transform: uppercase;
 }
