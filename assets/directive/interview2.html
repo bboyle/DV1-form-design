@@ -1479,24 +1479,6 @@
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">Has {{ interview.respondent.name.short }} abused {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} more than once?</span>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="false" id="interview-grounds-multiple-no">
-						<label for="interview-grounds-multiple-no">No</label>
-					</li>
-					<li>
-						<input type="radio" ng-model="interview.grounds.multipleIncidents" name="interview-grounds-multiple" ng-value="true" id="interview-grounds-multiple-yes">
-						<label for="interview-grounds-multiple-yes">Yes</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-
-		<li>
-			<fieldset>
-				<legend>
 					<span class="label">Did {{ interview.respondent.name.short }} use, or threaten to use, a weapon?</span>
 				</legend>
 				<ul class="choices compact">
@@ -1535,33 +1517,6 @@
 			</label>
 			<textarea id="interview-weapon-threat-details" ng-model="interview.respondent.weapon.threatDetails" cols="40" rows="10" spellcheck="true"></textarea>
 		</li>
-
-		<li>
-			<fieldset>
-				<legend>
-					<span class="label">Will you attach extra pages describing the domestic violence?</span>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="false" id="interview-abuse-description-attachment-no">
-						<label for="interview-abuse-description-attachment-no">No</label>
-					</li>
-					<li>
-						<input type="radio" name="interview-abuse-description-attachment" ng-model="interview.attachments.abuseDescription" ng-value="true" id="interview-abuse-description-attachment-yes">
-						<label for="interview-abuse-description-attachment-yes">Yes</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-
-		<li ng-show="interview.grounds.multipleIncidents || interview.attachments.abuseDescription">
-			<div class="status info">
-				<h2>Attaching evidence</h2>
-				<p>You can attach extra pages to this application describing the domestic violence. This can include your own words describing events, but also reports from police or medical staff and photos.</p>
-				<p>Remember to bring all pages with you when to lodge this application at court.</p>
-			</div>
-		</li>
-
 
 		<li class="footer">
 			<ul class="actions">
