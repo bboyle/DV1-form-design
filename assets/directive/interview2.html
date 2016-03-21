@@ -2119,18 +2119,18 @@
 								<li>
 									<input type="radio"
 									       name="interview-associates-suffered"
-									       id="interview-associates-suffered-true"
-									       ng-model="interview.conditions.respondent.abusedAssociates"
-									       ng-value="true">
-									<label for="interview-associates-suffered-true">Yes</label>
-								</li>
-								<li>
-									<input type="radio"
-									       name="interview-associates-suffered"
 									       id="interview-associates-suffered-false"
 									       ng-model="interview.conditions.respondent.abusedAssociates"
 									       ng-value="false">
 									<label for="interview-associates-suffered-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-associates-suffered"
+									       id="interview-associates-suffered-true"
+									       ng-model="interview.conditions.respondent.abusedAssociates"
+									       ng-value="true">
+									<label for="interview-associates-suffered-true">Yes</label>
 								</li>
 							</ul>
 						</fieldset>
@@ -2145,18 +2145,18 @@
 								<li>
 									<input type="radio"
 									       name="interview-applicant-suffered"
-									       id="interview-applicant-suffered-true"
-									       ng-model="interview.conditions.respondent.abusedApplicant"
-									       ng-value="true">
-									<label for="interview-applicant-suffered-true">Yes</label>
-								</li>
-								<li>
-									<input type="radio"
-									       name="interview-applicant-suffered"
 									       id="interview-applicant-suffered-false"
 									       ng-model="interview.conditions.respondent.abusedApplicant"
 									       ng-value="false">
 									<label for="interview-applicant-suffered-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-applicant-suffered"
+									       id="interview-applicant-suffered-true"
+									       ng-model="interview.conditions.respondent.abusedApplicant"
+									       ng-value="true">
+									<label for="interview-applicant-suffered-true">Yes</label>
 								</li>
 							</ul>
 						</fieldset>
@@ -2170,18 +2170,18 @@
 								<li>
 									<input type="radio"
 									       name="interview-protect-associates"
-									       id="interview-protect-associates-true"
-									       ng-model="interview.conditions.nameAssociates"
-									       ng-value="true">
-									<label for="interview-protect-associates-true">Yes</label>
-								</li>
-								<li>
-									<input type="radio"
-									       name="interview-protect-associates"
 									       id="interview-protect-associates-false"
 									       ng-model="interview.conditions.nameAssociates"
 									       ng-value="false">
 									<label for="interview-protect-associates-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-protect-associates"
+									       id="interview-protect-associates-true"
+									       ng-model="interview.conditions.nameAssociates"
+									       ng-value="true">
+									<label for="interview-protect-associates-true">Yes</label>
 								</li>
 							</ul>
 						</fieldset>
@@ -2202,37 +2202,52 @@
 		</li>
 
 
-		<li ng-if="interview.relationship.home !== 'private'">
+		<li class="section">
 			<fieldset>
 				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to leave {{ interview.aggrieved.pronoun.your }} home?</span>
+					<span class="h3">Ouster Order</span>
 					<small class="hint">The court must consider whether to make an order that {{ interview.respondent.name.short }} must leave a named house or dwelling (this is also known as an <dfn>ouster order</dfn>). The court must take {{ interview.aggrieved.pronoun.your }} wishes into account.</small>
 				</legend>
-				<ul class="choices compact">
+				<ol class="questions">
 					<li>
-						<input type="radio"
-						       name="interview-conditions-ousters"
-						       id="interview-conditions-ousters-true"
-						       ng-model="interview.conditions.ouster.requested"
-						       ng-value="true">
-						<label for="interview-conditions-ousters-true">Yes</label>
+						<fieldset>
+							<legend>
+								<span class="label">Do you want {{ interview.respondent.name.short }} to leave the premises?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-ousters"
+									       id="interview-conditions-ousters-false"
+									       ng-model="interview.conditions.ouster.requested"
+									       ng-value="false">
+									<label for="interview-conditions-ousters-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-ousters"
+									       id="interview-conditions-ousters-true"
+									       ng-model="interview.conditions.ouster.requested"
+									       ng-value="true">
+									<label for="interview-conditions-ousters-true">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-					<li>
-						<input type="radio"
-						       name="interview-conditions-ousters"
-						       id="interview-conditions-ousters-false"
-						       ng-model="interview.conditions.ouster.requested"
-						       ng-value="false">
-						<label for="interview-conditions-ousters-false">No</label>
+					<li ng-show="interview.conditions.ouster.requested">
+						<label for="interview-conditions-ouster-grounds">
+							<span class="label">Address</span>
+						</label>
+						<textarea id="interview-conditions-ouster-address" ng-model="interview.conditions.ouster.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
 					</li>
-				</ul>
+					<li ng-show="interview.conditions.ouster.requested">
+						<label for="interview-conditions-ouster-grounds">
+							<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must leave</span>
+						</label>
+						<textarea id="interview-conditions-ouster-grounds" ng-model="interview.conditions.ouster.grounds" rows="10" cols="30" spellcheck="true"></textarea>
+					</li>
+				</ol>
 			</fieldset>
-		</li>
-		<li ng-show="interview.relationship.home !== 'private' &amp;&amp; interview.conditions.ouster.requested">
-			<label for="interview-conditions-ouster-grounds">
-				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must leave specified premises</span>
-			</label>
-			<textarea id="interview-conditions-ouster-grounds" ng-model="interview.conditions.ouster.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
 		<li>
@@ -3547,6 +3562,7 @@
 
 
 					<input type="hidden" name="conditionOuster" ng-value="interview.conditions.ouster.requested"> <!-- true/false -->
+					<input type="hidden" name="conditionOusterAddress" ng-value="interview.conditions.ouster.address"> <!-- text -->
 					<input type="hidden" name="conditionOusterGrounds" ng-value="interview.conditions.ouster.grounds"> <!-- text -->
 
 					<input type="hidden" name="conditionProhibitEntryResidence" ng-value="interview.conditions.distance.aggrieved.home.requested"> <!-- true/false -->
