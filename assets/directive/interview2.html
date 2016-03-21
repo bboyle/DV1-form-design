@@ -895,7 +895,7 @@
 					<li>
 						<input type="checkbox" ng-model="interview.aggrieved.relationship.intimate" ng-value="true" id="interview-relationship-intimate-personal">
 						<label for="interview-relationship-intimate-personal">{{ interview.applicantIsAggrieved ? 'we' : interview.aggrieved.name.short + ' and ' + interview.respondent.name.short }} have (or had) an intimate personal relationship</label>
-						<small class="hint">Example: are/were married or in a registered relationship, have/had a child together, are/were dating, are/were a couple.</small>
+						<small class="hint">Example: are/were married or in a civil partnership, have/had a child together, are/were dating, are/were a couple.</small>
 					</li>
 					<li>
 						<input type="checkbox" ng-model="interview.aggrieved.relationship.family" ng-value="true" id="interview-relationship-family">
@@ -950,12 +950,12 @@
 						<small class="hint">2 people who lived together as a couple who were not married or related</small>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Registered Relationship" id="interview-relationship-registered-relationship">
-						<label for="interview-relationship-registered-relationship">are in a civil partnership/registered relationship</label>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Civil Partnership" id="interview-relationship-registered-relationship">
+						<label for="interview-relationship-registered-relationship">are in a civil partnership</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Registered Relationship" id="interview-relationship-registered-relationship-past">
-						<label for="interview-relationship-registered-relationship-past">were in a civil partnership/registered relationship</label>
+						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Civil Partnership" id="interview-relationship-registered-relationship-past">
+						<label for="interview-relationship-registered-relationship-past">were in a civil partnership</label>
 					</li>
 					<li>
 						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent of a Child" id="interview-relationship-parent-of-a-child">
@@ -3359,7 +3359,7 @@
 					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalMarried" ng-value="interview.aggrieved.relationship.type === 'Married'"> <!-- true/false -->
 					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalFormerSpouse" ng-value="interview.aggrieved.relationship.type === 'Former Spouse'"> <!-- true/false -->
 					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalDeFacto" ng-value="interview.aggrieved.relationship.type === 'De Facto' || interview.aggrieved.relationship.type === 'Former De Facto'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalRegistered" ng-value="interview.aggrieved.relationship.type === 'Registered Relationship' || interview.aggrieved.relationship.type === 'Former Registered Relationship'"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalRegistered" ng-value="interview.aggrieved.relationship.type === 'Civil Partnership' || interview.aggrieved.relationship.type === 'Former Civil Partnership'"> <!-- true/false -->
 					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalParent" ng-value="interview.aggrieved.relationship.type === 'Parent of a Child' || interview.aggrieved.relationship.type === 'Former Parent of a Child'"> <!-- true/false -->
 					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalEngaged" ng-value="interview.aggrieved.relationship.type === 'Engaged'"> <!-- true/false -->
 					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalWereEngaged" ng-value="interview.aggrieved.relationship.type === 'Were Engaged'"> <!-- true/false -->
