@@ -2065,110 +2065,142 @@
 <form class="form" name="formConditions" ng-submit="interview.continue( $event )">
 
 	<ol class="questions">
-		<li>
+		<li class="section">
 			<fieldset>
 				<legend>
-					<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
+					<span class="h3">Protecting {{ interview.aggrieved.pronoun.your }} family and friends</span>
 				</legend>
-				<ul class="choices compact">
+				<ol class="questions">
 					<li>
-						<input type="radio"
-						       name="interview-protect-children"
-						       id="interview-protect-children-true"
-						       ng-model="interview.conditions.nameChildren"
-						       ng-value="true">
-						<label for="interview-protect-children-true">Yes</label>
+						<fieldset>
+							<legend>
+								<span class="label">{{ interview.applicantIsAggrieved ? 'Do you' : 'Does ' + interview.aggrieved.name.short }} have children who need protection from {{ interview.respondent.name.short }}?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-protect-children"
+									       id="interview-protect-children-true"
+									       ng-model="interview.conditions.nameChildren"
+									       ng-value="true">
+									<label for="interview-protect-children-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-protect-children"
+									       id="interview-protect-children-false"
+									       ng-model="interview.conditions.nameChildren"
+									       ng-value="false">
+									<label for="interview-protect-children-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
+					<li ng-show="interview.conditions.nameChildren">
+						<div class="status info">
+							<h2>You must provide clear reasons why the {{ interview.aggrieved.children.length > 1 ? 'children' : 'child' }} should be named on the order</h2>
+							<p>A child may be included on an order if the court is satisfied that naming the child on the order is necessary or desirable to protect the child from associated domestic violence, or being exposed to domestic violence committed by the respondent. Associated domestic violence is where domestic violence is committed against a child, relative or associate of an aggrieved.</p>
+						</div>
+						<label for="interview-children-grounds">
+							<span class="label">Please provide details about of specific incidents where {{ interview.respondent.name.short }} has committed domestic violence towards a child or exposed a child to domestic violence</span>
+							<small class="hint">Include date or approximate dates</small>
+						</label>
+						<textarea id="interview-children-grounds" ng-model="interview.grounds.children" cols="30" rows="10" spellcheck="true"></textarea>
+					</li>
+
 					<li>
-						<input type="radio"
-						       name="interview-protect-children"
-						       id="interview-protect-children-false"
-						       ng-model="interview.conditions.nameChildren"
-						       ng-value="false">
-						<label for="interview-protect-children-false">No</label>
+						<fieldset>
+							<legend>
+								<span class="label">Has {{ interview.respondent.name.short }} behaved in a way that is abusive, threatening or unwelcome towards people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }}?</span>
+								<small class="hint">Includes {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
+								They are known as {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} <dfn>associates</dfn>.</small>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-associates-suffered"
+									       id="interview-associates-suffered-true"
+									       ng-model="interview.conditions.respondent.abusedAssociates"
+									       ng-value="true">
+									<label for="interview-associates-suffered-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-associates-suffered"
+									       id="interview-associates-suffered-false"
+									       ng-model="interview.conditions.respondent.abusedAssociates"
+									       ng-value="false">
+									<label for="interview-associates-suffered-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-				</ul>
+					<li ng-if="! interview.applicantIsAggrieved &amp;&amp; interview.conditions.respondent.abusedAssociates === false">
+						<fieldset>
+							<legend>
+								<span class="label">Has {{ interview.respondent.name.short }} behaved in way that is abusive, threating or unwelcome towards you?</span>
+								<small class="hint">You are also an associate of {{ interview.aggrieved.name.short }}.</small>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-applicant-suffered"
+									       id="interview-applicant-suffered-true"
+									       ng-model="interview.conditions.respondent.abusedApplicant"
+									       ng-value="true">
+									<label for="interview-applicant-suffered-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-applicant-suffered"
+									       id="interview-applicant-suffered-false"
+									       ng-model="interview.conditions.respondent.abusedApplicant"
+									       ng-value="false">
+									<label for="interview-applicant-suffered-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li ng-show="interview.conditions.respondent.abusedAssociates || interview.conditions.respondent.abusedApplicant">
+						<fieldset>
+							<legend>
+								<span class="label">Do {{ interview.conditions.respondent.abusedAssociates ? 'they' : 'you' }} need protection from {{ interview.respondent.name.short }}?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-protect-associates"
+									       id="interview-protect-associates-true"
+									       ng-model="interview.conditions.nameAssociates"
+									       ng-value="true">
+									<label for="interview-protect-associates-true">Yes</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-protect-associates"
+									       id="interview-protect-associates-false"
+									       ng-model="interview.conditions.nameAssociates"
+									       ng-value="false">
+									<label for="interview-protect-associates-false">No</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+					<li ng-show="(interview.conditions.respondent.abusedAssociates || interview.conditions.respondent.abusedApplicant) &amp;&amp; interview.conditions.nameAssociates">
+						<div class="status info">
+							<h2>You must explain why the {{ interview.associates.length > 1 ? 'associates need' : 'associate needs' }} to be named on the order</h2>
+							<p>You need to provide clear reasons why it is necessary or desirable to protect {{ interview.aggrieved.pronoun.your }} relative or associate from associated domestic violence.</p>
+						</div>
+						<label for="interview-associates-grounds">
+							<span class="label">Please provide details of specific incidents where {{ interview.respondent.name.short }} has committed associated domestic violence or exposed the relative or associate to domestic violence</span>
+							<small class="hint">Include date or approximate dates</small>
+						</label>
+						<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="10" spellcheck="true"></textarea>
+					</li>
+				</ol>
 			</fieldset>
 		</li>
-		<li ng-show="interview.conditions.nameChildren">
-			<div class="status info">
-				<h2>You must provide clear reasons why the {{ interview.aggrieved.children.length > 1 ? 'children' : 'child' }} should be named on the order</h2>
-				<p>A child may be included on an order if the court is satisfied that naming the child on the order is necessary or desirable to protect the child from associated domestic violence, or being exposed to domestic violence committed by the respondent. Associated domestic violence is where domestic violence is committed against a child, relative or associate of an aggrieved.</p>
-			</div>
-			<label for="interview-children-grounds">
-				<span class="label">Please provide details about of specific incidents where {{ interview.respondent.name.short }} has committed domestic violence towards a child or exposed a child to domestic violence</span>
-				<small class="hint">Include date or approximate dates</small>
-			</label>
-			<textarea id="interview-children-grounds" ng-model="interview.grounds.children" cols="30" rows="10" spellcheck="true"></textarea>
-		</li>
 
-		<li>
-			<fieldset>
-				<legend>
-					<span class="label">Do other people {{ interview.applicantIsAggrieved ? 'you know' : interview.aggrieved.name.short + ' knows' }} need protection from {{ interview.respondent.name.short }}?</span>
-					<small class="hint">Other people can include {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} family, relatives, friends, coworkers or other people {{ interview.applicantIsAggrieved ? 'you know' : interview.respondent.name.short + ' knows' }}.
-					They are known as {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} <dfn>associates</dfn>.</small>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio"
-						       name="interview-protect-associates"
-						       id="interview-protect-associates-true"
-						       ng-model="interview.conditions.nameAssociates"
-						       ng-value="true">
-						<label for="interview-protect-associates-true">Yes</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="interview-protect-associates"
-						       id="interview-protect-associates-false"
-						       ng-model="interview.conditions.nameAssociates"
-						       ng-value="false">
-						<label for="interview-protect-associates-false">No</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-
-		<!-- TODO nicer UX for naming the applicant as an associate (opt-in) -->
-		<li ng-if="! interview.applicantIsAggrieved">
-			<fieldset>
-				<legend>
-					<span class="label">Do you need protection from {{ interview.respondent.name.short }} too?</span>
-					<small class="hint">{{ interview.respondent.name.short }} will know you applied for this protection order.</small>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio"
-						       name="interview-protect-applicant"
-						       id="interview-protect-applicant-true"
-						       ng-model="interview.conditions.nameApplicant"
-						       ng-value="true">
-						<label for="interview-protect-applicant-true">Yes</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="interview-protect-applicant"
-						       id="interview-protect-applicant-false"
-						       ng-model="interview.conditions.nameApplicant"
-						       ng-value="false">
-						<label for="interview-protect-applicant-false">No</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-
-		<li ng-show="interview.conditions.nameAssociates || interview.conditions.nameApplicant">
-			<div class="status info">
-				<h2>You must explain why you wish the {{ interview.aggrieved.associates.length > 1 ? 'associates' : 'associate' }} to be named on the order</h2>
-				<p>You need to provide clear reasons why it is necessary or desirable to protect your relative or associate from associated domestic violence.</p>
-			</div>
-			<label for="interview-associates-grounds">
-				<span class="label">Please provide details of specific incidents where {{ interview.respondent.name.short }} has committed associated domestic violence or exposed the relative or associate to domestic violence</span>
-				<small class="hint">Include date or approximate dates</small>
-			</label>
-			<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="10" spellcheck="true"></textarea>
-		</li>
 
 		<li ng-if="interview.relationship.home !== 'private'">
 			<fieldset>
@@ -3459,24 +3491,28 @@
 
 
 					<!-- repeat for children -->
-					<input ng-if="interview.conditions.nameChildren" type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
-					<input ng-if="interview.conditions.nameChildren" ng-repeat-start="child in interview.children" type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
-					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Gender" ng-value="child.genderIdentity">
-					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
-					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
-					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}AddressConfidential" ng-value="false"> <!-- optional, default: true -->
-					<input ng-if="interview.conditions.nameChildren" type="hidden" name="child{{$index + 1}}Named" ng-value="false"> <!-- optional, default: true -->
-					<input ng-if="interview.conditions.nameChildren" ng-repeat-end type="hidden" name="child{{$index + 1}}SPI" ng-value="">
+					<div ng-if="interview.conditions.nameChildren">
+						<input type="hidden" name="nameChildrenGrounds" ng-value="interview.grounds.children">
+						<input ng-repeat-start="child in interview.children" type="hidden" name="child{{$index + 1}}Name" ng-value="child.name.full">
+						<input type="hidden" name="child{{$index + 1}}Gender" ng-value="child.genderIdentity">
+						<input type="hidden" name="child{{$index + 1}}DateBirth" ng-value="child.dateBirth">
+						<input type="hidden" name="child{{$index + 1}}Address" ng-value="child.address">
+						<input type="hidden" name="child{{$index + 1}}AddressConfidential" ng-value="child.confidential.address">
+						<input type="hidden" name="child{{$index + 1}}Named" ng-value="false"> <!-- optional, default: true -->
+						<input ng-repeat-end type="hidden" name="child{{$index + 1}}SPI" ng-value="">
+					</div>
 
 
 					<!-- repeat for associates -->
-					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="nameAssociatesGrounds" ng-value="interview.grounds.associates">
-					<input ng-if="interview.conditions.nameAssociates" ng-repeat-start="associate in interview.associates" type="hidden" name="associate{{$index + 1}}Name" ng-value="associate.name.full">
-					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}Gender" ng-value="associate.genderIdentity">
-					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}DateBirth" ng-value="associate.dateBirth">
-					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}Address" ng-value="associate.address">
-					<input ng-if="interview.conditions.nameAssociates" type="hidden" name="associate{{$index + 1}}AddressConfidential" ng-value="false"> <!-- optional, default: true -->
-					<input ng-if="interview.conditions.nameAssociates" ng-repeat-end type="hidden" name="associate{{$index + 1}}SPI" ng-value="">
+					<div ng-if="(interview.conditions.respondent.abusedAssociates || interview.conditions.respondent.abusedApplicant) &amp;&amp; interview.conditions.nameAssociates">
+						<input type="hidden" name="nameAssociatesGrounds" ng-value="interview.grounds.associates">
+						<input ng-repeat-start="associate in interview.associates" type="hidden" name="associate{{$index + 1}}Name" ng-value="associate.name.full">
+						<input type="hidden" name="associate{{$index + 1}}Gender" ng-value="associate.genderIdentity">
+						<input type="hidden" name="associate{{$index + 1}}DateBirth" ng-value="associate.dateBirth">
+						<input type="hidden" name="associate{{$index + 1}}Address" ng-value="associate.address">
+						<input type="hidden" name="associate{{$index + 1}}AddressConfidential" ng-value="associate.confidential.address">
+						<input ng-repeat-end type="hidden" name="associate{{$index + 1}}SPI" ng-value="">
+					</div>
 
 
 					<input type="hidden" name="respondentWeaponsAccess" ng-value="interview.respondent.weapon.access"> <!-- true/false -->
@@ -3487,25 +3523,25 @@
 					<input ng-if="interview.respondent.weapon.licence" type="hidden" name="respondentWeaponsLicenceDescription" ng-value="interview.respondent.weapon.licenceDetails"> <!-- text -->
 
 
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersChildrensCourtCurrent" ng-value="interview.orders.childProtection"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersChildrensCourtPast" ng-value="interview.orders.childProtectionPast"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersQldDVOCurrent" ng-value="interview.orders.qldDVO"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersQldDVOPast" ng-value="interview.orders.qldDVOPast"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersPoliceProtectionCurrent" ng-value="interview.orders.policeProtection"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersPoliceProtectionPast" ng-value="interview.orders.policeProtectionPast"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersVoluntaryInterventionCurrent" ng-value="interview.orders.voluntaryIntervention"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersVoluntaryInterventionPast" ng-value="interview.orders.voluntaryInterventionPast"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersInterstateDVOCurrent" ng-value="interview.orders.interstateDVO"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersInterstateDVOPast" ng-value="interview.orders.interstateDVOPast"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersNZDVOCurrent" ng-value="interview.orders.NZ_DVO"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersNZDVOPast" ng-value="interview.orders.NZ_DVOPast"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersFamilyCourtCurrent" ng-value="interview.orders.familyCourt"> <!-- true/false -->
-					<input ng-if="interview.orders.exist" type="hidden" name="ordersFamilyCourtPast" ng-value="interview.orders.familyCourtPast"> <!-- true/false -->
-
-					<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherTitle" ng-value="interview.orders.other"> <!-- text -->
-					<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherCurrent" ng-value=""> <!-- true/false -->
-					<input ng-if="interview.orders.exist &amp;&amp; interview.ordersOther" type="hidden" name="ordersOtherPast" ng-value=""> <!-- true/false -->
-
+					<div ng-if="interview.orders.exist">
+						<input type="hidden" name="ordersChildrensCourtCurrent" ng-value="interview.orders.childProtection"> <!-- true/false -->
+						<input type="hidden" name="ordersChildrensCourtPast" ng-value="interview.orders.childProtectionPast"> <!-- true/false -->
+						<input type="hidden" name="ordersQldDVOCurrent" ng-value="interview.orders.qldDVO"> <!-- true/false -->
+						<input type="hidden" name="ordersQldDVOPast" ng-value="interview.orders.qldDVOPast"> <!-- true/false -->
+						<input type="hidden" name="ordersPoliceProtectionCurrent" ng-value="interview.orders.policeProtection"> <!-- true/false -->
+						<input type="hidden" name="ordersPoliceProtectionPast" ng-value="interview.orders.policeProtectionPast"> <!-- true/false -->
+						<input type="hidden" name="ordersVoluntaryInterventionCurrent" ng-value="interview.orders.voluntaryIntervention"> <!-- true/false -->
+						<input type="hidden" name="ordersVoluntaryInterventionPast" ng-value="interview.orders.voluntaryInterventionPast"> <!-- true/false -->
+						<input type="hidden" name="ordersInterstateDVOCurrent" ng-value="interview.orders.interstateDVO"> <!-- true/false -->
+						<input type="hidden" name="ordersInterstateDVOPast" ng-value="interview.orders.interstateDVOPast"> <!-- true/false -->
+						<input type="hidden" name="ordersNZDVOCurrent" ng-value="interview.orders.NZ_DVO"> <!-- true/false -->
+						<input type="hidden" name="ordersNZDVOPast" ng-value="interview.orders.NZ_DVOPast"> <!-- true/false -->
+						<input type="hidden" name="ordersFamilyCourtCurrent" ng-value="interview.orders.familyCourt"> <!-- true/false -->
+						<input type="hidden" name="ordersFamilyCourtPast" ng-value="interview.orders.familyCourtPast"> <!-- true/false -->
+						<input ng-if="interview.ordersOther" type="hidden" name="ordersOtherTitle" ng-value="interview.orders.other"> <!-- text -->
+						<input ng-if="interview.ordersOther" type="hidden" name="ordersOtherCurrent" ng-value=""> <!-- true/false -->
+						<input ng-if="interview.ordersOther" type="hidden" name="ordersOtherPast" ng-value=""> <!-- true/false -->
+					</div>
 					<input type="hidden" name="ordersProtectionOrderInProgress" ng-value="interview.orders.protectionInProgress"> <!-- true/false -->
 					<input type="hidden" name="ordersCrossApplicationInProgress" ng-value="interview.orders.crossApplication"> <!-- true/false -->
 
