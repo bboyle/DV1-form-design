@@ -1597,7 +1597,34 @@
 				</ul>
 			</fieldset>
 		</li>
-		<li ng-show="interview.abuse.recent === false &amp;&amp; interview.abuse.immediateFear === false">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">Do you think {{ interview.respondent.name.short }} will harm {{ interview.aggrieved.pronoun.you }} once {{ interview.respondent.pronoun.they }} receive{{ interview.respondent.pronoun.they === 'they' ? '' : 's' }} a copy of this application?</span>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio"
+						       name="interview-abuse-fear-application-retaliation"
+						       id="interview-abuse-fear-application-retaliation-false"
+						       ng-model="interview.abuse.applicationRetaliation"
+						       ng-value="false"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-abuse-fear-application-retaliation-false">No</label>
+					</li>
+					<li>
+						<input type="radio"
+						       name="interview-abuse-fear-application-retaliation"
+						       id="interview-abuse-fear-application-retaliation-true"
+						       ng-model="interview.abuse.applicationRetaliation"
+						       ng-value="true"
+						       ng-click="updateTemporaryProtection()">
+						<label for="interview-abuse-fear-application-retaliation-true">Yes</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
+		<li ng-show="interview.abuse.recent === false &amp;&amp; interview.abuse.immediateFear === false &amp;&amp; interview.abuse.applicationRetaliation === false">
 			<div class="status info">
 				<h2>Is there another reason why urgent protection is required?</h2>
 				<p>It is your choice to apply for a temporary protection order.
