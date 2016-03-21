@@ -2080,18 +2080,18 @@
 								<li>
 									<input type="radio"
 									       name="interview-protect-children"
-									       id="interview-protect-children-true"
-									       ng-model="interview.conditions.nameChildren"
-									       ng-value="true">
-									<label for="interview-protect-children-true">Yes</label>
-								</li>
-								<li>
-									<input type="radio"
-									       name="interview-protect-children"
 									       id="interview-protect-children-false"
 									       ng-model="interview.conditions.nameChildren"
 									       ng-value="false">
 									<label for="interview-protect-children-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-protect-children"
+									       id="interview-protect-children-true"
+									       ng-model="interview.conditions.nameChildren"
+									       ng-value="true">
+									<label for="interview-protect-children-true">Yes</label>
 								</li>
 							</ul>
 						</fieldset>
@@ -2105,7 +2105,7 @@
 							<span class="label">Please provide details about of specific incidents where {{ interview.respondent.name.short }} has committed domestic violence towards a child or exposed a child to domestic violence</span>
 							<small class="hint">Include date or approximate dates</small>
 						</label>
-						<textarea id="interview-children-grounds" ng-model="interview.grounds.children" cols="30" rows="10" spellcheck="true"></textarea>
+						<textarea id="interview-children-grounds" ng-model="interview.grounds.children" cols="30" rows="7" spellcheck="true"></textarea>
 					</li>
 
 					<li>
@@ -2195,7 +2195,7 @@
 							<span class="label">Please provide details of specific incidents where {{ interview.respondent.name.short }} has committed associated domestic violence or exposed the relative or associate to domestic violence</span>
 							<small class="hint">Include date or approximate dates</small>
 						</label>
-						<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="10" spellcheck="true"></textarea>
+						<textarea id="interview-associates-grounds" ng-model="interview.grounds.associates" cols="30" rows="7" spellcheck="true"></textarea>
 					</li>
 				</ol>
 			</fieldset>
@@ -2244,235 +2244,250 @@
 						<label for="interview-conditions-ouster-grounds">
 							<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must leave</span>
 						</label>
-						<textarea id="interview-conditions-ouster-grounds" ng-model="interview.conditions.ouster.grounds" rows="10" cols="30" spellcheck="true"></textarea>
+						<textarea id="interview-conditions-ouster-grounds" ng-model="interview.conditions.ouster.grounds" rows="7" cols="30" spellcheck="true"></textarea>
 					</li>
 				</ol>
 			</fieldset>
 		</li>
 
-		<li>
+
+		<li class="section">
 			<fieldset>
 				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} home</span>
+					<span class="h3">Prohibit {{ interview.respondent.name.short }} from approaching {{ interview.aggrieved.pronoun.you }}</span>
+					<small class="hint">And places {{ interview.aggrieved.pronoun.you }} {{ interview.aggrieved.pronoun.you === 'you' ? 'live, work or visit' : 'lives, works or often visits' }}.</small>
 				</legend>
-				<ul class="choices compact">
+				<ol class="questions">
 					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-aggrieved-home"
-						       id="interview-conditions-distance-aggrieved-home-true"
-						       ng-model="interview.conditions.distance.aggrieved.home.requested"
-						       ng-value="true">
-						<label for="interview-conditions-distance-aggrieved-home-true">Yes</label>
+						<fieldset>
+							<legend>
+								<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from {{ interview.aggrieved.pronoun.you }}?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-aggrieved"
+									       id="interview-conditions-distance-aggrieved-false"
+									       ng-model="interview.conditions.distance.aggrieved.requested"
+									       ng-value="false">
+									<label for="interview-conditions-distance-aggrieved-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-aggrieved"
+									       id="interview-conditions-distance-aggrieved-true"
+									       ng-model="interview.conditions.distance.aggrieved.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-aggrieved-true">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
+					<li ng-show="interview.conditions.distance.aggrieved.requested">
+						<label for="interview-conditions-distance-aggrieved-grounds">
+							<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.aggrieved.pronoun.you }}</span>
+						</label>
+						<textarea id="interview-conditions-distance-aggrieved-grounds" ng-model="interview.conditions.distance.aggrieved.grounds" rows="7" cols="30" spellcheck="true"></textarea>
+					</li>
+
 					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-aggrieved-home"
-						       id="interview-conditions-distance-aggrieved-home-false"
-						       ng-model="interview.conditions.distance.aggrieved.home.requested"
-						       ng-value="false">
-						<label for="interview-conditions-distance-aggrieved-home-false">No</label>
+						<fieldset>
+							<legend>
+								<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from places {{ interview.aggrieved.pronoun.you }} {{ interview.aggrieved.pronoun.you === 'you' ? 'live, work or visit' : 'lives, works or often visits' }}?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-aggrieved-places"
+									       id="interview-conditions-distance-aggrieved-places-false"
+									       ng-model="interview.conditions.distance.aggrieved.places.requested"
+									       ng-value="false">
+									<label for="interview-conditions-distance-aggrieved-places-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-aggrieved-places"
+									       id="interview-conditions-distance-aggrieved-places-true"
+									       ng-model="interview.conditions.distance.aggrieved.places.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-aggrieved-places-true">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-				</ul>
+					<li ng-show="interview.conditions.distance.aggrieved.places.requested">
+						<fieldset>
+							<legend>
+								<span class="label">Prohibit {{ interview.respondent.name.short }} from approaching:</span>
+							</legend>
+							<ul class="choices">
+								<li>
+									<input type="checkbox"
+									       name="interview-conditions-distance-aggrieved-home"
+									       id="interview-conditions-distance-aggrieved-home"
+									       ng-model="interview.conditions.distance.aggrieved.home.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-aggrieved-home">{{ interview.aggrieved.pronoun.their }} home</label>
+								</li>
+								<li>
+									<input type="checkbox"
+									       name="interview-conditions-distance-aggrieved-work"
+									       id="interview-conditions-distance-aggrieved-work-true"
+									       ng-model="interview.conditions.distance.aggrieved.work.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-aggrieved-work-true">{{ interview.aggrieved.pronoun.their }} workplace</label>
+								</li>
+								<li>
+									<input type="checkbox"
+									       name="interview-conditions-distance-aggrieved-staying"
+									       id="interview-conditions-distance-aggrieved-staying-true"
+									       ng-model="interview.conditions.distance.aggrieved.staying.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-aggrieved-staying-true">where {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} currently staying</label>
+								</li>
+								<li>
+									<input type="checkbox"
+									       name="interview-conditions-distance-aggrieved-other"
+									       id="interview-conditions-distance-aggrieved-other-true"
+									       ng-model="interview.conditions.distance.aggrieved.other.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-aggrieved-other-true">places {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} often visit{{ interview.applicantIsAggrieved ? '' : 's' }}</label>
+								</li>
+							</ul>
+						</fieldset>
+					</li>
+
+					<li ng-show="interview.conditions.distance.aggrieved.places &amp;&amp; interview.conditions.distance.aggrieved.other.requested">
+						<label for="interview-conditions-distance-aggrieved-other-title">
+							<span class="label">Name the places {{ interview.aggrieved.pronoun.you }} often visit{{ interview.applicantIsAggrieved ? 's' : '' }}</span>
+						</label>
+						<input type="text" id="interview-conditions-distance-aggrieved-other-title" ng-model="interview.conditions.distance.aggrieved.other.title" size="30" spellcheck="true">
+					</li>
+					<li ng-show="interview.conditions.distance.aggrieved.places &amp;&amp; (interview.conditions.distance.aggrieved.home.requested || interview.conditions.distance.aggrieved.work.requested || interview.conditions.distance.aggrieved.staying.requested || interview.conditions.distance.aggrieved.other.requested">
+						<label for="interview-conditions-distance-aggrieved-home-grounds">
+							<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from these places</span>
+						</label>
+						<textarea id="interview-conditions-distance-aggrieved-home-grounds" ng-model="interview.conditions.distance.aggrieved.home.grounds" rows="7" cols="30" spellcheck="true"></textarea>
+					</li>
+				</ol>
 			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.distance.aggrieved.home.requested">
-			<label for="interview-conditions-distance-aggrieved-home-grounds">
-				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} home</span>
-			</label>
-			<textarea id="interview-conditions-distance-aggrieved-home-grounds" ng-model="interview.conditions.distance.aggrieved.home.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
-		<li>
+		<li ng-show="interview.conditions.nameChildren" class="section">
 			<fieldset>
 				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from {{ interview.aggrieved.pronoun.you }}?</span>
+					<span class="h3">Prohibit {{ interview.respondent.name.short }} from approaching {{ interview.aggrieved.pronoun.your }} kids</span>
 				</legend>
-				<ul class="choices compact">
+				<ol class="questions">
 					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-aggrieved"
-						       id="interview-conditions-distance-aggrieved-true"
-						       ng-model="interview.conditions.distance.aggrieved.requested"
-						       ng-value="true">
-						<label for="interview-conditions-distance-aggrieved-true">Yes</label>
+						<fieldset>
+							<legend>
+								<span class="label">Do you want {{ interview.respondent.name.short }} to to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} kid{{ interview.children.length > 1 ? 's’' : '’s' }} schools, day care, etc.?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-children"
+									       id="interview-conditions-distance-children-false"
+									       ng-model="interview.conditions.distance.children.requested"
+									       ng-value="false">
+									<label for="interview-conditions-distance-children-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-children"
+									       id="interview-conditions-distance-children-true"
+									       ng-model="interview.conditions.distance.children.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-children-true">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-aggrieved"
-						       id="interview-conditions-distance-aggrieved-false"
-						       ng-model="interview.conditions.distance.aggrieved.requested"
-						       ng-value="false">
-						<label for="interview-conditions-distance-aggrieved-false">No</label>
+					<li ng-show="interview.conditions.distance.children.requested">
+						<label for="interview-conditions-distance-children-grounds">
+							<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} kids</span>
+						</label>
+						<textarea id="interview-conditions-distance-children-grounds" ng-model="interview.conditions.distance.children.grounds" rows="7" cols="30" spellcheck="true"></textarea>
 					</li>
-				</ul>
+				</ol>
 			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.distance.aggrieved.requested">
-			<label for="interview-conditions-distance-aggrieved-grounds">
-				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.aggrieved.pronoun.you }}</span>
-			</label>
-			<textarea id="interview-conditions-distance-aggrieved-grounds" ng-model="interview.conditions.distance.aggrieved.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
-		<li ng-show="interview.conditions.nameChildren">
+
+		<li ng-show="(interview.conditions.respondent.abusedAssociates || interview.conditions.respondent.abusedApplicant) &amp;&amp; interview.conditions.nameAssociates" class="section">
 			<fieldset>
 				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} kids?</span>
+					<span class="h3">Prohibit {{ interview.respondent.name.short }} from approaching {{ interview.aggrieved.pronoun.your }} associates</span>
 				</legend>
-				<ul class="choices compact">
+				<ol class="questions">
 					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-children"
-						       id="interview-conditions-distance-children-true"
-						       ng-model="interview.conditions.distance.children.requested"
-						       ng-value="true">
-						<label for="interview-conditions-distance-children-true">Yes</label>
+						<fieldset>
+							<legend>
+								<span class="label">Do you want {{ interview.respondent.name.short }} to to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-associates"
+									       id="interview-conditions-distance-associates-false"
+									       ng-model="interview.conditions.distance.associates.requested"
+									       ng-value="false">
+									<label for="interview-conditions-distance-associates-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-associates"
+									       id="interview-conditions-distance-associates-true"
+									       ng-model="interview.conditions.distance.associates.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-associates-true">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
+					<li ng-show="interview.conditions.distance.associates.requested">
+						<label for="interview-conditions-distance-associates-grounds">
+							<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates</span>
+						</label>
+						<textarea id="interview-conditions-distance-associates-grounds" ng-model="interview.conditions.distance.associates.grounds" rows="7" cols="30" spellcheck="true"></textarea>
+					</li>
+
 					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-children"
-						       id="interview-conditions-distance-children-false"
-						       ng-model="interview.conditions.distance.children.requested"
-						       ng-value="false">
-						<label for="interview-conditions-distance-children-false">No</label>
+						<fieldset>
+							<legend>
+								<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates’ homes?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-associate-home"
+									       id="interview-conditions-distance-associate-home-false"
+									       ng-model="interview.conditions.distance.associate.home.requested"
+									       ng-value="false">
+									<label for="interview-conditions-distance-associate-home-false">No</label>
+								</li>
+								<li>
+									<input type="radio"
+									       name="interview-conditions-distance-associate-home"
+									       id="interview-conditions-distance-associate-home-true"
+									       ng-model="interview.conditions.distance.associate.home.requested"
+									       ng-value="true">
+									<label for="interview-conditions-distance-associate-home-true">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-				</ul>
+					<li ng-show="interview.conditions.distance.associate.home.requested">
+						<label for="interview-conditions-distance-associate-home-grounds">
+							<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates’ homes</span>
+						</label>
+						<textarea id="interview-conditions-distance-associate-home-grounds" ng-model="interview.conditions.distance.associate.home.grounds" rows="3" cols="30" spellcheck="true"></textarea>
+					</li>
+				</ol>
 			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.distance.children.requested">
-			<label for="interview-conditions-distance-children-grounds">
-				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} kids</span>
-			</label>
-			<textarea id="interview-conditions-distance-children-grounds" ng-model="interview.conditions.distance.children.grounds" rows="3" cols="30" spellcheck="true"></textarea>
 		</li>
 
-		<li ng-show="interview.conditions.nameChildren">
-			<fieldset>
-				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to to stay away from the kids’ school/daycare/etc?</span>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-children-places"
-						       id="interview-conditions-distance-children-places-true"
-						       ng-model="interview.conditions.distance.children.places.requested"
-						       ng-value="true">
-						<label for="interview-conditions-distance-children-places-true">Yes</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-children-places"
-						       id="interview-conditions-distance-children-places-false"
-						       ng-model="interview.conditions.distance.children.places.requested"
-						       ng-value="false">
-						<label for="interview-conditions-distance-children-places-false">No</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.distance.children.places.requested">
-			<label for="interview-conditions-distance-children-places-grounds">
-				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from the kids’ school/daycare/etc</span>
-			</label>
-			<textarea id="interview-conditions-distance-children-places-grounds" ng-model="interview.conditions.distance.children.places.grounds" rows="3" cols="30" spellcheck="true"></textarea>
-		</li>
-
-		<li ng-show="interview.conditions.nameAssociates">
-			<fieldset>
-				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates?</span>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-associates"
-						       id="interview-conditions-distance-associates-true"
-						       ng-model="interview.conditions.distance.associates.requested"
-						       ng-value="true">
-						<label for="interview-conditions-distance-associates-true">Yes</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-associates"
-						       id="interview-conditions-distance-associates-false"
-						       ng-model="interview.conditions.distance.associates.requested"
-						       ng-value="false">
-						<label for="interview-conditions-distance-associates-false">No</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.distance.associates.requested">
-			<label for="interview-conditions-distance-associates-grounds">
-				<span class="label">Please explain to the court the reasons why {{ interview.respondent.name.short }} must stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates</span>
-			</label>
-			<textarea id="interview-conditions-distance-associates-grounds" ng-model="interview.conditions.distance.associates.grounds" rows="3" cols="30" spellcheck="true"></textarea>
-		</li>
-
-		<li ng-show="interview.conditions.nameAssociates">
-			<fieldset>
-				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates’ homes?</span>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-associate-home"
-						       id="interview-conditions-distance-associate-home-true"
-						       ng-model="interview.conditions.distance.associate.home.requested"
-						       ng-value="true">
-						<label for="interview-conditions-distance-associate-home-true">Yes</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-associate-home"
-						       id="interview-conditions-distance-associate-home-false"
-						       ng-model="interview.conditions.distance.associate.home.requested"
-						       ng-value="false">
-						<label for="interview-conditions-distance-associate-home-false">No</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.distance.associate.home.requested">
-			<label for="interview-conditions-distance-associate-home-grounds">
-				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stay away from {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} associates’ homes</span>
-			</label>
-			<textarea id="interview-conditions-distance-associate-home-grounds" ng-model="interview.conditions.distance.associate.home.grounds" rows="3" cols="30" spellcheck="true"></textarea>
-		</li>
-
-		<li>
-			<fieldset>
-				<legend>
-					<span class="label">Do you want {{ interview.respondent.name.short }} to stay away from the place where {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} currently staying?</span>
-				</legend>
-				<ul class="choices compact">
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-aggrieved-staying"
-						       id="interview-conditions-distance-aggrieved-staying-true"
-						       ng-model="interview.conditions.distance.aggrieved.staying.requested"
-						       ng-value="true">
-						<label for="interview-conditions-distance-aggrieved-staying-true">Yes</label>
-					</li>
-					<li>
-						<input type="radio"
-						       name="interview-conditions-distance-aggrieved-staying"
-						       id="interview-conditions-distance-aggrieved-staying-false"
-						       ng-model="interview.conditions.distance.aggrieved.staying.requested"
-						       ng-value="false">
-						<label for="interview-conditions-distance-aggrieved-staying-false">No</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
-		<li ng-show="interview.conditions.distance.aggrieved.staying.requested">
-			<label for="interview-conditions-distance-aggrieved-staying-grounds">
-				<span class="label">Please explain why you want {{ interview.respondent.name.short }} to stay away from the place where {{ interview.applicantIsAggrieved ? 'you are' : interview.aggrieved.name.short + ' is' }} currently staying</span>
-			</label>
-			<textarea id="interview-conditions-distance-aggrieved-staying-grounds" ng-model="interview.conditions.distance.aggrieved.staying.grounds" rows="3" cols="30" spellcheck="true"></textarea>
-		</li>
 
 		<li class="section">
 			<fieldset>
@@ -3515,6 +3530,11 @@
 						<input type="hidden" name="child{{$index + 1}}AddressConfidential" ng-value="child.confidential.address">
 						<input type="hidden" name="child{{$index + 1}}Named" ng-value="false"> <!-- optional, default: true -->
 						<input ng-repeat-end type="hidden" name="child{{$index + 1}}SPI" ng-value="">
+
+						<div ng-if="interview.conditions.distance.children.requested">
+							<input type="hidden" name="conditionProhibitChildLocations" ng-value="interview.conditions.distance.children.requested"> <!-- true/false -->
+							<input type="hidden" name="conditionProhibitChildLocationsGrounds" ng-value="interview.conditions.distance.children.grounds"> <!-- text -->
+						</div>
 					</div>
 
 
@@ -3527,6 +3547,9 @@
 						<input type="hidden" name="associate{{$index + 1}}Address" ng-value="associate.address">
 						<input type="hidden" name="associate{{$index + 1}}AddressConfidential" ng-value="associate.confidential.address">
 						<input ng-repeat-end type="hidden" name="associate{{$index + 1}}SPI" ng-value="">
+
+						<input type="hidden" name="conditionProhibitEntryAssociates" ng-value="interview.conditions.distance.associates.home.requested"> <!-- true/false -->
+						<input ng-if="interview.conditions.distance.associates.home.requested" type="hidden" name="conditionProhibitEntryAssociatesGrounds" ng-value="interview.conditions.distance.associates.home.grounds"> <!-- true/false -->
 					</div>
 
 
@@ -3565,18 +3588,14 @@
 					<input type="hidden" name="conditionOusterAddress" ng-value="interview.conditions.ouster.address"> <!-- text -->
 					<input type="hidden" name="conditionOusterGrounds" ng-value="interview.conditions.ouster.grounds"> <!-- text -->
 
-					<input type="hidden" name="conditionProhibitEntryResidence" ng-value="interview.conditions.distance.aggrieved.home.requested"> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitEntryEmployment" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitEntryStaying" ng-value="interview.conditions.distance.aggrieved.staying.requested"> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitEntryAssociates" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitEntryOther" ng-value=""> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitEntryOtherTitle" ng-value=""> <!-- text -->
-					<input type="hidden" name="conditionProhibitEntryGrounds" ng-value=""> <!-- text -->
-					<!--
-interview.conditions.distance.aggrieved.home.grounds
-interview.conditions.distance.aggrieved.staying.grounds
-
-					 -->
+					<div ng-if="interview.conditions.distance.aggrieved.places.requested">
+						<input type="hidden" name="conditionProhibitEntryResidence" ng-value="interview.conditions.distance.aggrieved.home.requested"> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitEntryEmployment" ng-value="interview.conditions.distance.aggrieved.work.requested"> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitEntryStaying" ng-value="interview.conditions.distance.aggrieved.staying.requested"> <!-- true/false -->
+						<input type="hidden" name="conditionProhibitEntryOther" ng-value="interview.conditions.distance.aggrieved.other.requested"> <!-- true/false -->
+						<input ng-if="interview.conditions.distance.aggrieved.other.requested" type="hidden" name="conditionProhibitEntryOtherTitle" ng-value="interview.conditions.distance.aggrieved.other.title"> <!-- text -->
+						<input type="hidden" name="conditionProhibitEntryGrounds" ng-value="interview.conditions.distance.aggrieved.grounds"> <!-- text -->
+					</div>
 
 					<input type="hidden" name="conditionProhibitApproach" ng-value="interview.conditions.distance.aggrieved.requested"> <!-- true/false -->
 					<input type="hidden" name="conditionProhibitApproachAssociates" ng-value=""> <!-- true/false -->
@@ -3585,9 +3604,6 @@ interview.conditions.distance.aggrieved.staying.grounds
 					<input ng-if="interview.conditions.respondent.hasContactedAggrieved" type="hidden" name="conditionProhibitContact" ng-value="interview.conditions.aggrieved.noContact.requested"> <!-- true/false -->
 					<input ng-if="interview.conditions.respondent.hasContactedAggrieved &amp;&amp; interview.conditions.aggrieved.noContact.requested &amp;&amp; interview.respondent.hasContactedAssociates" type="hidden" name="conditionProhibitContactAssociates" ng-value="interview.conditions.associates.noContact.requested"> <!-- true/false -->
 					<input type="hidden" name="conditionProhibitContactGrounds" ng-value="interview.conditions.aggrieved.noContact.grounds"> <!-- text -->
-
-					<input type="hidden" name="conditionProhibitChildLocations" ng-value="interview.conditions.distance.children.places.requested"> <!-- true/false -->
-					<input type="hidden" name="conditionProhibitChildLocationsGrounds" ng-value="interview.conditions.aggrieved.locate.grounds"> <!-- text -->
 
 					<input type="hidden" name="conditionProhibitLocating" ng-value="interview.conditions.aggrieved.locate.requested"> <!-- true/false -->
 					<input type="hidden" name="conditionProhibitLocatingGrounds" ng-value="interview.conditions.aggrieved.locate.grounds"> <!-- text -->
