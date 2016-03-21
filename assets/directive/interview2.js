@@ -180,6 +180,14 @@ angular.module( 'dv1' )
 		vm.ordersOther = vm.existingProtectionFrom === 'Other';
 	};
 
+	vm.getGrounds = function() {
+		// TODO format grounds for form submission
+		return JSON.stringify({
+			grounds: vm.abuse,
+			events: vm.event
+		});
+	};
+
 
 	// page navigation
 	vm.goto = function( dest, event ) {
