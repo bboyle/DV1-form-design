@@ -601,7 +601,10 @@
 			<label for="interview-aggrieved-address">
 				<span class="label">Address</span>
 				<small class="hint" ng-if="interview.aggrieved.confidential.address">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
-				<small class="hint">Give an address where court documents can be sent. A <abbr title="post office box">PO box</abbr> is fine.</small>
+				<small class="hint">
+					Give an address where court documents can be sent.
+					This can be the address of a trusted friend, {{ interview.aggrieved.pronoun.your }} lawyer, or a <abbr title="post office box">PO box</abbr>.
+				</small>
 			</label>
 			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
 		</li>
@@ -619,51 +622,64 @@
 		</li>
 
 
-		<li>
+		<li class="section">
 			<fieldset>
 				<legend>
-					<span class="label">Keep {{ interview.aggrieved.pronoun.your }} phone numbers and email secret from {{ interview.respondent.name.short }}?</span>
+					<span class="h3">Contact details</span>
+					<small class="hint">
+						Provide contact details so the court can contact {{ interview.aggrieved.pronoun.you }}.
+						A phone number or email of a trusted friend or {{ interview.aggrieved.pronoun.your }} lawyer is acceptable.
+					</small>
 				</legend>
-				<ul class="choices compact">
+				<ol class="questions">
 					<li>
-						<input type="radio" name="interview-aggrieved-confidential-contact" ng-model="interview.aggrieved.confidential.contact" ng-value="false" id="aggrieved-confidential-contact-no">
-						<label for="aggrieved-confidential-contact-no">No</label>
+						<fieldset>
+							<legend>
+								<span class="label">Keep contact details secret from {{ interview.respondent.name.short }}?</span>
+							</legend>
+							<ul class="choices compact">
+								<li>
+									<input type="radio" name="interview-aggrieved-confidential-contact" ng-model="interview.aggrieved.confidential.contact" ng-value="false" id="aggrieved-confidential-contact-no">
+									<label for="aggrieved-confidential-contact-no">No</label>
+								</li>
+								<li>
+									<input type="radio" name="interview-aggrieved-confidential-contact" ng-model="interview.aggrieved.confidential.contact" ng-value="true" id="aggrieved-confidential-contact-yes">
+									<label for="aggrieved-confidential-contact-yes">Yes</label>
+								</li>
+							</ul>
+						</fieldset>
 					</li>
-					<li>
-						<input type="radio" name="interview-aggrieved-confidential-contact" ng-model="interview.aggrieved.confidential.contact" ng-value="true" id="aggrieved-confidential-contact-yes">
-						<label for="aggrieved-confidential-contact-yes">Yes</label>
-					</li>
-				</ul>
-			</fieldset>
-		</li>
 
-		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
-			<label for="interview-aggrieved-phone-home">
-				<span class="label">Home phone</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
-			</label>
-			<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20" autocomplete="tel">
-		</li>
-		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
-			<label for="interview-aggrieved-phone-mobile">
-				<span class="label">Mobile</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
-			</label>
-			<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20" autocomplete="tel">
-		</li>
-		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
-			<label for="interview-aggrieved-phone-work">
-				<span class="label">Work phone</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
-			</label>
-			<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20" autocomplete="tel">
-		</li>
-		<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
-			<label for="interview-aggrieved-email">
-				<span class="label">Email</span>
-				<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
-			</label>
-			<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30" autocomplete="email">
+					<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
+						<label for="interview-aggrieved-phone-home">
+							<span class="label">Home phone</span>
+							<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
+						</label>
+						<input type="tel" id="interview-aggrieved-phone-home" ng-model="interview.aggrieved.contact.phone.home" size="20" autocomplete="tel">
+					</li>
+					<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
+						<label for="interview-aggrieved-phone-mobile">
+							<span class="label">Mobile</span>
+							<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
+						</label>
+						<input type="tel" id="interview-aggrieved-phone-mobile" ng-model="interview.aggrieved.contact.phone.mobile" size="20" autocomplete="tel">
+					</li>
+					<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
+						<label for="interview-aggrieved-phone-work">
+							<span class="label">Work phone</span>
+							<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
+						</label>
+						<input type="tel" id="interview-aggrieved-phone-work" ng-model="interview.aggrieved.contact.phone.work" size="20" autocomplete="tel">
+					</li>
+					<li ng-class="{confidential: interview.aggrieved.confidential.contact}">
+						<label for="interview-aggrieved-email">
+							<span class="label">Email</span>
+							<small class="hint" ng-if="interview.aggrieved.confidential.contact">CONFIDENTIAL (not shared with {{ interview.respondent.name.short }})</small>
+						</label>
+						<input type="email" id="interview-aggrieved-email" ng-model="interview.aggrieved.contact.email" size="30" autocomplete="email">
+					</li>
+				</ol>
+			</fieldset>
 		</li>
 
 		<li>
