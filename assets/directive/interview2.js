@@ -129,13 +129,22 @@ angular.module( 'dv1' )
 
 	// add another child
 	vm.addChild = function( i ) {
-		vm.children.splice( i + 1, 0, {} );
+		vm.children.splice( i + 1, 0, {
+			confidential: {
+				address: vm.children[ 0 ].confidential.address
+			},
+			livesWith: vm.children[ 0 ].livesWith
+		});
 	};
 	vm.removeChild = function( i ) {
 		vm.children.splice( i, 1 );
 	};
 	vm.addAssociate = function( i ) {
-		vm.associates.splice( i + 1, 0, {} );
+		vm.associates.splice( i + 1, 0, {
+			confidential: {
+				address: vm.associates[ 0 ].confidential.address
+			},
+		});
 	};
 	vm.removeAssociate = function( i ) {
 		vm.associates.splice( i, 1 );
@@ -191,6 +200,10 @@ angular.module( 'dv1' )
 				short: 'the aggrieved',
 				shortCap: 'The aggrieved'
 			},
+			confidential: {
+				address: true,
+				contact: true
+			},
 			relationship: {}
 		};
 		vm.saveAggrieved();
@@ -199,6 +212,9 @@ angular.module( 'dv1' )
 			name: {
 				short: 'the applicant' ,
 				shortCap: 'The applicant'
+			},
+			confidential: {
+				address: true
 			}
 		};
 		vm.saveApplicant();
@@ -211,8 +227,16 @@ angular.module( 'dv1' )
 		};
 		vm.saveRespondent();
 
-		vm.children = [ {} ];
-		vm.associates = [ {} ];
+		vm.children = [{
+			confidential: {
+				address: true
+			}
+		}];
+		vm.associates = [{
+			confidential: {
+				address: true
+			}
+		}];
 		vm.event = [ {} ];
 		vm.grounds = {};
 		vm.conditions = {};
@@ -392,9 +416,7 @@ angular.module( 'dv1' )
 
 	// init
 	angular.merge( vm, application.getData() );
-	vm.children = [ {} ];
-	vm.associates = [ {} ];
-	vm.event = [ {} ];
+	vm.reset();
 
 	vm.goto( 1 );
 

@@ -1808,7 +1808,10 @@
 									       ng-change="interview.childLivesWith(child)"
 									       value="other"
 									       id="child{{$index}}-lives-with-other">
-									<label for="child{{$index}}-lives-with-other">another address</label>
+									<label for="child{{$index}}-lives-with-other">
+										another address
+										<em ng-if="child.confidential.address">(CONFIDENTIAL)</em>
+									</label>
 								</li>
 							</ul>
 						</fieldset>

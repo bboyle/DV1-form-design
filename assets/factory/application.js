@@ -52,10 +52,22 @@ angular.module( 'dv1' )
 			short: 'the aggrieved',
 			shortCap: 'The aggrieved'
 		},
+		confidential: {
+			address: true,
+			contact: true
+		},
 		pronoun: angular.copy( PRONOUN.G ),
 		relationship: {},
-		children: [ {} ],
-		associates: [ {} ]
+		children: [{
+			confidential: {
+				address: true
+			}
+		}],
+		associates: [{
+			confidential: {
+				address: true
+			}
+		}]
 	};
 	data.aggrieved.pronoun.you = data.aggrieved.name.short;
 	data.aggrieved.pronoun.your = data.aggrieved.pronoun.my = data.aggrieved.name.short + '’s';
@@ -63,6 +75,9 @@ angular.module( 'dv1' )
 		name: {
 			short: 'the applicant',
 			shortCap: 'The applicant'
+		},
+		confidential: {
+			address: true
 		},
 		pronoun: angular.copy( PRONOUN.G )
 	};
