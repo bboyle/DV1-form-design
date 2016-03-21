@@ -1547,7 +1547,7 @@
 		<li>
 			<fieldset>
 				<legend>
-					<span class="label">Has {{ interview.respondent.name.short }} committed domestic and/or family violence in the last few days?</span>
+					<span class="label">Has {{ interview.respondent.name.short }} committed domestic and/or family violence recently?</span>
 				</legend>
 				<ul class="choices compact">
 					<li>
@@ -1635,7 +1635,7 @@
 		<li ng-show="interview.tpo.apply">
 			<label for="interview-tpo-description">
 				<span class="label">Tell us why a temporary protection order is necessary</span>
-				<small class="hint">Describe domestic violence that has happened in the last few days and why you are concerned about {{ interview.applicantIsAggrieved ? 'your' : ( interview.applicant.relationship.category ? 'your ' + interview.applicant.relationship.category : interview.aggrieved.name.short ) + '’s' }} immediate safety.</small>
+				<small class="hint">Describe domestic violence that has happened recently and why you are concerned about {{ interview.applicantIsAggrieved ? 'your' : ( interview.applicant.relationship.category ? 'your ' + interview.applicant.relationship.category : interview.aggrieved.name.short ) + '’s' }} immediate safety.</small>
 			</label>
 			<textarea id="interview-tpo-description" ng-model="interview.tpo.grounds" cols="40" rows="10" spellcheck="true"></textarea>
 		</li>
