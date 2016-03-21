@@ -136,7 +136,7 @@ angular.module( 'dv1' )
 	};
 	vm.addAssociate = function( i ) {
 		vm.associates.splice( i + 1, 0, {} );
-	};``
+	};
 	vm.removeAssociate = function( i ) {
 		vm.associates.splice( i, 1 );
 	};
@@ -265,6 +265,7 @@ angular.module( 'dv1' )
 					aggrieved: 'brother'
 				}
 			};
+			vm.saveApplicant();
 
 			vm.respondent = {
 				name: {
