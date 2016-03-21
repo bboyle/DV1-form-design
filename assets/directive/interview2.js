@@ -187,15 +187,28 @@ angular.module( 'dv1' )
 	vm.reset = function() {
 		// wipe all application data
 		vm.aggrieved  = {
-			name: { short: 'the aggrieved' },
+			name: {
+				short: 'the aggrieved',
+				shortCap: 'The aggrieved'
+			},
 			relationship: {}
 		};
 		vm.saveAggrieved();
 
-		vm.applicant  = { name: { short: 'the applicant' }};
+		vm.applicant = {
+			name: {
+				short: 'the applicant' ,
+				shortCap: 'The applicant'
+			}
+		};
 		vm.saveApplicant();
 
-		vm.respondent = { name: { short: 'the respondent' }};
+		vm.respondent = {
+			name: {
+				short: 'the respondent' ,
+				shortCap: 'The respondent'
+			}
+		};
 		vm.saveRespondent();
 
 		vm.children = [ {} ];

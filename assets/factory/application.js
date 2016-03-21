@@ -41,11 +41,17 @@ angular.module( 'dv1' )
 
 	let data = {};
 	data.respondent = {
-		name: { short: 'the respondent' },
+		name: {
+			short: 'the respondent',
+			shortCap: 'The respondent'
+		},
 		pronoun: angular.copy( PRONOUN.G )
 	};
 	data.aggrieved  = {
-		name: { short: 'the aggrieved' },
+		name: {
+			short: 'the aggrieved',
+			shortCap: 'The aggrieved'
+		},
 		pronoun: angular.copy( PRONOUN.G ),
 		relationship: {},
 		children: [ {} ],
@@ -54,7 +60,10 @@ angular.module( 'dv1' )
 	data.aggrieved.pronoun.you = data.aggrieved.name.short;
 	data.aggrieved.pronoun.your = data.aggrieved.pronoun.my = data.aggrieved.name.short + '’s';
 	data.applicant  = {
-		name: { short: 'the applicant' },
+		name: {
+			short: 'the applicant',
+			shortCap: 'The applicant'
+		},
 		pronoun: angular.copy( PRONOUN.G )
 	};
 
@@ -80,6 +89,7 @@ angular.module( 'dv1' )
 		data.aggrieved = aggrievedData;
 		data.aggrievedIsApplicant = isApplicant === true;
 		data.aggrieved.name.short = data.aggrieved.name.given || 'the aggrieved';
+		data.aggrieved.name.shortCap = data.aggrieved.name.given || 'The aggrieved';
 		if ( isApplicant ) {
 			this.saveApplicant( aggrievedData );
 			data.aggrieved.pronoun.you = 'you';
@@ -100,10 +110,12 @@ angular.module( 'dv1' )
 	this.saveApplicant = function( applicantData ) {
 		data.applicant = applicantData;
 		data.applicant.name.short = data.applicant.name.given || 'the applicant';
+		data.applicant.name.shortCap = data.applicant.name.given || 'The applicant';
 	};
 	this.saveRespondent = function( respondentData ) {
 		data.respondent = respondentData;
 		data.respondent.name.short = data.respondent.name.given || 'the respondent';
+		data.respondent.name.shortCap = data.respondent.name.given || 'The respondent';
 	};
 
 	this.saveTemporaryProtection = function( tpoData ) {
