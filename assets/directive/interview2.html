@@ -2329,7 +2329,7 @@
 									       id="interview-conditions-distance-aggrieved-home"
 									       ng-model="interview.conditions.distance.aggrieved.home.requested"
 									       ng-value="true">
-									<label for="interview-conditions-distance-aggrieved-home">{{ interview.aggrieved.pronoun.their }} home</label>
+									<label for="interview-conditions-distance-aggrieved-home">{{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} home</label>
 								</li>
 								<li>
 									<input type="checkbox"
@@ -2337,7 +2337,7 @@
 									       id="interview-conditions-distance-aggrieved-work-true"
 									       ng-model="interview.conditions.distance.aggrieved.work.requested"
 									       ng-value="true">
-									<label for="interview-conditions-distance-aggrieved-work-true">{{ interview.aggrieved.pronoun.their }} workplace</label>
+									<label for="interview-conditions-distance-aggrieved-work-true">{{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.pronoun.their }} workplace</label>
 								</li>
 								<li>
 									<input type="checkbox"
