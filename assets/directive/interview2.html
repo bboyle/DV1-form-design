@@ -1030,53 +1030,53 @@
 				</legend>
 				<ul class="choices">
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Married" id="interview-relationship-married">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.married" ng-value="true" id="interview-relationship-married">
 						<label for="interview-relationship-married">are married</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Spouse" id="interview-relationship-former-spouse">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.formerSpouse" ng-value="true" id="interview-relationship-former-spouse">
 						<label for="interview-relationship-former-spouse">were married</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="De Facto" id="interview-relationship-de-facto">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.deFacto" ng-value="true" id="interview-relationship-de-facto">
 						<label for="interview-relationship-de-facto">are in a <dfn>de facto</dfn> relationship</label>
 						<small class="hint">2 people living together as a couple who are not married or related</small>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former De Facto" id="interview-relationship-former-de-facto">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.formerDeFacto" ng-value="true" id="interview-relationship-former-de-facto">
 						<label for="interview-relationship-former-de-facto">were in a <dfn>de facto</dfn> relationship</label>
 						<small class="hint">2 people who lived together as a couple who were not married or related</small>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Civil Partnership" id="interview-relationship-registered-relationship">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.civilPartnership" ng-value="true" id="interview-relationship-registered-relationship">
 						<label for="interview-relationship-registered-relationship">are in a civil partnership</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Civil Partnership" id="interview-relationship-registered-relationship-past">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.formerCivilPartnership" ng-value="true" id="interview-relationship-registered-relationship-past">
 						<label for="interview-relationship-registered-relationship-past">were in a civil partnership</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Parent of a Child" id="interview-relationship-parent-of-a-child">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.parent" ng-value="true" id="interview-relationship-parent-of-a-child">
 						<label for="interview-relationship-parent-of-a-child">are parents of the same child</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Parent of a Child" id="interview-relationship-former-parent-of-a-child">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.formerParent" ng-value="true" id="interview-relationship-former-parent-of-a-child">
 						<label for="interview-relationship-former-parent-of-a-child">were parents of the same child</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Engaged" id="interview-relationship-engaged">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.engaged" ng-value="true" id="interview-relationship-engaged">
 						<label for="interview-relationship-engaged">are engaged</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Were Engaged" id="interview-relationship-were-engaged">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.wereEngaged" ng-value="true" id="interview-relationship-were-engaged">
 						<label for="interview-relationship-were-engaged">were engaged</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Couple" id="interview-relationship-couple">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.couple" ng-value="true" id="interview-relationship-couple">
 						<label for="interview-relationship-couple">are a couple</label>
 					</li>
 					<li>
-						<input type="radio" ng-model="interview.aggrieved.relationship.type" value="Former Couple" id="interview-relationship-couple-past">
+						<input type="checkbox" ng-model="interview.aggrieved.relationship.type.formerCouple" ng-value="true" id="interview-relationship-couple-past">
 						<label for="interview-relationship-couple-past">were a couple</label>
 					</li>
 				</ul>
@@ -1091,9 +1091,9 @@
 			<input for="interview-family-relationship" type="text" ng-model="interview.partyFamily" size="20" ng-change="interview.updateParties()">
 		</li>
 
-		<li ng-show="interview.aggrieved.relationship.intimate &amp;&amp; ( interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple' )">
+		<li ng-show="interview.aggrieved.relationship.intimate &amp;&amp; ( interview.aggrieved.relationship.type.couple || interview.aggrieved.relationship.type.formerCouple )">
 			<label for="interview-relationship-couple">
-				<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} {{ interview.aggrieved.relationship.type === 'Couple' ? 'are' : 'were' }} a couple</span>
+				<span class="label">Describe how {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} and {{ interview.respondent.name.short }} {{ interview.aggrieved.relationship.type.couple ? 'are' : 'were' }} a couple</span>
 				<small class="hint">Describe {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short +'’s' }} level of dependence on each other, whether financial or otherwise; how long you've been in a relationship; how often you have contact and {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.their }} degree of intimacy (if any).</small>
 			</label>
 			<textarea cols="40" rows="2"
@@ -3501,15 +3501,15 @@
 
 
 					<input type="hidden" name="relationshipPersonal" ng-value="interview.aggrieved.relationship.intimate"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalMarried" ng-value="interview.aggrieved.relationship.type === 'Married'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalFormerSpouse" ng-value="interview.aggrieved.relationship.type === 'Former Spouse'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalDeFacto" ng-value="interview.aggrieved.relationship.type === 'De Facto' || interview.aggrieved.relationship.type === 'Former De Facto'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalRegistered" ng-value="interview.aggrieved.relationship.type === 'Civil Partnership' || interview.aggrieved.relationship.type === 'Former Civil Partnership'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalParent" ng-value="interview.aggrieved.relationship.type === 'Parent of a Child' || interview.aggrieved.relationship.type === 'Former Parent of a Child'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalEngaged" ng-value="interview.aggrieved.relationship.type === 'Engaged'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalWereEngaged" ng-value="interview.aggrieved.relationship.type === 'Were Engaged'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalCouple" ng-value="interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple'"> <!-- true/false -->
-					<input ng-if="interview.aggrieved.relationship.intimate &amp;&amp; (interview.aggrieved.relationship.type === 'Couple' || interview.aggrieved.relationship.type === 'Former Couple')" type="hidden" name="relationshipPersonalDescription" ng-value="interview.aggrieved.relationship.couple"> <!-- text -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalMarried" ng-value="interview.aggrieved.relationship.type.married"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalFormerSpouse" ng-value="interview.aggrieved.relationship.type.formerSpouse"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalDeFacto" ng-value="interview.aggrieved.relationship.type.deFacto || interview.aggrieved.relationship.type.formerDeFacto"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalRegistered" ng-value="interview.aggrieved.relationship.type.civilPartnership || interview.aggrieved.relationship.type.formerCivilPartnership"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalParent" ng-value="interview.aggrieved.relationship.type.parent || interview.aggrieved.relationship.type.formerParent"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalEngaged" ng-value="interview.aggrieved.relationship.type.engaged"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalWereEngaged" ng-value="interview.aggrieved.relationship.type.wereEngaged"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate" type="hidden" name="relationshipPersonalCouple" ng-value="interview.aggrieved.relationship.type.couple || interview.aggrieved.relationship.type.formerCouple"> <!-- true/false -->
+					<input ng-if="interview.aggrieved.relationship.intimate &amp;&amp; (interview.aggrieved.relationship.type.couple || interview.aggrieved.relationship.type.formerCouple)" type="hidden" name="relationshipPersonalDescription" ng-value="interview.aggrieved.relationship.couple"> <!-- text -->
 
 					<input type="hidden" name="relationshipFamily" ng-value="interview.aggrieved.relationship.family"> <!-- true/false -->
 					<input ng-if="interview.aggrieved.relationship.family" type="hidden" name="relationshipFamilyDescription" ng-value="interview.partyFamily"> <!-- text -->

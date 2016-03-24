@@ -57,7 +57,9 @@ angular.module( 'dv1' )
 			contact: true
 		},
 		pronoun: angular.copy( PRONOUN.G ),
-		relationship: {},
+		relationship: {
+			type: {}
+		},
 		children: [{
 			confidential: {
 				address: true
@@ -79,7 +81,8 @@ angular.module( 'dv1' )
 		confidential: {
 			address: true
 		},
-		pronoun: angular.copy( PRONOUN.G )
+		pronoun: angular.copy( PRONOUN.G ),
+		relationship: {}
 	};
 
 

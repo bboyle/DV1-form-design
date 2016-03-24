@@ -40,25 +40,30 @@ angular.module( 'dv1' )
 
 
 	vm.updateParties = function() {
-		application.setGender( vm.aggrieved, vm.applicant.relationship.aggrieved );
+		if ( vm.applicant.relationship ) {
+			application.setGender( vm.aggrieved, vm.applicant.relationship.aggrieved );
+		}
 
-		if ( vm.party ) {
-			if ( vm.party.indexOf( 'family' ) !== -1 ) {
-				vm.aggrieved.relationship.category = 'Family';
-				application.setGender( vm.respondent, vm.partyFamily );
-			} else if ( /partner|ex/.test( vm.party )) {
-				vm.aggrieved.relationship.category = 'Intimate personal';
-				application.setGender( vm.respondent, vm.partyIntimate );
-				switch ( vm.partyIntimate ) {
-				case 'husband':
-				case 'wife':
-					vm.aggrieved.relationship.type = /ex/.test( vm.aggrieved.relationship.party ) ? 'Past Spouse' : 'Married';
-					break;
+		if ( vm.aggrieved.relationship ) {
+			if ( vm.party ) {
+				if ( vm.party.indexOf( 'family' ) !== -1 ) {
+					vm.aggrieved.relationship.family = true;
+					application.setGender( vm.respondent, vm.partyFamily );
+				} else if ( /partner|ex/.test( vm.party )) {
+					vm.aggrieved.relationship.intimate = true;
+					application.setGender( vm.respondent, vm.partyIntimate );
+					switch ( vm.partyIntimate ) {
+					case 'husband':
+					case 'wife':
+						vm.aggrieved.relationship.type.married = ! /ex/.test( vm.party );
+						vm.aggrieved.relationship.type.formerSpouse = /ex/.test( vm.party );
+						break;
+					}
+				} else {
+					application.setGender( vm.respondent, vm.party );
 				}
-			} else {
-				application.setGender( vm.respondent, vm.party );
+				vm.saveRespondent();
 			}
-			vm.saveRespondent();
 		}
 
 		vm.saveAggrieved();
@@ -188,7 +193,7 @@ angular.module( 'dv1' )
 
 	vm.reset = function() {
 		// wipe all application data
-		vm.aggrieved  = {
+		vm.aggrieved = {
 			name: {
 				short: 'the aggrieved',
 				shortCap: 'The aggrieved'
@@ -197,7 +202,9 @@ angular.module( 'dv1' )
 				address: true,
 				contact: true
 			},
-			relationship: {}
+			relationship: {
+				type: {}
+			}
 		};
 		vm.saveAggrieved();
 
@@ -208,7 +215,8 @@ angular.module( 'dv1' )
 			},
 			confidential: {
 				address: true
-			}
+			},
+			relationship: {}
 		};
 		vm.saveApplicant();
 
@@ -411,8 +419,6 @@ angular.module( 'dv1' )
 	// init
 	angular.merge( vm, application.getData() );
 	vm.reset();
-
-	vm.goto( 1 );
 
 	return vm;
 }])
