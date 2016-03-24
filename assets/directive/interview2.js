@@ -58,6 +58,9 @@ angular.module( 'dv1' )
 						vm.aggrieved.relationship.type.married = ! /ex/.test( vm.party );
 						vm.aggrieved.relationship.type.formerSpouse = /ex/.test( vm.party );
 						break;
+					default:
+						vm.aggrieved.relationship.type.married = false;
+						vm.aggrieved.relationship.type.formerSpouse = false;
 					}
 				} else {
 					application.setGender( vm.respondent, vm.party );
@@ -243,6 +246,14 @@ angular.module( 'dv1' )
 		vm.conditions = {};
 		vm.orders = {};
 		vm.pageUnlocked = 1;
+
+		vm.applicantIsAggrieved = undefined;
+		vm.applicantInDanger = undefined;
+		vm.safe = undefined;
+		vm.party = undefined;
+		vm.partyIntimate = undefined;
+		vm.partyFamily = undefined;
+
 		vm.goto( 1 );
 	};
 
