@@ -38,8 +38,6 @@ angular.module( 'dv1' )
 	};
 	vm.pageUnlocked = 0;
 
-	var backupApplicant;
-
 
 	vm.updateParties = function() {
 		application.setGender( vm.aggrieved, vm.applicant.relationship.aggrieved );
@@ -69,17 +67,10 @@ angular.module( 'dv1' )
 	vm.saveAggrieved = function() {
 		application.setGender( vm.aggrieved, vm.aggrieved.genderIdentity );
 		application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
-		if ( vm.applicantIsAggrieved ) {
-			vm.applicant = vm.aggrieved;
-		}
 	};
 	vm.saveApplicant = function() {
-		if ( vm.applicantIsAggrieved ) {
-			application.saveAggrieved( vm.aggrieved, vm.applicantIsAggrieved );
-		} else {
-			application.setGender( vm.applicant, vm.applicant.genderIdentity );
-			application.saveApplicant( vm.applicant );
-		}
+		application.saveApplicant( vm.applicant );
+		application.setGender( vm.applicant, vm.applicant.genderIdentity );
 	};
 	vm.saveRespondent = function() {
 		application.setGender( vm.respondent, vm.respondent.genderIdentity );
@@ -88,22 +79,8 @@ angular.module( 'dv1' )
 
 
 	// applicant is aggrieved?
-	vm.checkApplicant = function() {
-		if ( vm.applicantIsAggrieved ) {
-			backupApplicant = angular.copy( vm.applicant );
-			vm.applicant = vm.aggrieved;
-		} else if ( backupApplicant ) {
-			vm.applicant = backupApplicant;
-		} else {
-			vm.applicant = { name: { short: 'the applicant' }};
-		}
-
-		vm.saveAggrieved();
-	};
-	vm.checkLodger = function() {
-		vm.applicantIsAggrieved = vm.whoWillLodge === 'aggrieved';
-		vm.checkApplicant();
-	};
+	vm.checkApplicant = vm.saveApplicant;
+	vm.checkLodger = vm.checkApplicant;
 
 
 	// check if party identifies as
