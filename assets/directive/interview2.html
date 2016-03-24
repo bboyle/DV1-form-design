@@ -1948,9 +1948,8 @@
 <section ng-show="interview.page === interview.PAGE.ASSOCIATES">
 <div class="status info">
 	<h2>Do relatives or associates need protection?</h2>
-	<p>If you are concerned about the safety of {{ interview.applicantIsAggrieved ? 'your' : interview.applicant.name.short + '’s' }} relatives or associates, you can include them on the application for protection.</p>
-	<p>An associate refers to someone who is connected to you by a family relationship.
-	Examples: {{ interview.aggrieved.pronoun.your }} current spouse, a person that works with {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.pronoun.them }}, a person that lives at the same address or someone that provides {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.pronoun.them }} with support.</p>
+	<p>If you are concerned about the safety of {{ interview.applicantIsAggrieved ? 'your' : interview.aggrieved.name.short + '’s' }} relatives or associates, you can include them on the application for protection.</p>
+	<p>An associate refers to a person in {{ interview.aggrieved.pronoun.your }} life. For example, {{ interview.aggrieved.pronoun.your }} current partner, a person that works with {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.pronoun.them }}, a person that lives with {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.pronoun.them }}, or someone who gives {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.pronoun.them }} help and support.</p>
 </div>
 
 <form class="form" name="formAssociates" autocomplete="off" ng-submit="interview.continue( $event )">

@@ -87,7 +87,10 @@ angular.module( 'dv1' )
 
 
 	// applicant is aggrieved?
-	vm.checkApplicant = vm.saveApplicant;
+	vm.checkApplicant = function() {
+		vm.saveAggrieved();
+		vm.saveApplicant();
+	};
 	vm.checkLodger = vm.checkApplicant;
 
 
