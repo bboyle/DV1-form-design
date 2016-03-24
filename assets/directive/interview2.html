@@ -1631,7 +1631,7 @@
 <div class="status info">
 	<h2>Do you require urgent protection?</h2>
 	<p>The hearing of an application for a protection order will not be held immediately. It may be a few weeks until your court date.</p>
-	<p>{{ interview.respondent.name.short }} has a right to get a copy of the application so that {{ interview.respondent.pronoun.they }} know what has been said and can respond in court. Police will serve the respondent with a copy of the application.</p>
+	<p>{{ interview.respondent.name.short }} has the right to get a copy of the application so that {{ interview.respondent.pronoun.they }} {{ interview.respondent.pronoun.they === 'they' ? 'know' : 'knows' }} what has been said and can respond in court. Police will serve the respondent with a copy of the application.</p>
 	<p>You can ask the clerk of the court to arrange an earlier court date (before {{ interview.respondent.name.short }} has been served)
 	so the magistrate can consider whether to make a temporary protection order.</p>
 	<p>You will still need to go to court later. {{ interview.respondent.name.shortCap }} will be given a copy of your application which includes a notice to appear in court at the same time.
@@ -3699,7 +3699,7 @@
 <p ng-if="! interview.tpo.apply">You will be given a a date to appear at court (usually in about four weeks time).</p>
 
 <h3>Serving of the application</h3>
-<p>Once the application has been lodged, {{ interview.respondent.name.short }} has a right to get a copy of it so that {{ interview.respondent.pronoun.they }} know what has been said and can respond in court. Police will serve the respondent with a copy of the application.</p>
+<p>Once the application has been lodged, {{ interview.respondent.name.short }} has the right to get a copy of it so that {{ interview.respondent.pronoun.they }} {{ interview.respondent.pronoun.they === 'they' ? 'know' : 'knows' }} what has been said and can respond in court. Police will serve the respondent with a copy of the application.</p>
 
 
 <div id="what-next" class="section">
