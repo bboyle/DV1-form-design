@@ -1562,6 +1562,24 @@
 
 <form class="form" name="formGrounds" ng-submit="interview.continue( $event )">
 	<ol class="questions">
+		<li>
+			<fieldset>
+				<legend>
+					<span class="label">How many events do you want to describe?</span>
+					<small class="hint">Providing more information helps the magistrate to understand the situation.</small>
+				</legend>
+				<ul class="choices compact">
+					<li>
+						<input type="radio" name="interview-abuse-events" ng-model="interview.abuse.eventCountEstimate" value="1" id="interview-abuse-events-one">
+						<label for="interview-abuse-events-one">One</label>
+					</li>
+					<li>
+						<input type="radio" name="interview-abuse-events" ng-model="interview.abuse.eventCountEstimate" value="multiple" id="interview-abuse-events-multiple">
+						<label for="interview-abuse-events-multiple">More than one</label>
+					</li>
+				</ul>
+			</fieldset>
+		</li>
 		<li class="section" ng-repeat="event in interview.event">
 			<fieldset>
 				<legend>
@@ -1604,10 +1622,11 @@
 						</label>
 						<input type="text" id="interview-grounds-event{{$index}}-witness" ng-model="event.witness" size="30" list="witnesses">
 					</li>
+
 					<li class="footer">
 						<ul class="actions">
-							<li><em><button type="button" class="add" ng-click="interview.addEvent( $index )"><i class="fa fa-plus-square"></i> Add another event</button></em></li>
-							<li ng-if="$index"><em><button type="button" class="del" ng-click="interview.removeEvent( $index )"><i class="fa fa-minus-square"></i> Remove event {{ $index + 1 }}</button></em></li>
+							<li><em><button type="button" class="add" ng-click="interview.addEvent( $index )"><i class="fa fa-plus-square"></i> Describe another event</button></em></li>
+							<li ng-if="interview.event.length > 1"><em><button type="button" class="del" ng-click="interview.removeEvent( $index )"><i class="fa fa-minus-square"></i> Remove event {{ $index + 1 }}</button></em></li>
 						</ul>
 					</li>
 
