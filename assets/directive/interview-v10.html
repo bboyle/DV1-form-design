@@ -37,7 +37,6 @@
 		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.DOWNLOAD" ng-click="interview.goto( interview.PAGE.DOWNLOAD )">Download your application</button></li>
 	</ol>
 
-<!--
 <form ng-submit="interview.prefill('Simpsons')">
 	<button>
 		Simpsons Cheat!
@@ -50,7 +49,6 @@
 		<small class="hint">Prefills the form</small>
 	</button>
 </form>
--->
 
 </nav>
 
@@ -214,6 +212,7 @@
 				</ul>
 			</fieldset>
 		</li>
+
 		<li ng-show="interview.applicantIsAggrieved === false">
 			<fieldset>
 				<legend>
@@ -295,6 +294,19 @@
 			</fieldset>
 		</li>
 
+		<li ng-show="!interview.applicantIsAggrieved &amp;&amp; (interview.aggrieved.name.given || interview.applicant.relationship.aggrieved)">
+			<div class="status info">
+				<h2>{{ interview.aggrieved.name.given ? interview.aggrieved.name.given : 'Your ' + interview.applicant.relationship.aggrieved }} is the aggrieved</h2>
+				<p>The <dfn>aggrieved</dfn> is the person who needs protection.</p>
+			</div>
+		</li>
+
+		<li ng-show="interview.applicantIsAggrieved">
+			<div class="status info">
+				<h2>You are the aggrieved</h2>
+				<p>The <dfn>aggrieved</dfn> is the person who needs protection.</p>
+			</div>
+		</li>
 		<li ng-show="interview.applicantIsAggrieved">
 			<fieldset>
 				<legend>
@@ -1479,7 +1491,7 @@
 						       id="interview-abuse-liberty"
 						       ng-model="interview.abuse.liberty"
 						       ng-value="true">
-						<label for="interview-abuse-liberty">deprived {{ interview.aggrieved.pronoun.you }} of {{ interview.aggrieved.pronoun.your }} liberty or threatened to do so</label>
+						<label for="interview-abuse-liberty">deprived {{ interview.aggrieved.pronoun.you }} of {{ interview.applicant.isAggrieved ? 'your' : interview.aggrieved.pronoun.their }} liberty or threatened to do so</label>
 					</li>
 					<li>
 						<input type="checkbox"
