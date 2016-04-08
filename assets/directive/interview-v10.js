@@ -4,8 +4,8 @@
 // app
 angular.module( 'dv1' )
 // controller for interview
-.controller( 'InterviewController', [ 'application', '$scope', '$document',
- function(                             application ,  $scope ,  $document ) {
+.controller( 'InterviewController', [ 'application', '$scope', '$http', '$interpolate', '$document',
+ function(                             application ,  $scope ,  $http ,  $interpolate ,  $document ) {
 
 	let vm = this;
 
@@ -108,6 +108,60 @@ angular.module( 'dv1' )
 			case 'D': return 'Child Protection';
 		}
 	};
+
+
+	vm.aggrievedAddressChanged = function() {
+		delete vm.aggrieved.addressGeo;
+		delete vm.nearbyMagistratesCourt;
+
+		var address = vm.aggrieved.address;
+		// remove any duplicate country
+		address = address.replace( /\b(AU|AUS|Australia)\b/i, '' );
+
+		$http.get( '//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates', {
+			params: {
+				f: 'json',
+				countryCode: 'AU',
+				singleLine: address
+			},
+			cache: true
+		}).then(function( response ) {
+			if ( response.data.candidates.length ) {
+				vm.aggrieved.addressGeo = response.data.candidates[ 0 ].location;
+			}
+		})
+	};
+
+	function findNearestMagistratesCourt( geo ) {
+		var select = [ '*' ];
+		var where = [ '"Title" LIKE \'%Magistrates%\'' ];
+		var distance = $interpolate( '(3959*acos(cos(radians({{ lat }}))*cos(radians("Latitude"))*cos(radians("Longitude")-radians({{ lng }}))+sin(radians({{ lat }}))*sin(radians("Latitude"))))' )( geo );
+
+		select.push( distance + ' AS "Distance"' );
+
+		$http.get( 'https://data.qld.gov.au/api/action/datastore_search_sql', {
+			params: {
+				sql: $interpolate( 'SELECT {{ select }} FROM {{ from }} WHERE {{ where }} ORDER BY "Distance" LIMIT 3' )({
+					select: select.join( ',' ),
+					from: '"400eeff4-d3d4-4d5a-9e99-7f993e768daf"',
+					where: where.join( ' AND ' ),
+				})
+			},
+			cache: true
+		}).then(function( response ) {
+			// console.log( response.data, response.data.result, response.data.result.records );
+			if ( response.data && response.data.result && response.data.result.records.length > 0 ) {
+				// console.log('setting vm.nearbyMagistratesCourt', response.data.result.records);
+				vm.nearbyMagistratesCourt = response.data.result.records;
+			}
+		});
+	}
+
+	$scope.$watch(function() { return vm.aggrieved.addressGeo; }, function( geo ) {
+		if ( geo && geo.x && geo.y ) {
+			findNearestMagistratesCourt({ lat: geo.y, lng: geo.x });
+		}
+	});
 
 
 	// temporary protection orders

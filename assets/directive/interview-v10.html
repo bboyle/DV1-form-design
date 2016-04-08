@@ -705,7 +705,7 @@
 					This can be the address of a trusted friend, {{ interview.aggrieved.pronoun.your }} lawyer, or a <abbr title="post office box">PO box</abbr>.
 				</small>
 			</label>
-			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true"></textarea>
+			<textarea id="interview-aggrieved-address" ng-model="interview.aggrieved.address" rows="3" cols="30" autocomplete="street-address" spellcheck="true" ng-change="interview.aggrievedAddressChanged()" ng-model-options="{updateOn: 'blur'}"></textarea>
 		</li>
 		<li>
 			<label for="interview-aggrieved-date-birth">
@@ -3478,8 +3478,74 @@
 			<textarea id="interview-court-safety-leaving" ng-model="interview.aggrieved.courtSafety.leaving" spellcheck="true" cols="40" rows="10"></textarea>
 		</li>
 
-		<li class="footer">
+		<li>
 			<p>If your safety concerns change for future court dates, you should complete another safety form for court staff.</p>
+		</li>
+
+		<li ng-if="interview.nearbyMagistratesCourt">
+			<div class="status info">
+				<h2>Nearby magistrates courts</h2>
+
+				<ul>
+					<!-- TODO pattern lib format
+<div class="vcard">
+<h2 class="fn org">Aboriginal and Torres Strait Islander Partnerships</h2>
+<dl>
+<dt>Phone:</dt>
+<dd class="tel">
+<span class="type">Work</span>
+13 QGOV (<span class="value">13 74 68</span>)
+</dd>
+<dt>Email:</dt>
+<dd><a href="mailto:askatsip@communities.qld.gov.au" class="email">askatsip@communities.qld.gov.au</a></dd>
+<dt>Fax:</dt>
+<dd class="tel">
+<span class="type">Fax</span>
+<span class="value">07 3224 2070</span>
+</dd>
+<dt>Website:</dt>
+<dd><a href="http://www.communities.qld.gov.au/atsis/" class="url">www.communities.qld.gov.au/atsis/</a></dd>
+<dt>Postal address:</dt>
+<dd>
+<span class="adr">
+<span class="type">Post</span>
+<span class="post-office-box">GPO Box 806</span><br />
+<span class="locality">BRISBANE</span>&nbsp;
+<span class="region">QLD</span>&nbsp;
+<span class="postal-code">4001</span>
+</span>
+</dd>
+<dt>Address:</dt>
+<dd>
+<span class="adr">
+<span class="type">Work</span>
+<span class="street-extended">Level 6A, Neville Bonner Building</span><br />
+<span class="street-address">75 William Street</span><br />
+<span class="locality">Brisbane</span>
+<abbr title="Queensland" class="region">Qld</abbr>
+<span class="postal-code">4000</span>
+</span>
+</dd>
+</dl>
+</div>
+
+					-->
+					<li ng-repeat="court in interview.nearbyMagistratesCourt">
+						{{ court.Title }}<br />
+						{{ court.Phone }}
+						{{ court[ 'Address 1' ] }}
+						{{ court[ 'Address 2' ] }}
+						{{ court.Suburb }}
+						{{ court.Postcode }}
+					</li>
+				</ul>
+			</div>
+
+			Based on {{ interview.aggrieved.pronoun.your }} address: {{ interview.aggrieved.address }}
+			<a href="#">change</a>
+		</li>
+
+		<li class="footer">
 			<ul class="actions">
 				<li><strong><button>Continue</button></strong></li>
 				<li>
