@@ -1570,20 +1570,6 @@
 				</legend>
 				<ol class="questions">
 					<li>
-						<label for="interview-grounds-event{{$index}}-description">
-							<span class="label">What did {{ interview.respondent.pronoun.they }} do?</span>
-							<small class="hint">Stick to the facts. Provide dates and places. Describe exactly what {{ interview.respondent.pronoun.they }} said and did. You may not feel comfortable explaining what happened to you but it is important to let the Magistrate know exactly what happened. Don't tone down, explain or apologise for the behaviour.</small>
-						</label>
-						<textarea id="interview-grounds-event{{$index}}-description" ng-model="event.description" cols="40" rows="10" spellcheck="true"></textarea>
-					</li>
-					<li>
-						<label for="interview-grounds-event{{$index}}-feel">
-							<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
-							<small class="hint">Examples: threatened, fearful or scared?</small>
-						</label>
-						<textarea id="interview-grounds-event{{$index}}-feel" ng-model="event.feel" cols="40" rows="3" spellcheck="true"></textarea>
-					</li>
-					<li>
 						<label for="interview-grounds-event{{$index}}-when">
 							<span class="label">When did this happen?</span>
 							<small class="hint">An approximate date is fine</small>
@@ -1596,6 +1582,20 @@
 							<small class="hint">Example: at home, work, an address or describe the place</small>
 						</label>
 						<input type="text" id="interview-grounds-event{{$index}}-where" ng-model="event.where" size="30" list="placenames">
+					</li>
+					<li>
+						<label for="interview-grounds-event{{$index}}-description">
+							<span class="label">What did {{ interview.respondent.name.short }} do?</span>
+							<small class="hint">Stick to the facts. Describe exactly what {{ interview.respondent.pronoun.they }} said and did. You may not feel comfortable explaining what happened to you but it is important to let the Magistrate know exactly what happened. Don't tone down, explain or apologise for the behaviour.</small>
+						</label>
+						<textarea id="interview-grounds-event{{$index}}-description" ng-model="event.description" cols="40" rows="10" spellcheck="true"></textarea>
+					</li>
+					<li>
+						<label for="interview-grounds-event{{$index}}-feel">
+							<span class="label">How did this make {{ interview.applicantIsAggrieved ? 'you' : interview.aggrieved.name.short }} feel?</span>
+							<small class="hint">Examples: threatened, fearful or scared?</small>
+						</label>
+						<textarea id="interview-grounds-event{{$index}}-feel" ng-model="event.feel" cols="40" rows="3" spellcheck="true"></textarea>
 					</li>
 					<li>
 						<label for="interview-grounds-event{{$index}}-witness">
