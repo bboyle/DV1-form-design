@@ -4,8 +4,8 @@
 // app
 angular.module( 'dv1' )
 // controller for interview
-.controller( 'InterviewController', [ 'application', '$scope', '$http', '$interpolate', '$document',
- function(                             application ,  $scope ,  $http ,  $interpolate ,  $document ) {
+.controller( 'InterviewController', [ 'application', '$scope', '$http', 'opendata', '$document',
+ function(                             application ,  $scope ,  $http ,  opendata ,  $document ) {
 
 	let vm = this;
 
@@ -133,22 +133,8 @@ angular.module( 'dv1' )
 	};
 
 	function findNearestMagistratesCourt( geo ) {
-		var select = [ '*' ];
-		var where = [ '"Title" LIKE \'%Magistrates%\'' ];
-		var distance = $interpolate( '(3959*acos(cos(radians({{ lat }}))*cos(radians("Latitude"))*cos(radians("Longitude")-radians({{ lng }}))+sin(radians({{ lat }}))*sin(radians("Latitude"))))' )( geo );
-
-		select.push( distance + ' AS "Distance"' );
-
-		$http.get( 'https://data.qld.gov.au/api/action/datastore_search_sql', {
-			params: {
-				sql: $interpolate( 'SELECT {{ select }} FROM {{ from }} WHERE {{ where }} ORDER BY "Distance" LIMIT 3' )({
-					select: select.join( ',' ),
-					from: '"400eeff4-d3d4-4d5a-9e99-7f993e768daf"',
-					where: where.join( ' AND ' ),
-				})
-			},
-			cache: true
-		}).then(function( response ) {
+		opendata.getCourtsNear( geo )
+		.then(function( response ) {
 			// console.log( response.data, response.data.result, response.data.result.records );
 			if ( response.data && response.data.result && response.data.result.records.length > 0 ) {
 				// console.log('setting vm.nearbyMagistratesCourt', response.data.result.records);
