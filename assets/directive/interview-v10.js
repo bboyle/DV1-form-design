@@ -112,7 +112,7 @@ angular.module( 'dv1' )
 
 	vm.aggrievedAddressChanged = function() {
 		delete vm.aggrieved.addressGeo;
-		delete vm.nearbyMagistratesCourt;
+		delete vm.nearby;
 
 		var address = vm.aggrieved.address;
 		// remove any duplicate country
@@ -132,20 +132,29 @@ angular.module( 'dv1' )
 		})
 	};
 
-	function findNearestMagistratesCourt( geo ) {
+	function findNearbyServices( geo ) {
+		vm.nearby = {};
 		opendata.getCourtsNear( geo )
 		.then(function( response ) {
 			// console.log( response.data, response.data.result, response.data.result.records );
 			if ( response.data && response.data.result && response.data.result.records.length > 0 ) {
 				// console.log('setting vm.nearbyMagistratesCourt', response.data.result.records);
-				vm.nearbyMagistratesCourt = response.data.result.records;
+				vm.nearby.magistratesCourt = response.data.result.records;
+			}
+		});
+		opendata.getVictimServicesNear( geo )
+		.then(function( response ) {
+			// console.log( response.data, response.data.result, response.data.result.records );
+			if ( response.data && response.data.result && response.data.result.records.length > 0 ) {
+				// console.log('setting vm.nearbyMagistratesCourt', response.data.result.records);
+				vm.nearby.victimServices = response.data.result.records;
 			}
 		});
 	}
 
 	$scope.$watch(function() { return vm.aggrieved.addressGeo; }, function( geo ) {
 		if ( geo && geo.x && geo.y ) {
-			findNearestMagistratesCourt({ lat: geo.y, lng: geo.x });
+			findNearbyServices({ lat: geo.y, lng: geo.x });
 		}
 	});
 

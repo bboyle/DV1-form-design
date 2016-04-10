@@ -12,10 +12,9 @@ angular.module( 'dv1' )
 	};
 	// where clauses
 	const WHERE = {
-		court: '"Title" LIKE \'%Magistrates%\''
+		court: '"Title" LIKE \'%Magistrates%\'',
+		victim: '"Support services" LIKE \'%domestic violence%\''
 	};
-
-
 
 
 	function getGeoData( dataset, where, geo ) {
@@ -39,6 +38,11 @@ angular.module( 'dv1' )
 
 	this.getCourtsNear = function( geo ) {
 		return getGeoData( DATASETS.court, WHERE.court, geo );
+	};
+
+
+	this.getVictimServicesNear = function( geo ) {
+		return getGeoData( DATASETS.victim, WHERE.victim, geo );
 	};
 
 	return this;
