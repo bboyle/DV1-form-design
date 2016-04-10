@@ -3482,6 +3482,20 @@
 			<p>If your safety concerns change for future court dates, you should complete another safety form for court staff.</p>
 		</li>
 
+		<li ng-if="interview.nearby.jp">
+			<div class="status info">
+				<h2>Nearby JPs</h2>
+				<ul>
+					<li ng-repeat="jp in interview.nearby.jp">
+						<h3>{{ jp.Title }}</h3>
+						<p>{{ jp[ 'Address 1' ] }}, {{ jp[ 'Address 2' ] }}, {{ jp.Suburb }} {{ jp.Postcode }}</p>
+						<p>{{ jp.Phone }}</p>
+						<p>{{ jp[ 'Operating hours' ] }}</p>
+					</li>
+				</ul>
+			</div>
+		</li>
+
 		<li ng-if="interview.nearby.magistratesCourt">
 			<div class="status info">
 				<h2>Nearby magistrates courts</h2>
@@ -3531,12 +3545,12 @@
 
 					-->
 					<li ng-repeat="court in interview.nearby.magistratesCourt">
-						{{ court.Title }}<br />
-						{{ court.Phone }}
-						{{ court[ 'Address 1' ] }}
+						<h3>{{ court.Title }}</h3>
+						<p>{{ court.Phone }}</p>
+						<p>{{ court[ 'Address 1' ] }}
 						{{ court[ 'Address 2' ] }}
 						{{ court.Suburb }}
-						{{ court.Postcode }}
+						{{ court.Postcode }}</p>
 					</li>
 				</ul>
 			</div>
@@ -3795,6 +3809,29 @@
 
 						<input type="hidden" name="conditionProhibitApproachAssociates" ng-value="interview.conditions.distance.associates.requested"> <!-- true/false -->
 						<input ng-if="interview.conditions.distance.associates.requested" type="hidden" name="conditionProhibitApproachAssociatesGrounds" ng-value="interview.conditions.distance.associates.grounds"> <!-- true/false -->
+					</div>
+
+
+					<!-- nearby courthouse -->
+					<div ng-if="interview.nearby.magistratesCourt">
+						<input ng-repeat-start="court in interview.nearby.magistratesCourt" type="hidden" name="nearbyCourt{{$index + 1}}Title" ng-value="court.Title">
+						<input type="hidden" name="nearbyCourt{{$index + 1}}Address" value="{{ court[ 'Address 1' ] }}, {{ court[ 'Address 2' ] }}, {{ court.Suburb }} {{ court.Postcode }}">
+						<input ng-repeat-end type="hidden" name="nearbyCourt{{$index + 1}}Phone" ng-value="court.Phone">
+					</div>
+
+					<!-- nearby JP -->
+					<div ng-if="interview.nearby.jp">
+						<input ng-repeat-start="jp in interview.nearby.jp" type="hidden" name="nearbyJP{{$index + 1}}Title" ng-value="jp.Title">
+						<input type="hidden" name="nearbyJP{{$index + 1}}Address" value="{{ jp[ 'Address 1' ] }}, {{ jp[ 'Address 2' ] }}, {{ jp.Suburb }} {{ jp.Postcode }}">
+						<input type="hidden" name="nearbyJP{{$index + 1}}Phone" ng-value="jp.Phone">
+						<input ng-repeat-end type="hidden" name="nearbyJP{{$index + 1}}Hours" ng-value="jp[ 'Operating hours' ]">
+					</div>
+
+					<!-- nearby services -->
+					<div ng-if="interview.nearby.victimServices">
+						<input ng-repeat-start="service in interview.nearby.victimServices" type="hidden" name="nearbyService{{$index + 1}}Title" ng-value="service.Name">
+						<input type="hidden" name="nearbyService{{$index + 1}}Contact" ng-value="service.Contact">
+						<input ng-repeat-end type="hidden" name="nearbyService{{$index + 1}}Description" ng-value="service.Description">
 					</div>
 
 

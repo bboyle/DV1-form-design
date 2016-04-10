@@ -8,11 +8,13 @@ angular.module( 'dv1' )
 	// dataset resource IDs
 	const DATASETS = {
 		court: '400eeff4-d3d4-4d5a-9e99-7f993e768daf',
+		jp: 'ca0f717e-b038-4596-96c4-b006b60314a8',
 		victim: '96d6b499-e402-409c-9c91-e8c02f2801c8'
 	};
 	// where clauses
 	const WHERE = {
 		court: '"Title" LIKE \'%Magistrates%\'',
+		jp: '1=1',
 		victim: '"Support services" LIKE \'%domestic violence%\''
 	};
 
@@ -38,6 +40,10 @@ angular.module( 'dv1' )
 
 	this.getCourtsNear = function( geo ) {
 		return getGeoData( DATASETS.court, WHERE.court, geo );
+	};
+
+	this.getJPsNear = function( geo ) {
+		return getGeoData( DATASETS.jp, WHERE.jp, geo );
 	};
 
 

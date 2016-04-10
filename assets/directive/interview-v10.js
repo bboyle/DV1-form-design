@@ -136,17 +136,19 @@ angular.module( 'dv1' )
 		vm.nearby = {};
 		opendata.getCourtsNear( geo )
 		.then(function( response ) {
-			// console.log( response.data, response.data.result, response.data.result.records );
 			if ( response.data && response.data.result && response.data.result.records.length > 0 ) {
-				// console.log('setting vm.nearbyMagistratesCourt', response.data.result.records);
 				vm.nearby.magistratesCourt = response.data.result.records;
+			}
+		});
+		opendata.getJPsNear( geo )
+		.then(function( response ) {
+			if ( response.data && response.data.result && response.data.result.records.length > 0 ) {
+				vm.nearby.jp = response.data.result.records;
 			}
 		});
 		opendata.getVictimServicesNear( geo )
 		.then(function( response ) {
-			// console.log( response.data, response.data.result, response.data.result.records );
 			if ( response.data && response.data.result && response.data.result.records.length > 0 ) {
-				// console.log('setting vm.nearbyMagistratesCourt', response.data.result.records);
 				vm.nearby.victimServices = response.data.result.records;
 			}
 		});
