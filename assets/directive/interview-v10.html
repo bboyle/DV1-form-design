@@ -3488,8 +3488,9 @@
 				<ul>
 					<li ng-repeat="jp in interview.nearby.jp">
 						<h3>{{ jp.Title }}</h3>
-						<p>{{ jp[ 'Address 1' ] }}, {{ jp[ 'Address 2' ] }}, {{ jp.Suburb }} {{ jp.Postcode }}</p>
-						<p><a ng-href="tel:{{ jp.Phone }}">{{ jp.Phone }}</a></p>
+						<p>{{ jp[ 'Address 1' ] }}, {{ jp[ 'Address 2' ] }}, {{ jp.Suburb }} {{ jp.Postcode }}
+						<a target="_blank" ng-href="https://maps.google.com.au/?ll={{ jp.Latitude }},{{ jp.Longitude }}&amp;q={{ jp.Title }}">view map</a></p>
+						<p>{{ jp.Phone }}</p>
 						<p>{{ jp[ 'Operating hours' ] }}</p>
 					</li>
 				</ul>
@@ -3557,8 +3558,8 @@
 							{{ court[ 'Address 2' ] }}
 							{{ court.Suburb }}
 							{{ court.Postcode }}<br>
-							<a target="_blank" ng-href="https://www.google.com.au/maps/place/{{ court.Title }}, {{ court[ 'Address 1' ] }} {{ court[ 'Address 2' ] }} {{ court.Suburb }} {{ court.Postcode }}" title="Map to {{ court.Title }}">view map</a></small>
-							<p><a ng-href="tel:{{ court.Phone }}">{{ court.Phone }}</a></p>
+							<a target="_blank" ng-href="https://maps.google.com.au/?ll={{ court.Latitude }},{{ court.Longitude }}&amp;q={{ court.Title }}" title="Map to {{ court.Title }}">view map</a></small>
+							<p>{{ court.Phone }}</p>
 						</td>
 						<td>{{ court.hours }}</td>
 						<td>{{ court.DV }}</td>
