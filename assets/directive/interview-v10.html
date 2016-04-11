@@ -3489,7 +3489,7 @@
 					<li ng-repeat="jp in interview.nearby.jp">
 						<h3>{{ jp.Title }}</h3>
 						<p>{{ jp[ 'Address 1' ] }}, {{ jp[ 'Address 2' ] }}, {{ jp.Suburb }} {{ jp.Postcode }}</p>
-						<p>{{ jp.Phone }}</p>
+						<p><a ng-href="tel:{{ jp.Phone }}">{{ jp.Phone }}</a></p>
 						<p>{{ jp[ 'Operating hours' ] }}</p>
 					</li>
 				</ul>
@@ -3497,10 +3497,15 @@
 		</li>
 
 		<li ng-if="interview.nearby.magistratesCourt">
-			<div class="status info">
-				<h2>Nearby magistrates courts</h2>
+			<table>
+				<caption>Nearby magistrates courts</caption>
 
-				<ul>
+				<thead>
+					<tr>
+						<th>Court</th>
+						<th>Lodge applications</th>
+						<th>DV hearings</th>
+					</tr>
 					<!-- TODO pattern lib format
 <div class="vcard">
 <h2 class="fn org">Aboriginal and Torres Strait Islander Partnerships</h2>
@@ -3544,16 +3549,22 @@
 </div>
 
 					-->
-					<li ng-repeat="court in interview.nearby.magistratesCourt">
-						<h3>{{ court.Title }}</h3>
-						<p>{{ court.Phone }}</p>
-						<p>{{ court[ 'Address 1' ] }}
-						{{ court[ 'Address 2' ] }}
-						{{ court.Suburb }}
-						{{ court.Postcode }}</p>
-					</li>
-				</ul>
-			</div>
+				<tbody>
+					<tr ng-repeat="court in interview.nearby.magistratesCourt">
+						<td>
+							<strong>{{ court.Title }}</strong><br>
+							<small>{{ court[ 'Address 1' ] }}
+							{{ court[ 'Address 2' ] }}
+							{{ court.Suburb }}
+							{{ court.Postcode }}<br>
+							<a target="_blank" ng-href="https://www.google.com.au/maps/place/{{ court.Title }}, {{ court[ 'Address 1' ] }} {{ court[ 'Address 2' ] }} {{ court.Suburb }} {{ court.Postcode }}" title="Map to {{ court.Title }}">view map</a></small>
+							<p><a ng-href="tel:{{ court.Phone }}">{{ court.Phone }}</a></p>
+						</td>
+						<td>{{ court.hours }}</td>
+						<td>{{ court.DV }}</td>
+					</tr>
+				</tbody>
+			</table>
 
 			Based on {{ interview.aggrieved.pronoun.your }} address: {{ interview.aggrieved.address }}
 			<a href="#">change</a>

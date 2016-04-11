@@ -118,6 +118,11 @@ angular.module( 'dv1' )
 		// remove any duplicate country
 		address = address.replace( /\b(AU|AUS|Australia)\b/i, '' );
 
+		// test we have more than whitespace
+		if ( ! /\W/.test( address )) {
+			return;
+		}
+
 		$http.get( '//geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates', {
 			params: {
 				f: 'json',
@@ -134,10 +139,20 @@ angular.module( 'dv1' )
 
 	function findNearbyServices( geo ) {
 		vm.nearby = {};
+
 		opendata.getCourtsNear( geo )
 		.then(function( response ) {
+			var dummyData = [
+				{ hours: 'Mon–Fri, 9:00am–4:00pm', DV: 'Monday' },
+				{ hours: 'Mon–Fri, 9:00am–4:00pm', DV: 'Thursday' },
+				{ hours: 'Mon–Fri, 9:00am–4:00pm', DV: 'Tuesday' }
+			];
+
 			if ( response.data && response.data.result && response.data.result.records.length > 0 ) {
 				vm.nearby.magistratesCourt = response.data.result.records;
+				angular.forEach( vm.nearby.magistratesCourt, function( court, i ) {
+					angular.merge( court, dummyData[ i ]);
+				});
 			}
 		});
 		opendata.getJPsNear( geo )
