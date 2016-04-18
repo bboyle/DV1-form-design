@@ -1,7 +1,8 @@
 <nav>
 <h2>Prepare your application</h2>
 	<ol>
-		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Before you begin</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Start your application</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE2" ng-click="interview.goto( interview.PAGE.PREAMBLE2 )">Before you begin</button></li>
 	</ol>
 
 <h3>What you need</h3>
@@ -92,8 +93,6 @@
 
 <section ng-show="interview.page === interview.PAGE.PREAMBLE">
 
-<div class="language-chooser"></div>
-
 
 <div>
 	<h2>Before you begin</h2>
@@ -105,34 +104,9 @@
 	</ul>
 </div>
 
-<div>
-	<h2>Going to court</h2>
-	<ul>
-		<li>You need to lodge the forms and all attachments at a magistrates court. You can do this yourself, or you can ask a friend or family member to do so on your behalf.</li>
-		<li>You will be given a date to appear in court (usually in about 4 weeks time).</li>
-		<li>Your court date can be sooner if you also ask for an urgent temporary protection order. You have to explain why you need this.</li>
-		<li>{{ interview.respondent.name.short }} will be given a copy of the application which includes a notice to appear in court at the same time.</li>
-	</ul>
-
-	<p>The nearest magistrates court is:<br>
-		Beaudesert Magistrates Court<br>
-		29 William Street<br>
-		Beaudesert Qld 4285
-		(<a href="https://maps.google.com.au/maps?f=d&amp;hl=en&amp;geocode=&amp;saddr=&amp;daddr=Beaudesert+Magistrates+Court,+29+William+Street,+Beaudesert,+Qld,+4285&amp;sll=-23.551772,145.287924&amp;sspn=0.017034,0.020578&amp;ie=UTF8&amp;ll=-27.990044,152.997108&amp;spn=0.016409,0.020578&amp;z=16" target="_blank">map</a>)<br>
-		<br>
-		<a href="tel:+61-7-5542-2055">(07) 5542 2055</a><br>
-		<a href="mailto:courthouse.beaudesert@justice.qld.gov.au">courthouse.beaudesert@justice.qld.gov.au</a><br>
-		<br>
-		It is open Monday–Friday from 8:30am–4:30pm.</p>
-
-		<!-- <p>You can file your application today.</p> -->
-		<!-- TODO opening hours, public holidays, closures -->
-		<p>You can lodge your application on Monday.</p>
-
-		<p><a href="http://www.qld.gov.au/law/court/courts/courthouse-locations/">Find another Magistrates Court</a></p>
-</div>
 
 <h2>Start preparing your application</h2>
+
 
 <form class="form" name="formPreamble" ng-submit="interview.completePreamble()">
 	<ol class="questions">
@@ -160,9 +134,9 @@
 			</fieldset>
 		</li>
 
-		<li ng-hide="interview.legalAdvice === 'how'">
+		<li>
 			<ul class="actions">
-				<li><strong><button>Continue</button></strong></li>
+				<li><strong><button>Start application</button></strong></li>
 			</ul>
 		</li>
 	</ol>
@@ -178,6 +152,33 @@
 		<li>In some areas there are programs to help people apply for a domestic violence order — these include domestic violence prevention programs, application assistance programs or domestic violence services. You can ask at the magistrates court about these programs.</li>
 	</ul>
 </div>
+
+</section>
+<section ng-show="interview.page === interview.PAGE.PREAMBLE2">
+
+
+<div class="language-chooser"></div>
+
+
+<div>
+	<h2>Going to court</h2>
+	<ul>
+		<li>You need to lodge the forms and all attachments at a magistrates court. You can do this yourself, or you can ask a friend or family member to do so on your behalf.</li>
+		<li>You will be given a date to appear in court (usually in about 4 weeks time).</li>
+		<li>Your court date can be sooner if you also ask for an urgent temporary protection order. You have to explain why you need this.</li>
+		<li>{{ interview.respondent.name.short }} will be given a copy of the application which includes a notice to appear in court at the same time.</li>
+	</ul>
+</div>
+
+<form ng-submit="interview.continue( $event )">
+	<ol class="questions">
+		<li>
+			<ul class="actions">
+				<li><strong><button>Continue</button></strong></li>
+			</ul>
+		</li>
+	</ol>
+</form>
 </section>
 
 

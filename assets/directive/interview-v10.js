@@ -10,7 +10,8 @@ angular.module( 'dv1' )
 	let vm = this;
 
 	vm.PAGE = {
-		PREAMBLE: 1,
+		PREAMBLE: 0,
+		PREAMBLE2: 1,
 		// aggrieved story
 		STORY: 2,
 		AGGRIEVED: 3,
@@ -323,7 +324,7 @@ angular.module( 'dv1' )
 		vm.partyIntimate = undefined;
 		vm.partyFamily = undefined;
 
-		vm.goto( 1 );
+		vm.goto( 0 );
 	};
 
 	vm.quickExit = function() {
