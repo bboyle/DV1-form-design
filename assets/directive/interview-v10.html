@@ -1,8 +1,7 @@
 <nav>
 <h2>Prepare your application</h2>
 	<ol>
-		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Start your application</button></li>
-		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE2" ng-click="interview.goto( interview.PAGE.PREAMBLE2 )">Before you begin</button></li>
+		<li><button type="button" ng-disable="interview.pageUnlocked < interview.PAGE.PREAMBLE" ng-click="interview.goto( interview.PAGE.PREAMBLE )">Before you begin</button></li>
 	</ol>
 
 <h3>What you need</h3>
@@ -93,7 +92,6 @@
 
 <section ng-show="interview.page === interview.PAGE.PREAMBLE">
 
-
 <div>
 	<h2>Before you begin</h2>
 	<ul>
@@ -101,6 +99,16 @@
 		<li>You may find answering these questions difficult because we will ask questions about your situation—what happened and when—what protection you need.</li>
 		<li>At the end of this guide you will have the necessary forms  (possibly 2 or 3) to take to court.</li>
 		<li>Once you lodge the forms at court, the person you are wanting protection from will get a copy of your application.</li>
+	</ul>
+</div>
+
+<div>
+	<h2>Going to court</h2>
+	<ul>
+		<li>You need to lodge the forms and all attachments at a magistrates court. You can do this yourself, or you can ask a friend or family member to do so on your behalf.</li>
+		<li>You will be given a date to appear in court (usually in about 4 weeks time).</li>
+		<li>Your court date can be sooner if you also ask for an urgent temporary protection order. You have to explain why you need this.</li>
+		<li>{{ interview.respondent.name.short }} will be given a copy of the application which includes a notice to appear in court at the same time.</li>
 	</ul>
 </div>
 
@@ -153,32 +161,6 @@
 	</ul>
 </div>
 
-</section>
-<section ng-show="interview.page === interview.PAGE.PREAMBLE2">
-
-
-<div class="language-chooser"></div>
-
-
-<div>
-	<h2>Going to court</h2>
-	<ul>
-		<li>You need to lodge the forms and all attachments at a magistrates court. You can do this yourself, or you can ask a friend or family member to do so on your behalf.</li>
-		<li>You will be given a date to appear in court (usually in about 4 weeks time).</li>
-		<li>Your court date can be sooner if you also ask for an urgent temporary protection order. You have to explain why you need this.</li>
-		<li>{{ interview.respondent.name.short }} will be given a copy of the application which includes a notice to appear in court at the same time.</li>
-	</ul>
-</div>
-
-<form name="formPreamble2" ng-submit="interview.continue( $event )">
-	<ol class="questions">
-		<li>
-			<ul class="actions">
-				<li><strong><button>Continue</button></strong></li>
-			</ul>
-		</li>
-	</ol>
-</form>
 </section>
 
 

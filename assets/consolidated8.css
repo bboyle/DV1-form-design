@@ -132,3 +132,9 @@ li::first-letter,
 p::first-letter {
 	text-transform: uppercase;
 }
+
+
+/* languages button in asides */
+#asides form em button {
+	background: #007EB1;
+}
